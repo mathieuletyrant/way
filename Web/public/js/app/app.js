@@ -1,4 +1,4 @@
-angular.module('app', ['restangular', 'ui.router'])
+angular.module('app', ['restangular', 'ui.router', 'facebook'])
 
     .constant('config', {
         apiUrl  : 'http://wayapi.mathieuletyrant.com',
