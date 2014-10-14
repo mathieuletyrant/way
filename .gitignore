@@ -33,3 +33,9 @@ node_modules/
 # Cordova
 Mobile/platforms/ios/
 Mobile/platforms/android/
+
+# WEB
+Web/public/css/style.css
+Web/public/js/app.js
+Web/public/js/libs.js
+Web/public/js/libs/

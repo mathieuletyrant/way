@@ -1,0 +1,17 @@
+{
+  "name": "Way",
+  "version": "1.0.0",
+  "homepage": "https://github.com/Mathew78540/way",
+  "authors": [
+    "Mathieu le Tyrant <mathieu.letyrant@gmail.com>"
+  ],
+  "license": "MIT",
+  "private": true,
+  "devDependencies": {
+    "angular": "~1.3.0",
+    "restangular": "~1.4.0",
+    "underscore": "~1.7.0",
+    "angular-ui-router": "~0.2.11",
+    "angular-facebook": "~0.2.3"
+  }
+}
