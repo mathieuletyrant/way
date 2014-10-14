@@ -1,0 +1,13 @@
+{
+  "name": "Way",
+  "version": "1.0.0",
+  "homepage": "https://github.com/Mathew78540/way",
+  "authors": [
+    "Mathieu le Tyrant <mathieu.letyrant@gmail.com>"
+  ],
+  "license": "MIT",
+  "private": true,
+  "devDependencies": {
+    "angular": "~1.3.0"
+  }
+}
