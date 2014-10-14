@@ -2,12 +2,49 @@
 
 class Controller {
 
+	protected $token = 'KDR8u9vuRH8i6hx8V4e6';
+	protected $request;
 
 	function __construct() {
 		if(!empty($this->uses)){
 			foreach($this->uses as $use){
 				$this->loadModel($use);
 			}
+		}
+
+		$this->request = $this->get_header();
+		/*if(!isset($this->request['token']) || $this->request['token'] != $this->token){
+			die('{"Auth fail": "wrong token"}');
+		}*/
+	}
+
+	public function init($f3, $params = null){
+		if(!empty($params['ok'])){
+			$this->loadModel('Model');
+			$this->Model->generate_categories();
+			$this->Model->generate_questions();
+		}
+	}
+
+	/**
+	*	Retourne le tableau contenant les Headers de la requete
+	*	@return Request Header
+	**/
+	protected function get_header(){
+		if (!function_exists('apache_request_headers')) {
+			function apache_request_headers() {
+				foreach($_SERVER as $key=>$value) {
+					if (substr($key,0,5)=="HTTP_") {
+						$key=str_replace(" ","-",ucwords(strtolower(str_replace("_"," ",substr($key,5)))));
+						$out[$key]=$value;
+					}else{
+						$out[$key]=$value;
+					}
+				}
+				return $out;
+			}
+		}else{
+			return apache_request_headers();
 		}
 	}
 
@@ -16,12 +53,12 @@ class Controller {
 		$this->$name = new $name();
 	}
 
-	public function init($f3, $params = null){
-		if(!empty($params['ok'])){
-			$this->loadModel('Model');
-			$this->Model->generate_questions();
-		}
+	protected function send_error($name, $value){
+		$error[$name] = $value;
+		echo json_encode($error);
 	}
+
+
 
 
 }

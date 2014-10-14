@@ -17,6 +17,14 @@ class UsersController extends Controller{
 		}
 	}
 
+	public function exist($f3, $params){
+		if($this->User->exist($params['id'])){
+			echo 'exist';
+		}else{
+			echo 'nexiste pas';
+		}
+	}
+
 	public function register($f3){
 		$this->User->register($f3);
 	}

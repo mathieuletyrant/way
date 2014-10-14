@@ -27,22 +27,20 @@ class Model {
 		}
 	}
 
+	public function generate_responses($question_id){
+
+	}
+
 	public function generate_categories(){
 		$this->db->exec("INSERT INTO `categories` (`name`, `sex`, `created`) VALUES
-			('Hipster', 'homme', '" . $this->datetime() . "'),
-			('Barbie', 'femme', '" . $this->datetime() . "'),
-			('Geek', 'homme', '" . $this->datetime() . "'),
-			('Hippie', 'homme', '" . $this->datetime() . "'),
-			('Candide', 'homme', '" . $this->datetime() . "'),
-			('Bad Boy', 'homme', '" . $this->datetime() . "'),
-			('Kéké', 'homme', '" . $this->datetime() . "'),
-			('Intello', 'homme', '" . $this->datetime() . "'),
-			('Garçon Manqué', 'femme', '" . $this->datetime() . "'),
-			('Geek', 'femme', '" . $this->datetime() . "'),
-			('Hippie', 'femme', '" . $this->datetime() . "'),
-			('Bad Girl', 'femme', '" . $this->datetime() . "'),
-			('Coquine', 'femme', '" . $this->datetime() . "'),
-			('Intello', 'femme', '" . $this->datetime() . "')");
+			('Geek', 'all', '" . $this->datetime() . "'),
+			('DragQueen', 'male', '" . $this->datetime() . "'),
+			('Hippie', 'all', '" . $this->datetime() . "'),
+			('Bad Boy', 'male', '" . $this->datetime() . "'),
+			('Keke', 'male', '" . $this->datetime() . "'),
+			('Barbie', 'female', '" . $this->datetime() . "'),
+			('Bad Girl', 'female', '" . $this->datetime() . "'),
+			('Candide', 'female', '" . $this->datetime() . "')");
 	}
 }
 

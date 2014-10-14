@@ -3,6 +3,8 @@ require_once 'Model.php';
 
 class User extends Model{
 
+	public $table = 'users';
+
 	function __construct() {
 		parent::__construct();
 	}
@@ -14,6 +16,12 @@ class User extends Model{
 			$user = $this->db->exec('SELECT * FROM users WHERE id = :id', array('id' => $id));
 		}
 		return $this->encode('users', $user);
+	}
+
+	public function exist($id){
+		$exist = $this->db->exec('SELECT COUNT(*) AS "exist" FROM ' . $this->table . ' WHERE facebook_id = :id',
+			array('id' => $id));
+		return $exist[0]['exist'] == 1 ? true : false;
 	}
 
 	public function register($f3){
