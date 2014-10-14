@@ -50,7 +50,8 @@ gulp.task('script-lib', function() {
     gulp.src([
         paths.common+'/js/libs/angular/angular.js',
         paths.common+'/js/libs/underscore/underscore.js',
-        paths.common+'/js/libs/restangular/dist/restangular.js'
+        paths.common+'/js/libs/restangular/dist/restangular.js',
+        paths.common+'/js/libs/angular-ui-router/release/angular-ui-router.js'
     ])
         .pipe(plumber())
         .pipe(ngmin())
