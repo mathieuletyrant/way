@@ -1,3 +1,5 @@
+'use strict';
+
 angular.module('app').filter('max', function () {
     return function (input) {
         var out;

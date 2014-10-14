@@ -1,3 +1,5 @@
+'use strict';
+
 angular.module('app').factory('apiRestangular', function (Restangular, config) {
 
     /*
