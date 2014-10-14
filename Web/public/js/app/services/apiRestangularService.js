@@ -1,4 +1,4 @@
-angular.module('app').factory('apiRestangular', function(Restangular, config){
+angular.module('app').factory('apiRestangular', function (Restangular, config) {
 
     /*
      Return Config for Way API
