@@ -34,11 +34,11 @@ gulp.task('style', function () {
 gulp.task('script-app', function() {
     gulp.src([
         paths.common+'/js/app/app.js'
-        ,paths.prefix+'/js/app/controllers/*.js'
-        ,paths.prefix+'/js/app/directives/*.js'
-        ,paths.prefix+'/js/app/filters/*.js'
-        ,paths.prefix+'/js/app/services/*.js'
-    ].reverse())
+        ,paths.common+'/js/app/controllers/*.js'
+        ,paths.common+'/js/app/directives/*.js'
+        ,paths.common+'/js/app/filters/*.js'
+        ,paths.common+'/js/app/services/*.js'
+    ])
         .pipe(plumber())
         .pipe(ngAnnotate())
         .pipe(ngmin())
@@ -48,8 +48,10 @@ gulp.task('script-app', function() {
 
 gulp.task('script-lib', function() {
     gulp.src([
-        paths.common+'/js/libs/angular/angular.js'
-    ].reverse())
+        paths.common+'/js/libs/angular/angular.js',
+        paths.common+'/js/libs/underscore/underscore.js',
+        paths.common+'/js/libs/restangular/dist/restangular.js'
+    ])
         .pipe(plumber())
         .pipe(ngmin())
         .pipe(uglify({mangle: false}))
