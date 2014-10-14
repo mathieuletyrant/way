@@ -5,7 +5,7 @@ angular.module('app').factory('apiRestangular', function(Restangular, config){
      */
     return Restangular.withConfig(function (RestangularConfigurer) {
         RestangularConfigurer.setBaseUrl(config.apiUrl);
-        RestangularProvider.setDefaultHeaders({token: config.token});
+        RestangularConfigurer.setDefaultHeaders({token: config.token});
     });
 
 });
