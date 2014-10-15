@@ -7,7 +7,7 @@ angular.module('app').controller('authenticationController', function ($scope, F
     $scope.user = null;
 
     $scope.login = function () {
-        Facebook.login(function(response) {
+        Facebook.login(function (response) {
             $scope.loginStatus = response.status;
         });
     };
@@ -15,17 +15,26 @@ angular.module('app').controller('authenticationController', function ($scope, F
     $scope.removeAuth = function () {
         Facebook.api({
             method: 'Auth.revokeAuthorization'
-        }, function(response) {
-            Facebook.getLoginStatus(function(response) {
+        }, function (response) {
+            Facebook.getLoginStatus(function (response) {
                 $scope.loginStatus = response.status;
             });
         });
     };
 
     $scope.api = function () {
-        Facebook.api('/me', function(response) {
+        Facebook.api('/me', function (response) {
             $scope.user = response;
         });
     };
+
+    $scope.$watch(function () {
+            return Facebook.isReady();
+        }, function (newVal) {
+            if (newVal) {
+                $scope.facebookIsReady = true;
+            }
+        }
+    );
 
 });
