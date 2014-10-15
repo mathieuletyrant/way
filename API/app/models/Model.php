@@ -17,6 +17,111 @@ class Model {
 		return date('Y-m-d H:i:s');
 	}
 
+	/**
+	*	Récupération de données
+	*	@param peut contenir "conditions", "fields", "order"
+	**/
+	public function get($params = array()){
+		$fields = '*';
+		$conditions = '1';
+		$orders = '1';
+
+		if(!empty($params['fields'])){
+			$fields = '';
+			foreach($params['fields'] as $field){
+				$fields.= $field . ', ';
+			}
+			$fields = substr($fields, 0, -2); // on enleve la virgule en trop
+		}
+
+		if(!empty($params['conditions'])){
+			$conditions = '';
+			foreach($params['conditions'] as $id => $condition){
+				$conditions.= $id . ' = "' . $condition . '" AND ';
+			}
+			$conditions = substr($conditions, 0, -4); // on enleve le AND en trop
+		}
+
+		if(!empty($params['order'])){
+			$orders = '';
+			foreach ($params['order'] as $id => $order) {
+				$orders.= $id . ' ' . $order . ', ';
+			}
+			$orders = substr($orders, 0, -2); // on enleve la virgule en trop
+		}
+
+		// requete automatiquement généré selon les cas
+		$statement = $this->db->prepare('SELECT ' . $fields . ' FROM ' . $this->table . ' WHERE ' . $conditions . ' ORDER BY ' . $orders);
+		$statement->execute();
+
+		if(sizeof($data = $statement->fetchAll(PDO::FETCH_ASSOC)) == 1){
+			return $data['0']; // on retourne directement l'indice 0 du tableau
+		}else{
+			return $data;
+		}
+
+	}
+
+	/**
+	*	Test l'existance d'un enregistrement dans une table en fonction d'un champ précis
+	*	@param $field Champ à tester
+	*	@param $data Donnée à tester l'existance
+	**/
+	public function exists($field, $data){
+		$statement = $this->db->prepare('SELECT COUNT(' . $field . ') AS "exists" FROM ' . $this->table . ' WHERE ' . $field . ' = :data');
+		$statement->execute(array('data' => $data));
+		$exists = $statement->fetch(PDO::FETCH_ASSOC);
+		return $exists['exists'] == 1 ? true : false;
+	}
+
+	/**
+	*	Sauvegarde de données
+	*	@param $datas Tableau contenant les données de la forme champ => donnée
+	**/
+	public function save($datas = array()){
+		$values = "";
+		$fields = "";
+		$restriction = "";
+
+		if(!empty($this->id)){
+			foreach($datas[$this->table] as $field => $data){
+				// name = :name
+				$restriction .= $field . ' = :' . $field . ', ';
+			}
+
+			$restriction = substr($restriction, 0, -2);
+
+			$statement = $this->db->prepare('UPDATE ' . $this->table . ' SET ' . $restriction . ' WHERE id = ' . $this->id);
+			return $statement->execute($datas[$this->table]);
+		}else{
+			$datas[$this->table]['created'] = $this->datetime();
+
+			foreach($datas[$this->table] as $field => $data){
+				$restriction .= $field . ', ';
+				$fields .= ":" . $field . ", ";
+			}
+
+			$restriction = substr($restriction, 0, -2);
+			$fields = substr($fields, 0, -2);
+
+			$statement = $this->db->prepare('INSERT INTO ' . $this->table . ' (' . $restriction . ') VALUES (' . $fields . ')');
+			if($statement->execute($datas[$this->table])){
+				return $this->db->lastInsertId();
+			}else{
+				return false;
+			}
+		}
+	}
+
+	/**
+	*	Suppression d'un enregistrement par son ID
+	*	@param $id ID de l'enregistrement
+	**/
+	public function delete($id){
+		$statement = $this->db->prepare('DELETE FROM ' . $this->table . ' WHERE id = :id');
+		return $statement->execute(array('id' => $id));
+	}
+
 	public function generate_questions(){
 		for($i = 0; $i < 20; $i++){
 			$name = file_get_contents('http://loripsum.net/api/1/short/plaintext');

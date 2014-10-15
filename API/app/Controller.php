@@ -21,7 +21,7 @@ class Controller {
 	public function init($f3, $params = null){
 		if(!empty($params['ok'])){
 			$this->loadModel('Model');
-			$this->Model->generate_categories();
+			//$this->Model->generate_categories();
 			$this->Model->generate_questions();
 		}
 	}

@@ -19,9 +19,9 @@ class User extends Model{
 	}
 
 	public function exist($id){
-		$exist = $this->db->exec('SELECT COUNT(*) AS "exist" FROM ' . $this->table . ' WHERE facebook_id = :id',
+		$user = $this->db->exec('SELECT * FROM ' . $this->table . ' WHERE facebook_id = :id',
 			array('id' => $id));
-		return $exist[0]['exist'] == 1 ? true : false;
+		return (count($user) == 1) ? $user : false;
 	}
 
 	public function register($f3){

@@ -34,15 +34,16 @@ class Question extends Model {
 		$category = $this->db->exec('SELECT id FROM categories WHERE LOWER(name) LIKE :name',
 			array('name' => '%' . strtolower($category_name) . '%'));
 
-		$question = $this->db->exec('SELECT * FROM ' . $this->table . ' WHERE category_id = :category_id ORDER BY RAND() LIMIT ' . $number,
+		$questions = $this->db->exec('SELECT * FROM ' . $this->table . ' WHERE category_id = :category_id ORDER BY RAND() LIMIT ' . $number,
 			array('category_id' => $category[0]['id']));
 
-		return $this->encode('questions', $question);
+		return $this->encode('questions', $questions);
 	}
 
-
-
-
+	public function getByCategory($category_id, $limit){
+		return $this->db->exec('SELECT * FROM ' . $this->table . ' WHERE category_id = :category_id ORDER BY RAND() LIMIT ' . $limit,
+			array('category_id' => $category_id));
+	}
 }
 
 ?>
