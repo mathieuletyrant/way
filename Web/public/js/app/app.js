@@ -8,7 +8,7 @@ angular.module('app', ['restangular', 'ui.router', 'facebook'])
     .constant('config', {
         apiUrl          : 'http://wayapi.mathieuletyrant.com',
         token           : 'KDR8u9vuRH8i6hx8V4e6',
-        facebookAppApi  : '123456789' // TODO Need change when we have good key from Facebook :)
+        facebookAppApi  : '828582677192624' // TODO Need change when we have good key from Facebook :)
     })
 
     /*
