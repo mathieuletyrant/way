@@ -12,6 +12,13 @@ angular.module('app', ['restangular', 'ui.router', 'facebook'])
     })
 
     /*
+        After with API
+     */
+    .config(function($httpProvider) {
+        $httpProvider.defaults.withCredentials = true;
+    })
+
+    /*
         Route System
      */
     .config(function($stateProvider, $urlRouterProvider){
