@@ -14,7 +14,8 @@ class Controller {
 
 		$this->request = $this->get_header();
 		/*if(!isset($this->request['token']) || $this->request['token'] != $this->token){
-			die('{"Auth fail": "wrong token"}');
+			$this->send_error(array('code' => '401', 'name' => 'authentification fail', 'message' => 'wrong token'));
+			die();
 		}*/
 	}
 
@@ -22,7 +23,8 @@ class Controller {
 		if(!empty($params['ok'])){
 			$this->loadModel('Model');
 			//$this->Model->generate_categories();
-			$this->Model->generate_questions();
+			// $this->Model->generate_questions();
+			$this->Model->generate_responses();
 		}
 	}
 
@@ -53,9 +55,8 @@ class Controller {
 		$this->$name = new $name();
 	}
 
-	protected function send_error($name, $value){
-		$error[$name] = $value;
-		echo json_encode($error);
+	protected function send_error($error = array()){
+		echo json_encode($error['error'] = $error);
 	}
 
 

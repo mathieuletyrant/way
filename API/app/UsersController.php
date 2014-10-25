@@ -18,10 +18,10 @@ class UsersController extends Controller{
 	}
 
 	public function exist($f3, $params){
-		if($this->User->exist($params['id'])){
-			echo 'exist';
+		if($user = $this->User->exist($params['id'])){
+			echo $this->User->encode('user', $user);
 		}else{
-			echo 'nexiste pas';
+			echo $this->send_error(array('code' => '404', 'message' => 'User not found'));
 		}
 	}
 

@@ -130,10 +130,25 @@ class Model {
 			$this->db->exec('INSERT INTO questions(name, category_id, created) VALUES(:name, :category_id, :created)',
 				array('name' => $name, 'category_id' => $category_id, 'created' => $this->datetime()));
 		}
+		echo $this->encode('generate_questions', $i . ' reponses générées');
 	}
 
-	public function generate_responses($question_id){
+	/**
+	*	id, question_id, answer, status, created
+	**/
+	public function generate_responses(){
+		$questions = $this->db->exec('SELECT * FROM questions WHERE id NOT IN ( SELECT question_id FROM answers )');
 
+		// pour chaque question sans reponse
+		foreach ($questions as $key => $question) {
+			for($i = 0; $i < 4; $i++){
+				$answer = file_get_contents('http://loripsum.net/api/1/short/plaintext');
+				$status = ($i == 3) ? true: false;
+				$this->db->exec('INSERT INTO answers(question_id, answer, status, created) VALUES(:question_id, :answer, :status, :created)',
+					array('question_id' => $question['id'], 'answer' => $answer, 'status' => $status, 'created' => $this->datetime()));
+			}
+		}
+		echo $this->encode('generate_responses', sizeof($questions) * 4 . ' reponses générées');
 	}
 
 	public function generate_categories(){

@@ -19,9 +19,9 @@ class User extends Model{
 	}
 
 	public function exist($id){
-		$user = $this->db->exec('SELECT * FROM ' . $this->table . ' WHERE facebook_id = :id',
+		$user = $this->db->exec('SELECT facebook_id, firstname, lastname, picture, sex FROM ' . $this->table . ' WHERE facebook_id = :id',
 			array('id' => $id));
-		return (count($user) == 1) ? $user : false;
+		return (count($user) == 1) ? $user[0] : false;
 	}
 
 	public function register($f3){

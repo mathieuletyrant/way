@@ -32,7 +32,7 @@ class BlindController extends Controller {
 	**/
 	public function multiplayer($f3, $d){
 		if(!empty($d['category']) && !empty($d['number'])){
-			echo $this->Question->generate_multi($d['category'], $d['number']);
+			echo $this->Question->encode('questions', $this->Question->generate_multi($d['category'], $d['number']));
 		}else{
 			$this->send_error('Request error', 'missing or wrong parameters');
 		}

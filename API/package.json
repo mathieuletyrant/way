@@ -4,5 +4,12 @@
   "description": "API PHP FrontEnd Project",
   "devDependencies": {
     "grunt": "^0.4.5"
-  }
+  },
+  "main": "gruntfile.js",
+  "dependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
 }

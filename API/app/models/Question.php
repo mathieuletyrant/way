@@ -37,12 +37,25 @@ class Question extends Model {
 		$questions = $this->db->exec('SELECT * FROM ' . $this->table . ' WHERE category_id = :category_id ORDER BY RAND() LIMIT ' . $number,
 			array('category_id' => $category[0]['id']));
 
-		return $this->encode('questions', $questions);
+		foreach ($questions as $key => $question) {
+			$question_reponse[$key]['question'] = $question;
+			$question_reponse[$key]['anwsers'] = $this->db->exec('SELECT * FROM answers WHERE question_id = :question_id', array('question_id' => $question['id']));
+		}
+
+		// return $this->encode('questions', $questions);
+		return (!empty($question_reponse)) ? $question_reponse: false;
 	}
 
 	public function getByCategory($category_id, $limit){
-		return $this->db->exec('SELECT * FROM ' . $this->table . ' WHERE category_id = :category_id ORDER BY RAND() LIMIT ' . $limit,
+		$questions = $this->db->exec('SELECT * FROM ' . $this->table . ' WHERE category_id = :category_id ORDER BY RAND() LIMIT ' . $limit,
 			array('category_id' => $category_id));
+
+		foreach ($questions as $key => $question) {
+			$question_reponse[$key]['question'] = $question;
+			$question_reponse[$key]['anwsers'] = $this->db->exec('SELECT * FROM answers WHERE question_id = :question_id', array('question_id' => $question['id']));
+		}
+
+		return (!empty($question_reponse)) ? $question_reponse : false;
 	}
 }
 
