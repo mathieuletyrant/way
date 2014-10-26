@@ -1,4 +1,5 @@
 'use strict';
+
 /*
  * @requires $http (Ajax Request)
  * @requires $q (Promise)
