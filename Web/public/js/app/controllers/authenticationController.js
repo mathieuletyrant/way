@@ -1,5 +1,8 @@
 'use strict';
-
+/*
+ * @requires $scope
+ * @require Facebook (Service for Facebook Connect)
+ */
 angular.module('app').controller('authenticationController', function ($scope, Facebook) {
 
     $scope.loginStatus = 'disconnected';

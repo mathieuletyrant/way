@@ -1,11 +1,15 @@
 'use strict';
-
+/*
+ * @requires $http (Ajax Request)
+ * @requires $q (Promise)
+ * @requires config (Config Global for app)
+ */
 angular.module('app').factory('api', function ($http, $q, config) {
 
     return {
         /*
-         Generate Single questions (20)
-         $param : sexe
+         * @name Generate Single questions
+         * @param string sexe
          */
         single: function (sexe) {
 
@@ -29,9 +33,9 @@ angular.module('app').factory('api', function ($http, $q, config) {
         },
 
         /*
-         Generate Number Questions with Category
-         @params : category
-         @params : number
+         * @name Generate Number Questions with Category
+         * @param string category
+         * @param int number
          */
         multi: function (category, number) {
 
