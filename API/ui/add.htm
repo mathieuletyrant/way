@@ -2,19 +2,53 @@
 
 <h2>Ajouter une question</h2>
 
-<form method="post" action="">
-	<input type="text" name="name">
-	<select name="category" id="">
-		<?php foreach ($categories as $key => $category): ?>
-			<option value="<?= $category['id']; ?>"><?= $category['name']; ?></option>
-		<?php endforeach ?>
-	</select>
-	<input type="file" name="question_file">
-	<input type="submit" name="submit" value="Ajouter la question">
+<form name="form-question" method="post" action="" class="form-horizontal" role="form">
+	<div class="panel panel-default">
+		<div class="panel-heading">Question</div>
+		<div class="panel-body">
+			<div class="form-group">
+				<label class="col-md-2" for="name">Question</label>
+				<div class="col-md-8">
+					<input class="form-control" placeholder="exemple: Quel est le nom de l'artiste ?" type="text" name="name" required>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-md-2" for="category">Categorie</label>
+				<div class="col-md-8">
+					<select name="category_id" id="" class="form-control" required>
+						<?php foreach ($categories as $key => $category): ?>
+							<option value="<?= $category['id']; ?>"><?= $category['name']; ?></option>
+						<?php endforeach ?>
+					</select>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-md-2" for="question_file">Fichier associé</label>
+				<div class="col-md-8">
+					<input type="file" name="question_file" class="form-control">
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="panel panel-default">
+		<div class="panel-heading">Liste des réponses</div>
+		<div class="panel-body">
+			<?php for ($i = 1; $i <= 4; $i++): ?>
+				<div class="form-group">
+					<label for="" class="col-md-2">Reponse <?= $i; ?></label>
+					<div class="col-md-8">
+						<input class="form-control" placeholder="réponse à la question..." type="text" name="reponses[]" required>
+					</div>
+					<div class="col-md-2">
+						<input name="status" type="radio" value="<?= $i - 1; ?>">
+						<label for="status">Bonne réponse</label>
+					</div>
+				</div>
+			<?php endfor; ?>
+		</div>
+	</div>
+	<input class="btn btn-primary" type="submit" name="submit" value="Enregistrer la question">
 </form>
 
 
 <?php include 'footer.htm'; ?>
-
-
-

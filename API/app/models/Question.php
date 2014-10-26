@@ -19,7 +19,7 @@ class Question extends Model {
 	}
 
 	public function add($question){
-		$this->db->exec('INSERT INTO ' . $this->table . '(name, category_id, created)
+		$insert = $this->db->exec('INSERT INTO ' . $this->table . '(name, category_id, created)
 			VALUES(:name, :category_id, :created)',
 			array(
 				'name' => $question['name'],
@@ -27,7 +27,7 @@ class Question extends Model {
 				'created' => $this->datetime()
 				)
 			);
-
+		return ($insert) ? $this->db->lastInsertId() : false;
 	}
 
 	public function generate_multi($category_name, $number){

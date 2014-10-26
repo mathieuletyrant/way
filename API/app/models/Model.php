@@ -153,14 +153,14 @@ class Model {
 
 	public function generate_categories(){
 		$this->db->exec("INSERT INTO `categories` (`name`, `sex`, `created`) VALUES
-			('Geek', 'all', '" . $this->datetime() . "'),
-			('DragQueen', 'male', '" . $this->datetime() . "'),
-			('Hippie', 'all', '" . $this->datetime() . "'),
-			('Bad Boy', 'male', '" . $this->datetime() . "'),
-			('Keke', 'male', '" . $this->datetime() . "'),
-			('Barbie', 'female', '" . $this->datetime() . "'),
-			('Bad Girl', 'female', '" . $this->datetime() . "'),
-			('Candide', 'female', '" . $this->datetime() . "')");
+			('geek', 'all', '" . $this->datetime() . "'),
+			('dragqueen', 'male', '" . $this->datetime() . "'),
+			('hippie', 'all', '" . $this->datetime() . "'),
+			('badboy', 'male', '" . $this->datetime() . "'),
+			('keke', 'male', '" . $this->datetime() . "'),
+			('barbie', 'female', '" . $this->datetime() . "'),
+			('badgirl', 'female', '" . $this->datetime() . "'),
+			('candide', 'female', '" . $this->datetime() . "')");
 	}
 }
 
