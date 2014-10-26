@@ -59,8 +59,9 @@ class Controller {
 		echo json_encode($error['error'] = $error);
 	}
 
+	function afterroute() {
 
-
+	}
 
 }
 

@@ -1,0 +1,20 @@
+<?php include 'header.htm'; ?>
+
+<h2>Ajouter une question</h2>
+
+<form method="post" action="">
+	<input type="text" name="name">
+	<select name="category" id="">
+		<?php foreach ($categories as $key => $category): ?>
+			<option value="<?= $category['id']; ?>"><?= $category['name']; ?></option>
+		<?php endforeach ?>
+	</select>
+	<input type="file" name="question_file">
+	<input type="submit" name="submit" value="Ajouter la question">
+</form>
+
+
+<?php include 'footer.htm'; ?>
+
+
+

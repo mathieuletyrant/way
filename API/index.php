@@ -1,4 +1,7 @@
 <?php
+define('WEBROOT', str_replace('index.php', '', $_SERVER['PHP_SELF']) . 'ui/');
+
+
 // Retrieve instance of the framework
 $f3 = require('lib/base.php');
 
