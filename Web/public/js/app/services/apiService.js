@@ -1,3 +1,5 @@
+'use strict';
+
 angular.module('app').factory('api', function ($http, $q, config) {
 
     return {
