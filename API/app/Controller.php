@@ -6,6 +6,12 @@ class Controller {
 	protected $request;
 
 	function __construct() {
+		session_start();
+
+		if(!empty($_SESSION['alert'])){
+			unset($_SESSION['alert']);
+		}
+
 		if(!empty($this->uses)){
 			foreach($this->uses as $use){
 				$this->loadModel($use);
@@ -59,8 +65,10 @@ class Controller {
 		echo json_encode($error['error'] = $error);
 	}
 
-
-
+	protected function alert($type, $message){
+		$_SESSION['alert']['type'] = 'alert ' . $type;
+		$_SESSION['alert']['message'] = $message;
+	}
 
 }
 
