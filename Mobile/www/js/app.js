@@ -32,6 +32,15 @@ angular.module('starter', ['ionic', 'controllers', 'services', 'filters'])
                         templateUrl: "templates/home.html"
                     }
                 }
+            })
+
+            .state('app.connexion', {
+                url: "/connexion",
+                views: {
+                    'menuContent' :{
+                        templateUrl: "templates/connexion.html"
+                    }
+                }
             });
 
         // if none of the above states are matched, use this as the fallback
