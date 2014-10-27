@@ -10,27 +10,32 @@ class QuestionController extends Controller{
 	}
 
 	public function add($f3){
+
 		if($f3->exists('POST.submit')){
+			if($this->Question->validate($f3->get('POST'))){
 
-			$question['name'] = $f3->get('POST.name');
-			$question['category_id'] = $f3->get('POST.category_id');
+				$question['name'] = $f3->get('POST.name');
+				$question['category_id'] = $f3->get('POST.category_id');
 
-			if($id = $this->Question->add($question)){
+				if($id = $this->Question->add($question)){
 
-				foreach ($f3->get('POST.reponses') as $key => $answer) {
-					$status = ($key == $f3->get('POST.status')) ? true: false;
+					foreach ($f3->get('POST.reponses') as $key => $answer) {
+						$status = ($key == $f3->get('POST.status')) ? true: false;
 
-					$insert = $this->Answer->add(array(
-						'question_id' => $id,
-						'answer' => $answer,
-						'status' => $status
-						));
-					if(!$insert){ $this->alert('alet-danger', "Erreur lors de l'enregistrement d'une reponse"); }
+						$insert = $this->Answer->add(array(
+							'question_id' => $id,
+							'answer' => $answer,
+							'status' => $status
+							));
+						if(!$insert){ $this->alert('alet-danger', "Erreur lors de l'enregistrement d'une reponse"); }
+					}
+
+					$this->alert('alert-success', 'Votre question a bien été enregistré');
+				}else{
+					$this->alert('alert-danger', "Erreur lors de l'enregistrement de votre question");
 				}
-
-				$this->alert('alert-success', 'Votre question a bien été enregistré');
 			}else{
-				$this->alert('alert-danger', "Erreur lors de l'enregistrement de votre question");
+				$this->alert('alert-danger', "Veuillez renseigner tout les champs du formulaire");
 			}
 		}
 
@@ -39,7 +44,7 @@ class QuestionController extends Controller{
 		echo View::instance()->render('add.htm');
 	}
 
-	public function list($f3){
+	public function view($f3){
 		$questions = $this->Question->get();
 
 		$f3->set('questions', $questions);

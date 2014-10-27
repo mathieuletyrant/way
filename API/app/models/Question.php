@@ -57,6 +57,17 @@ class Question extends Model {
 
 		return (!empty($question_reponse)) ? $question_reponse : false;
 	}
+
+	public function validate($question){
+		$validate = true;
+
+		if(empty($question['name'])){ $validate = false; }
+		if(empty($question['category_id'])){ $validate = false; }
+		if(empty($question['reponses'])){ $validate = false; }
+		if(!isset($question['status'])){ $validate = false; }
+
+		return $validate;
+	}
 }
 
 ?>
