@@ -21,7 +21,8 @@ angular.module('starter', ['ionic', 'controllers', 'services', 'filters'])
     .constant('config', {
         apiUrl          : 'http://wayapi.mathieuletyrant.com',
         token           : 'KDR8u9vuRH8i6hx8V4e6',
-        facebookAppApi  : '828582677192624' // TODO Need change when we have good key from Facebook :)
+        facebookAppApi  : '828582677192624', // TODO Need change when we have good key from Facebook :)
+        currentCategory : 'geek'
     })
 
     .config(function ($stateProvider, $urlRouterProvider) {
@@ -50,10 +51,18 @@ angular.module('starter', ['ionic', 'controllers', 'services', 'filters'])
                         templateUrl: "templates/connexion.html"
                     }
                 }
+            })
+            .state('app.gooddeal', {
+                url: "/gooddeal/:id",
+                views: {
+                    'menuContent' :{
+                        templateUrl: "templates/gooddeal.html"
+                    }
+                }
             });
 
         // if none of the above states are matched, use this as the fallback
-        $urlRouterProvider.otherwise('/app/home');
+        $urlRouterProvider.otherwise('/app/connexion');
 
     });
 
