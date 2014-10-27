@@ -8,6 +8,7 @@ class Controller {
 	function __construct() {
 		session_start();
 
+
 		if(!empty($_SESSION['alert'])){
 			unset($_SESSION['alert']);
 		}
@@ -56,15 +57,28 @@ class Controller {
 		}
 	}
 
+	/**
+	*	Charge un model associés à une table de la base de données
+	*	@param $name Nom du model (respecter la casse)
+	**/
 	protected function loadModel($name){
 		require_once 'models/' . $name. '.php';
 		$this->$name = new $name();
 	}
 
+	/**
+	*	Afficher une erreur de retour JSON
+	*	@param $error tableau associatif
+	**/
 	protected function send_error($error = array()){
 		echo json_encode($error['error'] = $error);
 	}
 
+	/**
+	*	Affiche un message d'alert sur une vue HTML
+	*	@param $type Type de l'alert
+	*	@param $message Message de l'alert
+	**/
 	protected function alert($type, $message){
 		$_SESSION['alert']['type'] = 'alert ' . $type;
 		$_SESSION['alert']['message'] = $message;

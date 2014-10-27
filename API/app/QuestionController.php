@@ -39,6 +39,13 @@ class QuestionController extends Controller{
 		echo View::instance()->render('add.htm');
 	}
 
+	public function list($f3){
+		$questions = $this->Question->get();
+
+		$f3->set('questions', $questions);
+		echo View::instance()->render('list.htm');
+	}
+
 
 }
 
