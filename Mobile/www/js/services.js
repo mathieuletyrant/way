@@ -1,10 +1,12 @@
 angular.module('services', [])
 
-.factory('api', function($http, $q, config){
+.factory('api', function($http, $q, config, overlay){
 
     return {
 
         goodDealByCategory: function (category, page) {
+
+            overlay.set(true);
 
             category = category || 'geek';
             page = page || 1;
@@ -16,9 +18,11 @@ angular.module('services', [])
                 url: config.apiUrl + '/A FAIRE/' + category + '/' + page
             })
             .success(function (result) {
+                overlay.set(false);
                 deferred.resolve(result);
             })
             .error(function (result) {
+                overlay.set(false);
                 deferred.resolve('Erreur :' + result);
             });
 
@@ -28,6 +32,8 @@ angular.module('services', [])
 
         goodDealById: function(id){
 
+            overlay.set(true);
+
             id = id || 1;
 
             $http({
@@ -35,9 +41,11 @@ angular.module('services', [])
                 url: config.apiUrl + '/A FAIRE/' + id
             })
             .success(function (result) {
+                overlay.set(false);
                 deferred.resolve(result);
             })
             .error(function (result) {
+                overlay.set(false);
                 deferred.resolve('Erreur :' + result);
             });
 
@@ -46,6 +54,8 @@ angular.module('services', [])
 
         goodDealPrimary: function(category){
 
+            overlay.set(true);
+
             category = category || 'geek';
 
             $http({
@@ -53,9 +63,11 @@ angular.module('services', [])
                 url: config.apiUrl + '/A FAIRE/' + category
             })
                 .success(function (result) {
+                    overlay.set(false);
                     deferred.resolve(result);
                 })
                 .error(function (result) {
+                    overlay.set(false);
                     deferred.resolve('Erreur :' + result);
                 });
 

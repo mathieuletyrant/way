@@ -63,7 +63,7 @@ angular.module('starter', ['ionic', 'controllers', 'services', 'filters'])
             });
 
         // if none of the above states are matched, use this as the fallback
-        $urlRouterProvider.otherwise('/app/connexion');
+        $urlRouterProvider.otherwise('/app/home');
 
     });
 
