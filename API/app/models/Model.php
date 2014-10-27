@@ -5,11 +5,12 @@ class Model {
 	protected $db;
 
 	function __construct() {
-		$this->db = new \DB\SQL('mysql:host=localhost;port=3306;dbname=way','root','root');
+		$this->db = new \DB\SQL('mysql:host=localhost;port=3306;dbname=' . DB_NAME, DB_USER, DB_PASSWORD);
 	}
 
 	public function encode($name, $data = array()){
 		header('Content-Type: application/json');
+		header('Access-Control-Allow-Origin: *');
 		return '{"' . $name . '": ' . json_encode(array_change_key_case($data, CASE_LOWER)) . '}';
 	}
 
