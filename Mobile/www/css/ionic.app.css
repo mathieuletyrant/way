@@ -7885,5 +7885,60 @@ $ios-transition-box-shadow-end: -200px 0px 200px rgba(0,0,0,0.15), -5px 0px 5px 
   color: #e84e40; }
 
 .top_bar button {
-  font-size: 2em;
-  margin-bottom: 10px; }
+  font-size: 2em; }
+
+.way-padding {
+  padding: 0.1em; }
+
+/*
+  CATEGORIES GOOD DEAL
+*/
+.sortie {
+  background-color: #a62a28; }
+
+.mode {
+  background-color: #1aa22a; }
+
+.style {
+  background-color: #dd9a37; }
+
+.content {
+  background-color: #2f3854; }
+
+.section_primary {
+  padding-left: 0px;
+  padding-right: 0px; }
+  .section_primary a {
+    text-decoration: none; }
+  .section_primary .col {
+    padding-left: 0px;
+    padding-right: 0px; }
+  .section_primary article {
+    position: relative;
+    color: white; }
+    .section_primary article img {
+      z-index: 0; }
+    .section_primary article .category {
+      position: absolute;
+      text-transform: uppercase;
+      border-radius: 3px;
+      z-index: 1;
+      font-size: 0.7em;
+      left: 1.3em;
+      bottom: 3.3em;
+      padding: 0px 5px; }
+    .section_primary article p {
+      position: absolute;
+      z-index: 1;
+      bottom: 0.1em;
+      left: 1em;
+      text-transform: uppercase;
+      font-weight: bold; }
+
+.section_second {
+  padding-left: 0px;
+  padding-right: 0px; }
+  .section_second .col:nth-child(1) {
+    padding-left: 0px; }
+  .section_second .col:nth-child(2) {
+    padding-right: 0px; }

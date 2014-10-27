@@ -1,13 +1,51 @@
-.top_bar{
+.content{
   background-color: #2f3854;
 }
-.top_bar .icon{
-  color: white;
+.section_primary{
+  padding-left: 0px;
+  padding-right: 0px;
+  a{
+    text-decoration: none;
+  }
+  .col{
+    padding-left: 0px;
+    padding-right: 0px;
+  }
+  article{
+    position: relative;
+    color: white;
+    img{
+      z-index: 0;
+    }
+    .category{
+      position: absolute;
+      text-transform: uppercase;
+      border-radius: 3px;
+      z-index: 1;
+      font-size: 0.7em;
+      left: 1.3em;
+      bottom: 3.3em;
+      padding: 0px 5px;
+    }
+    p{
+      position: absolute;
+      z-index: 1;
+      bottom: 0.1em;
+      left: 1em;
+      text-transform: uppercase;
+      font-weight: bold;
+    }
+  }
 }
-.top_bar .title{
-  font-size: 2em;
-  color: #e84e40;
-}
-.top_bar button{
-  font-size: 2em;
+
+.section_second{
+  padding-left: 0px;
+  padding-right: 0px;
+  .col:nth-child(1){
+    padding-left: 0px;
+  }
+  .col:nth-child(2){
+    padding-right: 0px;
+  }
+
 }
