@@ -7907,7 +7907,8 @@ $ios-transition-box-shadow-end: -200px 0px 200px rgba(0,0,0,0.15), -5px 0px 5px 
 
 .section_primary {
   padding-left: 0px;
-  padding-right: 0px; }
+  padding-right: 0px;
+  margin-top: -0.5em; }
   .section_primary a {
     text-decoration: none; }
   .section_primary .col {
@@ -7948,9 +7949,8 @@ $ios-transition-box-shadow-end: -200px 0px 200px rgba(0,0,0,0.15), -5px 0px 5px 
     position: relative; }
     .section_second .col img {
       position: absolute;
-      left: 50%;
+      left: 0;
       top: 0;
-      margin-left: -200px;
       z-index: 0; }
     .section_second .col .category {
       position: absolute;

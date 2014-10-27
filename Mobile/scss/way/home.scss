@@ -4,6 +4,7 @@
 .section_primary{
   padding-left: 0px;
   padding-right: 0px;
+  margin-top: -0.5em;
   a{
     text-decoration: none;
   }
@@ -52,9 +53,8 @@
     position: relative;
     img{
       position: absolute;
-      left: 50%;
+      left: 0;
       top: 0;
-      margin-left: -200px;
       z-index: 0;
     }
     .category{
