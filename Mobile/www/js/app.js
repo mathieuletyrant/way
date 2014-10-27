@@ -8,6 +8,10 @@ angular.module('starter', ['ionic', 'controllers', 'services', 'filters'])
             if (window.StatusBar) {
                 StatusBar.styleDefault();
             }
+            /* SplashScreen */
+            setTimeout(function() {
+                navigator.splashscreen.hide();
+            }, 2000);
         });
     })
 

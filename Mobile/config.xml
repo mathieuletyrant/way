@@ -17,4 +17,6 @@
   <feature name="StatusBar">
     <param name="ios-package" value="CDVStatusBar" onload="true"/>
   </feature>
+  <preference name="SplashScreen" value="splashscreen"/>
+  <preference name="SplashScreenDelay" value="10000"/>
 </widget>
