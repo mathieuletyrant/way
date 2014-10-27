@@ -4,7 +4,7 @@
 .section_primary{
   padding-left: 0px;
   padding-right: 0px;
-  margin-top: -0.5em;
+  margin-top: -0.7em;
   a{
     text-decoration: none;
   }
@@ -42,43 +42,36 @@
 .section_second{
   padding-left: 0px;
   padding-right: 0px;
+  padding-top: 0px;
   margin-bottom: 0.8em;
+  .col:nth-child(1){
+    padding-left: 0px;
+    padding-top: 0px;
+  }
+  .col:nth-child(2){
+    padding-right: 0px;
+    padding-top: 0px;
+  }
   a{
     color: white;
     text-decoration: none;
-  }
-  .col{
-    height: 200px;
-    overflow:hidden;
     position: relative;
     img{
-      position: absolute;
-      left: 0;
-      top: 0;
-      z-index: 0;
+      width: 100%;
     }
-    .category{
+    .informations{
       position: absolute;
-      text-transform: uppercase;
-      border-radius: 3px;
-      z-index: 1;
-      font-size: 0.7em;
-      left: 1.3em;
-      bottom: 3.3em;
-      padding: 0px 5px;
-    }
-    p{
-      position: absolute;
-      z-index: 1;
-      bottom: 0.1em;
+      bottom: 1em;
       left: 1em;
-      text-transform: uppercase;
+      .category{
+        position: absolute;
+        bottom: 3.3em;
+        text-transform: uppercase;
+        border-radius: 3px;
+        font-size: 0.7em;
+        padding: 0px 5px;
+      }
     }
-  }
-  .col:nth-child(1){
-    margin-right: 5px;
-  }
-  .col:nth-child(2){
-    margin-left: 5px;
+    display: block;
   }
 }

@@ -7855,7 +7855,7 @@ $ios-transition-box-shadow-end: -200px 0px 200px rgba(0,0,0,0.15), -5px 0px 5px 
   content: "\e603"; }
 .icon-way-logo-badgirl:before {
   content: "\e602"; }
-.icon-way-logo-guitar:before {
+.icon-way-logo-badboy:before {
   content: "\e608"; }
 .icon-way-row-left:before {
   content: "\e600"; }
@@ -7908,7 +7908,7 @@ $ios-transition-box-shadow-end: -200px 0px 200px rgba(0,0,0,0.15), -5px 0px 5px 
 .section_primary {
   padding-left: 0px;
   padding-right: 0px;
-  margin-top: -0.5em; }
+  margin-top: -0.7em; }
   .section_primary a {
     text-decoration: none; }
   .section_primary .col {
@@ -7939,35 +7939,29 @@ $ios-transition-box-shadow-end: -200px 0px 200px rgba(0,0,0,0.15), -5px 0px 5px 
 .section_second {
   padding-left: 0px;
   padding-right: 0px;
+  padding-top: 0px;
   margin-bottom: 0.8em; }
+  .section_second .col:nth-child(1) {
+    padding-left: 0px;
+    padding-top: 0px; }
+  .section_second .col:nth-child(2) {
+    padding-right: 0px;
+    padding-top: 0px; }
   .section_second a {
     color: white;
-    text-decoration: none; }
-  .section_second .col {
-    height: 200px;
-    overflow: hidden;
-    position: relative; }
-    .section_second .col img {
+    text-decoration: none;
+    position: relative;
+    display: block; }
+    .section_second a img {
+      width: 100%; }
+    .section_second a .informations {
       position: absolute;
-      left: 0;
-      top: 0;
-      z-index: 0; }
-    .section_second .col .category {
-      position: absolute;
-      text-transform: uppercase;
-      border-radius: 3px;
-      z-index: 1;
-      font-size: 0.7em;
-      left: 1.3em;
-      bottom: 3.3em;
-      padding: 0px 5px; }
-    .section_second .col p {
-      position: absolute;
-      z-index: 1;
-      bottom: 0.1em;
-      left: 1em;
-      text-transform: uppercase; }
-  .section_second .col:nth-child(1) {
-    margin-right: 5px; }
-  .section_second .col:nth-child(2) {
-    margin-left: 5px; }
+      bottom: 1em;
+      left: 1em; }
+      .section_second a .informations .category {
+        position: absolute;
+        bottom: 3.3em;
+        text-transform: uppercase;
+        border-radius: 3px;
+        font-size: 0.7em;
+        padding: 0px 5px; }
