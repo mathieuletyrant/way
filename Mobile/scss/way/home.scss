@@ -41,11 +41,44 @@
 .section_second{
   padding-left: 0px;
   padding-right: 0px;
+  margin-bottom: 0.8em;
+  a{
+    color: white;
+    text-decoration: none;
+  }
+  .col{
+    height: 200px;
+    overflow:hidden;
+    position: relative;
+    img{
+      position: absolute;
+      left: 50%;
+      top: 0;
+      margin-left: -200px;
+      z-index: 0;
+    }
+    .category{
+      position: absolute;
+      text-transform: uppercase;
+      border-radius: 3px;
+      z-index: 1;
+      font-size: 0.7em;
+      left: 1.3em;
+      bottom: 3.3em;
+      padding: 0px 5px;
+    }
+    p{
+      position: absolute;
+      z-index: 1;
+      bottom: 0.1em;
+      left: 1em;
+      text-transform: uppercase;
+    }
+  }
   .col:nth-child(1){
-    padding-left: 0px;
+    margin-right: 5px;
   }
   .col:nth-child(2){
-    padding-right: 0px;
+    margin-left: 5px;
   }
-
 }

@@ -14,9 +14,11 @@
   <preference name="DisallowOverscroll" value="true"/>
   <preference name="BackupWebStorage" value="none"/>
   <preference name="orientation" value="portrait"/>
+  <preference name="SplashScreen" value="splashscreen"/>
+  <preference name="SplashScreenDelay" value="10000"/>
+  <preference name="StatusBarBackgroundColor" value="#ffffff"/>
   <feature name="StatusBar">
     <param name="ios-package" value="CDVStatusBar" onload="true"/>
   </feature>
-  <preference name="SplashScreen" value="splashscreen"/>
-  <preference name="SplashScreenDelay" value="10000"/>
+
 </widget>
