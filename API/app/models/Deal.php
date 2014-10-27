@@ -14,8 +14,15 @@ class Deal extends Model{
 		return (!empty($deal)) ? $deal : false;
 	}
 
-	public function getBySection($section){
-		$deals = $this->db->exec('SELECT * FROM ' . $this->table . ' WHERE section = :section', array('section' => strtolower($section)));
+	public function getBySection($section, $page = null){
+
+		$start = ($page == 0) ? 1 : ($page - 1) * 6;
+		$end = $start + 6;
+
+		$deals = $this->db->exec('SELECT * FROM ' . $this->table . ' WHERE section = :section LIMIT ' . $start . ', ' . $end,
+			array('section' => strtolower($section)));
+
+		return (!empty($deals)) ? $deals : false;
 	}
 
 }
