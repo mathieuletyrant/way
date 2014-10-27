@@ -1,6 +1,9 @@
 angular.module('services', [])
 
-.factory('api', function($http, $q, config, overlay){
+/*
+ * Api SERVICE
+ */
+.factory('api', function ($http, $q, config, overlay) {
 
     return {
 
@@ -17,20 +20,20 @@ angular.module('services', [])
                 method: 'GET',
                 url: config.apiUrl + '/A FAIRE/' + category + '/' + page
             })
-            .success(function (result) {
-                overlay.set(false);
-                deferred.resolve(result);
-            })
-            .error(function (result) {
-                overlay.set(false);
-                deferred.resolve('Erreur :' + result);
-            });
+                .success(function (result) {
+                    overlay.set(false);
+                    deferred.resolve(result);
+                })
+                .error(function (result) {
+                    overlay.set(false);
+                    deferred.resolve('Erreur :' + result);
+                });
 
             return deferred.promise;
 
         },
 
-        goodDealById: function(id){
+        goodDealById: function (id) {
 
             overlay.set(true);
 
@@ -40,19 +43,19 @@ angular.module('services', [])
                 method: 'GET',
                 url: config.apiUrl + '/A FAIRE/' + id
             })
-            .success(function (result) {
-                overlay.set(false);
-                deferred.resolve(result);
-            })
-            .error(function (result) {
-                overlay.set(false);
-                deferred.resolve('Erreur :' + result);
-            });
+                .success(function (result) {
+                    overlay.set(false);
+                    deferred.resolve(result);
+                })
+                .error(function (result) {
+                    overlay.set(false);
+                    deferred.resolve('Erreur :' + result);
+                });
 
             return deferred.promise;
         },
 
-        goodDealPrimary: function(category){
+        goodDealPrimary: function (category) {
 
             overlay.set(true);
 
@@ -76,7 +79,10 @@ angular.module('services', [])
     };
 })
 
-.service('overlay', function(config){
+/*
+ * Overlay SERVICE
+ */
+.service('overlay', function (config) {
 
     this.set = function (value) {
         config.overlay = value;
@@ -85,5 +91,19 @@ angular.module('services', [])
     this.get = function () {
         return config.overlay;
     };
+
+})
+/*
+ * Category SERVICE
+ */
+.service('category', function (config) {
+
+    this.set = function (value) {
+        config.currentCategory = value;
+    };
+
+    this.get = function () {
+        return config.currentCategory;
+    }
 
 });

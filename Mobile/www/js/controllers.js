@@ -58,4 +58,19 @@ angular.module('controllers', [])
         overlay.set(value);
     };
 
+})
+
+/*
+ * Category CONTROLLER
+ */
+.controller('categoryController', function($scope, category){
+
+    $scope.getCategory = function () {
+        return category.get();
+    };
+
+    $scope.setCategory = function (value) {
+        category.set(value);
+    };
+
 });

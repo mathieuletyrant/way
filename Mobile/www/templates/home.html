@@ -1,9 +1,11 @@
-<div class="modal" ng-controller="homeController as homeCtrl">
+<div class="modal">
 
     <!-- Header -->
     <ion-header-bar class="top_bar">
+        <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
         <h1 class="title icon icon-way-logo"></h1>
-        <div class="button button-icon icon icon-way-logo-hypster"></div>
+        <button ng-controller="categoryController as categoryCtrl"
+                class="button button-icon icon icon-way-logo-{{getCategory()}}"></button>
     </ion-header-bar>
 
     <!-- Content -->
@@ -80,11 +82,11 @@
             </div>
         </div>
 
-        <ion-infinite-scroll
+        <!--<ion-infinite-scroll
                 on-infinite="loadMore()"
                 distance="8%"
                 icon="">
-        </ion-infinite-scroll>
+        </ion-infinite-scroll>-->
 
     </ion-content>
 </div>

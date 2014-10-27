@@ -1,8 +1,78 @@
 <ion-side-menus>
     <ion-pane ion-side-menu-content>
         <ion-nav-bar class="bar-stable nav-title-slide-ios7" class="top_bar">
-            <ion-nav-back-button class="button-clear"><i class="icon ion-ios7-arrow-back"></i> Back</ion-nav-back-button>
+            <ion-nav-back-button class="button-clear"><i class="icon ion-ios7-arrow-back"></i> Back
+            </ion-nav-back-button>
         </ion-nav-bar>
         <ion-nav-view name="menuContent"></ion-nav-view>
     </ion-pane>
+
+    <!-- Left menu -->
+    <ion-side-menu side="left" class="content menu">
+
+        <ion-content class="has-header">
+            <ion-list ng-controller="categoryController as categoryCtrl">
+                <div class="item item-divider">
+                    Homme
+                </div>
+
+                <ion-item nav-clear menu-close class="mal" ng-click="setCategory('geek')">
+                    <span class="icon-way-logo-geek icon-way-lg"></span>
+                    Geek
+                </ion-item>
+
+                <ion-item nav-clear menu-close class="mal" ng-click="setCategory('badboy')">
+                    <span class="icon-way-logo-badboy icon-way-lg"></span>
+                    Bad boy
+                </ion-item>
+
+                <ion-item nav-clear menu-close class="mal" ng-click="setCategory('hypster')">
+                    <span class="icon-way-logo-hypster icon-way-lg"></span>
+                    Hipster
+                </ion-item>
+
+                <ion-item nav-clear menu-close class="mal" ng-click="setCategory('draqueen')">
+                    <span class="icon-way-logo-draqueen icon-way-lg"></span>
+                    Draqueen
+                </ion-item>
+
+                <ion-item nav-clear menu-close class="mal" ng-click="setCategory('keke')">
+                    <span class="icon-way-logo-keke icon-way-lg"></span>
+                    Keke
+                </ion-item>
+
+                <div class="item item-divider">
+                    Femme
+                </div>
+
+                <ion-item nav-clear menu-close class="female" ng-click="setCategory('geekette')">
+                    <span class="icon-way-logo-geekette icon-way-lg"></span>
+                    Geekette
+                </ion-item>
+
+                <ion-item nav-clear menu-close class="female" ng-click="setCategory('badgirl')">
+                    <span class="icon-way-logo-badgirl icon-way-lg"></span>
+                    Bad girl
+                </ion-item>
+
+                <ion-item nav-clear menu-close class="female" ng-click="setCategory('hippie')">
+                    <span class="icon-way-logo-hippie icon-way-lg"></span>
+                    Hippie
+                </ion-item>
+
+                <ion-item nav-clear menu-close class="female" ng-click="setCategory('fleurbleue')">
+                    <span class="icon-way-logo-fleurbleue icon-way-lg"></span>
+                    Fleur bleue
+                </ion-item>
+
+                <ion-item nav-clear menu-close class="female" ng-click="setCategory('barbie')">
+                    <span class="icon-way-logo-barbie icon-way-lg"></span>
+                    Barbie
+                </ion-item>
+
+            </ion-list>
+        </ion-content>
+
+    </ion-side-menu>
+
 </ion-side-menus>
