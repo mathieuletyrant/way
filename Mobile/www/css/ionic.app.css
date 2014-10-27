@@ -7937,16 +7937,16 @@ $ios-transition-box-shadow-end: -200px 0px 200px rgba(0,0,0,0.15), -5px 0px 5px 
       font-weight: bold; }
 
 .section_second {
-  padding-left: 0px;
-  padding-right: 0px;
-  padding-top: 0px;
-  margin-bottom: 0.8em; }
+  padding: 0px;
+  margin-bottom: 0px; }
   .section_second .col:nth-child(1) {
     padding-left: 0px;
     padding-top: 0px; }
   .section_second .col:nth-child(2) {
     padding-right: 0px;
     padding-top: 0px; }
+  .section_second .col:last-child {
+    margin-bottom: 0px; }
   .section_second a {
     color: white;
     text-decoration: none;

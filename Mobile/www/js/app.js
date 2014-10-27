@@ -15,6 +15,15 @@ angular.module('starter', ['ionic', 'controllers', 'services', 'filters'])
         });
     })
 
+    /*
+     Config
+     */
+    .constant('config', {
+        apiUrl          : 'http://wayapi.mathieuletyrant.com',
+        token           : 'KDR8u9vuRH8i6hx8V4e6',
+        facebookAppApi  : '828582677192624' // TODO Need change when we have good key from Facebook :)
+    })
+
     .config(function ($stateProvider, $urlRouterProvider) {
 
         $stateProvider
