@@ -1,11 +1,11 @@
-angular.module('controllers', []);
+angular.module('controllers', [])
 
 /*
  * GoodDeal CONTROLLER
  */
-angular.controller('goodDealController', function($stateParams, $scope, api){
+.controller('goodDealController', function($stateParams, $scope, api){
 
-    var id = $stateParams.id; //
+    var id = $stateParams.id;
 
     api.goodDealById(id).then(function(result){
         $scope.result = result;
@@ -13,12 +13,12 @@ angular.controller('goodDealController', function($stateParams, $scope, api){
         console.log('Error during GoodDeal with ID : '+id+' : '+result);
     });
 
-});
+})
 
 /*
  * Home CONTROLLER
  */
-angular.controller('homeController', function($scope, api, config){
+.controller('homeController', function($scope, api, config){
 
     api.goodDealByCategory(config.currentCategory).then(function(result){
         $scope.secondResult = result;
@@ -31,5 +31,20 @@ angular.controller('homeController', function($scope, api, config){
     }, function(result){
         console.log('Error during Home (Primary) with CATEGORY : '+config.currentCategory+' : '+result);
     });
+
+})
+
+/*
+ * Overlay CONTROLLER
+ */
+.controller('overlayController', function($scope, overlay){
+
+    $scope.getOverlay = function () {
+        return overlay.get();
+    };
+
+    $scope.setOverlay = function (value) {
+        overlay.set(value);
+    };
 
 });

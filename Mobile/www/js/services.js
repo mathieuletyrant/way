@@ -1,6 +1,6 @@
-angular.module('services', []);
+angular.module('services', [])
 
-angular.factory('api', function($http, $q, config){
+.factory('api', function($http, $q, config){
 
     return {
 
@@ -62,4 +62,16 @@ angular.factory('api', function($http, $q, config){
             return deferred.promise;
         }
     };
+})
+
+.service('overlay', function(config){
+
+    this.set = function (value) {
+        config.overlay = value;
+    };
+
+    this.get = function () {
+        return config.overlay;
+    };
+
 });

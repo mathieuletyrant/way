@@ -29,3 +29,31 @@
 .style{
   background-color: #dd9a37;
 }
+
+/*
+  OVERLAY
+*/
+#overlay-loader {
+  $size: 75px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  background-color: rgba(0, 0, 0, 0.6);
+  border-radius: 5px;
+  z-index: 9999;
+  width: $size;
+  height: $size;
+  margin-top: -$size/2;
+  margin-left: -$size/2;
+  span.loader {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-left: -1rem;
+    margin-top: -1rem;
+  }
+  span.loader::before {
+    font-size: 2rem;
+    color: #ffffff;
+  }
+}

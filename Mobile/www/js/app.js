@@ -21,8 +21,9 @@ angular.module('starter', ['ionic', 'controllers', 'services', 'filters'])
     .constant('config', {
         apiUrl          : 'http://wayapi.mathieuletyrant.com',
         token           : 'KDR8u9vuRH8i6hx8V4e6',
-        facebookAppApi  : '828582677192624', // TODO Need change when we have good key from Facebook :)
-        currentCategory : 'geek'
+        facebookAppApi  : '828582677192624',
+        currentCategory : 'geek',
+        overlay         : false
     })
 
     .config(function ($stateProvider, $urlRouterProvider) {

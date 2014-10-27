@@ -17,6 +17,13 @@
 </head>
 <body ng-app="starter">
 
+    <!-- Loader -->
+    <div id="overlay-loader"
+         ng-controller="overlayController as overlayCtrl"
+         ng-show="getOverlay() === true">
+        <span class="loader ion ion-loading-c"></span>
+    </div>
+
     <ion-nav-view></ion-nav-view>
 
 </body>
