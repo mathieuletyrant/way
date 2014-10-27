@@ -20,7 +20,9 @@ angular.module('controllers', [])
  */
 .controller('homeController', function($scope, api, config){
 
-    api.goodDealByCategory(config.currentCategory).then(function(result){
+    var page = 1;
+
+    api.goodDealByCategory(config.currentCategory, 1).then(function(result){
         $scope.secondResult = result;
     }, function(result){
         console.log('Error during Home (Second) with CATEGORY : '+config.currentCategory+' : '+result);
@@ -31,6 +33,15 @@ angular.module('controllers', [])
     }, function(result){
         console.log('Error during Home (Primary) with CATEGORY : '+config.currentCategory+' : '+result);
     });
+
+    $scope.loadMore = function(){
+        page++;
+        api.goodDealByCategory(config.currentCategory, page).then(function(result){
+            $scope.secondResult.push(result);
+        }, function(result){
+            console.log('Error during Home (Second) with CATEGORY : '+config.currentCategory+' : '+result);
+        });
+    }
 
 })
 

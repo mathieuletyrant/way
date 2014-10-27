@@ -1,4 +1,4 @@
-<div class="modal">
+<div class="modal" ng-controller="homeController as homeCtrl">
 
     <!-- Header -->
     <ion-header-bar class="top_bar">
@@ -79,6 +79,12 @@
 
             </div>
         </div>
+
+        <ion-infinite-scroll
+                on-infinite="loadMore()"
+                distance="8%"
+                icon="">
+        </ion-infinite-scroll>
 
     </ion-content>
 </div>
