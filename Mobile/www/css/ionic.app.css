@@ -7880,5 +7880,10 @@ $ios-transition-box-shadow-end: -200px 0px 200px rgba(0,0,0,0.15), -5px 0px 5px 
 .top_bar .icon {
   color: white; }
 
-.top_bar img {
-  margin-top: 10px; }
+.top_bar .title {
+  font-size: 2em;
+  color: #e84e40; }
+
+.top_bar button {
+  font-size: 2em;
+  margin-bottom: 10px; }
