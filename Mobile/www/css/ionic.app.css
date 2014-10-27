@@ -7874,6 +7874,10 @@ $ios-transition-box-shadow-end: -200px 0px 200px rgba(0,0,0,0.15), -5px 0px 5px 
 .icon-way-xxl:before {
   font-size: 3em; }
 
+.content {
+  background-color: #2f3854;
+  color: white; }
+
 .top_bar {
   background-color: #2f3854; }
 
@@ -7925,9 +7929,6 @@ $ios-transition-box-shadow-end: -200px 0px 200px rgba(0,0,0,0.15), -5px 0px 5px 
   #overlay-loader span.loader::before {
     font-size: 2rem;
     color: #ffffff; }
-
-.content {
-  background-color: #2f3854; }
 
 .section_primary {
   padding-left: 0px;
