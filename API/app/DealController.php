@@ -18,8 +18,8 @@ class DealController extends Controller{
 		}
 	}
 
-	public function section($f3, $d){
-		$deals = $this->Deal->getBySection($d['section']);
+	public function section($f3){
+		$deals = $this->Deal->getBySection($f3->get('PARAMS.section'), $f3->get('PARAMS.page'));
 	}
 
 }
