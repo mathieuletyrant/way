@@ -19,11 +19,12 @@ class Question extends Model {
 	}
 
 	public function add($question){
-		$insert = $this->db->exec('INSERT INTO ' . $this->table . '(name, category_id, created)
-			VALUES(:name, :category_id, :created)',
+		$insert = $this->db->exec('INSERT INTO ' . $this->table . '(name, category_id, file, created)
+			VALUES(:name, :category_id, :file, :created)',
 			array(
 				'name' => $question['name'],
 				'category_id' => $question['category_id'],
+				'file' => $question['file'],
 				'created' => $this->datetime()
 				)
 			);

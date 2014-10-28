@@ -167,6 +167,7 @@ class Model {
 	public function upload($file){
 
 		$extension = array('mp3', 'jpg');
+		$name = str_replace(' ', '-', $file['name']);
 
 		if(empty($file) || $file['error']){
 			return false;
@@ -181,12 +182,13 @@ class Model {
 			return false;
 		}
 
-		$name = str_replace(' ', '-', $file['name']);
-		if (move_uploaded_file($file['tmp_name'], 'uploads/' . $name)){
-			return $filepath = 'uploads/' . $name;
-		}else{
-			return false;
+		if( !empty($file['category']) && !file_exists('uploads/' . $file['category']) ){
+			mkdir('uploads/' . strtolower($file['category']), 0777);
 		}
+
+		$path = (!empty($file['category'])) ? 'uploads/' . $file['category'] . '/' . $name : 'uploads/' . $name;
+
+		return (move_uploaded_file($file['tmp_name'], $path)) ? $path : false;
 	}
 }
 
