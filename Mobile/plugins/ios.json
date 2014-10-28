@@ -35,6 +35,10 @@
                         {
                             "xml": "<preference name=\"StatusBarStyle\" value=\"lightcontent\" />",
                             "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"SocialSharing\"><param name=\"ios-package\" value=\"SocialSharing\" /><param name=\"onload\" value=\"true\" /></feature>",
+                            "count": 1
                         }
                     ]
                 }
@@ -44,6 +48,18 @@
                     "CoreGraphics.framework": [
                         {
                             "xml": "false",
+                            "count": 1
+                        }
+                    ],
+                    "Social.framework": [
+                        {
+                            "xml": "true",
+                            "count": 1
+                        }
+                    ],
+                    "MessageUI.framework": [
+                        {
+                            "xml": "true",
                             "count": 1
                         }
                     ]
@@ -65,6 +81,9 @@
             "PACKAGE_NAME": "com.ionicframework.way554316"
         },
         "org.apache.cordova.statusbar": {
+            "PACKAGE_NAME": "com.ionicframework.way554316"
+        },
+        "nl.x-services.plugins.socialsharing": {
             "PACKAGE_NAME": "com.ionicframework.way554316"
         }
     },

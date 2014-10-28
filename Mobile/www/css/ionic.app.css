@@ -7946,6 +7946,83 @@ $ios-transition-box-shadow-end: -200px 0px 200px rgba(0,0,0,0.15), -5px 0px 5px 
   text-transform: uppercase;
   font-size: 1em; }
 
+.gooddeal {
+  color: white; }
+  .gooddeal .big_article {
+    width: 100%;
+    background: url('../img/background.jpg') no-repeat;
+    padding: 1.5em; }
+    .gooddeal .big_article .category {
+      text-transform: uppercase;
+      border-radius: 3px;
+      font-size: 0.7em;
+      padding: 0px 5px;
+      position: absolute;
+      top: 2em; }
+    .gooddeal .big_article h1.title {
+      text-transform: uppercase;
+      font-weight: bold;
+      font-size: 1em;
+      color: white;
+      padding-bottom: 1em;
+      border-bottom: 1px solid white;
+      position: absolute;
+      top: 2em; }
+    .gooddeal .big_article p {
+      margin-top: 6em; }
+  .gooddeal .share {
+    width: 100%;
+    height: 45px;
+    background-color: white;
+    position: relative; }
+    .gooddeal .share:before {
+      content: ' ';
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: 0 5px 10px 5px;
+      border-color: transparent transparent #ffffff transparent;
+      position: absolute;
+      top: -10px;
+      left: 1.5em; }
+    .gooddeal .share .icon {
+      color: #828282;
+      font-size: 1.5em;
+      position: absolute;
+      left: 1em;
+      top: 12px; }
+    .gooddeal .share .title {
+      font-size: 12px;
+      text-transform: uppercase;
+      font-weight: bold;
+      color: #828282;
+      position: absolute;
+      left: 3.5em;
+      top: 10px; }
+    .gooddeal .share .address {
+      font-size: 9px;
+      color: #c4c2c2;
+      position: absolute;
+      left: 4.7em;
+      top: 20px; }
+    .gooddeal .share .social {
+      width: 1.3em;
+      height: 1.3em;
+      display: block;
+      font-size: 1em;
+      background-color: #828282;
+      border-radius: 1em;
+      color: white; }
+    .gooddeal .share .facebook {
+      padding-left: 0.45em;
+      position: absolute;
+      left: 75%; }
+    .gooddeal .share .twitter {
+      padding-left: 0.2em;
+      position: absolute;
+      right: 0px;
+      left: 85%; }
+
 .section_primary {
   padding: 0px; }
   .section_primary a {
