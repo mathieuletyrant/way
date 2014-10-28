@@ -163,6 +163,31 @@ class Model {
 			('badgirl', 'female', '" . $this->datetime() . "'),
 			('candide', 'female', '" . $this->datetime() . "')");
 	}
+
+	public function upload($file){
+
+		$extension = array('mp3', 'jpg');
+
+		if(empty($file) || $file['error']){
+			return false;
+		}
+
+		if($file['size'] > MAX_FILE_SIZE){
+			return false;
+		}
+
+		$pathinfo = pathinfo($file['name']);
+		if(!in_array($pathinfo['extension'], $extension)){
+			return false;
+		}
+
+		$name = str_replace(' ', '-', $file['name']);
+		if (move_uploaded_file($file['tmp_name'], 'uploads/' . $name)){
+			return $filepath = 'uploads/' . $name;
+		}else{
+			return false;
+		}
+	}
 }
 
 ?>

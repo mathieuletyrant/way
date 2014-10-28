@@ -12,7 +12,7 @@ class DealController extends Controller{
 		$deal = $this->Deal->getFirst();
 
 		if(!empty($deal)){
-			echo $this->Deal->encode('deal', $deal);
+			echo $this->Deal->encode('deals', $deal);
 		}else{
 			$this->send_error(array('code' => '204', 'message' => 'Deal not found'));
 		}
@@ -20,6 +20,11 @@ class DealController extends Controller{
 
 	public function section($f3){
 		$deals = $this->Deal->getBySection($f3->get('PARAMS.section'), $f3->get('PARAMS.page'));
+		if(!empty($deals)){
+			echo $this->Deal->encode('deals', $deal);
+		}else{
+			$this->send_error(array('code' => '204', 'message' => 'Deal not found'));
+		}
 	}
 
 }

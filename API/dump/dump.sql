@@ -108,9 +108,13 @@ DROP TABLE IF EXISTS `good_deals`;
 CREATE TABLE `good_deals` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(75) NOT NULL,
+  `section` varchar(255) NOT NULL,
   `description` text NOT NULL,
   `value` varchar(75) NOT NULL,
+  `lat` float DEFAULT NULL,
+  `lng` float DEFAULT NULL,
   `img` varchar(255) NOT NULL,
+  `first` tinyint(1) NOT NULL DEFAULT '0',
   `category_id` int(11) NOT NULL,
   `created` datetime NOT NULL,
   PRIMARY KEY (`id`),
@@ -227,4 +231,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2014-10-27  9:00:22
+-- Dump completed on 2014-10-27 22:00:58

@@ -83,7 +83,6 @@ class Controller {
 		$_SESSION['alert']['type'] = 'alert ' . $type;
 		$_SESSION['alert']['message'] = $message;
 	}
-
 }
 
 ?>

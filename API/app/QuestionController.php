@@ -14,6 +14,12 @@ class QuestionController extends Controller{
 		if($f3->exists('POST.submit')){
 			if($this->Question->validate($f3->get('POST'))){
 
+				if($filepath = $this->Question->upload($f3->get('FILES')['question_file'])){
+					var_dump($filepath);
+					die();
+				}
+
+
 				$question['name'] = $f3->get('POST.name');
 				$question['category_id'] = $f3->get('POST.category_id');
 

@@ -2,7 +2,7 @@
 
 <h2>Ajouter une question</h2>
 
-<form name="form-question" method="post" action="" class="form-horizontal" role="form">
+<form name="form-question" method="post" action="" class="form-horizontal" role="form" enctype="multipart/form-data">
 	<div class="panel panel-default">
 		<div class="panel-heading">Question</div>
 		<div class="panel-body">
@@ -26,6 +26,7 @@
 				<label class="col-md-2" for="question_file">Fichier associé</label>
 				<div class="col-md-8">
 					<input type="file" name="question_file" class="form-control">
+					<input type="hidden" name="MAX_FILE_SIZE" value="25000000" />
 				</div>
 			</div>
 		</div>
@@ -50,5 +51,12 @@
 	<input class="btn btn-primary" type="submit" name="submit" value="Enregistrer la question">
 </form>
 
+<ul id="filelist"></ul>
+<br />
+
+<div id="container">
+    <a id="browse" href="javascript:;">[Browse...]</a>
+    <a id="start-upload" href="javascript:;">[Start Upload]</a>
+</div>
 
 <?php include 'footer.htm'; ?>
