@@ -25,11 +25,11 @@
             <h1 class="title">Maxim's</h1>
             <div class="icon ion-location"></div>
             <p class="address">3 Rue Royale, 75008 Paris</p>
-            <ul>
+            <ul ng-controller="shareController as shareCtrl">
                 <li class="icon ion-social-facebook social facebook"
-                    onclick="window.plugins.socialsharing.shareViaFacebook('Belle Epoque ! Au Maxim\'s')"></li>
+                    ng-click="share('facebook', 'Belle Epoque ! Au Maxim\'s')"></li>
                 <li class="icon ion-social-twitter social twitter"
-                    onclick="window.plugins.socialsharing.shareViaTwitter('Belle Epoque ! Au Maxim\'s')"></li>
+                    ng-click="share('twitter', 'Belle Epoque ! Au Maxim\'s')"></li>
             </ul>
         </section>
         <section class="map">

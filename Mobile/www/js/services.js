@@ -106,4 +106,21 @@ angular.module('services', [])
         return config.currentCategory;
     }
 
+})
+
+/*
+ * Share SERVICE
+ */
+.service('share', function($window){
+
+    this.seed = function(social, text){
+
+        if(social === 'facebook'){
+            $window.plugins.socialsharing.shareViaFacebook(text);
+        }
+        else{
+            $window.plugins.socialsharing.shareViaTwitter(text);
+        }
+    }
+
 });

@@ -74,4 +74,16 @@ angular.module('controllers', [])
         $state.go('app.home');
     };
 
+})
+
+/*
+ * Share CONTROLLER
+ */
+.controller('shareController', function($scope, share){
+
+    $scope.share = function (social, text){
+        social = social || 'facebook';
+        share.seed(social, text);
+    };
+
 });
