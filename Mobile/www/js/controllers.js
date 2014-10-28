@@ -63,7 +63,7 @@ angular.module('controllers', [])
 /*
  * Category CONTROLLER
  */
-.controller('categoryController', function($scope, category){
+.controller('categoryController', function($scope, $state, category){
 
     $scope.getCategory = function () {
         return category.get();
@@ -71,6 +71,7 @@ angular.module('controllers', [])
 
     $scope.setCategory = function (value) {
         category.set(value);
+        $state.go('app.home');
     };
 
 });
