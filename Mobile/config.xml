@@ -1,25 +1,27 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<widget id="com.ionicframework.way554316" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-  <name>Way</name>
-  <description>
+<widget id="com.ionicframework.way554316" version="0.0.1" xmlns="http://www.w3.org/ns/widgets"
+        xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <name>Way</name>
+    <description>
         An Ionic Framework and Cordova project.
     </description>
-  <author email="hi@ionicframework" href="http://ionicframework.com/">
-      Ionic Framework Team
+    <author email="hi@ionicframework" href="http://ionicframework.com/">
+        Ionic Framework Team
     </author>
-  <content src="index.html"/>
-  <access origin="*"/>
-  <access origin="geo:*" launch-external="yes"/>
-  <preference name="webviewbounce" value="false"/>
-  <preference name="UIWebViewBounce" value="false"/>
-  <preference name="DisallowOverscroll" value="true"/>
-  <preference name="BackupWebStorage" value="none"/>
-  <preference name="orientation" value="portrait"/>
-  <preference name="SplashScreen" value="splashscreen"/>
-  <preference name="SplashScreenDelay" value="10000"/>
-  <preference name="StatusBarBackgroundColor" value="#ffffff"/>
-  <icon src="www/img/way_icon.png"/>
-  <feature name="StatusBar">
-    <param name="ios-package" value="CDVStatusBar" onload="true"/>
-  </feature>
+    <content src="index.html"/>
+    <access origin="*"/>
+    <access origin="geo:*" launch-external="yes"/>
+    <preference name="webviewbounce" value="false"/>
+    <preference name="UIWebViewBounce" value="false"/>
+    <preference name="DisallowOverscroll" value="true"/>
+    <preference name="BackupWebStorage" value="none"/>
+    <preference name="orientation" value="portrait"/>
+    <preference name="StatusBarBackgroundColor" value="#ffffff"/>
+    <icon src="www/img/way_icon.png"/>
+    <feature name="StatusBar">
+        <param name="ios-package" value="CDVStatusBar" onload="true"/>
+    </feature>
+    <preference name="SplashScreen" value="screen" />
+    <preference name="SplashScreenDelay" value="100000"/>
+    <preference name="auto-hide-splash-screen" value="false" />
 </widget>

@@ -11,7 +11,7 @@ angular.module('starter', ['ionic', 'controllers', 'services', 'filters'])
             /* SplashScreen */
             setTimeout(function() {
                 navigator.splashscreen.hide();
-            }, 2000);
+            }, 20000);
         });
     })
 
