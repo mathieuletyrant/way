@@ -1,0 +1,68 @@
+<?php include 'ui/header.htm'; ?>
+
+<h2>Ajouter un bon plan</h2>
+
+<form name="form-question" method="post" action="" class="form-horizontal" role="form" enctype="multipart/form-data">
+	<div class="panel panel-default">
+		<div class="panel-heading">Bon plan</div>
+		<div class="panel-body">
+			<div class="form-group">
+				<label class="col-md-2" for="name">Question</label>
+				<div class="col-md-8">
+					<input class="form-control" placeholder="exemple: Festival electro, Concert ..." type="text" name="name" required>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-md-2" for="first">A la une</label>
+				<div class="col-md-8">
+					<input type="checkbox" name="first">
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-md-2" for="category">Section</label>
+				<div class="col-md-8">
+					<input class="form-control" placeholder="exemple: Sortie, Concert, Festival, Soirée..."  type="text" name="section" required>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-md-2" for="description">Description</label>
+				<div class="col-md-8">
+					<textarea name="description" id="" cols="30" rows="10"></textarea>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-md-2" for="category_id">Categorie</label>
+				<div class="col-md-8">
+					<select name="category_id" id="" class="form-control" required>
+						<?php foreach ($categories as $key => $category): ?>
+							<option value="<?= $category['id']; ?>"><?= ucfirst($category['name']); ?></option>
+						<?php endforeach ?>
+					</select>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-md-2" for="description">Lieu</label>
+				<div class="col-md-8">
+					<input id="lieu" class="form-control" type="text" name="lieu">
+					<input type="hidden" name="lat">
+					<input type="hidden" name="lng">
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-md-2" for="image_file">Image</label>
+				<div class="col-md-8">
+					<input type="file" name="image_file" class="form-control">
+					<input type="hidden" name="MAX_FILE_SIZE" value="5000000" />
+				</div>
+			</div>
+		</div>
+	</div>
+	<input class="btn btn-primary" type="submit" name="submit" value="Enregistrer le bon plan">
+</form>
+
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=<?= GM_KEY; ?>"></script>
+<script type="text/javascript" src="<?= WEBROOT; ?>js/tinymce/tinymce.min.js"></script>
+<script type="text/javascript">
+	tinymce.init({selector:'textarea'});
+</script>
+<?php include 'ui/footer.htm'; ?>

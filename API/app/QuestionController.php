@@ -59,7 +59,7 @@ class QuestionController extends Controller{
 
 		$categories = $this->Category->get(array('fields' => array('id', 'name')));
 		$f3->set('categories', $categories);
-		echo View::instance()->render('add.htm');
+		echo View::instance()->render('question/add.htm');
 	}
 
 	public function view($f3){

@@ -1,4 +1,4 @@
-<?php include 'header.htm'; ?>
+<?php include 'ui/header.htm'; ?>
 
 <h2>Ajouter une question</h2>
 
@@ -13,11 +13,11 @@
 				</div>
 			</div>
 			<div class="form-group">
-				<label class="col-md-2" for="category">Categorie</label>
+				<label class="col-md-2" for="category_id">Categorie</label>
 				<div class="col-md-8">
 					<select name="category_id" id="" class="form-control" required>
 						<?php foreach ($categories as $key => $category): ?>
-							<option value="<?= $category['id']; ?>"><?= $category['name']; ?></option>
+							<option value="<?= $category['id']; ?>"><?= ucfirst($category['name']); ?></option>
 						<?php endforeach ?>
 					</select>
 				</div>
@@ -55,4 +55,4 @@
 </form>
 
 
-<?php include 'footer.htm'; ?>
+<?php include 'ui/footer.htm'; ?>

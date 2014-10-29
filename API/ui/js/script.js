@@ -13,3 +13,13 @@
 // 	}, false);
 
 // })();
+
+$(document).ready(function(){
+
+	var geocoder = new google.maps.Geocoder();
+
+	$('#lieu').keypress(function(){
+
+	});
+
+});

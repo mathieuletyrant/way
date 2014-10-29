@@ -2,10 +2,18 @@
 
 class DealController extends Controller{
 
-	public $uses = array('Deal');
+	public $uses = array('Deal', 'Category');
 
 	function __construct() {
 		parent::__construct();
+	}
+
+	public function add($f3){
+
+
+		$categories = $this->Category->get(array('fields' => array('id', 'name')));
+		$f3->set('categories', $categories);
+		echo View::instance()->render('deal/add.htm');
 	}
 
 	public function first($f3){
