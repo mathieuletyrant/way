@@ -32,6 +32,24 @@
                     ng-click="share('twitter', 'Belle Epoque ! Au Maxim\'s')"></li>
             </ul>
         </section>
-        <section class="map"></section>
+        <section class="map">
+            <map
+                disable-default-u-i="true"
+                disable-double-click-zoom="true"
+                draggable="false"
+                draggable-cursor="help"
+                dragging-cursor="move"
+                keyboard-shortcuts="false"
+                center="48.8608223, 2.4454052"
+                zoom="14"
+                class="map">
+                <marker
+                    position="[48.8608223, 2.4454052]"
+                    animation="Animation.BOUNCE"
+                    visible="true"
+                    icon="img/marker.svg">
+                </marker>
+            </map>
+        </section>
     </ion-content>
 </div>

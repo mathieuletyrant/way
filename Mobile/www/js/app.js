@@ -1,4 +1,4 @@
-angular.module('starter', ['ionic', 'controllers', 'services', 'filters'])
+angular.module('starter', ['ionic', 'controllers', 'services', 'filters', 'ngMap'])
 
     .run(function ($ionicPlatform) {
         $ionicPlatform.ready(function () {
