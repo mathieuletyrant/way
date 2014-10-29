@@ -11,7 +11,9 @@ angular.module('starter', ['ionic', 'controllers', 'services', 'filters', 'ngMap
             /* SplashScreen */
             setTimeout(function() {
                 navigator.splashscreen.hide();
+                console.log('Splashscreen Hide');
             }, 20000);
+            console.log('Application Started');
         });
     })
 
@@ -45,14 +47,6 @@ angular.module('starter', ['ionic', 'controllers', 'services', 'filters', 'ngMap
                 }
             })
 
-            .state('app.connexion', {
-                url: "/connexion",
-                views: {
-                    'menuContent' :{
-                        templateUrl: "templates/connexion.html"
-                    }
-                }
-            })
             .state('app.gooddeal', {
                 url: "/gooddeal/:id",
                 views: {
