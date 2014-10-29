@@ -14,14 +14,13 @@ class QuestionController extends Controller{
 		if($f3->exists('POST.submit')){
 			if($this->Question->validate($f3->get('POST'))){
 
-				if($filepath = $this->Question->upload($f3->get('FILES')['question_file'])){
-					var_dump($filepath);
-					die();
-				}
-
-
 				$question['name'] = $f3->get('POST.name');
 				$question['category_id'] = $f3->get('POST.category_id');
+
+				$file = $f3->get('FILES')['question_file'];
+				$file['category'] = $this->Category->get(array('conditions' => array('id' => $question['category_id'])))['name'];
+
+				$question['file'] = ($filepath = $this->Question->upload($file)) ? $filepath: null;
 
 				if($id = $this->Question->add($question)){
 
@@ -40,9 +39,11 @@ class QuestionController extends Controller{
 				}else{
 					$this->alert('alert-danger', "Erreur lors de l'enregistrement de votre question");
 				}
+
 			}else{
 				$this->alert('alert-danger', "Veuillez renseigner tout les champs du formulaire");
 			}
+
 		}
 
 		$categories = $this->Category->get(array('fields' => array('id', 'name')));
