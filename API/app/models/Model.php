@@ -173,7 +173,7 @@ class Model {
 			return false;
 		}
 
-		if($file['size'] > MAX_FILE_SIZE){
+		if($file['size'] > filesize($file['tmp_name'])){
 			return false;
 		}
 
