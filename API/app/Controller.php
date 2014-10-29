@@ -83,6 +83,25 @@ class Controller {
 		$_SESSION['alert']['type'] = 'alert ' . $type;
 		$_SESSION['alert']['message'] = $message;
 	}
+
+	/**
+	*	Reindex tableau d'upload
+	*	@param $file_post Tableau de type $_FILES
+	**/
+	protected function reindexUpload($file_post) {
+
+		$file_ary = array();
+		$file_count = count($file_post['name']);
+		$file_keys = array_keys($file_post);
+
+		for ($i=0; $i<$file_count; $i++) {
+			foreach ($file_keys as $key) {
+				$file_ary[$i][$key] = $file_post[$key][$i];
+			}
+		}
+
+		return $file_ary;
+	}
 }
 
 ?>

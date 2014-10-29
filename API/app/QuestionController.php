@@ -12,26 +12,37 @@ class QuestionController extends Controller{
 	public function add($f3){
 
 		if($f3->exists('POST.submit')){
+
 			if($this->Question->validate($f3->get('POST'))){
 
 				$question['name'] = $f3->get('POST.name');
 				$question['category_id'] = $f3->get('POST.category_id');
 
+				/* upload music file for question */
+				$category = $this->Category->get(array('conditions' => array('id' => $question['category_id'])))['name'];
 				$file = $f3->get('FILES')['question_file'];
-				$file['category'] = $this->Category->get(array('conditions' => array('id' => $question['category_id'])))['name'];
-
+				$file['category'] = $category;
 				$question['file'] = ($filepath = $this->Question->upload($file)) ? $filepath: null;
 
 				if($id = $this->Question->add($question)){
 
+					$answer_file = $this->reindexUpload($f3->get('FILES')['answer']);
+
 					foreach ($f3->get('POST.reponses') as $key => $answer) {
+
+						$answer_file[$key]['category'] = $category;
+						// upload image answer
+						$answer_path = $this->Answer->upload($answer_file[$key]);
+
 						$status = ($key == $f3->get('POST.status')) ? true: false;
 
 						$insert = $this->Answer->add(array(
 							'question_id' => $id,
 							'answer' => $answer,
+							'file' => $answer_path,
 							'status' => $status
 							));
+
 						if(!$insert){ $this->alert('alet-danger', "Erreur lors de l'enregistrement d'une reponse"); }
 					}
 

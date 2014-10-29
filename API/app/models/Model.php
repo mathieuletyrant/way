@@ -166,8 +166,9 @@ class Model {
 
 	public function upload($file){
 
-		$extension = array('mp3', 'jpg');
-		$name = str_replace(' ', '-', $file['name']);
+		$extension = array('mp3', 'jpg', 'jpeg', 'png');
+		$name = uniqid() . '-' . str_replace(' ', '-', $file['name']);
+		$DIR_PATH = 'uploads/' . strtolower(get_class($this)) . '/';
 
 		if(empty($file) || $file['error']){
 			return false;
@@ -182,11 +183,11 @@ class Model {
 			return false;
 		}
 
-		if( !empty($file['category']) && !file_exists('uploads/' . $file['category']) ){
-			mkdir('uploads/' . strtolower($file['category']), 0777);
+		if( !empty($file['category']) && !file_exists($DIR_PATH . $file['category']) ){
+			mkdir($DIR_PATH . strtolower($file['category']), 0777);
 		}
 
-		$path = (!empty($file['category'])) ? 'uploads/' . $file['category'] . '/' . $name : 'uploads/' . $name;
+		$path = (!empty($file['category'])) ? $DIR_PATH . $file['category'] . '/' . $name : $DIR_PATH . $name;
 
 		return (move_uploaded_file($file['tmp_name'], $path)) ? $path : false;
 	}
