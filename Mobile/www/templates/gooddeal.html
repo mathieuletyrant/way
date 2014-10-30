@@ -32,7 +32,9 @@
                     ng-click="share('twitter', 'Belle Epoque ! Au Maxim\'s')"></li>
             </ul>
         </section>
-        <section class="map">
+        <section class="map"
+                 ng-controller="mapController as mapCtrl"
+                 ng-click="openExternalMap(48.8608223, 2.4454052)">
             <map
                 disable-default-u-i="true"
                 disable-double-click-zoom="true"

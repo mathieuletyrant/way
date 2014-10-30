@@ -86,4 +86,26 @@ angular.module('controllers', [])
         share.seed(social, text);
     };
 
+})
+
+/*
+ * Maps CONTROLLER
+ */
+.controller('mapController', function($scope, $window, $ionicPlatform){
+
+    $scope.openExternalMap = function(lat, lon){
+
+        if($ionicPlatform.device() == "Android"){
+            console.log('Android');
+            //cordova.require('cordova/plugin/phonenavigator').doNavigate(lat, lon, successFn, errorFn);
+        }
+        else if($ionicPlatform.device() == "iOS"){
+            console.log('IOS');
+            //$window.location = "maps:daddr="+lat+","+lon;
+        }else{
+            console.error("Unknown platform");
+        }
+
+    };
+
 });
