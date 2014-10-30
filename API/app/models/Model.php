@@ -170,6 +170,10 @@ class Model {
 		$name = uniqid() . '-' . str_replace(' ', '-', $file['name']);
 		$DIR_PATH = 'uploads/' . strtolower(get_class($this)) . '/';
 
+		if(!file_exists($DIR_PATH)){
+			mkdir($DIR_PATH, 0775);
+		}
+
 		if(empty($file) || $file['error']){
 			return false;
 		}
@@ -184,7 +188,7 @@ class Model {
 		}
 
 		if( !empty($file['category']) && !file_exists($DIR_PATH . $file['category']) ){
-			mkdir($DIR_PATH . strtolower($file['category']), 0777);
+			mkdir($DIR_PATH . strtolower($file['category']), 0775);
 		}
 
 		$path = (!empty($file['category'])) ? $DIR_PATH . $file['category'] . '/' . $name : $DIR_PATH . $name;
