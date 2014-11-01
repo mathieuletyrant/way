@@ -60,6 +60,12 @@ class DealController extends Controller{
 		}
 	}
 
+	public function view($f3){
+		$deals = $this->Deal->get();
+		$f3->set('deals', $deals);
+		echo View::instance()->render('deal/view.htm');
+	}
+
 }
 
 ?>
