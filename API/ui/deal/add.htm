@@ -7,7 +7,7 @@
 		<div class="panel-heading">Bon plan</div>
 		<div class="panel-body">
 			<div class="form-group">
-				<label class="col-md-2" for="name">Question</label>
+				<label class="col-md-2" for="name">Nom</label>
 				<div class="col-md-8">
 					<input class="form-control" placeholder="exemple: Festival electro, Concert ..." type="text" name="name" required>
 				</div>
@@ -42,22 +42,25 @@
 			</div>
 			<div class="form-group">
 				<label class="col-md-2" for="description">Lieu</label>
-				<div class="col-md-8">
+				<div class="col-md-5">
 					<input id="lieu" class="form-control" type="text" name="lieu">
 					<input type="hidden" name="lat">
 					<input type="hidden" name="lng">
+				</div>
+				<div class="col-md-2">
+					<button class="btn btn-default" type="button" id="getcoordonate">Verifier</button>
 				</div>
 			</div>
 			<div class="form-group">
 				<label class="col-md-2" for="image_file">Image</label>
 				<div class="col-md-8">
-					<input type="file" name="image_file" class="form-control">
+					<input type="file" name="image_file" class="form-control" required>
 					<input type="hidden" name="MAX_FILE_SIZE" value="5000000" />
 				</div>
 			</div>
 		</div>
 	</div>
-	<input class="btn btn-primary" type="submit" name="submit" value="Enregistrer le bon plan">
+	<input id="submit" class="btn btn-primary" type="submit" name="submit" value="Enregistrer le bon plan">
 </form>
 
 <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=<?= GM_KEY; ?>"></script>

@@ -22,7 +22,11 @@ class BlindController extends Controller {
 			$questions[$category['name']] = $this->Question->getByCategory($category['id'], $limit = 4);
 		}
 
-		echo $this->Question->encode('questions', $questions);
+		if(!empty($questions)){
+			echo $this->Question->encode('questions', $questions);
+		}else{
+			$this->send_error(array('code' => '204', 'message' => 'not data found'));
+		}
 	}
 
 	/**
@@ -32,9 +36,14 @@ class BlindController extends Controller {
 	**/
 	public function multiplayer($f3, $d){
 		if(!empty($d['category']) && !empty($d['number'])){
-			echo $this->Question->encode('questions', $this->Question->generate_multi($d['category'], $d['number']));
+			$questions = $this->Question->generate_multi($d['category'], $d['number']);
+			if(!empty($questions)){
+				echo $this->Question->encode('questions', $questions);
+			}else{
+				$this->send_error(array('code' => '204', 'message' => 'not data found'));
+			}
 		}else{
-			$this->send_error('Request error', 'missing or wrong parameters');
+			$this->send_error(array('code' => '400', 'message' => 'missing or wrong parameters'));
 		}
 	}
 

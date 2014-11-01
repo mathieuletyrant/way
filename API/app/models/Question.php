@@ -51,10 +51,12 @@ class Question extends Model {
 		$questions = $this->db->exec('SELECT * FROM ' . $this->table . ' WHERE category_id = :category_id ORDER BY RAND() LIMIT ' . $limit,
 			array('category_id' => $category_id));
 
-		foreach ($questions as $key => $question) {
-			$question_reponse[$key]['question'] = $question;
-			$question_reponse[$key]['anwsers'] = $this->db->exec('SELECT * FROM answers WHERE question_id = :question_id', array('question_id' => $question['id']));
-		}
+		if(!empty($questions)){
+			foreach ($questions as $key => $question) {
+				$question_reponse[$key]['question'] = $question;
+				$question_reponse[$key]['anwsers'] = $this->db->exec('SELECT * FROM answers WHERE question_id = :question_id', array('question_id' => $question['id']));
+			}
+		}else{ return false; }
 
 		return (!empty($question_reponse)) ? $question_reponse : false;
 	}

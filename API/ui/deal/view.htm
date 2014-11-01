@@ -1,0 +1,29 @@
+<?php include 'ui/header.htm'; ?>
+
+<table class="table table-striped">
+	<thead>
+		<tr>
+			<td>Nom</td>
+			<td>Section</td>
+			<td>Description</td>
+			<td>Valeur</td>
+			<td>Image</td>
+			<td>A la une</td>
+		</tr>
+	</thead>
+	<tbody>
+		<?php foreach ($deals as $key => $deal): ?>
+			<tr>
+				<td><?= $deal['name']; ?></td>
+				<td><?= $deal['section']; ?></td>
+				<td><?= substr($deal['description'],0,25); ?></td>
+				<td><?= $deal['value']; ?></td>
+				<td><?= $deal['img']; ?></td>
+				<td><?= ($deal['first']) ? 'Oui' : 'Non'; ?></td>
+			</tr>
+		<?php endforeach ?>
+	</tbody>
+</table>
+
+
+<?php include 'ui/footer.htm'; ?>

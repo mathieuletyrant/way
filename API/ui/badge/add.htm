@@ -1,0 +1,37 @@
+<?php include 'ui/header.htm'; ?>
+
+<h2>Ajouter un badge</h2>
+
+<form name="form-question" method="post" action="" class="form-horizontal" role="form" enctype="multipart/form-data">
+	<div class="panel panel-default">
+		<div class="panel-heading">Badge</div>
+		<div class="panel-body">
+			<div class="form-group">
+				<label class="col-md-2" for="name">Nom</label>
+				<div class="col-md-8">
+					<input class="form-control" placeholder="" type="text" name="name" required>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-md-2" for="image_file">Image</label>
+				<div class="col-md-8">
+					<input type="file" name="image_file" class="form-control" required>
+					<input type="hidden" name="MAX_FILE_SIZE" value="5000000" />
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-md-2" for="category_id">Categorie</label>
+				<div class="col-md-8">
+					<select name="category_id" id="" class="form-control" required>
+						<?php foreach ($categories as $key => $category): ?>
+							<option value="<?= $category['id']; ?>"><?= ucfirst($category['name']); ?></option>
+						<?php endforeach ?>
+					</select>
+				</div>
+			</div>
+		</div>
+	</div>
+	<input id="submit" class="btn btn-primary" type="submit" name="submit" value="Enregistrer le badge">
+</form>
+
+<?php include 'ui/footer.htm'; ?>
