@@ -91,18 +91,19 @@ angular.module('controllers', [])
 /*
  * Maps CONTROLLER
  */
-.controller('mapController', function($scope, $window, $ionicPlatform){
+.controller('mapController', function($scope, $window){
 
     $scope.openExternalMap = function(lat, lon){
 
-        if($ionicPlatform.device() == "Android"){
-            console.log('Android');
-            //cordova.require('cordova/plugin/phonenavigator').doNavigate(lat, lon, successFn, errorFn);
+        if(ionic.Platform.isIOS() || ionic.Platform.isIPad()){
+            console.log('Launch External apps for maps');
+            $window.location = "maps:daddr="+lat+","+lon;
         }
-        else if($ionicPlatform.device() == "iOS"){
-            console.log('IOS');
-            //$window.location = "maps:daddr="+lat+","+lon;
-        }else{
+        else if(ionic.Platform.isAndroid()){
+            console.log('Launch External apps for maps');
+            cordova.require('cordova/plugin/phonenavigator').doNavigate(lat, lon, successFn, errorFn);
+        }
+        else{
             console.error("Unknown platform");
         }
 

@@ -1,5 +1,17 @@
 angular.module('starter', ['ionic', 'controllers', 'services', 'filters', 'ngMap'])
 
+    /*
+     Config
+     */
+    .constant('config', {
+        apiUrl          : 'http://wayapi.mathieuletyrant.com',
+        token           : 'KDR8u9vuRH8i6hx8V4e6',
+        facebookAppApi  : '828582677192624',
+        currentCategory : 'geek',
+        overlay         : false,
+        device          : ''
+    })
+
     .run(function ($ionicPlatform) {
         $ionicPlatform.ready(function () {
             if (window.cordova && window.cordova.plugins.Keyboard) {
@@ -15,17 +27,6 @@ angular.module('starter', ['ionic', 'controllers', 'services', 'filters', 'ngMap
             }, 20000);
             console.log('Application Started');
         });
-    })
-
-    /*
-     Config
-     */
-    .constant('config', {
-        apiUrl          : 'http://wayapi.mathieuletyrant.com',
-        token           : 'KDR8u9vuRH8i6hx8V4e6',
-        facebookAppApi  : '828582677192624',
-        currentCategory : 'geek',
-        overlay         : false
     })
 
     .config(function ($stateProvider, $urlRouterProvider) {
