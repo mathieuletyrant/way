@@ -14,6 +14,12 @@ class DealController extends Controller{
 				$deal = $f3->get('POST');
 				$deal['first'] = (!empty($deal['first']) && $deal['first'] == 'on') ? true: false;
 
+				if($deal['first']){
+					$old_first = $this->Deal->getFirst();
+					$this->Deal->id = $old_first['id'];
+					$this->Deal->save(array('good_deals' => array('first' => false)));
+				}
+
 				$category = $this->Category->get(array('conditions' => array('id' => $deal['category_id'])))['name'];
 				$file = $f3->get('FILES')['image_file'];
 				$file['category'] = $category;

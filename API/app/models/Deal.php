@@ -27,7 +27,7 @@ class Deal extends Model{
 
 	public function getFirst(){
 		$deal = $this->db->exec('SELECT * FROM ' . $this->table . ' WHERE first = :first', array('first' => '1'));
-		return (!empty($deal)) ? $deal : false;
+		return (!empty($deal)) ? $deal[0] : false;
 	}
 
 	public function getBySection($section, $page = null){

@@ -3,6 +3,7 @@
 class Model {
 
 	protected $db;
+	public $id;
 
 	function __construct() {
 		$this->db = new \DB\SQL('mysql:host=localhost;port=3306;dbname=' . DB_NAME, DB_USER, DB_PASSWORD);
@@ -94,6 +95,7 @@ class Model {
 
 			$statement = $this->db->prepare('UPDATE ' . $this->table . ' SET ' . $restriction . ' WHERE id = ' . $this->id);
 			return $statement->execute($datas[$this->table]);
+
 		}else{
 			$datas[$this->table]['created'] = $this->datetime();
 
