@@ -3,19 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <title>Way</title>
+    <!-- FAVICON -->
+    <link rel="icon" type="image/png" href="public/img/Logo.svg"/>
+    <!-- CSS -->
+    <link rel="stylesheet" href="public/css/fonts.css"/>
     <link rel="stylesheet" href="public/css/style.css"/>
 </head>
 <body ng-app="app">
-    <h1>Way</h1>
-    <p>Be soon !</p>
 
-    <!-- <div ui-view></div> -->
-
-    <div ng-controller="blindTestController">
-        {{blind}}
-    </div>
-
-
+    <div ng-controller="mainController" ui-view></div>
 
     <!-- JS -->
     <script src="public/js/libs.js"></script>

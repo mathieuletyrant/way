@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('app', ['restangular', 'ui.router', 'facebook'])
+angular.module('app', ['ui.router', 'facebook'])
 
     /*
         Config
@@ -12,13 +12,6 @@ angular.module('app', ['restangular', 'ui.router', 'facebook'])
     })
 
     /*
-        After with API
-     */
-    //.config(function($httpProvider) {
-    //    $httpProvider.defaults.withCredentials = true;
-    //})
-
-    /*
         Route System
      */
     .config(function($stateProvider, $urlRouterProvider){
@@ -28,7 +21,7 @@ angular.module('app', ['restangular', 'ui.router', 'facebook'])
         $stateProvider
             .state('home', {
                 url: "/home",
-                templateUrl: "templates/home.html"
+                templateUrl: 'templates/home.html'
             });
     })
 

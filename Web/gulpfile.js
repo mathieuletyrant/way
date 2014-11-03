@@ -49,8 +49,6 @@ gulp.task('script-app', function() {
 gulp.task('script-lib', function() {
     gulp.src([
         paths.common+'/js/libs/angular/angular.js',
-        paths.common+'/js/libs/underscore/underscore.js',
-        paths.common+'/js/libs/restangular/dist/restangular.js',
         paths.common+'/js/libs/angular-ui-router/release/angular-ui-router.js',
         paths.common+'/js/libs/angular-facebook/lib/angular-facebook.js'
     ])
