@@ -1,8 +1,7 @@
 var wH = window.innerHeight;
 
 var is_homme = true;
-console.log(document.getElementById('homme'));
-if (document.getElementById('homme')) { 
+if (document.getElementById('homme')) {
 	var homme = document.getElementById('homme');
 	homme.addEventListener('click', toggleProfils, false);	
 }
@@ -69,7 +68,8 @@ if(document.querySelectorAll('.total_point')) {
 	}
 }
 
-function toggleNotif(){
+function toggleNotif(e){
+    e.preventDefault();
 	var notif = document.getElementById('notifications');
 	notif.classList.toggle("notif_open");
 }
@@ -141,15 +141,14 @@ function toggleProfils(e){
 /*
  * SLIDER
  */
-$(document).ready(function(){
-	$('#slider_how_to').bxSlider({
-	  mode: 'horizontal',
-	  captions: false,
-	  controls: false,
-	  pager: false,
-	  onSlideAfter : function($slideElement, oldIndex, newIndex) {
-	  	// console.log(oldIndex);
-	  	// console.log(newIndex);
-	  }
-	});
+
+$('#slider_how_to').bxSlider({
+  mode: 'horizontal',
+  captions: false,
+  controls: false,
+  pager: false,
+  onSlideAfter : function($slideElement, oldIndex, newIndex) {
+    // console.log(oldIndex);
+    // console.log(newIndex);
+  }
 });
