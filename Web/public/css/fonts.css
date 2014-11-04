@@ -549,6 +549,9 @@
     -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-bell:before {
+    content: "\e611";
+}
 .icon-github:before {
     content: "\e60e";
 }
