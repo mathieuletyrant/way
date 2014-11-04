@@ -1,40 +1,37 @@
-// (function upload(){
-
-// 	var uploader = new plupload.Uploader({
-// 		browse_button: 'browse',
-// 		url: 'http://localhost/way/API/upload'
-// 	});
-
-// 	uploader.init();
-
-// 	document.getElementById('start-upload').addEventListener('click', function(e){
-// 		console.log(e.target);
-// 		uploader.start();
-// 	}, false);
-
-// })();
-
 $(document).ready(function(){
 
-	var geocoder = new google.maps.Geocoder();
+	// $('#form-with-upload').submit(function(e){
+	// 	e.preventDefault();
+	// 	var formdata = new FormData(document.forms.namedItem("form-question"));
 
-	$('#getcoordonate').click(function(){
-		geocoder.geocode(
-			{address: $('#lieu').val()},
-			function(result, status){
-				if(status === 'OK'){
-					$('#getcoordonate').removeClass().addClass('btn btn-success');
-					$('#submit').prop('disabled', false);
-				}else{
-					$('#getcoordonate').removeClass().addClass('btn btn-danger');
-					$('#submit').prop('disabled', true);
-				}
-				var coordonate = result[0].geometry.location;
-				// console.log(coordonate.lat() + " - " + coordonate.lng());
-				$('input[name="lat"]').val(coordonate.lat());
-				$('input[name="lng"]').val(coordonate.lng());
-			}
-		);
-	});
+	// 	// var rep = new Array();
+	// 	// $('[name="reponses[]"]').each(function(){
+	// 	// 	rep.push($(this).val())
+	// 	// });
 
+	// 	$.ajax({
+	// 		type: 'POST',
+	// 		url: document.URL,
+	// 		contentType: false,
+ //                		processData: false,
+	// 		data: formdata,
+	// 		cache: false
+	// 	}).done(function(data){
+	// 		console.log(data);
+	// 	}).fail(function(data, status){
+	// 		console.log(data);
+	// 	});
+	// });
 });
+
+/**
+{
+				name: $('[name="name"]').val(),
+				category_id: $('[name="category_id"]').val(),
+				question_file: $('[name="question_file"]').val(),
+				reponses: rep,
+				answer: $('[name="answer"]').val(),
+				status: $('[name="status"]').val(),
+				send: $('[name="send"]').val()
+			},
+*/

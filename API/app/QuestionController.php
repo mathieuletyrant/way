@@ -11,7 +11,7 @@ class QuestionController extends Controller{
 
 	public function add($f3){
 
-		if($f3->exists('POST.submit')){
+		if($f3->exists('POST.send')){
 
 			if($this->Question->validate($f3->get('POST'))){
 
@@ -55,11 +55,11 @@ class QuestionController extends Controller{
 				$this->alert('alert-danger', "Veuillez renseigner tout les champs du formulaire");
 			}
 
+		}else{
+			$categories = $this->Category->get(array('fields' => array('id', 'name')));
+			$f3->set('categories', $categories);
+			echo View::instance()->render('question/add.htm');
 		}
-
-		$categories = $this->Category->get(array('fields' => array('id', 'name')));
-		$f3->set('categories', $categories);
-		echo View::instance()->render('question/add.htm');
 	}
 
 	public function view($f3){
