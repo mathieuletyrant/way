@@ -3,7 +3,7 @@
  * @requires $scope
  * @require Facebook (Service for Facebook Connect)
  */
-angular.module('app').controller('authenticationController', function ($scope, Facebook, $sessionStorage, api) {
+angular.module('app').controller('authenticationController', function ($scope, Facebook, api, session) {
 
     $scope.user = {};
     $scope.logged = false;
@@ -57,23 +57,27 @@ angular.module('app').controller('authenticationController', function ($scope, F
                         console.log("[SUBSCRIBE] : User don't exist ...");
 
                         Facebook.api('me/picture?width=200&height=200&redirect=false', function(response){
+
                             console.log('[SUBSCRIBE] : Searching Picture for subscribe');
                             user.photo = response.url;
-                            api.userRegister(user).then(function(){
+                            api.userRegister(user).then(function(result){
+                                console.log(result);
                                 console.log('[SUBSCRIBE] : Registering user in WAY API');
-                                $sessionStorage.user = {
-                                    logged: true,
-                                    name: user.name
-                                };
+                                session.saveUser(user);
                                 $scope.user = user;
                                 $scope.logged = true;
+                                console.log('[SUBSCRIBE] : User connected');
                             }, function(result){
                                 console.log(result);
                             });
+
                         });
                     }
                     else{
-                        console.log('[SUBSCRIBE] : User exist');
+                        session.saveUser(user);
+                        $scope.user = user;
+                        $scope.logged = true;
+                        console.log('[SUBSCRIBE] : User exist and connected');
                     }
                 });
 
@@ -87,7 +91,7 @@ angular.module('app').controller('authenticationController', function ($scope, F
     $scope.logout = function() {
         Facebook.logout(function() {
             $scope.$apply(function() {
-                delete $sessionStorage.user;
+                session.deleteUser();
                 $scope.user   = {};
                 $scope.logged = false;
             });
