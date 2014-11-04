@@ -1,3 +1,6 @@
+/*
+    CHEDDAR
+*/
 @font-face {
     font-family: 'cheddar_jackregular';
     src: url('../fonts/cheddarjack/cheddar_jack-webfont.eot');
@@ -11,6 +14,9 @@
 
 }
 
+/*
+    PROXIMA
+*/
 @font-face {
     font-family: 'ProximaNovaBlackItalic';
     src: url('../fonts/proxima_nova/proxima_nova_black_it-webfont.eot');
@@ -513,4 +519,84 @@
     font-weight: normal;
     font-style: normal;
 
+}
+
+/*
+ ICOMOON
+*/
+@font-face {
+    font-family: 'icomoon';
+    src:url('../fonts/icomoon/icomoon.eot?vne7m7');
+    src:url('../fonts/icomoon/icomoon.eot?#iefixvne7m7') format('embedded-opentype'),
+    url('../fonts/icomoon/icomoon.woff?vne7m7') format('woff'),
+    url('../fonts/icomoon/icomoon.ttf?vne7m7') format('truetype'),
+    url('../fonts/icomoon/icomoon.svg?vne7m7#icomoon') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+    font-family: 'icomoon';
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+
+    /* Better Font Rendering =========== */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-github:before {
+    content: "\e60e";
+}
+.icon-twitter:before {
+    content: "\e60f";
+}
+.icon-facebook:before {
+    content: "\e610";
+}
+.icon-guitar:before {
+    content: "\e608";
+}
+.icon-arrow_left:before {
+    content: "\e600";
+}
+.icon-arrow_right:before {
+    content: "\e601";
+}
+.icon-badgirl:before {
+    content: "\e602";
+}
+.icon-barbie:before {
+    content: "\e603";
+}
+.icon-dragqueen:before {
+    content: "\e604";
+}
+.icon-fleurbleue:before {
+    content: "\e605";
+}
+.icon-geek:before {
+    content: "\e606";
+}
+.icon-geekette:before {
+    content: "\e607";
+}
+.icon-hippie:before {
+    content: "\e609";
+}
+.icon-hypster:before {
+    content: "\e60a";
+}
+.icon-keke:before {
+    content: "\e60b";
+}
+.icon-logo:before {
+    content: "\e60c";
+}
+.icon-way:before {
+    content: "\e60d";
 }
