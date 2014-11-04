@@ -13,6 +13,6 @@
     "angular-facebook": "~0.2.3"
   },
   "dependencies": {
-    "angular-local-storage": "~0.1.4"
+    "ngstorage": "~0.3.0"
   }
 }

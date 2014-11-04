@@ -1,16 +1,16 @@
-<header>
+<header ng-controller="authenticationController as authenticationCtrl">
     <div class="wrap_site">
         <div class="logo">
             <img src="public/img/Logo.svg" alt="Logo de Way">
         </div>
-        <div class="login logged">
-            <div class="btn_facebook">
-                <a href="profil.html">Connexion</a>
+        <div class="login">
+            <div class="btn_facebook" ng-show="logged === false">
+                <a ng-click="login()">Connexion</a>
             </div>
-            <div class="admin_bar">
+            <div class="admin_bar" ng-show="logged === true">
                 <div class="profil_bar">
                     <div class="ico_profil"></div>
-                    <span class="nom_profil">Hugo poteloin</span>
+                    <span class="nom_profil">{{user.name}}</span>
                     <a href="#" class="go_notif" id="go_notif"></a>
                     <div class="clear"></div>
                 </div>
