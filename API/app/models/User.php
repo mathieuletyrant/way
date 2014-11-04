@@ -25,7 +25,7 @@ class User extends Model{
 	}
 
 	public function register($f3){
-		$this->db->exec('INSERT INTO users(facebook_id, firstname, lastname, created)
+		$insert = $this->db->exec('INSERT INTO users(facebook_id, firstname, lastname, created)
 			VALUES (:fb_id, :fname, :lname, :created',
 				array(
 					'fb_id' => $f3->get('POST.facebook_id'),
@@ -34,7 +34,19 @@ class User extends Model{
 					'created' => $this->datetime()
 					)
 				);
-		echo $this->db->log();
+		return ($insert) ? $this->db->lastInsertId() : false;
+	}
+
+	public function validate($user){
+		$validate = true;
+
+		if(empty($user['facebook_id'])){ return false; }
+		if(empty($user['firstname'])){ return false; }
+		if(empty($user['lastname'])){ return false; }
+		if(empty($user['picture'])){ return false; }
+		if(empty($user['sex'])){ return false; }
+
+		return $validate
 	}
 
 }

@@ -12,7 +12,7 @@ class NotificationController extends Controller{
 		if(!empty($notification = $f3->get('POST')){
 			if($this->Notification->validate($notification)){
 				if($this->Notification->add($notification)){
-					$this->Notification->encode('notification', array('code' => '201', 'message' => 'notification added'));
+					echo $this->Notification->encode('notification', array('code' => '201', 'message' => 'notification added'));
 				}else{
 					$this->send_error(array('code' => '400', 'message' => 'database error'));
 				}

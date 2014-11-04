@@ -1,5 +1,8 @@
 $(document).ready(function(){
 
+	var song = $('#song');
+
+
 	// $('#form-with-upload').submit(function(e){
 	// 	e.preventDefault();
 	// 	var formdata = new FormData(document.forms.namedItem("form-question"));

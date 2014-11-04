@@ -26,7 +26,19 @@ class UsersController extends Controller{
 	}
 
 	public function register($f3){
-		$this->User->register($f3);
+		if(!empty($f3->get('POST'))){
+			if($this->User->validate($user)){
+				if($this->User->register($f3->get('POST'))){
+					echo $this->Notification->encode('notification', array('code' => '201', 'message' => 'user added'));
+				}else{
+					$this->send_error(array('code' => '400', 'message' => 'database error'));
+				}
+			}else{
+				$this->send_error(array('code' => '400', 'message' => 'bad request'));
+			}
+		}else{
+			$this->send_error(array('code' => '400', 'message' => 'bad request'));
+		}
 	}
 
 	public function response($f3){
