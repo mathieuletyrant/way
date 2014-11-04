@@ -22,6 +22,10 @@ angular.module('app', ['ui.router', 'facebook'])
             .state('home', {
                 url: "/home",
                 templateUrl: 'templates/home.html'
+            })
+            .state('letgo', {
+                url: "/letgo",
+                templateUrl: 'templates/letgo.html'
             });
     })
 
