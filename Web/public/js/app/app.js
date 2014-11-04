@@ -26,6 +26,18 @@ angular.module('app', ['ui.router', 'facebook'])
             .state('letgo', {
                 url: "/letgo",
                 templateUrl: 'templates/letgo.html'
+            })
+            .state('defi', {
+                url: "/defi",
+                templateUrl: 'templates/defi.html'
+            })
+            .state('profil', {
+                url: "/profil",
+                templateUrl: 'templates/profil.html'
+            })
+            .state('quizz', {
+                url: "/quizz",
+                templateUrl: 'templates/quizz.html'
             });
     })
 
