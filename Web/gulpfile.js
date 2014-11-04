@@ -1,13 +1,13 @@
 'use strict';
 
 var gulp        = require('gulp'),
-    less        = require('gulp-less'),
     plumber     = require('gulp-plumber'),
     ngAnnotate  = require('gulp-ng-annotate'),
     ngmin       = require('gulp-ngmin'),
     concat      = require('gulp-concat'),
     uglify      = require('gulp-uglify'),
     clean       = require('gulp-clean'),
+    minifyCSS = require('gulp-minify-css'),
     paths       = {
         common : 'public'
     };
@@ -22,10 +22,11 @@ gulp.task('default', ['clean'], function() {
     STYLE
 */
 gulp.task('style', function () {
-    gulp.src(paths.common+'/less/style.less')
+    gulp.src(paths.common+'/css/*.css')
         .pipe(plumber())
-        .pipe(less())
-        .pipe(gulp.dest(paths.common+'/css/'));
+        .pipe(minifyCSS())
+        .pipe(concat('main.css'))
+        .pipe(gulp.dest(paths.common+'/css'));
 });
 
 /*
