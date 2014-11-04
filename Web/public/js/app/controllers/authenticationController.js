@@ -52,22 +52,32 @@ angular.module('app').controller('authenticationController', function ($scope, F
                 var user = response;
 
                 api.userExist(user.id).then(function(response){
-                    if(response === false){
+                    if(response.message === "user not found"){
+
+                        console.log("[SUBSCRIBE] : User don't exist ...");
+
                         Facebook.api('me/picture?width=200&height=200&redirect=false', function(response){
+                            console.log('[SUBSCRIBE] : Searching Picture for subscribe');
                             user.photo = response.url;
-                            api.userRegister(user);
-                            $sessionStorage.user = {
-                                logged: true,
-                                name: user.name
-                            };
-                            $scope.user = response;
-                            $scope.logged = true;
+                            api.userRegister(user).then(function(){
+                                console.log('[SUBSCRIBE] : Registering user in WAY API');
+                                $sessionStorage.user = {
+                                    logged: true,
+                                    name: user.name
+                                };
+                                $scope.user = user;
+                                $scope.logged = true;
+                            }, function(result){
+                                console.log(result);
+                            });
                         });
+                    }
+                    else{
+                        console.log('[SUBSCRIBE] : User exist');
                     }
                 });
 
             });
-
         });
     };
 

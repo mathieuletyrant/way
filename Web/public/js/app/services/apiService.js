@@ -62,19 +62,27 @@ angular.module('app').factory('api', function ($http, $q, config) {
 
         userRegister: function(params){
 
-            params = params || {};
+            var params_api = {
+                facebook_id: params.id,
+                firstname: params.first_name,
+                lastname: params.last_name,
+                picture: params.photo,
+                sexe: params.gender
+            }
 
             var deferred = $q.defer();
 
             $http({
                 method: 'POST',
                 url: config.apiUrl + '/users/register',
-                data: params
+                data: params_api
             })
                 .success(function (result) {
                     deferred.resolve(result);
+                    console.log(result);
                 })
                 .error(function (result) {
+                    console.log(result);
                     deferred.resolve('Erreur :' + result);
                 });
 
@@ -82,6 +90,7 @@ angular.module('app').factory('api', function ($http, $q, config) {
         },
 
         userExist: function(facebookId){
+
             facebookId = facebookId || 1;
 
             var deferred = $q.defer();
