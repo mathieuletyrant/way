@@ -3,7 +3,7 @@
  * @requires $scope
  * @require Facebook (Service for Facebook Connect)
  */
-angular.module('app').controller('authenticationController', function ($scope, Facebook, $sessionStorage) {
+angular.module('app').controller('authenticationController', function ($scope, Facebook, $sessionStorage, api) {
 
     $scope.user = {};
     $scope.logged = false;
@@ -37,10 +37,6 @@ angular.module('app').controller('authenticationController', function ($scope, F
     $scope.login = function() {
         Facebook.login(function(response) {
             if (response.status == 'connected') {
-                $sessionStorage.user = {
-                    logged: true
-                };
-                $scope.logged = true;
                 $scope.me();
             }
         });
@@ -52,8 +48,24 @@ angular.module('app').controller('authenticationController', function ($scope, F
     $scope.me = function() {
         Facebook.api('/me', function(response) {
             $scope.$apply(function() {
-                $sessionStorage.user.name = response.name;
-                $scope.user = response;
+
+                var user = response;
+
+                api.userExist(user.id).then(function(response){
+                    if(response === false){
+                        Facebook.api('me/picture?width=200&height=200&redirect=false', function(response){
+                            user.photo = response.url;
+                            api.userRegister(user);
+                            $sessionStorage.user = {
+                                logged: true,
+                                name: user.name
+                            };
+                            $scope.user = response;
+                            $scope.logged = true;
+                        });
+                    }
+                });
+
             });
 
         });
