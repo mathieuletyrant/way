@@ -51,7 +51,8 @@ gulp.task('script-lib', function() {
     gulp.src([
         paths.common+'/js/libs/angular/angular.js',
         paths.common+'/js/libs/angular-ui-router/release/angular-ui-router.js',
-        paths.common+'/js/libs/angular-facebook/lib/angular-facebook.js'
+        paths.common+'/js/libs/angular-facebook/lib/angular-facebook.js',
+        paths.common+'/js/libs/angular-local-storage/dist/angular-local-storage.js'
     ])
         .pipe(plumber())
         .pipe(ngmin())

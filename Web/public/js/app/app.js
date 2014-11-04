@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('app', ['ui.router', 'facebook'])
+angular.module('app', ['ui.router', 'facebook', 'LocalStorageModule'])
 
     /*
         Config
@@ -9,6 +9,15 @@ angular.module('app', ['ui.router', 'facebook'])
         apiUrl          : 'http://wayapi.mathieuletyrant.com',
         token           : 'KDR8u9vuRH8i6hx8V4e6',
         facebookAppApi  : '828582677192624' // TODO Need change when we have good key from Facebook :)
+    })
+
+    /*
+        Local Storage
+     */
+    .config(function(localStorageServiceProvider){
+        localStorageServiceProvider
+            .setPrefix('way')
+            .setStorageType('sessionStorage');
     })
 
     /*
