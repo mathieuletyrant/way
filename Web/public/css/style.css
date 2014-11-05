@@ -218,6 +218,7 @@ header .admin_bar .profil_bar .nom_profil {
     padding-top: 5px;
     margin-top: 5px;
     float: left;
+    cursor: pointer;
 }
 
 header .admin_bar .profil_bar .go_notif {
