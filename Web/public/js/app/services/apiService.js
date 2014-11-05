@@ -67,7 +67,13 @@ angular.module('app').factory('api', function ($http, $q, config) {
                 firstname: params.first_name,
                 lastname: params.last_name,
                 picture: params.photo,
-                sexe: params.gender
+                sex: params.gender
+            };
+
+            console.log(params_api);
+
+            var transform = function(data){
+                return $.param(data);
             }
 
             var deferred = $q.defer();
@@ -75,14 +81,14 @@ angular.module('app').factory('api', function ($http, $q, config) {
             $http({
                 method: 'POST',
                 url: config.apiUrl + '/users/register',
-                data: params_api
+                data: params_api,
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'},
+                transformRequest: transform
             })
                 .success(function (result) {
                     deferred.resolve(result);
-                    console.log(result);
                 })
                 .error(function (result) {
-                    console.log(result);
                     deferred.resolve('Erreur :' + result);
                 });
 

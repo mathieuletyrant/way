@@ -5,31 +5,24 @@
  */
 angular.module('app').controller('authenticationController', function ($scope, Facebook, api, session) {
 
-    $scope.user = {};
-    $scope.logged = false;
+    /*
+     * Test already logged
+     */
+    if(!session.getLogged()){
+        $scope.logged = false;
+        $scope.user = {};
+    }
+    else{
+        $scope.user = session.getUser();
+        $scope.logged = session.getLogged();
+    }
 
     /*
-     * Watch for Facebook to be ready.
-     * There's also the event that could be used
+     * Watch scope Logged
      */
-    $scope.$watch(
-        function() {
-            return Facebook.isReady();
-        },
-        function(newVal) {
-            if (newVal){
-                $scope.facebookReady = true;
-            }
-        }
-    );
-
-    var userIsConnected = false;
-
-    Facebook.getLoginStatus(function(response) {
-        if (response.status == 'connected') {
-            userIsConnected = true;
-        }
-    });
+    $scope.$watch('logged', function(newVal,oldVal){
+        session.loggedUser(newVal);
+    }, true);
 
     /*
      * Login
@@ -57,43 +50,26 @@ angular.module('app').controller('authenticationController', function ($scope, F
                         console.log("[SUBSCRIBE] : User don't exist ...");
 
                         Facebook.api('me/picture?width=200&height=200&redirect=false', function(response){
-
                             console.log('[SUBSCRIBE] : Searching Picture for subscribe');
-                            user.photo = response.url;
-                            api.userRegister(user).then(function(result){
-                                console.log(result);
+                            user.photo = response.data.url;
+                            api.userRegister(user).then(function(){
                                 console.log('[SUBSCRIBE] : Registering user in WAY API');
                                 session.saveUser(user);
-                                $scope.user = user;
                                 $scope.logged = true;
+                                $scope.user = user;
                                 console.log('[SUBSCRIBE] : User connected');
-                            }, function(result){
-                                console.log(result);
                             });
 
                         });
                     }
                     else{
                         session.saveUser(user);
-                        $scope.user = user;
                         $scope.logged = true;
+                        $scope.user = user;
                         console.log('[SUBSCRIBE] : User exist and connected');
                     }
                 });
 
-            });
-        });
-    };
-
-    /*
-     * Logout
-     */
-    $scope.logout = function() {
-        Facebook.logout(function() {
-            $scope.$apply(function() {
-                session.deleteUser();
-                $scope.user   = {};
-                $scope.logged = false;
             });
         });
     };

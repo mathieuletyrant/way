@@ -2,6 +2,18 @@
 
 angular.module('app').factory('session', function($sessionStorage){
     return{
+        loggedUser: function (value){
+            $sessionStorage.logged = value;
+        },
+
+        getLogged: function(){
+            return $sessionStorage.logged;
+        },
+
+        getUser: function(){
+            return $sessionStorage.user;
+        },
+
         saveUser: function(userInfo){
             $sessionStorage.user = {
                 name: userInfo.name,
@@ -14,6 +26,7 @@ angular.module('app').factory('session', function($sessionStorage){
         },
         deleteUser: function(){
             delete $sessionStorage.user;
+            delete $sessionStorage.logged;
         }
     }
 });
