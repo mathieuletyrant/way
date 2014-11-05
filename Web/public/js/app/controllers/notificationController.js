@@ -44,8 +44,10 @@ angular.module('app').controller('notificationController', function ($scope, $in
      * Refuse Quizz
      */
     $scope.refuse = function (e) {
-        var id = $(e.target).data('id');
-        console.log('Notification refuse :' + id);
+        var friendId = $(e.target).data('id');
+        notification.removeNotification(friendId).then(function(){
+            console.log('Une notification a été supprimé. Un challenge a été refusé.');
+        });
     };
 
     /*

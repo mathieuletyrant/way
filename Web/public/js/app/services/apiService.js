@@ -187,6 +187,10 @@ angular.module('app').factory('api', function ($http, $q, config, overlay) {
                 });
 
             return deferred.promise;
+        },
+
+        removeNotification: function(userId, friendId){
+            // Do stuff ...
         }
     };
 
