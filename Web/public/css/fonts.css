@@ -526,11 +526,11 @@
 */
 @font-face {
     font-family: 'icomoon';
-    src:url('../fonts/icomoon/icomoon.eot?vne7m7');
-    src:url('../fonts/icomoon/icomoon.eot?#iefixvne7m7') format('embedded-opentype'),
-    url('../fonts/icomoon/icomoon.woff?vne7m7') format('woff'),
-    url('../fonts/icomoon/icomoon.ttf?vne7m7') format('truetype'),
-    url('../fonts/icomoon/icomoon.svg?vne7m7#icomoon') format('svg');
+    src:url('../fonts/iconmoon/icomoon.eot');
+    src:url('../fonts/iconmoon/icomoon.eot') format('embedded-opentype'),
+    url('../fonts/iconmoon/icomoon.woff') format('woff'),
+    url('../fonts/iconmoon/icomoon.ttf') format('truetype'),
+    url('../fonts/iconmoon/icomoon.svg') format('svg');
     font-weight: normal;
     font-style: normal;
 }

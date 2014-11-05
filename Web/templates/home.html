@@ -24,7 +24,7 @@
                          }"
                     ></div>
                     <span class="nom_profil">{{user.name}}</span>
-                    <a href="#" class="go_notif" id="go_notif"></a>
+                    <a href="#" class="go_notif icon-bell" id="go_notif"></a>
                     <div class="clear"></div>
                 </div>
                 <div class="clear"></div>
@@ -39,8 +39,8 @@
                                 <li>
                                     <p>Hey {{notif.name}} ! {{notif.firstname}} te défi !</p>
                                     <div class="notif_response">
-                                        <a class="accept" data-id="{{notif.friend_id}}" ng-click="accept($event)"></a>
-                                        <a class="refuse" data-id="{{notif.friend_id}}" ng-click="refuse($event)"></a>
+                                        <a class="accept icon-plus" data-id="{{notif.friend_id}}" ng-click="accept($event)"></a>
+                                        <a class="refuse icon-min" data-id="{{notif.friend_id}}" ng-click="refuse($event)"></a>
                                     </div>
                                 </li>
                             </ul>
