@@ -90,6 +90,31 @@ body h3 { font-size: 16px; font-family: 'ProximaNovaLight', sans-serif; }
     margin: 0 auto;
 }
 
+/* OVERLAY */
+#overlay-loader {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    background-color: rgba(0, 0, 0, 0.6);
+    border-radius: 5px;
+    z-index: 9999;
+    width: 75px;
+    height: 75px;
+    margin-top: -37.5px;
+    margin-left: -37.5px;
+}
+#overlay-loader span.loader {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-left: -1rem;
+    margin-top: -1rem;
+}
+#overlay-loader span.loader::before {
+    font-size: 2rem;
+    color: #ffffff;
+}
+
 header {
     background: rgba(52,73,94,.4);
     height: 75px;

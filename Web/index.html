@@ -11,6 +11,13 @@
 </head>
 <body ng-app="app">
 
+    <!-- Loader -->
+    <div id="overlay-loader"
+         ng-controller="overlayController as overlayCtrl"
+         ng-show="getOverlay() === true">
+        <span class="loader">...</span>
+    </div>
+
     <div ng-controller="authenticationController as authenticationCtrl">
         <div ui-view></div>
     </div>

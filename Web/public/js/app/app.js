@@ -9,7 +9,8 @@ angular.module('app', ['ui.router', 'facebook', 'ngStorage'])
         apiUrl                  : 'http://wayapi.mathieuletyrant.com',
         token                   : 'KDR8u9vuRH8i6hx8V4e6',
         facebookAppApi          : '828582677192624',
-        intervalNotification    : 1
+        intervalNotification    : 1,
+        overlay                 : false
     })
 
     /*
