@@ -185,7 +185,7 @@ class Model {
 		}
 
 		$pathinfo = pathinfo($file['name']);
-		if(!in_array($pathinfo['extension'], $extension)){
+		if(!in_array(strtolower($pathinfo['extension']), $extension)){
 			return false;
 		}
 

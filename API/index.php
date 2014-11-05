@@ -8,7 +8,7 @@ $f3 = require('lib/base.php');
 $f3->config('app/config.ini');
 $f3->config('app/routes.ini');
 
-$f3->set('XFRAME', 'ALLOW-FROM https://localhost/f3-fb/');
+$f3->set('XFRAME', 'ALLOW-FROM *');
 
 $f3->run();
 

@@ -11,7 +11,7 @@ class QuestionController extends Controller{
 
 	public function add($f3){
 
-		if($f3->exists('POST.send')){
+		if(!empty($f3->get('POST'))){
 
 			if($this->Question->validate($f3->get('POST'))){
 
@@ -26,7 +26,7 @@ class QuestionController extends Controller{
 
 				if($id = $this->Question->add($question)){
 
-					$answer_file = $this->reindexUpload($f3->get('FILES')['answer']);
+					$answer_file = $this->reindexUpload($f3->get('FILES')['answer']); // reindex array
 
 					foreach ($f3->get('POST.reponses') as $key => $answer) {
 
@@ -47,27 +47,28 @@ class QuestionController extends Controller{
 					}
 
 					$this->alert('alert-success', 'Votre question a bien été enregistré');
-				}else{
-					$this->alert('alert-danger', "Erreur lors de l'enregistrement de votre question");
-				}
-
+					return true;
 			}else{
-				$this->alert('alert-danger', "Veuillez renseigner tout les champs du formulaire");
+				$this->alert('alert-danger', "Erreur lors de l'enregistrement de votre question");
 			}
 
 		}else{
-			$categories = $this->Category->get(array('fields' => array('id', 'name')));
-			$f3->set('categories', $categories);
-			echo View::instance()->render('question/add.htm');
+			$this->alert('alert-danger', "Veuillez renseigner tout les champs du formulaire");
 		}
-	}
 
-	public function view($f3){
-		$questions = $this->Question->get();
-
-		$f3->set('questions', $questions);
-		echo View::instance()->render('list.htm');
+	}else{
+		$categories = $this->Category->get(array('fields' => array('id', 'name')));
+		$f3->set('categories', $categories);
+		echo View::instance()->render('question/add.htm');
 	}
+}
+
+public function view($f3){
+	$questions = $this->Question->get();
+
+	$f3->set('questions', $questions);
+	echo View::instance()->render('list.htm');
+}
 
 
 }

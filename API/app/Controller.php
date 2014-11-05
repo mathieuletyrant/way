@@ -71,6 +71,8 @@ class Controller {
 	*	@param $error tableau associatif
 	**/
 	protected function send_error($error = array()){
+		header('Content-Type: application/json');
+		header('Access-Control-Allow-Origin: *');
 		echo json_encode($error['error'] = $error);
 	}
 

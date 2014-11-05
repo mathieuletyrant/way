@@ -13,24 +13,27 @@ class User extends Model{
 		if(empty($id)){
 			$user = $this->db->exec('SELECT * FROM users');
 		}else{
-			$user = $this->db->exec('SELECT * FROM users WHERE id = :id', array('id' => $id));
+			$user = $this->db->exec('SELECT * FROM users WHERE facebook_id = :id', array('id' => $id));
 		}
-		return $this->encode('users', $user);
+		return $this->encode('users', $user[0]);
 	}
 
 	public function exist($id){
-		$user = $this->db->exec('SELECT facebook_id, firstname, lastname, picture, sex FROM ' . $this->table . ' WHERE facebook_id = :id',
+		$user = $this->db->exec('SELECT facebook_id, firstname, lastname, picture, sex
+			FROM ' . $this->table . ' WHERE facebook_id = :id',
 			array('id' => $id));
 		return (count($user) == 1) ? $user[0] : false;
 	}
 
-	public function register($f3){
-		$insert = $this->db->exec('INSERT INTO users(facebook_id, firstname, lastname, created)
-			VALUES (:fb_id, :fname, :lname, :created',
+	public function register($user){
+		$insert = $this->db->exec('INSERT INTO users(facebook_id, firstname, lastname, picture, sex, created)
+			VALUES (:fb_id, :fname, :lname, :picture, :sex, :created)',
 				array(
-					'fb_id' => $f3->get('POST.facebook_id'),
-					'fname' => $f3->get('POST.firstname'),
-					'lname' => $f3->get('POST.lastname'),
+					'fb_id' => $user['facebook_id'],
+					'fname' => $user['firstname'],
+					'lname' => $user['lastname'],
+					'picture' => $user['picture'],
+					'sex' => $user['sex'],
 					'created' => $this->datetime()
 					)
 				);
@@ -46,7 +49,7 @@ class User extends Model{
 		if(empty($user['picture'])){ return false; }
 		if(empty($user['sex'])){ return false; }
 
-		return $validate
+		return $validate;
 	}
 
 }
