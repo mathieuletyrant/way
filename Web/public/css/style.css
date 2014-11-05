@@ -256,6 +256,10 @@ header .admin_bar .profil_bar .go_notif {
     font-size: 1.3em;
 }
 
+.new-notification{
+    color: #e84e40 !important;
+}
+
 .notifications {
     position: relative;
     padding: 15px;

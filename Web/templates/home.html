@@ -24,7 +24,13 @@
                          }"
                     ></div>
                     <span class="nom_profil" ui-sref="profil">{{user.name}}</span>
-                    <a href="#" class="go_notif icon-bell" id="go_notif"></a>
+                    <a
+                        ng-controller="notificationController as notificationCtrl"
+                        href="#"
+                        class="go_notif icon-bell"
+                        id="go_notif"
+                        ng-class="{'new-notification': newNotification === true}"
+                        ng-click="newNotification = false"></a>
                     <div class="clear"></div>
                 </div>
                 <div class="clear"></div>

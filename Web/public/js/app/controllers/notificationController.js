@@ -3,6 +3,7 @@
 angular.module('app').controller('notificationController', function ($scope, $interval, session, config, notification) {
 
     $scope.notifications = {};
+    $scope.newNotification = false;
 
     var interval;
 
@@ -18,19 +19,14 @@ angular.module('app').controller('notificationController', function ($scope, $in
         /* Interval, not very good :) */
         interval = $interval(function(){
             notification.getNotifications().then(function(result){
+                if(!angular.equals($scope.notifications, result)){
+                    $scope.newNotification = true;
+                }
                 $scope.notifications = result;
             });
         }, config.intervalNotification * 1000);
 
     }
-
-    /*
-     * Check if notifications changes
-     */
-    $scope.$watch('notification', function (newVal, oldVal) {
-        $scope.notifications = newVal;
-    }, true);
-
 
     /*
      * Accept Quizz
@@ -48,6 +44,7 @@ angular.module('app').controller('notificationController', function ($scope, $in
         notification.removeNotification(friendId).then(function(){
             console.log('Une notification a été supprimé. Un challenge a été refusé.');
         });
+        // TODO Delete current Challenge
     };
 
     /*
