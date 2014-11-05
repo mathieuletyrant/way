@@ -8,11 +8,11 @@ angular.module('app').controller('authenticationController', function ($scope, F
     /*
      * Test already logged
      */
-    if(!session.getLogged()){
+    if (!session.getLogged()) {
         $scope.logged = false;
         $scope.user = {};
     }
-    else{
+    else {
         $scope.user = session.getUser();
         $scope.logged = session.getLogged();
     }
@@ -20,15 +20,15 @@ angular.module('app').controller('authenticationController', function ($scope, F
     /*
      * Watch scope Logged
      */
-    $scope.$watch('logged', function(newVal,oldVal){
+    $scope.$watch('logged', function (newVal, oldVal) {
         session.loggedUser(newVal);
     }, true);
 
     /*
      * Login
      */
-    $scope.login = function() {
-        Facebook.login(function(response) {
+    $scope.login = function () {
+        Facebook.login(function (response) {
             if (response.status == 'connected') {
                 $scope.me();
             }
@@ -38,39 +38,52 @@ angular.module('app').controller('authenticationController', function ($scope, F
     /*
      * me
      */
-    $scope.me = function() {
-        Facebook.api('/me', function(response) {
-            $scope.$apply(function() {
+    $scope.me = function () {
+        Facebook.api('/me', function (response) {
 
-                var user = response;
+            var user = response;
 
-                api.userExist(user.id).then(function(response){
-                    if(response.message === "user not found"){
+            $scope.$apply(function () {
+
+                api.userExist(user.id).then(function (response) {
+
+                    if (response.message === "user not found") {
 
                         console.log("[SUBSCRIBE] : User don't exist ...");
 
-                        Facebook.api('me/picture?width=200&height=200&redirect=false', function(response){
+                        Facebook.api('me/picture?width=200&height=200&redirect=false', function (response) {
+
                             console.log('[SUBSCRIBE] : Searching Picture for subscribe');
                             user.photo = response.data.url;
-                            api.userRegister(user).then(function(){
+
+                            api.userRegister(user).then(function () {
                                 console.log('[SUBSCRIBE] : Registering user in WAY API');
-                                session.saveUser(user);
-                                $scope.logged = true;
-                                $scope.user = user;
-                                console.log('[SUBSCRIBE] : User connected');
+
+                                api.getUser(user.id).then(function(result){
+                                    session.saveUser(result.users);
+                                    $scope.logged = true;
+                                    $scope.user = session.getUser();
+                                    console.log('[SUBSCRIBE] : User connected');
+                                });
+
                             });
 
                         });
                     }
-                    else{
-                        session.saveUser(user);
-                        $scope.logged = true;
-                        $scope.user = user;
-                        console.log('[SUBSCRIBE] : User exist and connected');
+                    else {
+
+                        api.getUser(user.id).then(function(result){
+                            session.saveUser(result.users);
+                            $scope.logged = true;
+                            $scope.user = session.getUser();
+                            console.log('[SUBSCRIBE] : User exist and connected');
+                        });
+
                     }
                 });
 
             });
         });
     };
+
 });

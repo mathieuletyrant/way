@@ -1,30 +1,36 @@
 'use strict';
 
-angular.module('app').factory('session', function($sessionStorage){
-    return{
-        loggedUser: function (value){
+angular.module('app').factory('session', function ($sessionStorage) {
+    return {
+        loggedUser: function (value) {
             $sessionStorage.logged = value;
         },
 
-        getLogged: function(){
+        getLogged: function () {
             return $sessionStorage.logged;
         },
 
-        getUser: function(){
+        getUser: function () {
             return $sessionStorage.user;
         },
 
-        saveUser: function(userInfo){
+        setUserCategory: function (categoryName) {
+            $sessionStorage.user.category_name = categoryName;
+        },
+
+        saveUser: function (userInfo) {
             $sessionStorage.user = {
-                name: userInfo.name,
-                facebook_id: userInfo.id,
-                firstname: userInfo.first_name,
-                lastname: userInfo.last_name,
-                picture: userInfo.photo,
-                sex: userInfo.gender
+                name            : userInfo.firstname+' '+userInfo.lastname,
+                facebook_id     : userInfo.facebook_id,
+                firstname       : userInfo.firstname,
+                lastname        : userInfo.lastname,
+                picture         : userInfo.picture,
+                sex             : userInfo.sex,
+                category_name   : 'geek'
             };
         },
-        deleteUser: function(){
+
+        deleteUser: function () {
             delete $sessionStorage.user;
             delete $sessionStorage.logged;
         }

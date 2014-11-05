@@ -9,30 +9,39 @@
             </div>
             <div class="admin_bar" ng-show="logged === true">
                 <div class="profil_bar">
-                    <div class="ico_profil"></div>
+                    <div class="ico_profil"
+                         ng-class="{
+                            'geek'      : (user.category_name == 'geek'     && user.sex == 'male'),
+                            'geekette'  : (user.category_name == 'geek'     && user.sex == 'female'),
+                            'dragqueen' : user.category_name == 'dragqueen',
+                            'hippie'    : (user.category_name == 'hippie'   && user.sex == 'female'),
+                            'hipster'   : (user.category_name == 'hippie'   && user.sex == 'male'),
+                            'badboy'    : user.category_name == 'badboy',
+                            'keke'      : user.category_name == 'keke',
+                            'barbie'    : user.category_name == 'barbie',
+                            'badgirl'   : user.category_name == 'badgirl',
+                            'fleurbleue': user.category_name == 'fleurbleue'
+                         }"
+                    ></div>
                     <span class="nom_profil">{{user.name}}</span>
                     <a href="#" class="go_notif" id="go_notif"></a>
                     <div class="clear"></div>
                 </div>
                 <div class="clear"></div>
-                <div class="notifications" id="notifications">
+                <div class="notifications" id="notifications" ng-controller="notificationController as notificationCtrl">
                     <h3>Notifications</h3>
-                    <div class="notification">
-                        <div class="notif_photo">
-                            <img src="public/img/notif_photo.png">
+                    <div class="notification" ng-repeat="notif in notifications">
+                        <div class="notif_photo" style="background: url({{notif.picture}}) no-repeat center; background-size: cover;">
                         </div>
                         <div class="list_notif_defi">
-                            <div class="notif_name">John Doe</div>
+                            <div class="notif_name">{{notif.firstname}}</div>
                             <ul>
                                 <li>
-                                    <p>Hey hugo ! Qui est le plus dragqueen ?</p>
+                                    <p>Hey {{notif.name}} ! {{notif.firstname}} te défi !</p>
                                     <div class="notif_response">
-                                        <a class="accept"></a>
-                                        <a class="refuse"></a>
+                                        <a class="accept" data-id="{{notif.friend_id}}" ng-click="accept($event)"></a>
+                                        <a class="refuse" data-id="{{notif.friend_id}}" ng-click="refuse($event)"></a>
                                     </div>
-                                </li>
-                                <li>
-                                    <p>Hey hugo ! Qui est le plus dragqueen ?</p>
                                 </li>
                             </ul>
                         </div>
