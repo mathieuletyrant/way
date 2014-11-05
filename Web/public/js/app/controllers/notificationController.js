@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('app').controller('notificationController', function ($scope, $interval, api, session, config) {
+angular.module('app').controller('notificationController', function ($scope, $interval, session, config, notification) {
 
     $scope.notifications = {};
 
@@ -11,14 +11,14 @@ angular.module('app').controller('notificationController', function ($scope, $in
      */
     if (session.getLogged()) {
 
-        api.getNotifications(session.getUser().facebook_id).then(function (result) {
-            $scope.notifications = result.notifications;
+        notification.getNotifications().then(function(result){
+            $scope.notifications = result;
         });
 
         /* Interval, not very good :) */
         interval = $interval(function(){
-            api.getNotifications(session.getUser().facebook_id).then(function (result) {
-                $scope.notifications = result.notifications;
+            notification.getNotifications().then(function(result){
+                $scope.notifications = result;
             });
         }, config.intervalNotification * 1000);
 
