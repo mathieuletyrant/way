@@ -5,7 +5,7 @@
  * @requires $q (Promise)
  * @requires config (Config Global for app)
  */
-angular.module('app').factory('api', function ($http, $q, config) {
+angular.module('app').factory('api', function ($http, $q, config, overlay) {
 
     return {
         /*
@@ -16,6 +16,8 @@ angular.module('app').factory('api', function ($http, $q, config) {
 
             sexe = sexe || 'mal';
 
+            overlay.set(true);
+
             var deferred = $q.defer();
 
             $http({
@@ -23,9 +25,11 @@ angular.module('app').factory('api', function ($http, $q, config) {
                 url: config.apiUrl + '/blind/generate/single/' + sexe
             })
                 .success(function (result) {
+                    overlay.set(false);
                     deferred.resolve(result);
                 })
                 .error(function (result) {
+                    overlay.set(false);
                     deferred.resolve('Erreur :' + result);
                 });
 
@@ -43,6 +47,8 @@ angular.module('app').factory('api', function ($http, $q, config) {
             category = category || 'geek';
             number = number || 1;
 
+            overlay.set(true);
+
             var deferred = $q.defer();
 
             $http({
@@ -50,9 +56,11 @@ angular.module('app').factory('api', function ($http, $q, config) {
                 url: config.apiUrl + '/blind/generate/multi/' + category + '/' + number
             })
                 .success(function (result) {
+                    overlay.set(false);
                     deferred.resolve(result);
                 })
                 .error(function (result) {
+                    overlay.set(false);
                     deferred.resolve('Erreur :' + result);
                 });
 
@@ -74,6 +82,8 @@ angular.module('app').factory('api', function ($http, $q, config) {
                 sex: params.gender
             };
 
+            overlay.set(true);
+
             var transform = function (data) {
                 return $.param(data);
             }
@@ -88,9 +98,11 @@ angular.module('app').factory('api', function ($http, $q, config) {
                 transformRequest: transform
             })
                 .success(function (result) {
+                    overlay.set(false);
                     deferred.resolve(result);
                 })
                 .error(function (result) {
+                    overlay.set(false);
                     deferred.resolve('Erreur :' + result);
                 });
 
@@ -105,6 +117,8 @@ angular.module('app').factory('api', function ($http, $q, config) {
 
             facebookId = facebookId || 1;
 
+            overlay.set(true);
+
             var deferred = $q.defer();
 
             $http({
@@ -112,9 +126,11 @@ angular.module('app').factory('api', function ($http, $q, config) {
                 url: config.apiUrl + '/user/exist/' + facebookId
             })
                 .success(function (result) {
+                    overlay.set(false);
                     deferred.resolve(result);
                 })
                 .error(function (result) {
+                    overlay.set(false);
                     deferred.resolve('Erreur :' + result);
                 });
 
@@ -153,6 +169,8 @@ angular.module('app').factory('api', function ($http, $q, config) {
 
             facebookId = facebookId || 1;
 
+            overlay.set(true);
+
             var deferred = $q.defer();
 
             $http({
@@ -160,9 +178,11 @@ angular.module('app').factory('api', function ($http, $q, config) {
                 url: config.apiUrl + '/user/get/' + facebookId
             })
                 .success(function (result) {
+                    overlay.set(false);
                     deferred.resolve(result);
                 })
                 .error(function (result) {
+                    overlay.set(false);
                     deferred.resolve('Erreur :' + result);
                 });
 
