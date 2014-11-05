@@ -26,7 +26,7 @@ angular.module('app').factory('session', function ($sessionStorage) {
                 lastname        : userInfo.lastname,
                 picture         : userInfo.picture,
                 sex             : userInfo.sex,
-                category_name   : 'geek'
+                category_name   : userInfo.category_name
             };
         },
 
