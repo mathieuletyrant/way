@@ -3,11 +3,10 @@
 	$.ajaxSetup({
 		progress: function(e) { console.log("standard progress callback"); },
 		progressUpload: function(e) {
-			$('#progress').fadeIn('slow'); console.debug($('#progress'));
+			$('#progress').fadeIn('slow');
 			if (e.lengthComputable) {
 				var nb = Number( (e.loaded / e.total * 100)) + "%";
 				$('.progress-bar').css('width', nb);
-				console.log(nb);
 			}
 		},
 		xhr: function() {
@@ -34,6 +33,7 @@ $('input[type=file]').change(function(e){
 
 $('#form-with-upload').submit(function(e){
 	e.preventDefault();
+	$('.progress-bar').removeClass('progress-bar-danger progress-bar-success');
 
 	var formData = new FormData(document.forms.namedItem("form-question"));
 	$.each(files, function(key, value){
@@ -45,12 +45,17 @@ $('#form-with-upload').submit(function(e){
 		url: document.URL,
 		contentType: false,
 		processData: false,
-		dataType: 'json',
+		// dataType: 'json',
 		data: formData,
 		cache: false
 	}).done(function(data){
+		var alert = $('.alert');
+		$('.progress-bar').addClass('progress-bar-success');
+		alert.fadeIn('slow');
+		alert.addClass(data.code);
+		alert.append(data.message);
 		console.log('success');
 	}).fail(function(data, status){
-		console.log(status);
+		$('.progress-bar').addClass('progress-bar-danger');
 	});
 });

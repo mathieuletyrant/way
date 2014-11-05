@@ -6,14 +6,15 @@ class UsersController extends Controller{
 
 	function __construct() {
 		parent::__construct();
-		// $this->loadModel('User');
 	}
 
 	public function get($f3){
 		if(!empty($f3->get('PARAMS.id'))){
-			echo $this->User->get($f3->get('PARAMS.id'));
+			if($user = $this->User->getUser($f3->get('PARAMS.id'))){
+				echo $user;
+			}else{ echo $this->send_error(array('code' => '404', 'message' => 'user not found')); }
 		}else{
-			echo $this->User->get();
+			$this->send_error(array('code' => '400', 'message' => 'bad request'));
 		}
 	}
 

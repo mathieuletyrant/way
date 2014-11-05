@@ -12,6 +12,7 @@ class QuestionController extends Controller{
 	public function add($f3){
 
 		if(!empty($f3->get('POST'))){
+			header('Content-Type: application/json');
 
 			if($this->Question->validate($f3->get('POST'))){
 
@@ -47,28 +48,31 @@ class QuestionController extends Controller{
 					}
 
 					$this->alert('alert-success', 'Votre question a bien été enregistré');
-					return true;
+					return json_encode(array('code' => 'alert-success', 'message' => "Votre question a bien été enregistré"));
+
+				}else{
+					$this->alert('alert-danger', "Erreur lors de l'enregistrement de votre question");
+					echo json_encode(array('code' => 'alert-danger', 'message' => "Erreur lors de l'enregistrement de votre question"));
+				}
+
 			}else{
-				$this->alert('alert-danger', "Erreur lors de l'enregistrement de votre question");
+				$this->alert('alert-danger', "Veuillez renseigner tout les champs du formulaire");
+				echo json_encode(array('code' => 'alert-danger', 'message' => "Veuillez renseigner tout les champs du formulaire"));
 			}
 
 		}else{
-			$this->alert('alert-danger', "Veuillez renseigner tout les champs du formulaire");
+			$categories = $this->Category->get(array('fields' => array('id', 'name')));
+			$f3->set('categories', $categories);
+			echo View::instance()->render('question/add.htm');
 		}
-
-	}else{
-		$categories = $this->Category->get(array('fields' => array('id', 'name')));
-		$f3->set('categories', $categories);
-		echo View::instance()->render('question/add.htm');
 	}
-}
 
-public function view($f3){
-	$questions = $this->Question->get();
+	public function view($f3){
+		$questions = $this->Question->get();
 
-	$f3->set('questions', $questions);
-	echo View::instance()->render('list.htm');
-}
+		$f3->set('questions', $questions);
+		echo View::instance()->render('list.htm');
+	}
 
 
 }

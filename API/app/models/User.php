@@ -9,12 +9,16 @@ class User extends Model{
 		parent::__construct();
 	}
 
-	public function get($id = null){
-		if(empty($id)){
-			$user = $this->db->exec('SELECT * FROM users');
-		}else{
-			$user = $this->db->exec('SELECT * FROM users WHERE facebook_id = :id', array('id' => $id));
-		}
+	public function getUser($id){
+		$user = $this->db->exec('SELECT * FROM users WHERE facebook_id = :id', array('id' => $id));
+
+		if(empty($user)){ return false; }
+
+		$category = $this->db->exec('SELECT * FROM categories WHERE id = :category_id',
+			array('category_id' => $user[0]['category_id']));
+
+		$user[0]['category_name'] = (!empty($category)) ? $category['name'] : false;
+
 		return $this->encode('users', $user[0]);
 	}
 
