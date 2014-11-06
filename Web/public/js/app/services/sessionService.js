@@ -2,6 +2,7 @@
 
 angular.module('app').factory('session', function ($sessionStorage) {
     return {
+
         loggedUser: function (value) {
             $sessionStorage.logged = value;
         },
@@ -12,6 +13,10 @@ angular.module('app').factory('session', function ($sessionStorage) {
 
         getUser: function () {
             return $sessionStorage.user;
+        },
+
+        getSexe: function(){
+            return $sessionStorage.sex;
         },
 
         setUserCategory: function (categoryName) {

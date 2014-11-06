@@ -38,7 +38,7 @@ angular.module('app', ['ui.router', 'facebook', 'ngStorage'])
                 templateUrl: 'templates/profil.html'
             })
             .state('quizz', {
-                url: "/quizz",
+                url: "/quizz/:type",
                 templateUrl: 'templates/quizz.html'
             });
     })
