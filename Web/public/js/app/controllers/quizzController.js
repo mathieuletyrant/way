@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('app').controller('quizzController', function($scope, $stateParams, quizz, overlay){
+angular.module('app').controller('quizzController', function($scope, $stateParams, quizz){
 
     var type = $stateParams.type || 'single';
 
@@ -12,5 +12,5 @@ angular.module('app').controller('quizzController', function($scope, $stateParam
     }, function(){
         return 'Error during parse questions.';
     });
-    
+
 });

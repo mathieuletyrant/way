@@ -13,7 +13,6 @@ var gulp        = require('gulp'),
     };
 
 gulp.task('default', ['clean'], function() {
-    gulp.start('style');
     gulp.start('script-app');
     gulp.start('script-lib');
 });
@@ -67,8 +66,7 @@ gulp.task('script-lib', function() {
 gulp.task('clean', function() {
     gulp.src([
         paths.common+'/js/app.js',
-        paths.common+'/js/libs.js',
-        paths.common+'/css/style.css'
+        paths.common+'/js/libs.js'
     ])
         .pipe(clean());
 });
@@ -78,5 +76,4 @@ gulp.task('clean', function() {
  */
 gulp.task('watch', function() {
     gulp.watch(paths.common+'/js/app/**/*.js', ['script-app']);
-    gulp.watch(paths.common+'/less/**/*.less', ['style']);
 });
