@@ -2,13 +2,11 @@
 
 angular.module('app').service('notification', function ($q, api, session) {
 
-    var userId = session.getUser().facebook_id;
-
     this.getNotifications = function () {
 
         var deferred = $q.defer();
 
-        api.getNotifications(userId).then(function (result) {
+        api.getNotifications(session.getUser().facebook_id).then(function (result) {
             deferred.resolve(result.notifications);
         });
 
@@ -18,7 +16,7 @@ angular.module('app').service('notification', function ($q, api, session) {
     this.removeNotification = function (friendId) {
         var deferred = $q.defer();
 
-        api.removeNotification(userId, friendId).then(function(){
+        api.removeNotification(session.getUser().facebook_id, friendId).then(function(){
             return "Notification remove";
         });
 
