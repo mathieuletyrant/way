@@ -10,14 +10,14 @@ class User extends Model{
 	}
 
 	public function getUser($id){
-		$user = $this->db->exec('SELECT * FROM users WHERE facebook_id = :id', array('id' => $id));
+		$user = $this->db->exec('SELECT * FROM ' . $this->table . ' WHERE facebook_id = :id', array('id' => $id));
 
 		if(empty($user)){ return false; }
 
 		$category = $this->db->exec('SELECT * FROM categories WHERE id = :category_id',
 			array('category_id' => $user[0]['category_id']));
 
-		$user[0]['category_name'] = (!empty($category)) ? $category['name'] : false;
+		$user[0]['category_name'] = (!empty($category)) ? $category[0]['name'] : false;
 
 		return $this->encode('users', $user[0]);
 	}

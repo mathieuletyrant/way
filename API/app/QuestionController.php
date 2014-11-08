@@ -44,11 +44,14 @@ class QuestionController extends Controller{
 							'status' => $status
 							));
 
-						if(!$insert){ $this->alert('alet-danger', "Erreur lors de l'enregistrement d'une reponse"); }
+						if(!$insert){
+							$this->alert('alet-danger', "Erreur lors de l'enregistrement d'une reponse");
+							echo json_encode(array('code' => 'alert-danger', 'message' => "Erreur lors de l'enregistrement d'une reponse"));
+						}
 					}
 
 					$this->alert('alert-success', 'Votre question a bien été enregistré');
-					return json_encode(array('code' => 'alert-success', 'message' => "Votre question a bien été enregistré"));
+					echo json_encode(array('code' => 'alert-success', 'message' => "Votre question a bien été enregistré"));
 
 				}else{
 					$this->alert('alert-danger', "Erreur lors de l'enregistrement de votre question");

@@ -34,6 +34,8 @@ $('input[type=file]').change(function(e){
 $('#form-with-upload').submit(function(e){
 	e.preventDefault();
 	$('.progress-bar').removeClass('progress-bar-danger progress-bar-success');
+	$('.progress-bar').css('width', '0%');
+
 
 	var formData = new FormData(document.forms.namedItem("form-question"));
 	$.each(files, function(key, value){
@@ -56,6 +58,7 @@ $('#form-with-upload').submit(function(e){
 		alert.append(data.message);
 		console.log('success');
 	}).fail(function(data, status){
+		console.log(status);
 		$('.progress-bar').addClass('progress-bar-danger');
 	});
 });

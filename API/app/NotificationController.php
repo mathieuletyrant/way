@@ -23,15 +23,24 @@ class NotificationController extends Controller{
 
 	public function get($f3){
 		if($f3->get('PARAMS.facebook_id')){
-			$notifications = $this->Notification->getNotification($f3->get('PARAMS.facebook_id'));
-			if(!empty($notifications)){
-				echo $notifications;
+			if($this->Notification->getNotification($f3->get('PARAMS.facebook_id'))){
+				echo $this->Notification->getNotification($f3->get('PARAMS.facebook_id'));
 			}else{
 				$this->send_error(array('code' => '204', 'message' => 'notification not found'));
 			}
 		}
 	}
 
+	public function delete($f3){
+		if(!empty($user_id = $f3->get('PARAMS.user_id')
+			&& !empty($friend_id = $f3->get('PARAMS.friend_id')))){
+			if($this->Notification->deleteNotification($user_id, $friend_id)){
+				$this->send_error(array('code' => '200', 'message' => 'notification deleted'));
+			}else{
+				$this->send_error(array('code' => '404', 'message' => 'notification not found'));
+			}
+		}
+	}
 
 
 }
