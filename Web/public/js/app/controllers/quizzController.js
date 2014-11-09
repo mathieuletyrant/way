@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('app').controller('quizzController', function ($scope, $stateParams, quizz) {
+angular.module('app').controller('quizzController', function ($scope, $stateParams, quizz, config) {
 
     var type = $stateParams.type || 'single';
 
@@ -17,6 +17,11 @@ angular.module('app').controller('quizzController', function ($scope, $statePara
      * Quizz Start at Question 0 !
      */
     $scope.currentQuestion = 0;
+
+    /*
+     * Get PATH for img Url
+     */
+    $scope.path = config.apiUrl;
 
     /*
      * Content all responses for all questions

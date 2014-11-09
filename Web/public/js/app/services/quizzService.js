@@ -12,7 +12,7 @@ angular.module('app').factory('quizz', function ($q, api, session) {
                 });
             }
             else if (type == 'multi') {
-                deferred.reject('Do stuff ...');
+                deferred.resolve('Do stuff ...');
             }
             else {
                 deferred.reject('Type undefined. Must be single or multi');

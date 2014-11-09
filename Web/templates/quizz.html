@@ -21,7 +21,7 @@
                      ng-click="newQuestion($index)">
                     <span class="checked"></span>
                     <div class="mask"></div>
-                    <img ng-src="http://wayapi.mathieuletyrant.com/{{question.file}}">
+                    <img ng-src="{{path+'/'+question.file}}">
                     <h3 class="reponse_titre">{{question.answer}}</h3>
                 </div>
                 <div class="clear"></div>
