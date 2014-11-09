@@ -25,6 +25,7 @@ angular.module('app').controller('quizzController', function ($scope, $statePara
 
     /*
      * Next Questions
+     * TODO Move to Service
      */
     $scope.newQuestion = function (index) {
 
@@ -33,13 +34,33 @@ angular.module('app').controller('quizzController', function ($scope, $statePara
         /* Good Answer with current Question */
         if (question.anwsers[index].status == 1) {
             $scope.responses[$scope.currentQuestion].value = 1;
-            console.log('Good answer');
+            console.log('[QUIZZ] : Good answer');
         }
         else{
             $scope.responses[$scope.currentQuestion].value = 0;
+            console.log('[QUIZZ] : Bad answer');
         }
 
-        $scope.currentQuestion++;
+        /* Check if last question */
+        if($scope.currentQuestion == 19){
+            console.log('[QUIZZ] : Challenge '+type+' done');
+            if(type === 'single'){
+                /*
+                 * Create Algo for now what category is
+                 * Asign category to the player in session & API WAY
+                 */
+            }
+            else{
+                /*
+                 * Save response in API WAY
+                 * Seed Notification to the second player.
+                 */
+            }
+        }
+        else{
+            $scope.currentQuestion++;
+            console.log('[QUIZZ] : Next question : '+$scope.currentQuestion);
+        }
     };
 
 });
