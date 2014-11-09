@@ -9,7 +9,6 @@ angular.module('app').controller('quizzController', function($scope, $stateParam
      */
     quizz.loadQuestions(type).then(function(result){
         $scope.questions = result.questions;
-        console.log(result.questions);
     }, function(){
         return 'Error during parse questions.';
     });
