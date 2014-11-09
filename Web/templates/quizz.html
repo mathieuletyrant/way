@@ -7,7 +7,7 @@
             <span class="question_top">Question {{currentQuestion + 1}}</span>
         </div>
         <div id="container_question">
-            <h2 class="title_question">{{questions[0].question.name}}</h2>
+            <h2 class="title_question">{{questions[currentQuestion].question.name}}</h2>
 
             <div class="avancement">
                 <div class="progress_music"></div>
@@ -17,10 +17,8 @@
 
             <div class="container_rep">
                 <div class="reponse"
-                     ng-click="newQuestion()"
-                     ng-repeat="question in questions[0].anwsers"
-                     data-question-id="{{question.question_id}}"
-                     data-answer-id="{{question.id}}">
+                     ng-repeat="question in questions[currentQuestion].anwsers"
+                     ng-click="newQuestion($index)">
                     <span class="checked"></span>
                     <div class="mask"></div>
                     <img ng-src="http://wayapi.mathieuletyrant.com/{{question.file}}">

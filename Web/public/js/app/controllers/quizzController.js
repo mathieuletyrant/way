@@ -1,15 +1,15 @@
 'use strict';
 
-angular.module('app').controller('quizzController', function($scope, $stateParams, quizz){
+angular.module('app').controller('quizzController', function ($scope, $stateParams, quizz) {
 
     var type = $stateParams.type || 'single';
 
     /*
      * Load questions Single/Multi
      */
-    quizz.loadQuestions(type).then(function(result){
+    quizz.loadQuestions(type).then(function (result) {
         $scope.questions = result.questions;
-    }, function(){
+    }, function () {
         return 'Error during parse questions.';
     });
 
@@ -26,8 +26,19 @@ angular.module('app').controller('quizzController', function($scope, $stateParam
     /*
      * Next Questions
      */
-    $scope.newQuestion = function(){
-        $scope.responses[$scope.currentQuestion].value = Math.round(Math.random());
+    $scope.newQuestion = function (index) {
+
+        var question = $scope.questions[$scope.currentQuestion];
+
+        /* Good Answer with current Question */
+        if (question.anwsers[index].status == 1) {
+            $scope.responses[$scope.currentQuestion].value = 1;
+            console.log('Good answer');
+        }
+        else{
+            $scope.responses[$scope.currentQuestion].value = 0;
+        }
+
         $scope.currentQuestion++;
     };
 
