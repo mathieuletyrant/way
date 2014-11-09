@@ -903,12 +903,15 @@ footer p {
     border: 1px solid #fff;
 }
 
-.quizz_timeline .question.fail {
-    background: #f6464a;
+.fail {
+    background: #f6464a !important;
 }
 
-.quizz_timeline .question.win {
-    background: #253341;
+.win {
+    background: #253341 !important;
+}
+.white{
+    color: white !important;
 }
 
 .quizz_timeline .last_question {

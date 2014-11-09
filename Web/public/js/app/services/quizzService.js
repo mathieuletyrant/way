@@ -19,6 +19,32 @@ angular.module('app').factory('quizz', function ($q, api, session) {
             }
 
             return deferred.promise;
+        },
+        /* LOL */
+        emptyResponses: function (){
+            return [
+                {value: -1},
+                {value: -1},
+                {value: -1},
+                {value: -1},
+                {value: -1},
+                {value: -1},
+                {value: -1},
+                {value: -1},
+                {value: -1},
+                {value: -1},
+                {value: -1},
+                {value: -1},
+                {value: -1},
+                {value: -1},
+                {value: -1},
+                {value: -1},
+                {value: -1},
+                {value: -1},
+                {value: -1},
+                {value: -1}
+            ];
+
         }
     }
 });

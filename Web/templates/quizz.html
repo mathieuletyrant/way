@@ -4,10 +4,10 @@
             <img src="public/img/Logo.svg" width="50" height="50">
         </div>
         <div class="container_question_top">
-            <span class="question_top">Question 6</span>
+            <span class="question_top">Question {{currentQuestion + 1}}</span>
         </div>
         <div id="container_question">
-            <h2 class="title_question">Quel est l'artiste de cette chanson ?</h2>
+            <h2 class="title_question">{{questions[0].question.name}}</h2>
 
             <div class="avancement">
                 <div class="progress_music"></div>
@@ -16,66 +16,32 @@
             </div>
 
             <div class="container_rep">
-                <div class="reponse">
+                <div class="reponse"
+                     ng-click="newQuestion()"
+                     ng-repeat="question in questions[0].anwsers"
+                     data-question-id="{{question.question_id}}"
+                     data-answer-id="{{question.id}}">
                     <span class="checked"></span>
                     <div class="mask"></div>
-                    <img src="public/img/quizz/coldplay.jpg">
-                    <h3 class="reponse_titre">Coldplay</h3>
-                </div>
-                <div class="reponse">
-                    <span class="checked"></span>
-                    <div class="mask"></div>
-                    <img src="public/img/quizz/coldplay.jpg">
-                    <h3 class="reponse_titre">Coldplay</h3>
-                </div>
-                <div class="reponse">
-                    <span class="checked"></span>
-                    <div class="mask"></div>
-                    <img src="public/img/quizz/coldplay.jpg">
-                    <h3 class="reponse_titre">Coldplay</h3>
-                </div>
-                <div class="reponse">
-                    <span class="checked"></span>
-                    <div class="mask"></div>
-                    <img src="public/img/quizz/coldplay.jpg">
-                    <h3 class="reponse_titre">Coldplay</h3>
-                </div>
-                <div class="reponse">
-                    <span class="checked"></span>
-                    <div class="mask"></div>
-                    <img src="public/img/quizz/coldplay.jpg">
-                    <h3 class="reponse_titre">Coldplay</h3>
-                </div>
-                <div class="reponse">
-                    <span class="checked"></span>
-                    <div class="mask"></div>
-                    <img src="public/img/quizz/coldplay.jpg">
-                    <h3 class="reponse_titre">Coldplay</h3>
+                    <img src="http://wayapi.mathieuletyrant.com/{{question.file}}">
+                    <h3 class="reponse_titre">{{question.answer}}</h3>
                 </div>
                 <div class="clear"></div>
             </div>
 
             <div class="quizz_timeline">
-                <span class="question fail"></span>
-                <span class="question win"></span>
-                <span class="question win"></span>
-                <span class="question fail"></span>
-                <span class="question win"></span>
-                <span class="question"></span>
-                <span class="question"></span>
-                <span class="question"></span>
-                <span class="question"></span>
-                <span class="question"></span>
-                <span class="question"></span>
-                <span class="question"></span>
-                <span class="question"></span>
-                <span class="question"></span>
-                <span class="question"></span>
-                <span class="question"></span>
-                <span class="question"></span>
-                <span class="question"></span>
-                <span class="question"></span>
-                <span class="last_question">Terminé</span>
+                <span ng-repeat="response in responses track by $index">
+                     <span
+                        ng-show="$index <= 18"
+                        class="question"
+                        ng-class="{'win': response.value == 1, 'fail': response.value == 0}">
+                     </span>
+                    <span
+                        ng-show="$index == 19"
+                        class="last_question"
+                        ng-class="{'win white': response.value == 1, 'fail white': response.value == 0}">Terminé
+                    </span>
+                </span>
                 <div class="clear"></div>
             </div>
         </div>
