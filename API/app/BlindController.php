@@ -19,13 +19,14 @@ class BlindController extends Controller {
 		$categories = $this->Category->getBySex($d['sex']);
 
 		foreach ($categories as $key => $category) {
-			$questions[$category['name']] = $this->Question->getByCategory($category['id'], $limit = 4);
+			// $questions[$category['name']] = $this->Question->getByCategory($category['id'], $limit = 4);
+			$questions = $this->Question->getByCategory($category['id'], $limit = 4);
 		}
 
 		if(!empty($questions)){
 			echo $this->Question->encode('questions', $questions);
 		}else{
-			$this->send_error(array('code' => '204', 'message' => 'not data found'));
+			$this->send_message(array('code' => '204', 'message' => 'not data found'));
 		}
 	}
 
@@ -40,10 +41,10 @@ class BlindController extends Controller {
 			if(!empty($questions)){
 				echo $this->Question->encode('questions', $questions);
 			}else{
-				$this->send_error(array('code' => '204', 'message' => 'not data found'));
+				$this->send_message(array('code' => '204', 'message' => 'not data found'));
 			}
 		}else{
-			$this->send_error(array('code' => '400', 'message' => 'missing or wrong parameters'));
+			$this->send_message(array('code' => '400', 'message' => 'missing or wrong parameters'));
 		}
 	}
 

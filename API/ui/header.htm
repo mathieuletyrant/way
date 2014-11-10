@@ -2,11 +2,12 @@
 <html>
 <head>
 	<title></title>
-	<link rel="stylesheet" type="text/css" href="<?= WEBROOT; ?>css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="<?= WEBROOT; ?>css/bootstrap-flatly.css">
+	<link rel="stylesheet" type="text/css" href="<?= WEBROOT; ?>css/style.css">
 </head>
 <body>
 
-	<div class="container">
+	<div id="page" class="container">
 
 		<?php if(!empty($_SESSION['alert'])): ?>
 			<div class="<?= $_SESSION['alert']['type']; ?>" role="alert">

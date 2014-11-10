@@ -10,10 +10,15 @@ class Category extends Model{
 		parent::__construct();
 	}
 
-
-	function getBySex($sex){
+	public function getBySex($sex){
 		return $this->db->exec('SELECT * FROM ' . $this->table . ' WHERE sex = :sex OR sex = "all"',
 			array('sex' => $sex));
+	}
+
+	public function getByName($category){
+		$category = $this->db->exec('SELECT * FROM ' . $this->table . ' WHERE name LIKE :name',
+			array('name' => '%' . strtolower($category) . '%'));
+		return (!empty($category)) ? $category[0] : false;
 	}
 
 }

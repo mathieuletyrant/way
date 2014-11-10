@@ -44,6 +44,12 @@ class User extends Model{
 		return ($insert) ? $this->db->lastInsertId() : false;
 	}
 
+	public function updateCategory($facebook_id, $category_id){
+		$update = $this->db->exec('UPDATE ' . $this->table . ' SET category_id = :category_id WHERE facebook_id = :facebook_id',
+			array('category_id' => $category_id, 'facebook_id' => $facebook_id));
+		return $update;
+	}
+
 	public function validate($user){
 		$validate = true;
 

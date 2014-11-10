@@ -47,7 +47,7 @@ class DealController extends Controller{
 		if(!empty($deal)){
 			echo $this->Deal->encode('deals', $deal);
 		}else{
-			$this->send_error(array('code' => '204', 'message' => 'Deal not found'));
+			$this->send_message(array('code' => '204', 'message' => 'Deal not found'));
 		}
 	}
 
@@ -56,7 +56,7 @@ class DealController extends Controller{
 		if(!empty($deals)){
 			echo $this->Deal->encode('deals', $deal);
 		}else{
-			$this->send_error(array('code' => '204', 'message' => 'Deal not found'));
+			$this->send_message(array('code' => '204', 'message' => 'Deal not found'));
 		}
 	}
 

@@ -13,12 +13,14 @@ class NotificationController extends Controller{
 
 			if($this->Notification->validate($notification)){
 				if($this->Notification->add($notification)){
-					echo $this->Notification->encode('notification', array('code' => '201', 'message' => 'notification added'));
-				}else{ $this->send_error(array('code' => '400', 'message' => 'database error')); }
+					$this->send_message(array('code' => '201', 'message' => 'notification added'));
+				}else{
+					$this->send_message(array('code' => '400', 'message' => 'database error'));
+				}
 
-			}else{ $this->send_error(array('code' => '400', 'message' => 'bad request')); }
+			}else{ $this->send_message(array('code' => '400', 'message' => 'bad request')); }
 
-		}else{ $this->send_error(array('code' => '400', 'message' => 'bad request')); }
+		}else{ $this->send_message(array('code' => '400', 'message' => 'bad request')); }
 	}
 
 	public function get($f3){
@@ -26,7 +28,7 @@ class NotificationController extends Controller{
 			if($this->Notification->getNotification($f3->get('PARAMS.facebook_id'))){
 				echo $this->Notification->getNotification($f3->get('PARAMS.facebook_id'));
 			}else{
-				$this->send_error(array('code' => '204', 'message' => 'notification not found'));
+				$this->send_message(array('code' => '204', 'message' => 'notification not found'));
 			}
 		}
 	}
@@ -35,9 +37,9 @@ class NotificationController extends Controller{
 		if(!empty($user_id = $f3->get('PARAMS.user_id')
 			&& !empty($friend_id = $f3->get('PARAMS.friend_id')))){
 			if($this->Notification->deleteNotification($user_id, $friend_id)){
-				$this->send_error(array('code' => '200', 'message' => 'notification deleted'));
+				$this->send_message(array('code' => '200', 'message' => 'notification deleted'));
 			}else{
-				$this->send_error(array('code' => '404', 'message' => 'notification not found'));
+				$this->send_message(array('code' => '404', 'message' => 'notification not found'));
 			}
 		}
 	}

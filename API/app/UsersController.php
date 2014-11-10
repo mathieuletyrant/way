@@ -2,7 +2,7 @@
 
 class UsersController extends Controller{
 
-	public $uses = array('User');
+	public $uses = array('User', 'Category');
 
 	function __construct() {
 		parent::__construct();
@@ -12,9 +12,9 @@ class UsersController extends Controller{
 		if(!empty($f3->get('PARAMS.id'))){
 			if($user = $this->User->getUser($f3->get('PARAMS.id'))){
 				echo $user;
-			}else{ echo $this->send_error(array('code' => '404', 'message' => 'user not found')); }
+			}else{ echo $this->send_message(array('code' => '404', 'message' => 'user not found')); }
 		}else{
-			$this->send_error(array('code' => '400', 'message' => 'bad request'));
+			$this->send_message(array('code' => '400', 'message' => 'bad request'));
 		}
 	}
 
@@ -22,7 +22,7 @@ class UsersController extends Controller{
 		if($user = $this->User->exist($params['id'])){
 			echo $this->User->encode('user', $user);
 		}else{
-			echo $this->send_error(array('code' => '404', 'message' => 'user not found'));
+			echo $this->send_message(array('code' => '404', 'message' => 'user not found'));
 		}
 	}
 
@@ -34,15 +34,30 @@ class UsersController extends Controller{
 				if($this->User->register($user)){
 					echo $this->User->encode('notification', array('code' => '201', 'message' => 'user added'));
 				}else{
-					$this->send_error(array('code' => '400', 'message' => 'database error'));
+					$this->send_message(array('code' => '400', 'message' => 'database error'));
 				}
 			}else{
-				$this->send_error(array('code' => '400', 'message' => 'bad request invalid data'));
+				$this->send_message(array('code' => '400', 'message' => 'bad request invalid data'));
 			}
 
 		}else{
 			// echo View::instance()->render('user/add.htm');
-			$this->send_error(array('code' => '400', 'message' => 'bad request'));
+			$this->send_message(array('code' => '400', 'message' => 'bad request'));
+		}
+	}
+
+	public function category($f3){
+		if($category = $this->Category->getByName($f3->get('PARAMS.category'))){
+			if($this->User->updateCategory($f3->get('PARAMS.facebook_id'), $category['id'])){
+				$this->send_message(array(
+					'code' => '200',
+					'message' => 'category updated to ' . $category['name'] . ' for user ' . $f3->get('PARAMS.facebook_id')
+					));
+			}else{
+				$this->send_message(array('code' => '400', 'message' => 'database error'));
+			}
+		}else{
+			$this->send_message(array('code' => '400', 'message' => 'category not found'));
 		}
 	}
 

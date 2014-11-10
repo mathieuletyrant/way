@@ -70,7 +70,7 @@ class Controller {
 	*	Afficher une erreur de retour JSON
 	*	@param $error tableau associatif
 	**/
-	protected function send_error($error = array()){
+	protected function send_message($error = array()){
 		header('Content-Type: application/json');
 		header('Access-Control-Allow-Origin: *');
 		echo json_encode($error['error'] = $error);
