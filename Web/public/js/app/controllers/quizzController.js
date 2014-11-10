@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('app').controller('quizzController', function ($scope, $stateParams, quizz, config) {
+angular.module('app').controller('quizzController', function ($scope, $stateParams, $interval, quizz, config) {
 
     var type = $stateParams.type || 'single';
 
@@ -29,25 +29,52 @@ angular.module('app').controller('quizzController', function ($scope, $statePara
     $scope.responses = quizz.emptyResponses();
 
     /*
+     * Timer
+     */
+    $scope.countDown = config.timeMusic;
+
+    var timer = $interval(function(){
+        $scope.countDown--;
+    }, 1000);
+
+    $scope.$watch('countDown', function(newVal){
+       if(newVal == 0){
+           $interval.cancel(timer);
+           $scope.newQuestion(1, 1);
+           console.log('Done');
+       }
+    });
+
+    /*
      * Next Questions
      * TODO Move to Service
      */
-    $scope.newQuestion = function (index) {
+    $scope.newQuestion = function (index, endTimer) {
 
+        $interval.cancel(timer);
+        $scope.countDown = config.timeMusic;
+
+        var endTimer = endTimer || null;
         var question = $scope.questions[$scope.currentQuestion];
 
-        /* Good Answer with current Question */
-        if (question.anwsers[index].status == 1) {
-            $scope.responses[$scope.currentQuestion].value = 1;
-            console.log('[QUIZZ] : Good answer');
-        }
-        else{
+        if(endTimer == 1){
             $scope.responses[$scope.currentQuestion].value = 0;
             console.log('[QUIZZ] : Bad answer');
         }
-
+        else{
+            /* Good Answer with current Question */
+            if (question.anwsers[index].status == 1) {
+                $scope.responses[$scope.currentQuestion].value = 1;
+                console.log('[QUIZZ] : Good answer');
+            }
+            else{
+                $scope.responses[$scope.currentQuestion].value = 0;
+                console.log('[QUIZZ] : Bad answer');
+            }
+        }
         /* Check if last question */
         if($scope.currentQuestion == 19){
+            $interval.cancel(timer);
             console.log('[QUIZZ] : Challenge '+type+' done');
             if(type === 'single'){
                 /*
@@ -63,6 +90,9 @@ angular.module('app').controller('quizzController', function ($scope, $statePara
             }
         }
         else{
+            timer = $interval(function(){
+                $scope.countDown--;
+            }, 1000);
             $scope.currentQuestion++;
             console.log('[QUIZZ] : Next question : '+$scope.currentQuestion);
         }

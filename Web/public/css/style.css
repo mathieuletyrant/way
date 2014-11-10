@@ -789,7 +789,7 @@ footer p {
     color: #fff;
 }
 
-.progress_music:after {
+.progress_music .progress {
     content: '';
     display: block;
     position: absolute;
@@ -798,8 +798,7 @@ footer p {
     height: 8px;
     background: #253341;
     -webkit-transform:skew(-45deg);
-    transform:skew(-45deg);
-    -webkit-animation: play 10s linear infinite;
+            transform:skew(-45deg);
 }
 
 .container_rep {
