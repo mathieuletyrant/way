@@ -2,7 +2,7 @@
 
 class BlindController extends Controller {
 
-	public $uses = array('Question', 'Category');
+	public $uses = array('Question', 'Category', 'Answer');
 
 	function __construct() {
 		parent::__construct();
@@ -45,6 +45,38 @@ class BlindController extends Controller {
 			}
 		}else{
 			$this->send_message(array('code' => '400', 'message' => 'missing or wrong parameters'));
+		}
+	}
+
+	public function start($f3){
+		if($blind = $f3->get('POST')){
+			if($this->Blind->validate($blind)){
+				if($blind_id = $this->Blind->create($blind)){
+					$this->send_message(array('blind' => array('id' => $blind_id)));
+				}else{
+					$this->send_message(array('code' => '400', 'message' => 'database error'));
+				}
+			}else{
+				$this->send_message(array('code' => '400', 'message' => 'missing parameters'));
+			}
+		}else{
+			$this->send_message(array('code' => '400', 'message' => 'bad request'));
+		}
+	}
+
+	public function response($f3){
+		if($response = $f3->get('POST')){
+			if($this->UserResponse->validate($response)){
+				if($this->UserResponse->add($response)){
+					$this->send_message(array('code' => '200', 'message' => 'response added'));
+				}else{
+					$this->send_message(array('code' => '400', 'message' => 'database error'));
+				}
+			}else{
+				$this->send_message(array('code' => '400', 'message' => 'missing parameters'));
+			}
+		}else{
+			$this->send_message(array('code' => '400', 'message' => 'bad request'));
 		}
 	}
 
