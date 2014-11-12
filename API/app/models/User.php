@@ -9,6 +9,8 @@ class User extends Model{
 		parent::__construct();
 	}
 
+
+
 	public function getUser($id){
 		$user = $this->db->exec('SELECT * FROM ' . $this->table . ' WHERE facebook_id = :id', array('id' => $id));
 

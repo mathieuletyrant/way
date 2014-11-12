@@ -5,6 +5,8 @@ class Controller {
 	protected $token = 'KDR8u9vuRH8i6hx8V4e6';
 	protected $request;
 
+	protected $auth = array('/question/add', '/deal/add', '/badge/add', '/user/login');
+
 	function __construct() {
 		session_start();
 
@@ -26,13 +28,19 @@ class Controller {
 
 			$url = $this->request['REQUEST_URI'];
 
-			if($url != '/question/add' && $url != '/deal/add' && $url != '/badge/add'){
+			if(!in_array($url, $this->auth)){
 				$this->send_message(array(
 					'code' => '401',
 					'name' => 'authentification fail',
 					'message' => 'wrong token'));
 				die();
+			}else{
+				if(!$this->sessionCheck('user') && $url != '/user/login'){
+					$this->redirect('/user/login');
+				}
 			}
+
+
 		}
 	}
 
@@ -43,6 +51,13 @@ class Controller {
 			// $this->Model->generate_questions();
 			$this->Model->generate_responses();
 		}
+	}
+
+	/**
+	*	Rediriger vers une page
+	**/
+	public function redirect($url){
+		header('Location:' . $url);
 	}
 
 	/**
@@ -97,6 +112,14 @@ class Controller {
 	protected function alert($type, $message){
 		$_SESSION['alert']['type'] = 'alert ' . $type;
 		$_SESSION['alert']['message'] = $message;
+	}
+
+	protected function sessionSet($key, $value){
+		$_SESSION[$key] = $value;
+	}
+
+	protected function sessionCheck($key){
+		return (!empty($_SESSION[$key])) ? true : false;
 	}
 
 	/**

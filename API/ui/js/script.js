@@ -52,10 +52,16 @@ $('#form-with-upload').submit(function(e){
 		cache: false
 	}).done(function(data){
 		var alert = $('.alert');
-		$('.progress-bar').addClass('progress-bar-success');
+
+		if(data.code == 'alert-danger'){
+			$('.progress-bar').addClass('progress-bar-danger');
+		}else{
+			$('.progress-bar').addClass('progress-bar-success');
+		}
+
 		alert.fadeIn('slow');
 		alert.addClass(data.code);
-		alert.append(data.message);
+		alert.html(data.message);
 		console.log('success');
 	}).fail(function(data, status){
 		console.log(status);
