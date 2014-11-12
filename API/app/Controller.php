@@ -8,7 +8,6 @@ class Controller {
 	function __construct() {
 		session_start();
 
-
 		if(!empty($_SESSION['alert'])){
 			unset($_SESSION['alert']);
 		}
@@ -19,11 +18,22 @@ class Controller {
 			}
 		}
 
-		$this->request = $this->get_header();
-		/*if(!isset($this->request['token']) || $this->request['token'] != $this->token){
-			$this->send_error(array('code' => '401', 'name' => 'authentification fail', 'message' => 'wrong token'));
-			die();
-		}*/
+		// $this->request = $this->get_header();
+		$this->request = $_SERVER;
+
+		if(!isset($this->request['HTTP_AUTH_TOKEN']) ||
+			$this->request['HTTP_AUTH_TOKEN'] != $this->token){
+
+			$url = $this->request['REQUEST_URI'];
+
+			if($url != '/question/add' && $url != '/deal/add'){
+				$this->send_message(array(
+					'code' => '401',
+					'name' => 'authentification fail',
+					'message' => 'wrong token'));
+				die();
+			}
+		}
 	}
 
 	public function init($f3, $params = null){
@@ -73,6 +83,9 @@ class Controller {
 	protected function send_message($error = array()){
 		header('Content-Type: application/json');
 		header('Access-Control-Allow-Origin: *');
+		header('Acces-Control-Allow-Headers: *');
+		header('Access-Control-Allow-Credentials: true');
+
 		echo json_encode($error['error'] = $error);
 	}
 

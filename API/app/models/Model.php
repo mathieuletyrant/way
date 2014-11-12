@@ -10,8 +10,10 @@ class Model {
 	}
 
 	public function encode($name, $data = array()){
-		header('Content-Type: application/json');
 		header('Access-Control-Allow-Origin: *');
+		header('Acces-Control-Allow-Headers: Auth-Token');
+		header('Access-Control-Allow-Methods: *');
+		header('Content-Type: application/json');
 		return '{"' . $name . '": ' . json_encode(array_change_key_case($data, CASE_LOWER)) . '}';
 	}
 
