@@ -2,7 +2,7 @@
 
 class BlindController extends Controller {
 
-	public $uses = array('Question', 'Category', 'Answer');
+	public $uses = array('Question', 'Category', 'Answer', 'Blind', 'UserResponse');
 
 	function __construct() {
 		parent::__construct();
@@ -49,6 +49,7 @@ class BlindController extends Controller {
 	}
 
 	public function start($f3){
+
 		if($blind = $f3->get('POST')){
 			if($this->Blind->validate($blind)){
 				if($blind_id = $this->Blind->create($blind)){
@@ -58,6 +59,21 @@ class BlindController extends Controller {
 				}
 			}else{
 				$this->send_message(array('code' => '400', 'message' => 'missing parameters'));
+			}
+		}else{
+			$this->send_message(array('code' => '400', 'message' => 'bad request'));
+		}
+	}
+
+	public function update($f3){
+		if($blind = $f3->get('POST')){
+			if($this->Blind->updateStatus($blind['id'], $blind['status'])){
+				$this->send_message(array(
+					'code' => '200',
+					'message' => 'blind status updated to ' . $blind['status']
+					));
+			}else{
+				$this->send_message(array('code' => '400', 'message' => 'database error'));
 			}
 		}else{
 			$this->send_message(array('code' => '400', 'message' => 'bad request'));

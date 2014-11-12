@@ -26,7 +26,7 @@ class Controller {
 
 			$url = $this->request['REQUEST_URI'];
 
-			if($url != '/question/add' && $url != '/deal/add'){
+			if($url != '/question/add' && $url != '/deal/add' && $url != '/badge/add'){
 				$this->send_message(array(
 					'code' => '401',
 					'name' => 'authentification fail',
@@ -81,10 +81,10 @@ class Controller {
 	*	@param $error tableau associatif
 	**/
 	protected function send_message($error = array()){
-		header('Content-Type: application/json');
 		header('Access-Control-Allow-Origin: *');
-		header('Acces-Control-Allow-Headers: *');
-		header('Access-Control-Allow-Credentials: true');
+		header('Acces-Control-Allow-Headers: Auth-Token');
+		header('Access-Control-Allow-Methods: *');
+		header('Content-Type: application/json');
 
 		echo json_encode($error['error'] = $error);
 	}
