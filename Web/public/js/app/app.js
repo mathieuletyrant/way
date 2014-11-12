@@ -49,4 +49,11 @@ angular.module('app', ['ui.router', 'facebook', 'ngStorage', 'ngAnimate'])
      */
     .config(function(FacebookProvider, config) {
         FacebookProvider.init(config.facebookAppApi);
+    })
+
+    /*
+     * Seed private Token to WAY API
+     */
+    .config(function($httpProvider, config){
+        $httpProvider.defaults.headers.common['Auth-Token'] = config.token;
     });
