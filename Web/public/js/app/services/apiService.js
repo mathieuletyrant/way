@@ -109,6 +109,40 @@ angular.module('app').factory('api', function ($http, $q, config, overlay) {
             return deferred.promise;
         },
 
+        blindStart: function (type, userId, friendId) {
+
+            var param = {
+                type        : type || 'single',
+                user_id      : userId || null,
+                friend_id    : friendId || ''
+                },
+                transform = function (data) {
+                    return $.param(data);
+                };
+
+            overlay.set(true);
+
+            var deferred = $q.defer();
+
+            $http({
+                method: 'POST',
+                url: config.apiUrl + '/blind/start',
+                data: param,
+                headers: {'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'},
+                transformRequest: transform
+            })
+                .success(function (result) {
+                    overlay.set(false);
+                    deferred.resolve(result);
+                })
+                .error(function (result) {
+                    overlay.set(false);
+                    deferred.resolve('Erreur :' + result);
+                });
+
+            return deferred.promise;
+        },
+
         /*
          * @name Check if user exist in Way API
          * @param int facebookId
@@ -189,7 +223,7 @@ angular.module('app').factory('api', function ($http, $q, config, overlay) {
             return deferred.promise;
         },
 
-        removeNotification: function(userId, friendId){
+        removeNotification: function (userId, friendId) {
             // Do stuff ...
         }
     };

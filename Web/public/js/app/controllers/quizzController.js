@@ -4,6 +4,8 @@ angular.module('app').controller('quizzController', function ($scope, $statePara
 
     var type = $stateParams.type || 'single';
 
+    console.log(quizz.blindStart('single'));
+
     /*
      * Load questions Single/Multi
      */

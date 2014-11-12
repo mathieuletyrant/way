@@ -2,6 +2,13 @@
 
 angular.module('app').factory('quizz', function ($q, api, session) {
     return {
+
+        blindStart: function(type, friendId){
+          api.blindStart(type, session.getUser().facebook_id, friendId).then(function(result){
+              return result;
+          });
+        },
+
         loadQuestions: function (type) {
 
             var deferred = $q.defer();
@@ -20,6 +27,7 @@ angular.module('app').factory('quizz', function ($q, api, session) {
 
             return deferred.promise;
         },
+
         /* LOL */
         emptyResponses: function (){
             return [
