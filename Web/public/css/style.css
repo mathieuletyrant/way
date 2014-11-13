@@ -799,6 +799,7 @@ footer p {
     background: #253341;
     -webkit-transform:skew(-45deg);
             transform:skew(-45deg);
+    transition: all 1s linear;
 }
 
 .container_rep {

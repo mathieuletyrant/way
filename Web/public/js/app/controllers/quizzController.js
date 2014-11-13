@@ -4,15 +4,18 @@ angular.module('app').controller('quizzController', function ($scope, $statePara
 
     var type = $stateParams.type || 'single';
 
-    console.log(quizz.blindStart('single'));
+    /*
+     * Load Current ID Blind
+     */
+    quizz.blindStart(type).then(function(id){
+        $scope.blindId = id;
+    });
 
     /*
      * Load questions Single/Multi
      */
     quizz.loadQuestions(type).then(function (result) {
         $scope.questions = result.questions;
-    }, function () {
-        return 'Error during parse questions.';
     });
 
     /*
@@ -34,6 +37,11 @@ angular.module('app').controller('quizzController', function ($scope, $statePara
      * Timer
      */
     $scope.countDown = config.timeMusic;
+    $scope.percentCountDown = ($scope.countDown * 100) / config.timeMusic;
+
+    $scope.$watch('countDown', function(newVal){
+        $scope.percentCountDown = (newVal * 100) / config.timeMusic;
+    });
 
     var timer = $interval(function(){
         $scope.countDown--;
@@ -59,8 +67,11 @@ angular.module('app').controller('quizzController', function ($scope, $statePara
         var endTimer = endTimer || null;
         var question = $scope.questions[$scope.currentQuestion];
 
+        console.log(question);
+
         if(endTimer == 1){
             $scope.responses[$scope.currentQuestion].value = 0;
+            quizz.addResponse($scope.blindId, question.question.id);
             console.log('[QUIZZ] : Bad answer');
         }
         else{
@@ -73,6 +84,7 @@ angular.module('app').controller('quizzController', function ($scope, $statePara
                 $scope.responses[$scope.currentQuestion].value = 0;
                 console.log('[QUIZZ] : Bad answer');
             }
+            quizz.addResponse($scope.blindId, question.question.id, question.anwsers[index].id);
         }
         /* Check if last question */
         if($scope.currentQuestion == 19){

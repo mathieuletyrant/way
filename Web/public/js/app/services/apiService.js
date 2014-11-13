@@ -112,7 +112,7 @@ angular.module('app').factory('api', function ($http, $q, config, overlay) {
         blindStart: function (type, userId, friendId) {
 
             var param = {
-                type        : type || 'single',
+                type         : type || 'single',
                 user_id      : userId || null,
                 friend_id    : friendId || ''
                 },
@@ -137,10 +137,43 @@ angular.module('app').factory('api', function ($http, $q, config, overlay) {
                 })
                 .error(function (result) {
                     overlay.set(false);
-                    deferred.resolve('Erreur :' + result);
+                    deferred.reject('Erreur :' + result);
                 });
 
             return deferred.promise;
+        },
+
+        blindResponse: function(blindId, questionId, responseId){
+
+            var param = {
+                blind_id: blindId,
+                question_id: questionId,
+                response_id: responseId || 0,
+                },
+                transform = function (data) {
+                    return $.param(data);
+                };
+
+            overlay.set(true);
+
+            $http({
+                method: 'POST',
+                url: config.apiUrl + '/blind/response',
+                data: param,
+                headers: {'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'},
+                transformRequest: transform
+            })
+                .success(function (result) {
+                    console.log(result);
+                    overlay.set(false);
+                    return true;
+                })
+                .error(function (result) {
+                    console.log(result);
+                    overlay.set(false);
+                    return false;
+                });
+
         },
 
         /*
