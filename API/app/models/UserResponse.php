@@ -15,7 +15,7 @@ class UserResponse extends Model{
 			VALUES(:question_id, :response_id, :blind_id, :created)');
 		$response = $insert->execute(array(
 			'question_id' => $response['question_id'],
-			'response_id' => $response['response_id'],
+			'response_id' => (!empty($response['response_id']) ? $response['response_id'] : null,
 			'blind_id' => $response['blind_id'],
 			'created' => $this->datetime()
 			));
@@ -26,7 +26,6 @@ class UserResponse extends Model{
 		$validate = true;
 
 		if(empty($response['question_id'])){ $validate = false; }
-		if(!isset($response['response_id'])){ $validate = false; }
 		if(empty($response['blind_id'])){ $validate = false; }
 
 		return $validate;

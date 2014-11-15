@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 require('app/config/config.php');
 // Retrieve instance of the framework
 $f3 = require('lib/base.php');

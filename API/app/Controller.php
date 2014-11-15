@@ -4,14 +4,14 @@ class Controller {
 
 	protected $token = 'KDR8u9vuRH8i6hx8V4e6';
 	protected $request;
-
 	protected $auth = array('/question/add', '/deal/add', '/badge/add', '/user/login');
 
 	function __construct() {
-		session_start();
+		// session_unset('user', 'redirect');
 
 		if(!empty($_SESSION['alert'])){
-			unset($_SESSION['alert']);
+			// unset($_SESSION['alert']);
+			session_unset('alert');
 		}
 
 		if(!empty($this->uses)){
@@ -36,6 +36,7 @@ class Controller {
 				die();
 			}else{
 				if(!$this->sessionCheck('user') && $url != '/user/login'){
+					$_SESSION['redirect']['from'] = $url;
 					$this->redirect('/user/login');
 				}
 			}

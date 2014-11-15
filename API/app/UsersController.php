@@ -14,6 +14,7 @@ class UsersController extends Controller{
 				$login['password'] = sha1($login['password']);
 				$this->sessionSet('user', $login);
 				$this->alert('alert alert-success', "Authentification reussi");
+				$this->redirect($_SESSION['redirect']['from']);
 			}else{
 				$this->alert('alert alert-danger', "Nom d'utilisateur ou mot de passe incorrect");
 			}
