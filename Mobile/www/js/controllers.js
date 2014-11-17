@@ -22,12 +22,15 @@ angular.module('controllers', [])
 
     var category = category.get();
 
+    $scope.ready = false;
+
     api.goodDealPrimary(category).then(function(result){
         $scope.dealPrimary = result;
     });
 
     api.goodDealByCategory(category).then(function(result){
         $scope.deals = result;
+        $scope.ready = true;
     });
 
 })
@@ -39,11 +42,12 @@ angular.module('controllers', [])
 
     var id = $stateParams.id;
 
-    $scope.ready = category.get(); // Little Fix :)
+    $scope.ready = false; // Little Fix :)
 
     api.goodDealById(id).then(function(result){
 
         $scope.deal = result;
+        $scope.ready = true;
 
         /*
          * Need Optimise this later
