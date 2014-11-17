@@ -10,23 +10,48 @@ class Deal extends Model{
 	}
 
 	public function add($deal){
-		$insert = $this->db->exec('INSERT INTO ' . $this->table . '(name, section, description, lat, lng, img, first, category_id, created)
-			 VALUES(:name, :section, :description, :lat, :lng, :img, :first, :category_id, :created)', array(
+		// suppresion de l'ancien deal à la une
+		if($deal['first']){
+			$deal_first = $this->getFirst($deal['category_id']);
+			$st = $this->db->prepare('DELETE FROM deal_firsts WHERE id = :id');
+			$st->execute(array('id' => $deal_first['id']));
+		}
+
+		$insert = $this->db->exec('INSERT INTO ' . $this->table . '(name, section, description, lat, lng, img, category_id, created)
+			 VALUES(:name, :section, :description, :lat, :lng, :img, :category_id, :created)', array(
 				'name' => $deal['name'],
 				'section' => $deal['section'],
 				'description' => $deal['description'],
 				'lat' => $deal['lat'],
 				'lng' => $deal['lng'],
 				'img' => $deal['img'],
-				'first' => $deal['first'],
 				'category_id' => $deal['category_id'],
 				'created' => $this->datetime()
 			 	));
-		return ($insert) ? $this->db->lastInsertId() : false;
+
+		$deal_id = $this->db->lastInsertId();
+
+		if($insert && $deal['first']){
+			$st = $this->db->prepare('INSERT INTO deal_firsts(deal_id, created) VALUES(:deal_id, :created)');
+			$first = $st->execute(array(
+				'deal_id' => $deal_id,
+				'created' => $this->datetime()
+				));
+		}
+
+		return ($insert) ? $deal_id : false;
 	}
 
-	public function getFirst(){
-		$deal = $this->db->exec('SELECT * FROM ' . $this->table . ' WHERE first = :first', array('first' => '1'));
+	public function getFirst($category_id){
+		$deal = $this->db->exec('SELECT * FROM good_deals
+			JOIN deal_firsts ON good_deals.id = deal_firsts.deal_id
+			WHERE category_id = :category_id',
+			array('category_id' => $category_id));
+
+		$category = $this->db->exec('SELECT name FROM categories WHERE id = :id',
+			array('id' => $deal[0]['category_id']));
+		$deal[0]['category'] = $category[0]['name'];
+
 		return (!empty($deal)) ? $deal[0] : false;
 	}
 

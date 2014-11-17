@@ -10,8 +10,7 @@ class Controller {
 		// session_unset('user', 'redirect');
 
 		if(!empty($_SESSION['alert'])){
-			// unset($_SESSION['alert']);
-			session_unset('alert');
+			unset($_SESSION['alert']);
 		}
 
 		if(!empty($this->uses)){

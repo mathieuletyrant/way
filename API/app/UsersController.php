@@ -9,12 +9,16 @@ class UsersController extends Controller{
 	}
 
 	public function login($f3){
+
 		if($login = $f3->get('POST')){
+
 			if($login['username'] == 'way' && sha1($login['password']) == USER_PASS){
 				$login['password'] = sha1($login['password']);
 				$this->sessionSet('user', $login);
 				$this->alert('alert alert-success', "Authentification reussi");
-				$this->redirect($_SESSION['redirect']['from']);
+				if (!empty($_SESSION['redirect'])) {
+					$this->redirect($_SESSION['redirect']['from']);
+				}
 			}else{
 				$this->alert('alert alert-danger', "Nom d'utilisateur ou mot de passe incorrect");
 			}
