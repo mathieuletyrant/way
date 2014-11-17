@@ -53,6 +53,36 @@ class DealController extends Controller{
 		}
 	}
 
+	public function getById($f3){
+		if($deal_id = $f3->get('PARAMS.id')){
+			$deal = $this->Deal->getById($deal_id)	;
+
+			if(!empty($deal)){
+				echo $this->Deal->encode('deal', $deal);
+			}else{
+				$this->send_message(array('code' => '204', 'message' => 'Deal not found'));
+			}
+
+		}else{ $this->send_message(array('code' => '400', 'message' => 'bad request')); }
+
+	}
+
+	public function getByCategory($f3){
+		if($category = $f3->get('PARAMS.category')){
+			$category = $this->Category->getByName($f3->get('PARAMS.category'));
+
+			$deals = $this->Deal->getByCategory($category['id']);
+
+			if(!empty($deals)){
+				echo $this->Deal->encode('deal', $deals);
+			}else{
+				$this->send_message(array('code' => '204', 'message' => 'Deal not found'));
+			}
+
+		}else{ $this->send_message(array('code' => '400', 'message' => 'bad request')); }
+
+	}
+
 	public function section($f3){
 		$deals = $this->Deal->getBySection($f3->get('PARAMS.section'), $f3->get('PARAMS.page'));
 		if(!empty($deals)){

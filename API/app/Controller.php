@@ -7,7 +7,6 @@ class Controller {
 	protected $auth = array('/question/add', '/deal/add', '/badge/add', '/user/login');
 
 	function __construct() {
-		// session_unset('user', 'redirect');
 
 		if(!empty($_SESSION['alert'])){
 			unset($_SESSION['alert']);
@@ -28,11 +27,11 @@ class Controller {
 			$url = $this->request['REQUEST_URI'];
 
 			if(!in_array($url, $this->auth)){
-				$this->send_message(array(
-					'code' => '401',
-					'name' => 'authentification fail',
-					'message' => 'wrong token'));
-				die();
+				// $this->send_message(array(
+				// 	'code' => '401',
+				// 	'name' => 'authentification fail',
+				// 	'message' => 'wrong token'));
+				// die();
 			}else{
 				if(!$this->sessionCheck('user') && $url != '/user/login'){
 					$_SESSION['redirect']['from'] = $url;

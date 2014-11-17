@@ -17,11 +17,12 @@ class Deal extends Model{
 			$st->execute(array('id' => $deal_first['id']));
 		}
 
-		$insert = $this->db->exec('INSERT INTO ' . $this->table . '(name, section, description, lat, lng, img, category_id, created)
-			 VALUES(:name, :section, :description, :lat, :lng, :img, :category_id, :created)', array(
+		$insert = $this->db->exec('INSERT INTO ' . $this->table . '(name, section, description, address, lat, lng, img, category_id, created)
+			 VALUES(:name, :section, :description, :address, :lat, :lng, :img, :category_id, :created)', array(
 				'name' => $deal['name'],
 				'section' => $deal['section'],
 				'description' => $deal['description'],
+				'address' => (!empty($deal['lieu'])) ? $deal['lieu'] : '',
 				'lat' => $deal['lat'],
 				'lng' => $deal['lng'],
 				'img' => $deal['img'],
@@ -48,11 +49,14 @@ class Deal extends Model{
 			WHERE category_id = :category_id',
 			array('category_id' => $category_id));
 
-		$category = $this->db->exec('SELECT name FROM categories WHERE id = :id',
+		if(!empty($deal)){
+			$category = $this->db->exec('SELECT name FROM categories WHERE id = :id',
 			array('id' => $deal[0]['category_id']));
-		$deal[0]['category'] = $category[0]['name'];
-
-		return (!empty($deal)) ? $deal[0] : false;
+			$deal[0]['category'] = $category[0]['name'];
+			return $deal[0];
+		}else{
+			return false;
+		}
 	}
 
 	public function getBySection($section, $page = null){
@@ -64,6 +68,40 @@ class Deal extends Model{
 			array('section' => strtolower($section)));
 
 		return (!empty($deals)) ? $deals : false;
+	}
+
+	public function getById($deal_id){
+		$deal = $this->db->exec('SELECT * FROM ' . $this->table . ' WHERE id = :id', array(
+			'id' => $deal_id));
+
+		if(!empty($deal)){
+			$category = $this->db->exec('SELECT name FROM categories WHERE id = :category_id',
+				array('category_id' => $deal[0]['category_id']));
+			$deal[0]['category'] = $category[0]['name'];
+			return $deal[0];
+		}else{
+			return false;
+		}
+	}
+
+	public function getByCategory($category_id){
+
+		$deals = $this->db->exec('SELECT * FROM ' . $this->table . '
+			WHERE category_id = :category_id
+			AND id NOT IN (SELECT deal_id FROM deal_firsts)',
+			array('category_id' => $category_id));
+
+		if(!empty($deals)){
+			foreach ($deals as $key => $deal) {
+				$category = $this->db->exec('SELECT name FROM categories WHERE id = :category_id',
+				array('category_id' => $deal['category_id']));
+
+				$deals[$key]['category'] = $category[0]['name'];
+			}
+			return $deals;
+		}else{
+			return false;
+		}
 	}
 
 	public function validate($deal){
