@@ -41,6 +41,10 @@ angular.module('app', ['ui.router', 'facebook', 'ngStorage', 'ngAnimate'])
             .state('quizz', {
                 url: "/quizz/:type",
                 templateUrl: 'templates/quizz.html'
+            })
+            .state('choose', {
+                url: "/choose",
+                templateUrl: 'templates/choose.html'
             });
     })
 
