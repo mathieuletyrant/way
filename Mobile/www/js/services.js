@@ -7,22 +7,21 @@ angular.module('services', [])
 
     return {
 
-        goodDealByCategory: function (category, page) {
+        goodDealByCategory: function (category) {
 
             overlay.set(true);
 
             category = category || 'geek';
-            page = page || 1;
 
             var deferred = $q.defer();
 
             $http({
                 method: 'GET',
-                url: config.apiUrl + '/A FAIRE/' + category + '/' + page
+                url: config.apiUrl + '/deal/category/' + category
             })
                 .success(function (result) {
                     overlay.set(false);
-                    deferred.resolve(result);
+                    deferred.resolve(result.deal);
                 })
                 .error(function (result) {
                     overlay.set(false);
@@ -43,11 +42,11 @@ angular.module('services', [])
 
             $http({
                 method: 'GET',
-                url: config.apiUrl + '/A FAIRE/' + id
+                url: config.apiUrl + '/deal/' + id
             })
                 .success(function (result) {
                     overlay.set(false);
-                    deferred.resolve(result);
+                    deferred.resolve(result.deal);
                 })
                 .error(function (result) {
                     overlay.set(false);
@@ -59,9 +58,9 @@ angular.module('services', [])
 
         goodDealPrimary: function (category) {
 
-            var category = category  || 'geek';
-
             overlay.set(true);
+
+            category = category || 'geek';
 
             var deferred = $q.defer();
 
@@ -71,7 +70,7 @@ angular.module('services', [])
             })
                 .success(function (result) {
                     overlay.set(false);
-                    deferred.resolve(result);
+                    deferred.resolve(result.deals);
                 })
                 .error(function (result) {
                     overlay.set(false);
@@ -108,10 +107,6 @@ angular.module('services', [])
 
     this.get = function () {
         return config.currentCategory;
-    };
-
-    this.getId = function(){
-        return config.categoryId;
     };
 
 })

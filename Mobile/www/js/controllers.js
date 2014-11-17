@@ -18,20 +18,62 @@ angular.module('controllers', [])
 /*
  * Home CONTROLLER
  */
-.controller('homeController', function($scope, api, config, category){
+.controller('homeController', function($scope, api, category){
 
-    $scope.category = category.get();
-    $scope.categoryId = category.getId();
+    var category = category.get();
 
-   /* api.goodDealByCategory(config.currentCategory, 1).then(function(result){
-        $scope.secondResult = result;
-    }, function(result){
-        console.log('Error during Home (Second) with CATEGORY : '+config.currentCategory+' : '+result);
-    });*/
-
-    api.goodDealPrimary('geek').then(function(result){
+    api.goodDealPrimary(category).then(function(result){
         $scope.dealPrimary = result;
     });
+
+    api.goodDealByCategory(category).then(function(result){
+        $scope.deals = result;
+    });
+
+})
+
+/*
+ * Deal CONTROLLER
+ */
+.controller('dealController', function($scope, $stateParams, $scope, $window, api){
+
+    var id = $stateParams.id;
+
+    api.goodDealById(id).then(function(result){
+
+        $scope.deal = result;
+
+        var mapOptions = {
+                center: new google.maps.LatLng(result.lat,result.lng),
+                zoom: 14,
+                mapTypeId: google.maps.MapTypeId.ROADMAP,
+                zoomControl: false,
+                mapTypeControl: false
+            },
+            map = new google.maps.Map(document.getElementById("map"), mapOptions),
+            marker = new google.maps.Marker({
+                position: new google.maps.LatLng(result.lat,result.lng),
+                map: map,
+                title: result.name
+            });
+
+    });
+
+    $scope.openExternalMap = function(lat, lon){
+
+        if(ionic.Platform.isIOS() || ionic.Platform.isIPad()){
+            console.log('Launch External apps for maps');
+            $window.location = "maps:daddr="+lat+","+lon;
+        }
+        else if(ionic.Platform.isAndroid()){
+            console.log('Launch External apps for maps');
+            cordova.require('cordova/plugin/phonenavigator').doNavigate(lat, lon, successFn, errorFn);
+        }
+        else{
+            console.error("Unknown platform");
+        }
+
+    };
 
 })
 
@@ -74,29 +116,6 @@ angular.module('controllers', [])
     $scope.share = function (social, text){
         social = social || 'facebook';
         share.seed(social, text);
-    };
-
-})
-
-/*
- * Maps CONTROLLER
- */
-.controller('mapController', function($scope, $window){
-
-    $scope.openExternalMap = function(lat, lon){
-
-        if(ionic.Platform.isIOS() || ionic.Platform.isIPad()){
-            console.log('Launch External apps for maps');
-            $window.location = "maps:daddr="+lat+","+lon;
-        }
-        else if(ionic.Platform.isAndroid()){
-            console.log('Launch External apps for maps');
-            cordova.require('cordova/plugin/phonenavigator').doNavigate(lat, lon, successFn, errorFn);
-        }
-        else{
-            console.error("Unknown platform");
-        }
-
     };
 
 });

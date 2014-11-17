@@ -1,13 +1,12 @@
 .gooddeal {
+  background: url('../img/background.jpg') no-repeat;
   color: white;
-  .map {
-    display: block;
-    width: 100%;
-    height: 150px;
+  a{
+    text-decoration: none;
+    color: #2f3854;
   }
+  .map { display:block; width:100%; height: 150px; }
   .big_article {
-    width: 100%;
-    background: url('../img/background.jpg') no-repeat;
     padding: 1.5em;
     .category {
       text-transform: uppercase;
@@ -27,7 +26,10 @@
       position: absolute;
       top: 2em;
     }
-    p {
+    p.paragraph {
+      p{
+        margin: 0px;
+      }
       margin-top: 6em;
     }
   }

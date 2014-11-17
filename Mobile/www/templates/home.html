@@ -9,15 +9,16 @@
     </ion-header-bar>
 
     <!-- Content -->
-    <ion-content class="content">
+    <ion-content class="content" ng-controller="homeController as homeCtrl">
+
         <!-- Primary Article -->
-        <div class="row section_primary" ng-controller="homeController as homeCtrl">
+        <div class="row section_primary" >
             <div class="col">
-                <a href="#/app/gooddeal/1" nav-clear menu-close>
+                <a href="#/app/gooddeal/{{dealPrimary.id}}" nav-clear menu-close>
                     <article>
-                        <div class="category sortie">Sortie</div>
-                        <p></p>
-                        <img ng-src="img/test.jpg" alt="" width="100%" height="auto"/>
+                        <div class="category {{dealPrimary.section}}">{{dealPrimary.section | uppercase}}</div>
+                        <p>{{dealPrimary.name | limitTo:30}}</p>
+                        <img ng-src="http://wayapi.mathieuletyrant.com/{{dealPrimary.img}}" alt="" width="100%" height="auto"/>
                     </article>
                 </a>
             </div>
@@ -25,30 +26,18 @@
 
         <!-- Others Articles -->
         <div class="row section_second">
-
             <!-- Left Col -->
             <div class="col">
 
                 <!-- Article -->
-                <a href="#/app/gooddeal/1" nav-clear menu-close>
+                <a href="#/app/gooddeal/{{deal.id}}" ng-repeat="deal in deals" ng-hide="$odd">
 
                     <div class="informations">
-                        <div class="category mode">Mode</div>
-                        <p>Belle Epoque !</p>
+                        <div class="category {{deal.section}}">{{deal.section}}</div>
+                        <p>{{deal.name | limitTo:20}}</p>
                     </div>
 
-                    <img src="img/test2.jpg" alt=""/>
-                </a>
-
-                <!-- Article -->
-                <a href="#/app/gooddeal/1" nav-clear menu-close>
-
-                    <div class="informations">
-                        <div class="category sortie">Sortie</div>
-                        <p>Belle Epoque !</p>
-                    </div>
-
-                    <img src="img/test3.jpg" alt=""/>
+                    <img src="http://wayapi.mathieuletyrant.com/{{deal.img}}" alt=""/>
                 </a>
 
             </div>
@@ -57,35 +46,18 @@
             <div class="col">
 
                 <!-- Article -->
-                <a href="#/app/gooddeal/1" nav-clear menu-close>
+                <a href="#/app/gooddeal/{{deal.id}}" ng-repeat="deal in deals" ng-hide="$even">
 
                     <div class="informations">
-                        <div class="category sortie">Sortie</div>
-                        <p>Belle Epoque !</p>
+                        <div class="category {{deal.section}}">{{deal.section}}</div>
+                        <p>{{deal.name | limitTo:20}}</p>
                     </div>
 
-                    <img src="img/test3.jpg" alt=""/>
-                </a>
-
-                <!-- Article -->
-                <a href="#/app/gooddeal/1" nav-clear menu-close>
-
-                    <div class="informations">
-                        <div class="category mode">Mode</div>
-                        <p>Belle Epoque !</p>
-                    </div>
-
-                    <img src="img/test2.jpg" alt=""/>
+                    <img src="http://wayapi.mathieuletyrant.com/{{deal.img}}" alt=""/>
                 </a>
 
             </div>
         </div>
-
-        <!--<ion-infinite-scroll
-                on-infinite="loadMore()"
-                distance="8%"
-                icon="">
-        </ion-infinite-scroll>-->
 
     </ion-content>
 </div>

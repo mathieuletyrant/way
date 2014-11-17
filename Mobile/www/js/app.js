@@ -1,4 +1,4 @@
-angular.module('starter', ['ionic', 'controllers', 'services', 'filters', 'ngMap'])
+angular.module('starter', ['ionic', 'controllers', 'services', 'filters'])
 
     .run(function ($ionicPlatform) {
         $ionicPlatform.ready(function () {
@@ -19,8 +19,7 @@ angular.module('starter', ['ionic', 'controllers', 'services', 'filters', 'ngMap
         token           : 'KDR8u9vuRH8i6hx8V4e6',
         facebookAppApi  : '828582677192624',
         currentCategory : 'badboy',
-        overlay         : false,
-        categoryId      : 4
+        overlay         : false
     })
 
     .config(function ($stateProvider, $urlRouterProvider) {

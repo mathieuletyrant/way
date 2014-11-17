@@ -7909,6 +7909,12 @@ $ios-transition-box-shadow-end: -200px 0px 200px rgba(0,0,0,0.15), -5px 0px 5px 
 .style {
   background-color: #dd9a37; }
 
+.achat {
+  background-color: #e67e22; }
+
+.serie {
+  background-color: #8e44ad; }
+
 /*
   OVERLAY
 */
@@ -7950,14 +7956,16 @@ $ios-transition-box-shadow-end: -200px 0px 200px rgba(0,0,0,0.15), -5px 0px 5px 
   font-size: 1em; }
 
 .gooddeal {
+  background: url('../img/background.jpg') no-repeat;
   color: white; }
+  .gooddeal a {
+    text-decoration: none;
+    color: #2f3854; }
   .gooddeal .map {
     display: block;
     width: 100%;
     height: 150px; }
   .gooddeal .big_article {
-    width: 100%;
-    background: url('../img/background.jpg') no-repeat;
     padding: 1.5em; }
     .gooddeal .big_article .category {
       text-transform: uppercase;
@@ -7975,8 +7983,10 @@ $ios-transition-box-shadow-end: -200px 0px 200px rgba(0,0,0,0.15), -5px 0px 5px 
       border-bottom: 1px solid white;
       position: absolute;
       top: 2em; }
-    .gooddeal .big_article p {
+    .gooddeal .big_article p.paragraph {
       margin-top: 6em; }
+      .gooddeal .big_article p.paragraph p {
+        margin: 0px; }
   .gooddeal .share {
     width: 100%;
     height: 45px;

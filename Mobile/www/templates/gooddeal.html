@@ -9,49 +9,36 @@
     </ion-header-bar>
 
     <!-- Content -->
-    <ion-content class="content gooddeal">
+    <ion-content class="content gooddeal" ng-controller="dealController as dealCtrl">
         <section class="big_article">
             <article>
-                <div class="category sortie">Sortie</div>
-                <h1 class="title">Belle Epoque ! Au Maxim's</h1>
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                    <br/><br/>
-                    Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem.
+                <div class="category {{deal.section}}">{{deal.section}}</div>
+                <h1 class="title">{{deal.name}}</h1>
+                <p class="paragraph" ng-bind-html="deal.description">
                 </p>
             </article>
         </section>
         <section class="share">
-            <h1 class="title">Maxim's</h1>
-            <div class="icon ion-location"></div>
-            <p class="address">3 Rue Royale, 75008 Paris</p>
+
+            <h1 class="title"
+                ng-show="deal.lat != 0 && deal.lng != 0">{{deal.name | limitTo:10}}</h1>
+            <div class="icon ion-location"
+                 ng-show="deal.lat != 0 && deal.lng != 0"></div>
+            <p class="address"
+               ng-show="deal.lat != 0 && deal.lng != 0">{{deal.address}}</p>
+
             <ul ng-controller="shareController as shareCtrl">
                 <li class="icon ion-social-facebook social facebook"
-                    ng-click="share('facebook', 'Belle Epoque ! Au Maxim\'s')"></li>
+                    ng-click="share('facebook', deal.name)"></li>
                 <li class="icon ion-social-twitter social twitter"
-                    ng-click="share('twitter', 'Belle Epoque ! Au Maxim\'s')"></li>
+                    ng-click="share('twitter', deal.name+' sur Way #goodDealWay')"></li>
             </ul>
         </section>
         <section class="map"
-                 ng-controller="mapController as mapCtrl"
-                 ng-click="openExternalMap(48.8608223, 2.4454052)">
-            <map
-                disable-default-u-i="true"
-                disable-double-click-zoom="true"
-                draggable="false"
-                draggable-cursor="help"
-                dragging-cursor="move"
-                keyboard-shortcuts="false"
-                center="48.8608223, 2.4454052"
-                zoom="14"
-                class="map">
-                <marker
-                    position="[48.8608223, 2.4454052]"
-                    animation="Animation.BOUNCE"
-                    visible="true"
-                    icon="img/marker.svg">
-                </marker>
-            </map>
+                 ng-show="deal.lat != 0 && deal.lng != 0"
+                 ng-click="openExternalMap(deal.lat, deal.lng)">
+
+            <div id="map" class="map" data-tap-disabled="true"></div>
         </section>
     </ion-content>
 </div>
