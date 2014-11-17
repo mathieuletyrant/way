@@ -18,30 +18,20 @@ angular.module('controllers', [])
 /*
  * Home CONTROLLER
  */
-.controller('homeController', function($scope, api, config){
+.controller('homeController', function($scope, api, config, category){
 
-    var page = 1;
+    $scope.category = category.get();
+    $scope.categoryId = category.getId();
 
-    api.goodDealByCategory(config.currentCategory, 1).then(function(result){
+   /* api.goodDealByCategory(config.currentCategory, 1).then(function(result){
         $scope.secondResult = result;
     }, function(result){
         console.log('Error during Home (Second) with CATEGORY : '+config.currentCategory+' : '+result);
-    });
+    });*/
 
-    api.goodDealPrimary(config.currentCategory).then(function(result){
-        $scope.primaryResult = result;
-    }, function(result){
-        console.log('Error during Home (Primary) with CATEGORY : '+config.currentCategory+' : '+result);
+    api.goodDealPrimary('geek').then(function(result){
+        $scope.dealPrimary = result;
     });
-
-    $scope.loadMore = function(){
-        page++;
-        api.goodDealByCategory(config.currentCategory, page).then(function(result){
-            $scope.secondResult.push(result);
-        }, function(result){
-            console.log('Error during Home (Second) with CATEGORY : '+config.currentCategory+' : '+result);
-        });
-    }
 
 })
 

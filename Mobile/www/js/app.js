@@ -18,8 +18,9 @@ angular.module('starter', ['ionic', 'controllers', 'services', 'filters', 'ngMap
         apiUrl          : 'http://wayapi.mathieuletyrant.com',
         token           : 'KDR8u9vuRH8i6hx8V4e6',
         facebookAppApi  : '828582677192624',
-        currentCategory : 'geek',
-        overlay         : false
+        currentCategory : 'badboy',
+        overlay         : false,
+        categoryId      : 4
     })
 
     .config(function ($stateProvider, $urlRouterProvider) {
@@ -53,5 +54,12 @@ angular.module('starter', ['ionic', 'controllers', 'services', 'filters', 'ngMap
         // if none of the above states are matched, use this as the fallback
         $urlRouterProvider.otherwise('/app/home');
 
+    })
+
+    /*
+     * Seed private Token to WAY API
+     */
+    .config(function($httpProvider, config){
+        $httpProvider.defaults.headers.common['Auth-Token'] = config.token;
     });
 

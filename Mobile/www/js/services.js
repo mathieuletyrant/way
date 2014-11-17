@@ -39,6 +39,8 @@ angular.module('services', [])
 
             id = id || 1;
 
+            var deferred = $q.defer();
+
             $http({
                 method: 'GET',
                 url: config.apiUrl + '/A FAIRE/' + id
@@ -57,13 +59,15 @@ angular.module('services', [])
 
         goodDealPrimary: function (category) {
 
+            var category = category  || 'geek';
+
             overlay.set(true);
 
-            category = category || 'geek';
+            var deferred = $q.defer();
 
             $http({
                 method: 'GET',
-                url: config.apiUrl + '/A FAIRE/' + category
+                url: config.apiUrl + '/deal/first/'+category
             })
                 .success(function (result) {
                     overlay.set(false);
@@ -104,7 +108,11 @@ angular.module('services', [])
 
     this.get = function () {
         return config.currentCategory;
-    }
+    };
+
+    this.getId = function(){
+        return config.categoryId;
+    };
 
 })
 
