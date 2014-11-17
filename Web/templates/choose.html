@@ -1,357 +1,356 @@
+<div id="wrap_full" class="choose_wrap">
+    <div class="wrap_site">
+        <div class="logo_quizz">
+            <img src="public/img/Logo.svg" width="50" height="50">
+        </div>
+        <div id="container_phase" class="phase_1">
+            <div class="choose_container phase_1">
+                <h2>Adversaire</h2>
+                <h3>Dans quelle catégorie souhaitez vous défier votre ami(e) ?</h3>
+                <div class="container_profils">
+                    <div id="profils_femme" class="profils_femme anim">
+                        <div class="profil">
+                            <div class="profil_image">
+                                <img src="public/img/profils/badgirl.svg" alt="profil badgirl">
+                            </div>
+                            <span class="profil_name">badgirl</span>
+                        </div>
+                        <div class="profil">
+                            <div class="profil_image">
+                                <img src="public/img/profils/geekette.svg" alt="profil geekette">
+                            </div>
+                            <span class="profil_name">geekette</span>
+                        </div>
+                        <div class="profil">
+                            <div class="profil_image">
+                                <img src="public/img/profils/hippie.svg" alt="profil hippie">
+                            </div>
+                            <span class="profil_name">hippie</span>
+                        </div>
+                        <div class="profil">
+                            <div class="profil_image">
+                                <img src="public/img/profils/fleurbleue.svg" alt="profil fleurbleu">
+                            </div>
+                            <span class="profil_name">Fleur bleue</span>
+                        </div>
+                        <div class="profil">
+                            <div class="profil_image">
+                                <img src="public/img/profils/barbie.svg" alt="profil barbie">
+                            </div>
+                            <span class="profil_name">barbie</span>
+                        </div>
 
-	<div id="wrap_full" class="choose_wrap">
-		<div class="wrap_site">
-			<div class="logo_quizz">
-				<img src="public/img/Logo.svg" width="50" height="50">
-			</div>
-			<div id="container_phase" class="phase_1">
-				<div class="choose_container phase_1">
-					<h2>Adversaire</h2>
-					<h3>Dans quelle catégorie souhaitez vous défier votre ami(e) ?</h3>
-					<div class="container_profils">
-						<div id="profils_femme" class="profils_femme anim">
-							<div class="profil">
-								<div class="profil_image">
-									<img src="public/img/profils/badgirl.svg" alt="profil badgirl">					
-								</div>
-								<span class="profil_name">badgirl</span>
-							</div>
-							<div class="profil">
-								<div class="profil_image">
-									<img src="public/img/profils/geekette.svg" alt="profil geekette">					
-								</div>
-								<span class="profil_name">geekette</span>
-							</div>
-							<div class="profil">
-								<div class="profil_image">
-									<img src="public/img/profils/hippie.svg" alt="profil hippie">						
-								</div>
-								<span class="profil_name">hippie</span>
-							</div>
-							<div class="profil">
-								<div class="profil_image">
-									<img src="public/img/profils/fleurbleue.svg" alt="profil fleurbleu">						
-								</div>
-								<span class="profil_name">Fleur bleue</span>
-							</div>
-							<div class="profil">
-								<div class="profil_image">
-									<img src="public/img/profils/barbie.svg" alt="profil barbie">						
-								</div>
-								<span class="profil_name">barbie</span>
-							</div>
+                        <div class="clear"></div>
+                    </div>
 
-							<div class="clear"></div>
-						</div>
 
-						
 
 <!-- METTRE EN FONCTION DU SEXE -->
 
 
-						<!-- <div class="profils_homme anim">
-							<div class="profil">
-								<div class="profil_image">
-									<img src="public/img/profils/geek.svg" alt="profil geek">						
-								</div>
-								<span class="profil_name">Geek</span>
-							</div>
-							<div class="profil">
-								<div class="profil_image">
-									<img src="public/img/profils/guitar.svg" alt="profil badboy">						
-								</div>
-								<span class="profil_name">Badboy</span>
-							</div>
-							<div class="profil">
-								<div class="profil_image">
-									<img src="public/img/profils/hypster.svg" alt="profil hipster">						
-								</div>
-								<span class="profil_name">hipster</span>
-							</div>
-							<div class="profil">
-								<div class="profil_image">
-									<img src="public/img/profils/dragqueen.svg" alt="profil dragqueen">				
-								</div>
-								<span class="profil_name">drag queen</span>
-							</div>
-							<div class="profil">
-								<div class="profil_image">
-									<img src="public/img/profils/keke.svg" alt="profil keke">						
-								</div>
-								<span class="profil_name">keke</span>
-							</div>
-							<div class="clear"></div>
-						</div> -->				
-					</div>
-				</div>
-				<div class="choose_container phase_2">
-					<h2>Adversaire</h2>
-					<h3>Quel ami(e) voulez-vous défier dans la catégorie {{catégorie}} ?</h3>
-					<div class="choose_user">
-						<div class="onleft">
-							<h4>Défiez un ami en lui envoyant un mail</h4>
-							<p>*Attention votre ami doit être du même sexe que vous</p>
-							<form id="mail_to_user">
-								<label for="mail">Son adresse mail</label>
-								<div class="clear"></div>
-								<input type="mail" id="mail" placeholder="johndoe@gmail.com">
-								<span class="mail_ico"></span>
-								<div class="clear"></div>
-								<label for="message_mail">Votre message</label>
-								<div class="clear"></div>
-								<textarea id="message_mail"></textarea>
-								<div class="clear"></div>
-								<input type="submit" value="envoyer">
-							</form>
-						</div>
-						<div class="onright">
-							<div class="or"></div>
-							<h4>Défiez un autre utilisateur de WAY</h4>
-							<p>*L’utilisateur que vous défiez ne peut être que du même sexe que vous ! </p>
-							<form id="form_choose_user">
-								<input type="submit" class="search_ico" value="">
-								<input type="text" placeholder="Rechercher des amis">
-								<div class="clear"></div>
-							</form>
-							<span id="next_user"></span>
-							<span id="previous_user"></span>
-							<div class="user_container_mask">
-								<div id="user_container" class="user_container">
-									<div class="huit_user">
-										<div class="card_user">
-											<div class="photo_user"
-											style="background: url(public/img/julia.png) no-repeat center; background-size: cover;">
-												<div class="mask"></div>
-											</div>
-											<span class="name_user">Julia Parrinello</span>
-										</div>
-										<div class="card_user">
-											<div class="photo_user"
-											style="background: url(public/img/julia.png) no-repeat center; background-size: cover;">
-												<div class="mask"></div>
-											</div>
-											<span class="name_user">Julia Parrinello</span>
-										</div>
-										<div class="card_user">
-											<div class="photo_user"
-											style="background: url(public/img/julia.png) no-repeat center; background-size: cover;">
-												<div class="mask"></div>
-											</div>
-											<span class="name_user">Julia Parrinello</span>
-										</div>
-										<div class="card_user">
-											<div class="photo_user"
-											style="background: url(public/img/julia.png) no-repeat center; background-size: cover;">
-												<div class="mask"></div>
-											</div>
-											<span class="name_user">Julia Parrinello</span>
-										</div>
-										<div class="card_user">
-											<div class="photo_user"
-											style="background: url(public/img/julia.png) no-repeat center; background-size: cover;">
-												<div class="mask"></div>
-											</div>
-											<span class="name_user">Julia Parrinello</span>
-										</div>
-										<div class="card_user">
-											<div class="photo_user"
-											style="background: url(public/img/julia.png) no-repeat center; background-size: cover;">
-												<div class="mask"></div>
-											</div>
-											<span class="name_user">Julia Parrinello</span>
-										</div>
-										<div class="card_user">
-											<div class="photo_user"
-											style="background: url(public/img/julia.png) no-repeat center; background-size: cover;">
-												<div class="mask"></div>
-											</div>
-											<span class="name_user">Julia Parrinello</span>
-										</div>
-										<div class="card_user active">
-											<div class="photo_user"
-											style="background: url(public/img/julia.png) no-repeat center; background-size: cover;">
-												<div class="mask"></div>
-											</div>
-											<span class="name_user">Julia Parrinello</span>
-										</div>
-									</div>
-									<div class="huit_user">
-										<div class="card_user">
-											<div class="photo_user"
-											style="background: url(public/img/julia.png) no-repeat center; background-size: cover;">
-												<div class="mask"></div>
-											</div>
-											<span class="name_user">Julia Parrinello</span>
-										</div>
-										<div class="card_user">
-											<div class="photo_user"
-											style="background: url(public/img/julia.png) no-repeat center; background-size: cover;">
-												<div class="mask"></div>
-											</div>
-											<span class="name_user">Julia Parrinello</span>
-										</div>
-										<div class="card_user">
-											<div class="photo_user"
-											style="background: url(public/img/julia.png) no-repeat center; background-size: cover;">
-												<div class="mask"></div>
-											</div>
-											<span class="name_user">Julia Parrinello</span>
-										</div>
-										<div class="card_user">
-											<div class="photo_user"
-											style="background: url(public/img/julia.png) no-repeat center; background-size: cover;">
-												<div class="mask"></div>
-											</div>
-											<span class="name_user">Julia Parrinello</span>
-										</div>
-										<div class="card_user">
-											<div class="photo_user"
-											style="background: url(public/img/julia.png) no-repeat center; background-size: cover;">
-												<div class="mask"></div>
-											</div>
-											<span class="name_user">Julia Parrinello</span>
-										</div>
-										<div class="card_user">
-											<div class="photo_user"
-											style="background: url(public/img/julia.png) no-repeat center; background-size: cover;">
-												<div class="mask"></div>
-											</div>
-											<span class="name_user">Julia Parrinello</span>
-										</div>
-										<div class="card_user">
-											<div class="photo_user"
-											style="background: url(public/img/julia.png) no-repeat center; background-size: cover;">
-												<div class="mask"></div>
-											</div>
-											<span class="name_user">Julia Parrinello</span>
-										</div>
-										<div class="card_user active">
-											<div class="photo_user"
-											style="background: url(public/img/julia.png) no-repeat center; background-size: cover;">
-												<div class="mask"></div>
-											</div>
-											<span class="name_user">Julia Parrinello</span>
-										</div>
-									</div>
-									<div class="huit_user">
-										<div class="card_user">
-											<div class="photo_user"
-											style="background: url(public/img/julia.png) no-repeat center; background-size: cover;">
-												<div class="mask"></div>
-											</div>
-											<span class="name_user">Julia Parrinello</span>
-										</div>
-										<div class="card_user">
-											<div class="photo_user"
-											style="background: url(public/img/julia.png) no-repeat center; background-size: cover;">
-												<div class="mask"></div>
-											</div>
-											<span class="name_user">Julia Parrinello</span>
-										</div>
-										<div class="card_user">
-											<div class="photo_user"
-											style="background: url(public/img/julia.png) no-repeat center; background-size: cover;">
-												<div class="mask"></div>
-											</div>
-											<span class="name_user">Julia Parrinello</span>
-										</div>
-										<div class="card_user">
-											<div class="photo_user"
-											style="background: url(public/img/julia.png) no-repeat center; background-size: cover;">
-												<div class="mask"></div>
-											</div>
-											<span class="name_user">Julia Parrinello</span>
-										</div>
-										<div class="card_user">
-											<div class="photo_user"
-											style="background: url(public/img/julia.png) no-repeat center; background-size: cover;">
-												<div class="mask"></div>
-											</div>
-											<span class="name_user">Julia Parrinello</span>
-										</div>
-										<div class="card_user">
-											<div class="photo_user"
-											style="background: url(public/img/julia.png) no-repeat center; background-size: cover;">
-												<div class="mask"></div>
-											</div>
-											<span class="name_user">Julia Parrinello</span>
-										</div>
-										<div class="card_user">
-											<div class="photo_user"
-											style="background: url(public/img/julia.png) no-repeat center; background-size: cover;">
-												<div class="mask"></div>
-											</div>
-											<span class="name_user">Julia Parrinello</span>
-										</div>
-										<div class="card_user active">
-											<div class="photo_user"
-											style="background: url(public/img/julia.png) no-repeat center; background-size: cover;">
-												<div class="mask"></div>
-											</div>
-											<span class="name_user">Julia Parrinello</span>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+                    <!-- <div class="profils_homme anim">
+                        <div class="profil">
+                            <div class="profil_image">
+                                <img src="public/img/profils/geek.svg" alt="profil geek">
+                            </div>
+                            <span class="profil_name">Geek</span>
+                        </div>
+                        <div class="profil">
+                            <div class="profil_image">
+                                <img src="public/img/profils/guitar.svg" alt="profil badboy">
+                            </div>
+                            <span class="profil_name">Badboy</span>
+                        </div>
+                        <div class="profil">
+                            <div class="profil_image">
+                                <img src="public/img/profils/hypster.svg" alt="profil hipster">
+                            </div>
+                            <span class="profil_name">hipster</span>
+                        </div>
+                        <div class="profil">
+                            <div class="profil_image">
+                                <img src="public/img/profils/dragqueen.svg" alt="profil dragqueen">
+                            </div>
+                            <span class="profil_name">drag queen</span>
+                        </div>
+                        <div class="profil">
+                            <div class="profil_image">
+                                <img src="public/img/profils/keke.svg" alt="profil keke">
+                            </div>
+                            <span class="profil_name">keke</span>
+                        </div>
+                        <div class="clear"></div>
+                    </div> -->
+                </div>
+            </div>
+            <div class="choose_container phase_2">
+                <h2>Adversaire</h2>
+                <h3>Quel ami(e) voulez-vous défier dans la catégorie {{catégorie}} ?</h3>
+                <div class="choose_user">
+                    <div class="onleft">
+                        <h4>Défiez un ami en lui envoyant un mail</h4>
+                        <p>*Attention votre ami doit être du même sexe que vous</p>
+                        <form id="mail_to_user">
+                            <label for="mail">Son adresse mail</label>
+                            <div class="clear"></div>
+                            <input type="mail" id="mail" placeholder="johndoe@gmail.com">
+                            <span class="mail_ico"></span>
+                            <div class="clear"></div>
+                            <label for="message_mail">Votre message</label>
+                            <div class="clear"></div>
+                            <textarea id="message_mail"></textarea>
+                            <div class="clear"></div>
+                            <input type="submit" value="envoyer">
+                        </form>
+                    </div>
+                    <div class="onright">
+                        <div class="or"></div>
+                        <h4>Défiez un autre utilisateur de WAY</h4>
+                        <p>*L’utilisateur que vous défiez ne peut être que du même sexe que vous ! </p>
+                        <form id="form_choose_user">
+                            <input type="submit" class="search_ico" value="">
+                            <input type="text" placeholder="Rechercher des amis">
+                            <div class="clear"></div>
+                        </form>
+                        <span id="next_user"></span>
+                        <span id="previous_user"></span>
+                        <div class="user_container_mask">
+                            <div id="user_container" class="user_container">
+                                <div class="huit_user">
+                                    <div class="card_user">
+                                        <div class="photo_user"
+                                        style="background: url(public/img/julia.png) no-repeat center; background-size: cover;">
+                                            <div class="mask"></div>
+                                        </div>
+                                        <span class="name_user">Julia Parrinello</span>
+                                    </div>
+                                    <div class="card_user">
+                                        <div class="photo_user"
+                                        style="background: url(public/img/julia.png) no-repeat center; background-size: cover;">
+                                            <div class="mask"></div>
+                                        </div>
+                                        <span class="name_user">Julia Parrinello</span>
+                                    </div>
+                                    <div class="card_user">
+                                        <div class="photo_user"
+                                        style="background: url(public/img/julia.png) no-repeat center; background-size: cover;">
+                                            <div class="mask"></div>
+                                        </div>
+                                        <span class="name_user">Julia Parrinello</span>
+                                    </div>
+                                    <div class="card_user">
+                                        <div class="photo_user"
+                                        style="background: url(public/img/julia.png) no-repeat center; background-size: cover;">
+                                            <div class="mask"></div>
+                                        </div>
+                                        <span class="name_user">Julia Parrinello</span>
+                                    </div>
+                                    <div class="card_user">
+                                        <div class="photo_user"
+                                        style="background: url(public/img/julia.png) no-repeat center; background-size: cover;">
+                                            <div class="mask"></div>
+                                        </div>
+                                        <span class="name_user">Julia Parrinello</span>
+                                    </div>
+                                    <div class="card_user">
+                                        <div class="photo_user"
+                                        style="background: url(public/img/julia.png) no-repeat center; background-size: cover;">
+                                            <div class="mask"></div>
+                                        </div>
+                                        <span class="name_user">Julia Parrinello</span>
+                                    </div>
+                                    <div class="card_user">
+                                        <div class="photo_user"
+                                        style="background: url(public/img/julia.png) no-repeat center; background-size: cover;">
+                                            <div class="mask"></div>
+                                        </div>
+                                        <span class="name_user">Julia Parrinello</span>
+                                    </div>
+                                    <div class="card_user active">
+                                        <div class="photo_user"
+                                        style="background: url(public/img/julia.png) no-repeat center; background-size: cover;">
+                                            <div class="mask"></div>
+                                        </div>
+                                        <span class="name_user">Julia Parrinello</span>
+                                    </div>
+                                </div>
+                                <div class="huit_user">
+                                    <div class="card_user">
+                                        <div class="photo_user"
+                                        style="background: url(public/img/julia.png) no-repeat center; background-size: cover;">
+                                            <div class="mask"></div>
+                                        </div>
+                                        <span class="name_user">Julia Parrinello</span>
+                                    </div>
+                                    <div class="card_user">
+                                        <div class="photo_user"
+                                        style="background: url(public/img/julia.png) no-repeat center; background-size: cover;">
+                                            <div class="mask"></div>
+                                        </div>
+                                        <span class="name_user">Julia Parrinello</span>
+                                    </div>
+                                    <div class="card_user">
+                                        <div class="photo_user"
+                                        style="background: url(public/img/julia.png) no-repeat center; background-size: cover;">
+                                            <div class="mask"></div>
+                                        </div>
+                                        <span class="name_user">Julia Parrinello</span>
+                                    </div>
+                                    <div class="card_user">
+                                        <div class="photo_user"
+                                        style="background: url(public/img/julia.png) no-repeat center; background-size: cover;">
+                                            <div class="mask"></div>
+                                        </div>
+                                        <span class="name_user">Julia Parrinello</span>
+                                    </div>
+                                    <div class="card_user">
+                                        <div class="photo_user"
+                                        style="background: url(public/img/julia.png) no-repeat center; background-size: cover;">
+                                            <div class="mask"></div>
+                                        </div>
+                                        <span class="name_user">Julia Parrinello</span>
+                                    </div>
+                                    <div class="card_user">
+                                        <div class="photo_user"
+                                        style="background: url(public/img/julia.png) no-repeat center; background-size: cover;">
+                                            <div class="mask"></div>
+                                        </div>
+                                        <span class="name_user">Julia Parrinello</span>
+                                    </div>
+                                    <div class="card_user">
+                                        <div class="photo_user"
+                                        style="background: url(public/img/julia.png) no-repeat center; background-size: cover;">
+                                            <div class="mask"></div>
+                                        </div>
+                                        <span class="name_user">Julia Parrinello</span>
+                                    </div>
+                                    <div class="card_user active">
+                                        <div class="photo_user"
+                                        style="background: url(public/img/julia.png) no-repeat center; background-size: cover;">
+                                            <div class="mask"></div>
+                                        </div>
+                                        <span class="name_user">Julia Parrinello</span>
+                                    </div>
+                                </div>
+                                <div class="huit_user">
+                                    <div class="card_user">
+                                        <div class="photo_user"
+                                        style="background: url(public/img/julia.png) no-repeat center; background-size: cover;">
+                                            <div class="mask"></div>
+                                        </div>
+                                        <span class="name_user">Julia Parrinello</span>
+                                    </div>
+                                    <div class="card_user">
+                                        <div class="photo_user"
+                                        style="background: url(public/img/julia.png) no-repeat center; background-size: cover;">
+                                            <div class="mask"></div>
+                                        </div>
+                                        <span class="name_user">Julia Parrinello</span>
+                                    </div>
+                                    <div class="card_user">
+                                        <div class="photo_user"
+                                        style="background: url(public/img/julia.png) no-repeat center; background-size: cover;">
+                                            <div class="mask"></div>
+                                        </div>
+                                        <span class="name_user">Julia Parrinello</span>
+                                    </div>
+                                    <div class="card_user">
+                                        <div class="photo_user"
+                                        style="background: url(public/img/julia.png) no-repeat center; background-size: cover;">
+                                            <div class="mask"></div>
+                                        </div>
+                                        <span class="name_user">Julia Parrinello</span>
+                                    </div>
+                                    <div class="card_user">
+                                        <div class="photo_user"
+                                        style="background: url(public/img/julia.png) no-repeat center; background-size: cover;">
+                                            <div class="mask"></div>
+                                        </div>
+                                        <span class="name_user">Julia Parrinello</span>
+                                    </div>
+                                    <div class="card_user">
+                                        <div class="photo_user"
+                                        style="background: url(public/img/julia.png) no-repeat center; background-size: cover;">
+                                            <div class="mask"></div>
+                                        </div>
+                                        <span class="name_user">Julia Parrinello</span>
+                                    </div>
+                                    <div class="card_user">
+                                        <div class="photo_user"
+                                        style="background: url(public/img/julia.png) no-repeat center; background-size: cover;">
+                                            <div class="mask"></div>
+                                        </div>
+                                        <span class="name_user">Julia Parrinello</span>
+                                    </div>
+                                    <div class="card_user active">
+                                        <div class="photo_user"
+                                        style="background: url(public/img/julia.png) no-repeat center; background-size: cover;">
+                                            <div class="mask"></div>
+                                        </div>
+                                        <span class="name_user">Julia Parrinello</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
-	<script type="text/javascript">
-		var ct = document.getElementById('container_phase');
-		var pro = document.getElementsByClassName('profil_name');
-		var nb_user = document.getElementsByClassName('huit_user');
-		var user_ct = document.getElementById('user_container')
-		var next = document.getElementById('next_user');
-		var previous = document.getElementById('previous_user');
-		var count = 1;
-		var margin = 0;
+<script type="text/javascript-lazy">
+    var ct = document.getElementById('container_phase');
+    var pro = document.getElementsByClassName('profil_name');
+    var nb_user = document.getElementsByClassName('huit_user');
+    var user_ct = document.getElementById('user_container')
+    var next = document.getElementById('next_user');
+    var previous = document.getElementById('previous_user');
+    var count = 1;
+    var margin = 0;
 
-		user_ct.style.width = 360 * nb_user.length + "px";
+    user_ct.style.width = 360 * nb_user.length + "px";
 
-		next.addEventListener('click',animeUserNext, false);
-		previous.addEventListener('click',animeUserPrevious, false);
+    next.addEventListener('click',animeUserNext, false);
+    previous.addEventListener('click',animeUserPrevious, false);
 
-		for (var i = 0; i < pro.length; i++) {
-			pro[i].addEventListener('click', moveIt, false);
-		}
+    for (var i = 0; i < pro.length; i++) {
+        pro[i].addEventListener('click', moveIt, false);
+    }
 
-		function moveIt(e){
-			e.preventDefault();
+    function moveIt(e){
+        e.preventDefault();
 
-			ct.classList.remove('phase_1');
-			ct.classList.add('phase_2');
-		}
+        ct.classList.remove('phase_1');
+        ct.classList.add('phase_2');
+    }
 
-		function animeUserNext(e){
-			e.preventDefault();
+    function animeUserNext(e){
+        e.preventDefault();
 
-			margin = margin + 360;
+        margin = margin + 360;
 
-			if (count == nb_user.length) {
-				return;
-			}
-			if(count == 1){
-				previous.style.display = "none";
-			}
+        if (count == nb_user.length) {
+            return;
+        }
+        if(count == 1){
+            previous.style.display = "none";
+        }
 
-			previous.style.display = "block";
-			
-			user_ct.style.marginLeft = "-" + margin + "px";
-			count++;
-		}
+        previous.style.display = "block";
 
-		function animeUserPrevious(e){
-			e.preventDefault();
+        user_ct.style.marginLeft = "-" + margin + "px";
+        count++;
+    }
 
-			console.log(user_ct.style.marginLeft);
-			margin = margin - 360;
-			user_ct.style.marginLeft =  "-" + margin + "px";
-			
-			count--;
+    function animeUserPrevious(e){
+        e.preventDefault();
 
-		}
-	</script>
+        console.log(user_ct.style.marginLeft);
+        margin = margin - 360;
+        user_ct.style.marginLeft =  "-" + margin + "px";
+
+        count--;
+
+    }
+</script>
