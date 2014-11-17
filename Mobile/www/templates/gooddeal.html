@@ -9,7 +9,7 @@
     </ion-header-bar>
 
     <!-- Content -->
-    <ion-content class="content gooddeal" ng-controller="dealController as dealCtrl">
+    <ion-content class="content gooddeal" ng-controller="dealController as dealCtrl" ng-show="ready">
         <section class="big_article">
             <article>
                 <div class="category {{deal.section}}">{{deal.section}}</div>
@@ -26,6 +26,8 @@
                  ng-show="deal.lat != 0 && deal.lng != 0"></div>
             <p class="address"
                ng-show="deal.lat != 0 && deal.lng != 0">{{deal.address}}</p>
+
+            <h1 class="share-it" ng-show="deal.lat == 0 && deal.lng == 0">Partager : </h1>
 
             <ul ng-controller="shareController as shareCtrl">
                 <li class="icon ion-social-facebook social facebook"

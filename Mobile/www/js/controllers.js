@@ -35,14 +35,19 @@ angular.module('controllers', [])
 /*
  * Deal CONTROLLER
  */
-.controller('dealController', function($scope, $stateParams, $scope, $window, api){
+.controller('dealController', function($scope, $stateParams, $scope, $window, api, category){
 
     var id = $stateParams.id;
+
+    $scope.ready = category.get(); // Little Fix :)
 
     api.goodDealById(id).then(function(result){
 
         $scope.deal = result;
 
+        /*
+         * Need Optimise this later
+         */
         var mapOptions = {
                 center: new google.maps.LatLng(result.lat,result.lng),
                 zoom: 14,

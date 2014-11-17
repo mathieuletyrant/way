@@ -7965,6 +7965,11 @@ $ios-transition-box-shadow-end: -200px 0px 200px rgba(0,0,0,0.15), -5px 0px 5px 
     display: block;
     width: 100%;
     height: 150px; }
+  .gooddeal .share-it {
+    font-size: 1em;
+    color: #828282;
+    padding-top: 15px;
+    padding-left: 20px; }
   .gooddeal .big_article {
     padding: 1.5em; }
     .gooddeal .big_article .category {
