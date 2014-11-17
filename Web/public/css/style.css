@@ -1255,13 +1255,13 @@ footer p {
 }
 
 #container_phase.phase_1 .choose_container.phase_2 {
-    -webkit-transform: translate3d(1000px, 0, 0);
-            transform: translate3d(1000px, 0, 0);
+    -webkit-transform: translate3d(1400px, 0, 0);
+            transform: translate3d(1400px, 0, 0);
 }
 
 #container_phase.phase_2 .choose_container.phase_1 {
-    -webkit-transform: translate3d(-1000px, 0, 0);
-            transform: translate3d(-1000px, 0, 0);
+    -webkit-transform: translate3d(-1400px, 0, 0);
+            transform: translate3d(-1400px, 0, 0);
 }
 
 #container_phase.phase_2 .choose_container.phase_12 {
@@ -1278,7 +1278,7 @@ footer p {
     left: 50%;
     margin-top: -220px;
     margin-left: -595px;
-    transition: all 1s;
+    transition: all 1.5s;
 }
 
 .choose_container h2 {
