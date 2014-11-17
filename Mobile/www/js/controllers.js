@@ -112,7 +112,13 @@ angular.module('controllers', [])
 
     $scope.setCategory = function (value) {
         category.set(value);
-        $state.go('app.home');
+        if($state.current.url == '/home'){
+            $state.transitionTo('app.home', null, {'reload':true});
+        }
+        else{
+            $state.go('app.home');
+        }
+
     };
 
 })
