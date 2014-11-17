@@ -17,7 +17,7 @@ class UsersController extends Controller{
 				$this->sessionSet('user', $login);
 				$this->alert('alert alert-success', "Authentification reussi");
 				if (!empty($_SESSION['redirect'])) {
-					$this->redirect($_SESSION['redirect']['from']);
+					$f3->reroute($_SESSION['redirect']['from']);
 				}
 			}else{
 				$this->alert('alert alert-danger', "Nom d'utilisateur ou mot de passe incorrect");

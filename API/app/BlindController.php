@@ -17,10 +17,15 @@ class BlindController extends Controller {
 	public function singleplayer($f3, $d){
 
 		$categories = $this->Category->getBySex($d['sex']);
+		$questions = array();
 
 		foreach ($categories as $key => $category) {
-			$questions = $this->Question->getByCategory($category['id'], $limit = 4);
+			$question = $this->Question->getByCategory($category['id'], $limit = 4);
+			if (!empty($question)) {
+				$questions = $question;
+			}
 		}
+
 
 		if(!empty($questions)){
 			echo $this->Question->encode('questions', $questions);

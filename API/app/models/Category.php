@@ -11,7 +11,7 @@ class Category extends Model{
 	}
 
 	public function getBySex($sex){
-		return $this->db->exec('SELECT * FROM ' . $this->table . ' WHERE sex = :sex OR sex = "all"',
+		return $this->db->exec('SELECT * FROM ' . $this->table . ' WHERE sex = :sex',
 			array('sex' => $sex));
 	}
 
