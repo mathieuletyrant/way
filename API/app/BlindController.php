@@ -19,7 +19,6 @@ class BlindController extends Controller {
 		$categories = $this->Category->getBySex($d['sex']);
 
 		foreach ($categories as $key => $category) {
-			// $questions[$category['name']] = $this->Question->getByCategory($category['id'], $limit = 4);
 			$questions = $this->Question->getByCategory($category['id'], $limit = 4);
 		}
 
