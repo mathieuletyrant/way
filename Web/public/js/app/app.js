@@ -10,7 +10,7 @@ angular.module('app', ['ui.router', 'facebook', 'ngStorage', 'ngAnimate'])
         token                   : 'KDR8u9vuRH8i6hx8V4e6',
         facebookAppApi          : '828582677192624',
         intervalNotification    : 1,
-        timeMusic               : 10,
+        timeMusic               : 15,
         overlay                 : false
     })
 
