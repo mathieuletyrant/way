@@ -116,9 +116,9 @@ class UsersController extends Controller{
 
 		$profil = array_search(max($total), $total);
 
-		if($total_sum = array_sum($total) != 0){
+		if(($total_sum = array_sum($total)) != 0){
 			foreach ($total as $key => $t) {
-				$total[$key] = ($t * 100) / $total_sum;
+				$total[$key] = ($t * 100) / $total_sum . '%';
 			}
 		}
 
