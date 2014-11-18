@@ -1,4 +1,4 @@
-angular.module('starter', ['ionic', 'controllers', 'services', 'filters'])
+angular.module('starter', ['ionic', 'controllers', 'services'])
 
     .run(function ($ionicPlatform) {
         $ionicPlatform.ready(function () {
@@ -59,6 +59,9 @@ angular.module('starter', ['ionic', 'controllers', 'services', 'filters'])
      * Seed private Token to WAY API
      */
     .config(function($httpProvider, config){
+        // Enable Cache for $http request
+        $httpProvider.defaults.cache = true;
+        // Add token for $http request
         $httpProvider.defaults.headers.common['Auth-Token'] = config.token;
     });
 
