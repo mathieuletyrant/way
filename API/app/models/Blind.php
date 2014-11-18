@@ -30,7 +30,6 @@ class Blind extends Model{
 			'blind_id' => $blind_id
 			));
 		return ($blind) ? true : false;
-
 	}
 
 	public function validate($blind){

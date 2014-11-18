@@ -33,6 +33,21 @@ class UserResponse extends Model{
 		return $validate;
 	}
 
+	public function getTrue($blind_id, $category_id){
+		$user_responses = $this->db->exec('SELECT * FROM ' . $this->table . '
+			JOIN questions ON ' . $this->table . '.question_id = questions.id
+			JOIN answers  ON ' . $this->table . '.response_id = answers.id
+			WHERE questions.category_id = :category_id
+			AND answers.status = :status
+			AND ' . $this->table . '.blind_id = :blind_id',
+			array(
+				'category_id' => $category_id,
+				'status' => true,
+				'blind_id' => $blind_id
+			));
+		return (!empty($user_responses)) ? $user_responses : false;
+	}
+
 }
 
 ?>

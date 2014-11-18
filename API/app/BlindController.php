@@ -102,8 +102,6 @@ class BlindController extends Controller {
 
 
 
-
-
 }
 
 

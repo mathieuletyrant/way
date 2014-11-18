@@ -2,7 +2,7 @@
 
 class UsersController extends Controller{
 
-	public $uses = array('User', 'Category');
+	public $uses = array('User', 'Category', 'UserResponse', 'Blind');
 
 	function __construct() {
 		parent::__construct();
@@ -77,6 +77,55 @@ class UsersController extends Controller{
 		}else{
 			$this->send_message(array('code' => '400', 'message' => 'category not found'));
 		}
+	}
+
+	public function profil($f3){
+		$total = array();
+		$blinds = $this->Blind->get(array(
+			'conditions' => array(
+				'user_id' => $f3->get('PARAMS.facebook_id')
+				)
+			));
+		$categories = $this->Category->get();
+		foreach ($categories as $key => $category) {
+			$total[$category['name']] = 0;
+		}
+
+		if (!empty($blinds) && count($blinds) == count($blinds, COUNT_RECURSIVE)){
+			$tmp = $blinds;
+			unset($blinds);
+			$blinds[0] = $tmp;
+		}
+
+
+		if(empty($blinds)) {
+			$this->send_message(array(
+				'code' => '400',
+				'message' => 'user never played blind test'));
+			return;
+		}
+
+		foreach ($blinds as $key => $blind) {
+			foreach ($categories as $key => $category) {
+				$responses = $this->UserResponse->getTrue($blind['id'], $category['id']);
+				if(!empty($responses)){
+					$total[$category['name']] += count($responses);
+				}
+			}
+		}
+
+		$profil = array_search(max($total), $total);
+
+		if($total_sum = array_sum($total) != 0){
+			foreach ($total as $key => $t) {
+				$total[$key] = ($t * 100) / $total_sum;
+			}
+		}
+
+		$this->send_message(array('user' => array(
+				'profil' => $profil,
+				'total' => $total
+			)));
 	}
 
 }
