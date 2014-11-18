@@ -1702,6 +1702,72 @@ PAGE QUIZZ
         position: relative;
         right: 15px;
     }
+    
+    #wrap_full {
+        overflow: inherit;
+    }
+
+/*********************************
+
+PAGE QUIZZ 
+
+*********************************/
+
+    #wrap_full.quizz_wrap {
+        min-height: 1100px;
+    }
+
+    #stats.hided, #profil {
+        -webkit-transform: none;
+        transform: none;
+    }
+
+    #stats .allStats {
+        width: 100%;
+        height: 100%;
+        position: relative;
+        top: 0;
+        left: 0;
+        margin: 0;
+    }
+
+    canvas {
+        margin-left: 50px;
+        margin-right: 50px;
+        float: left;
+    }
+
+    .legendes { float:  right; margin-right: 50px; }
+
+    #profil, #stats {
+        position: relative;
+        width: 100%;
+        height: 40%;
+    }
+
+    #profil.on_right {
+        transform: none;
+        -webkit-transform: none;
+    }
+
+    #photo_profil {
+        display: none!important;
+    }
+
+    #profil .infos_profil {
+        position: relative;
+        top: 0;
+        left: 0;
+        margin: 0;
+    }
+
+    .profil_citation {
+        line-height: 30px;
+    }
+
+    .container_btn .btn {
+        margin-bottom: 30px;
+    }
 
 
 
@@ -1769,4 +1835,57 @@ PAGE QUIZZ
     .how_to {
         display: none;
     }
+
+
+/*********************************
+
+PAGE PROFIL
+
+*********************************/
+
+    #wrap_full.wrap_profil {
+        background: #34495e;
+        min-height: 1400px;
+    }
+
+    .allStats {
+        text-align: center;
+    }
+
+    #stats {
+        height: auto;
+    }
+
+    #stats .legendes {
+        margin: 0 auto;
+        width: 200px;
+        text-align: left;
+        margin-top: 30px;
+    }
+
+    canvas {
+       margin: 0 auto;
+       float: none;
+    }
+
+    .legendes { float:  none; margin: 0 auto; }
+        #profil .infos_profil {
+        padding: 0;
+    }
+
+    #profil .infos_profil img {
+        display: inline;
+    }
+
+    #profil .infos_profil h2 {
+        width: 100%;
+        font-size: 60px;
+        margin-top: 20px;
+    }
+
+    .container_btn,  #profil .infos_profil {
+        text-align: center;
+        margin-top: 50px;
+    }
+
 }
