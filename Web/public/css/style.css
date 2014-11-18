@@ -1642,6 +1642,71 @@ div.or {
         padding-top: 0px;
     }
 
+    
+/*********************************
+
+PAGE QUIZZ 
+
+*********************************/
+
+    #wrap_full.quizz_wrap {
+        overflow: inherit;
+        min-height: 1100px;
+    }
+
+    .logo_quizz {
+        margin-left: 20px; 
+    }
+
+    .avancement, .container_rep {
+        width: 100%;
+    }
+
+    #container_question {
+        height: auto;
+        width: 100%;
+        position: relative;
+        margin: 0;
+        top: 0;
+        left: 0;
+        padding: 20px;
+    }
+
+    .progress_music {
+        width: 90%;
+    }
+
+    .reponse {
+        width: 40%;
+        margin: 5% 5%;
+    } 
+
+    .reponse_titre {
+        font-size: 15px;
+    }
+
+    .quizz_timeline {
+        width: 100%;
+    }
+
+    .quizz_timeline:after {
+        display: none;
+    }
+
+    .quizz_timeline .question {
+        margin:  0 20px;
+        margin-bottom: 20px;
+    }
+    
+    .quizz_timeline .last_question {
+        position: relative;
+        right: 15px;
+    }
+
+
+
+
+
 
 
 }
