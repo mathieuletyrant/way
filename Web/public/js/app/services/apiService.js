@@ -109,6 +109,12 @@ angular.module('app').factory('api', function ($http, $q, config, overlay) {
             return deferred.promise;
         },
 
+        /*
+         * @name Start a blind and add it in API
+         * @param string type
+         * @param int userId
+         * @param int friendId
+         */
         blindStart: function (type, userId, friendId) {
 
             var param = {
@@ -143,6 +149,12 @@ angular.module('app').factory('api', function ($http, $q, config, overlay) {
             return deferred.promise;
         },
 
+        /*
+         * @name Add in API the response choose
+         * @param int blindId
+         * @param int questionId
+         * @param int|null responseId
+         */
         blindResponse: function(blindId, questionId, responseId){
 
             var param = {
