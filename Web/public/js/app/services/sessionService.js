@@ -16,7 +16,7 @@ angular.module('app').factory('session', function ($sessionStorage) {
         },
 
         getSexe: function(){
-            return $sessionStorage.sex;
+            return $sessionStorage.user.sex;
         },
 
         setUserCategory: function (categoryName) {

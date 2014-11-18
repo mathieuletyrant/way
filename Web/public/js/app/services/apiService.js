@@ -14,7 +14,7 @@ angular.module('app').factory('api', function ($http, $q, config, overlay) {
          */
         single: function (sexe) {
 
-            sexe = sexe || 'female';
+            console.log(sexe);
 
             overlay.set(true);
 

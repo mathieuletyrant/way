@@ -15,7 +15,7 @@
                 </div>
                 <span class="duree">{{countDown}}s</span>
                 <div class="clear"></div>
-                <player src="{{path+'/'+questions[currentQuestion].question.file}}"></player>
+                <player src="{{path+'/'+questions[currentQuestion].question.file | trusted}}"></player>
             </div>
 
             <div class="container_rep">
