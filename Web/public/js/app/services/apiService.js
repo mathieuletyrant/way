@@ -118,9 +118,9 @@ angular.module('app').factory('api', function ($http, $q, config, overlay) {
         blindStart: function (type, userId, friendId) {
 
             var param = {
-                type         : type || 'single',
-                user_id      : userId || null,
-                friend_id    : friendId || ''
+                    type: type || 'single',
+                    user_id: userId || null,
+                    friend_id: friendId || ''
                 },
                 transform = function (data) {
                     return $.param(data);
@@ -155,12 +155,12 @@ angular.module('app').factory('api', function ($http, $q, config, overlay) {
          * @param int questionId
          * @param int|null responseId
          */
-        blindResponse: function(blindId, questionId, responseId){
+        blindResponse: function (blindId, questionId, responseId) {
 
             var param = {
-                blind_id: blindId,
-                question_id: questionId,
-                response_id: responseId || 0,
+                    blind_id: blindId,
+                    question_id: questionId,
+                    response_id: responseId || 0,
                 },
                 transform = function (data) {
                     return $.param(data);
@@ -270,6 +270,36 @@ angular.module('app').factory('api', function ($http, $q, config, overlay) {
 
         removeNotification: function (userId, friendId) {
             // Do stuff ...
+        },
+
+        blindUpdate: function (blindId, status) {
+
+            var param = {
+                    id: blindId,
+                    status: status
+                },
+                transform = function (data) {
+                    return $.param(data);
+                };
+
+            overlay.set(true);
+
+            $http({
+                method: 'POST',
+                url: config.apiUrl + '/blind/update',
+                data: param,
+                headers: {'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'},
+                transformRequest: transform
+            })
+                .success(function () {
+                    overlay.set(false);
+                    return true;
+                })
+                .error(function () {
+                    overlay.set(false);
+                    return false;
+                });
+
         }
     };
 

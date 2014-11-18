@@ -1,8 +1,9 @@
 'use strict';
 
-angular.module('app').controller('quizzController', function ($scope, $stateParams, $state, $interval, quizz, config, session) {
+angular.module('app').controller('quizzController', function ($scope, $stateParams, $state, $interval, quizz, config, session, api) {
 
-    var type = $stateParams.type || 'single';
+    var type        = $stateParams.type || 'single',
+        blind       = 'CREATED';
 
     /*
      * If we are not logged -> redirect to home
@@ -10,6 +11,18 @@ angular.module('app').controller('quizzController', function ($scope, $statePara
     if(session.getLogged() === false){
         $state.go('home');
     }
+
+    /*
+     * Change status blind when change route
+     */
+    $scope.$on('$routeChangeSuccess', function() {
+        if(blind === 'CREATED'){
+            api.blindUpdate($scope.blindId, 'CANCEL');
+        }
+        else if(blind === 'FINISH'){
+            api.blindUpdate($scope.blindId, blind);
+        }
+    });
 
     /*
      * Load Current ID Blind
@@ -74,8 +87,6 @@ angular.module('app').controller('quizzController', function ($scope, $statePara
         var endTimer = endTimer || null;
         var question = $scope.questions[$scope.currentQuestion];
 
-        console.log(question);
-
         if(endTimer == 1){
             $scope.responses[$scope.currentQuestion].value = 0;
             quizz.addResponse($scope.blindId, question.question.id);
@@ -96,6 +107,8 @@ angular.module('app').controller('quizzController', function ($scope, $statePara
         /* Check if last question */
         if($scope.currentQuestion == 19){
             $interval.cancel(timer);
+            blind = 'FINISH';
+            api.blindUpdate($scope.blindId, blind);
             console.log('[QUIZZ] : Challenge '+type+' done');
             if(type === 'single'){
                 /*
