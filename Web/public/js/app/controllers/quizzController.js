@@ -1,8 +1,15 @@
 'use strict';
 
-angular.module('app').controller('quizzController', function ($scope, $stateParams, $interval, quizz, config) {
+angular.module('app').controller('quizzController', function ($scope, $stateParams, $state, $interval, quizz, config, session) {
 
     var type = $stateParams.type || 'single';
+
+    /*
+     * If we are not logged -> redirect to home
+     */
+    if(session.getLogged() === false){
+        $state.go('home');
+    }
 
     /*
      * Load Current ID Blind
