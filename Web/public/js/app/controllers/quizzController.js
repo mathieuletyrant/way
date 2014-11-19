@@ -111,10 +111,7 @@ angular.module('app').controller('quizzController', function ($scope, $statePara
             api.blindUpdate($scope.blindId, blind);
             console.log('[QUIZZ] : Challenge '+type+' done');
             if(type === 'single'){
-                /*
-                 * Create Algo for now what category is
-                 * Asign category to the player in session & API WAY
-                 */
+                $state.go('profil');
             }
             else{
                 /*

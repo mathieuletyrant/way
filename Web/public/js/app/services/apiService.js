@@ -272,6 +272,11 @@ angular.module('app').factory('api', function ($http, $q, config, overlay) {
             // Do stuff ...
         },
 
+        /*
+         * @name Update Blind
+         * @param int blindId
+         * @param string status
+         */
         blindUpdate: function (blindId, status) {
 
             var param = {
@@ -283,6 +288,8 @@ angular.module('app').factory('api', function ($http, $q, config, overlay) {
                 };
 
             overlay.set(true);
+
+            var deferred = $q.defer();
 
             $http({
                 method: 'POST',
@@ -300,6 +307,43 @@ angular.module('app').factory('api', function ($http, $q, config, overlay) {
                     return false;
                 });
 
+        },
+
+        /*
+         * @name Get profil User
+         * @param int facebookId
+         */
+        profilUser: function(facebookId, sex) {
+
+            var param = {
+                facebook_id: facebookId,
+                sex: sex
+            },
+            transform = function (data) {
+                return $.param(data);
+            };
+
+            overlay.set(true);
+
+            var deferred = $q.defer();
+
+            $http({
+                method: 'POST',
+                url: config.apiUrl + '/user/profil/',
+                data: param,
+                headers: {'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'},
+                transformRequest: transform
+            })
+                .success(function (result) {
+                    overlay.set(false);
+                    deferred.resolve(result);
+                })
+                .error(function (result) {
+                    overlay.set(false);
+                    deferred.resolve('Erreur :' + result);
+                });
+
+            return deferred.promise;
         }
     };
 
