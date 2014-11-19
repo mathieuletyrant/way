@@ -10,6 +10,11 @@ class UserResponse extends Model{
 		parent::__construct();
 	}
 
+	/**
+	*	Add response into database
+	*	@param array $response
+	*	@return int / boolean
+	**/
 	public function add($response){
 		$insert = $this->db->prepare('INSERT INTO ' . $this->table . '(question_id, response_id, blind_id, created)
 			VALUES(:question_id, :response_id, :blind_id, :created)');
@@ -24,6 +29,11 @@ class UserResponse extends Model{
 		return ($response) ? $this->db->lastInsertId() : false;
 	}
 
+	/**
+	*	Check data validity
+	*	@param array $user
+	*	@return boolean $validate
+	**/
 	public function validate($response){
 		$validate = true;
 
@@ -33,6 +43,12 @@ class UserResponse extends Model{
 		return $validate;
 	}
 
+	/**
+	*	Retrieve valide response
+	*	@param int $blind_id
+	*	@param int $category_id
+	*	@return array $user_responses
+	**/
 	public function getTrue($blind_id, $category_id){
 		$user_responses = $this->db->exec('SELECT * FROM ' . $this->table . '
 			JOIN questions ON ' . $this->table . '.question_id = questions.id

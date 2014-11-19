@@ -83,10 +83,14 @@ class UsersController extends Controller{
 		$total = array();
 		$blinds = $this->Blind->get(array(
 			'conditions' => array(
-				'user_id' => $f3->get('PARAMS.facebook_id')
+				'user_id' => $f3->get('POST.facebook_id')
 				)
 			));
-		$categories = $this->Category->get();
+		$categories = $this->Category->get(array(
+			'conditions' => array(
+				'sex' => $f3->get('POST.sex')
+				)
+			));
 		foreach ($categories as $key => $category) {
 			$total[$category['name']] = 0;
 		}
@@ -118,7 +122,7 @@ class UsersController extends Controller{
 
 		if(($total_sum = array_sum($total)) != 0){
 			foreach ($total as $key => $t) {
-				$total[$key] = ($t * 100) / $total_sum . '%';
+				$total[$key] = ($t * 100) / $total_sum;
 			}
 		}
 

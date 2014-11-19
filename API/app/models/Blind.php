@@ -10,6 +10,11 @@ class Blind extends Model{
 		parent::__construct();
 	}
 
+	/**
+	*	Create Blind into database
+	*	@param array $blind
+	*	@return int / boolean $blind
+	**/
 	public function create($blind){
 		$insert = $this->db->prepare('INSERT INTO ' . $this->table . '(status, type, user_id, friend_id, created)
 			VALUES(:status, :type, :user_id, :friend_id, :created)');
@@ -23,6 +28,12 @@ class Blind extends Model{
 		return (!empty($blind)) ? $this->db->lastInsertId() : false;
 	}
 
+	/**
+	*	Update blind status
+	*	@param int $blind_id
+	*	@param string $status
+	*	@return boolean $blind
+	**/
 	public function updateStatus($blind_id, $status){
 		$update = $this->db->prepare('UPDATE ' . $this->table . ' SET status = :status WHERE id = :blind_id');
 		$blind = $update->execute(array(
@@ -32,6 +43,11 @@ class Blind extends Model{
 		return ($blind) ? true : false;
 	}
 
+	/**
+	*	Check data validity
+	*	@param array $blind
+	*	@return boolean $validate
+	**/
 	public function validate($blind){
 		$validate = true;
 

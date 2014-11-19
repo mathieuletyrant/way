@@ -9,8 +9,11 @@ class User extends Model{
 		parent::__construct();
 	}
 
-
-
+	/**
+	*	Get user
+	*	@param int $id
+	*	@return array $user
+	**/
 	public function getUser($id){
 		$user = $this->db->exec('SELECT * FROM ' . $this->table . ' WHERE facebook_id = :id', array('id' => $id));
 
@@ -24,6 +27,11 @@ class User extends Model{
 		return $this->encode('users', $user[0]);
 	}
 
+	/**
+	*	Check user exist
+	*	@param int $id
+	*	@return array / boolean $user
+	**/
 	public function exist($id){
 		$user = $this->db->exec('SELECT facebook_id, firstname, lastname, picture, sex
 			FROM ' . $this->table . ' WHERE facebook_id = :id',
@@ -31,6 +39,11 @@ class User extends Model{
 		return (count($user) == 1) ? $user[0] : false;
 	}
 
+	/**
+	*	Register user into database
+	*	@param array $user
+	*	@return int / boolean
+	**/
 	public function register($user){
 		$insert = $this->db->exec('INSERT INTO users(facebook_id, firstname, lastname, picture, sex, created)
 			VALUES (:fb_id, :fname, :lname, :picture, :sex, :created)',
@@ -46,12 +59,23 @@ class User extends Model{
 		return ($insert) ? $this->db->lastInsertId() : false;
 	}
 
+	/**
+	*	Update category
+	*	@param string $facebook_id
+	*	@param int $category_id
+	*	@return boolean $update
+	**/
 	public function updateCategory($facebook_id, $category_id){
 		$update = $this->db->exec('UPDATE ' . $this->table . ' SET category_id = :category_id WHERE facebook_id = :facebook_id',
 			array('category_id' => $category_id, 'facebook_id' => $facebook_id));
 		return $update;
 	}
 
+	/**
+	*	Check data validity
+	*	@param array $user
+	*	@return boolean $validate
+	**/
 	public function validate($user){
 		$validate = true;
 

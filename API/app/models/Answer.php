@@ -9,6 +9,10 @@ class Answer extends Model {
 		parent::__construct();
 	}
 
+	/**
+	*	Add answer into database
+	*	@param $answer
+	**/
 	public function add($answer){
 		$insert = $this->db->exec('INSERT INTO ' . $this->table . ' (question_id, answer, file, status, created)
 			VALUES(:question_id, :answer, :file, :status, :created)',

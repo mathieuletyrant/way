@@ -9,6 +9,11 @@ class Model {
 		$this->db = new \DB\SQL('mysql:host=localhost;port=3306;dbname=' . DB_NAME, DB_USER, DB_PASSWORD);
 	}
 
+	/**
+	*	Data encode JSON
+	*	@param $name
+	*	@param $data
+	**/
 	public function encode($name, $data = array()){
 		header('Access-Control-Allow-Origin: *');
 		header('Acces-Control-Allow-Headers: Auth-Token');
@@ -17,13 +22,16 @@ class Model {
 		return '{"' . $name . '": ' . json_encode(array_change_key_case($data, CASE_LOWER)) . '}';
 	}
 
+	/**
+	*	Get datetime
+	**/
 	public function datetime(){
 		return date('Y-m-d H:i:s');
 	}
 
 	/**
-	*	Récupération de données
-	*	@param peut contenir "conditions", "fields", "order"
+	*	Mapper SQL Get Data
+	*	@param may contain "conditions", "fields", "order"
 	**/
 	public function get($params = array()){
 		$fields = '*';
@@ -67,9 +75,9 @@ class Model {
 	}
 
 	/**
-	*	Test l'existance d'un enregistrement dans une table en fonction d'un champ précis
-	*	@param $field Champ à tester
-	*	@param $data Donnée à tester l'existance
+	*	Check data exist
+	*	@param $field
+	*	@param $data
 	**/
 	public function exists($field, $data){
 		$statement = $this->db->prepare('SELECT COUNT(' . $field . ') AS "exists" FROM ' . $this->table . ' WHERE ' . $field . ' = :data');
@@ -79,8 +87,8 @@ class Model {
 	}
 
 	/**
-	*	Sauvegarde de données
-	*	@param $datas Tableau contenant les données de la forme champ => donnée
+	*	Mapper SQL save Data
+	*	@param $datas array key => data
 	**/
 	public function save($datas = array()){
 		$values = "";
@@ -119,8 +127,8 @@ class Model {
 	}
 
 	/**
-	*	Suppression d'un enregistrement par son ID
-	*	@param $id ID de l'enregistrement
+	*	Delete by ID
+	*	@param $id
 	**/
 	public function delete($id){
 		$statement = $this->db->prepare('DELETE FROM ' . $this->table . ' WHERE id = :id');
@@ -139,6 +147,7 @@ class Model {
 	}
 
 	/**
+	*	Generate random response for test
 	*	id, question_id, answer, status, created
 	**/
 	public function generate_responses(){
@@ -156,6 +165,9 @@ class Model {
 		echo $this->encode('generate_responses', sizeof($questions) * 4 . ' reponses générées');
 	}
 
+	/**
+	*	Generate base's categories
+	**/
 	public function generate_categories(){
 		$this->db->exec("INSERT INTO `categories` (`name`, `sex`, `created`) VALUES
 			('geek', 'all', '" . $this->datetime() . "'),
@@ -168,6 +180,10 @@ class Model {
 			('candide', 'female', '" . $this->datetime() . "')");
 	}
 
+	/**
+	*	Upload file
+	*	@param $file
+	**/
 	public function upload($file){
 
 		$extension = array('mp3', 'jpg', 'jpeg', 'png');

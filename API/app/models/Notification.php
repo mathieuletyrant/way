@@ -9,6 +9,11 @@ class Notification extends Model{
 		parent::__construct();
 	}
 
+	/**
+	*	Add notification into database
+	*	@param array $notification
+	*	@return int / boolean
+	**/
 	public function add($notification){
 		$insert = $this->db->exec('INSERT INTO ' . $this->table . '(name, user_id, created)
 			VALUES(:user_id, :friend_id, :created)', array(
@@ -19,6 +24,11 @@ class Notification extends Model{
 		return ($insert) ? $this->db->lastInsertId() : false;
 	}
 
+	/**
+	*	Get notification
+	*	@param int $facebook_id
+	*	@return json / boolean
+	**/
 	public function getNotification($facebook_id){
 		$notifications = $this->db->exec('SELECT * FROM ' . $this->table . ' JOIN users ON ' . $this->table . '.friend_id = users.facebook_id
 			WHERE user_id = :fb_id', array('fb_id' => $facebook_id));
@@ -34,12 +44,23 @@ class Notification extends Model{
 		return (!empty($notifications)) ? $this->encode('notifications', $notifications) : false;
 	}
 
+	/**
+	*	Delete notification
+	*	@param int $user_id
+	*	@param int $friend_id
+	*	@return boolean
+	**/
 	public function deleteNotification($user_id, $friend_id){
 		$delete = $this->db->exec('DELETE FROM ' . $this->table . ' WHERE user_id = :user_id AND friend_id = :friend_id',
 			array('user_id' => $user_id, 'friend_id' => $friend_id));
 		return ($delete) ? true : false;
 	}
 
+	/**
+	*	Check data validity
+	*	@param array $notification
+	*	@return boolean $validate
+	**/
 	public function validate($notification){
 		$validate = true;
 

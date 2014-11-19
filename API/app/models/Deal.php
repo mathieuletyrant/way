@@ -9,6 +9,11 @@ class Deal extends Model{
 		parent::__construct();
 	}
 
+	/**
+	*	Add deal into database
+	*	@param array $deal
+	*	@return  int / boolean $deal_id
+	**/
 	public function add($deal){
 		// suppresion de l'ancien deal à la une
 		if($deal['first']){
@@ -43,6 +48,11 @@ class Deal extends Model{
 		return ($insert) ? $deal_id : false;
 	}
 
+	/**
+	*	Get first deal by category
+	*	@param int $category_id
+	*	@return array / boolean $deal
+	**/
 	public function getFirst($category_id){
 		$deal = $this->db->exec('SELECT * FROM good_deals
 			JOIN deal_firsts ON good_deals.id = deal_firsts.deal_id
@@ -59,6 +69,12 @@ class Deal extends Model{
 		}
 	}
 
+	/**
+	*	Get Deal by Section
+	*	@param string $section
+	*	@param int $page
+	*	@return array / boolean $deal
+	**/
 	public function getBySection($section, $page = null){
 
 		$start = ($page == 0) ? 1 : ($page - 1) * 6;
@@ -70,6 +86,11 @@ class Deal extends Model{
 		return (!empty($deals)) ? $deals : false;
 	}
 
+	/**
+	*	Get Deal by Id
+	*	@param int $deal_id
+	*	@return array / boolean $deal
+	**/
 	public function getById($deal_id){
 		$deal = $this->db->exec('SELECT * FROM ' . $this->table . ' WHERE id = :id', array(
 			'id' => $deal_id));
@@ -84,6 +105,11 @@ class Deal extends Model{
 		}
 	}
 
+	/**
+	*	Get Deal by Category
+	*	@param int $category_id
+	*	@return array / int $deals
+	**/
 	public function getByCategory($category_id){
 
 		$deals = $this->db->exec('SELECT * FROM ' . $this->table . '
@@ -104,6 +130,11 @@ class Deal extends Model{
 		}
 	}
 
+	/**
+	*	Check data validity
+	*	@param array $deal
+	*	@return boolean $validate
+	**/
 	public function validate($deal){
 		$validate = true;
 
