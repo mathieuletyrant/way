@@ -20,47 +20,6 @@ if (document.getElementById('showcase')) { document.getElementById('showcase').s
 
 if (document.getElementById('photo_profil')) {document.getElementById('photo_profil').addEventListener('click', putOnLeft, false);}
 
-if (document.getElementById('chart')) { 
-	var data = [
-	    {
-	        value: 300,
-	        color:"#F7464A",
-	        highlight: "#FF5A5E",
-	        label: "Geek"
-	    },
-	    {
-	        value: 50,
-	        color: "#46BFBD",
-	        highlight: "#5AD3D1",
-	        label: "Badboy"
-	    },
-	    {
-	        value: 100,
-	        color: "#FDB45C",
-	        highlight: "#FFC870",
-	        label: "Kéké"
-	    },
-	    {
-	        value: 40,
-	        color: "#949FB1",
-	        highlight: "#A8B3C5",
-	        label: "Dragqueen"
-	    },
-	    {
-	        value: 120,
-	        color: "#4D5360",
-	        highlight: "#616774",
-	        label: "Hipster"
-	    }
-	];
-	var options = {
-		animationEasing : "easeOutQuart",
-		segmentStrokeColor : "#fff"
-	};
-	var ctx = document.getElementById("chart").getContext("2d");
-	var chart = new Chart(ctx).PolarArea(data, options);
-}
-
 if(document.querySelectorAll('.total_point')) {
 	var span = document.querySelectorAll('.total_point');
 	for(var i = 0; i < span.length; i++) {

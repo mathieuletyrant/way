@@ -13,8 +13,8 @@
             <canvas id="chart" width="400" height="400"></canvas>
             <div class="legendes">
                 <div class="legende" ng-repeat="(key,val) in userInformations.total">
-                    <span class="carre_color {{colors[$index]}}"></span>
-                    <p>{{key}}</p>
+                    <span class="carre_color {{colors[$index].color}}"></span>
+                    <p>{{colors[$index].category}}</p>
                 </div>
             </div>
         </div>
@@ -37,4 +37,5 @@
 </div>
 
 <!-- JS -->
+<script type="text/javascript-lazy" src="public/js/style/chart.min.js"></script>
 <script type="text/javascript-lazy" src="public/js/style/main.js"></script>
