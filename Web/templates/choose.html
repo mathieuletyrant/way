@@ -1,4 +1,4 @@
-<div id="wrap_full" class="choose_wrap">
+<div id="wrap_full" class="choose_wrap" ng-controller="chooseController as chooseCtrl">
     <div class="wrap_site">
         <div class="logo_quizz">
             <img src="public/img/Logo.svg" width="50" height="50">
@@ -8,7 +8,8 @@
                 <h2>Adversaire</h2>
                 <h3>Dans quelle catégorie souhaitez vous défier votre ami(e) ?</h3>
                 <div class="container_profils">
-                    <div id="profils_femme" class="profils_femme anim">
+
+                    <div id="profils_femme" class="profils_femme anim" ng-show="user.sex === 'female'">
                         <div class="profil">
                             <div class="profil_image">
                                 <img src="public/img/profils/badgirl.svg" alt="profil badgirl">
@@ -43,17 +44,12 @@
                         <div class="clear"></div>
                     </div>
 
-
-
-<!-- METTRE EN FONCTION DU SEXE -->
-
-
-                    <!-- <div class="profils_homme anim">
+                    <div id="profils_homme" class="profils_homme anim" ng-show="user.sex === 'male'">
                         <div class="profil">
                             <div class="profil_image">
                                 <img src="public/img/profils/geek.svg" alt="profil geek">
                             </div>
-                            <span class="profil_name">Geek</span>
+                            <span class="profil_name" ng-click="chooseCategory('geek')">Geek</span>
                         </div>
                         <div class="profil">
                             <div class="profil_image">
@@ -80,7 +76,8 @@
                             <span class="profil_name">keke</span>
                         </div>
                         <div class="clear"></div>
-                    </div> -->
+                    </div>
+
                 </div>
             </div>
             <div class="choose_container phase_2">
@@ -90,15 +87,15 @@
                     <div class="onleft">
                         <h4>Défiez un ami en lui envoyant un mail</h4>
                         <p>*Attention votre ami doit être du même sexe que vous</p>
-                        <form id="mail_to_user">
+                        <form id="mail_to_user" name="mailForm" ng-submit="seedMail(mailForm.$valid)">
                             <label for="mail">Son adresse mail</label>
                             <div class="clear"></div>
-                            <input type="mail" id="mail" placeholder="johndoe@gmail.com">
+                            <input type="mail" id="mail" placeholder="johndoe@gmail.com" ng-model="mailForm.mail" required>
                             <span class="mail_ico"></span>
                             <div class="clear"></div>
                             <label for="message_mail">Votre message</label>
                             <div class="clear"></div>
-                            <textarea id="message_mail"></textarea>
+                            <textarea id="message_mail" ng-model="mailForm.message" required></textarea>
                             <div class="clear"></div>
                             <input type="submit" value="envoyer">
                         </form>
@@ -109,7 +106,7 @@
                         <p>*L’utilisateur que vous défiez ne peut être que du même sexe que vous ! </p>
                         <form id="form_choose_user">
                             <input type="submit" class="search_ico" value="">
-                            <input type="text" placeholder="Rechercher des amis">
+                            <input type="text" placeholder="Rechercher des amis" ng-model="search.friend">
                             <div class="clear"></div>
                         </form>
                         <span id="next_user"></span>
