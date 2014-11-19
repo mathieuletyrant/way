@@ -23,6 +23,18 @@ angular.module('app').factory('session', function ($sessionStorage) {
             $sessionStorage.user.category_name = categoryName;
         },
 
+        setTimeStamp: function () {
+            $sessionStorage.time = new Date();
+        },
+
+        getTimeStamp: function () {
+            return $sessionStorage.time;
+        },
+
+        deleteTimeSamp: function () {
+            delete $sessionStorage.time;
+        },
+
         saveUser: function (userInfo) {
             $sessionStorage.user = {
                 name            : userInfo.firstname+' '+userInfo.lastname,
@@ -36,6 +48,7 @@ angular.module('app').factory('session', function ($sessionStorage) {
         },
 
         deleteUser: function () {
+            delete $sessionStorage.time;
             delete $sessionStorage.user;
             delete $sessionStorage.logged;
         }

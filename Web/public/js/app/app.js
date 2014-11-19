@@ -11,6 +11,7 @@ angular.module('app', ['ui.router', 'facebook', 'ngStorage', 'ngAnimate'])
         facebookAppApi          : '828582677192624',
         intervalNotification    : 1,
         timeMusic               : 15,
+        antiFlood               : 30,
         overlay                 : false
     })
 
