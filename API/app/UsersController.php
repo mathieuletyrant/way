@@ -79,6 +79,28 @@ class UsersController extends Controller{
 		}
 	}
 
+	public function mail($f3){
+
+		$smtp = new SMTP(HOST_MAIL, PORT_MAIL, 'ssl', 'waycontactme@gmail.com', PWD_MAIL);
+		$smtp->set('From', '"Way" <waycontactme@gmail.com>');
+		$smtp->set('To', '<' . $f3->get('POST.mail') . '>');
+		$smtp->set('Subject', $f3->get('POST.firstname') . ' ' . $f3->get('POST.lastname') . ' vous invite à jouer!');
+		$mail = $smtp->send($f3->get('POST.message'));
+
+		if($mail){
+			$this->send_message(array(
+					'code' => '200',
+					'message' => 'email send'
+				));
+		}else{
+			$this->send_message(array(
+					'code' => '400',
+					'message' => 'email send error'
+				));
+		}
+
+	}
+
 	public function profil($f3){
 		$total = array();
 		$blinds = $this->Blind->get(array(
@@ -122,7 +144,7 @@ class UsersController extends Controller{
 
 		if(($total_sum = array_sum($total)) != 0){
 			foreach ($total as $key => $t) {
-				$total[$key] = ($t * 100) / $total_sum;
+				$total[$key] = round((($t * 100) / $total_sum), 0);
 			}
 		}
 
@@ -130,6 +152,15 @@ class UsersController extends Controller{
 				'profil' => $profil,
 				'total' => $total
 			)));
+	}
+
+	public function someUsers($f3){
+		$users = $this->User->getBySex($f3->get('PARAMS.sex'), $f3->get('PARAMS.page'));
+		if($users){
+			echo $this->User->encode('user', $users);
+		}else{
+			$this->send_message(array('code' => '400', 'message' => 'no user found'));
+		}
 	}
 
 }

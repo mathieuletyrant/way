@@ -27,6 +27,17 @@ class User extends Model{
 		return $this->encode('users', $user[0]);
 	}
 
+	public function getBySex($sex, $page = null){
+
+		$start = ($page == 0) ? 1 : ($page - 1) * 8;
+		$end = $start + 8;
+
+		$users = $this->db->exec('SELECT * FROM ' . $this->table . ' WHERE sex = :sex
+			LIMIT ' . $start . ', ' . $end,
+			array('sex' => $sex));
+		return (!empty($users)) ? $users : false;
+	}
+
 	/**
 	*	Check user exist
 	*	@param int $id

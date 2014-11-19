@@ -8,6 +8,11 @@ class BadgeController extends Controller{
 		parent::__construct();
 	}
 
+	/**
+	*	Request for add Badge
+	*	@param object $f3
+	*	@return json
+	**/
 	public function add($f3){
 		if($f3->get('POST.submit')){
 			if($this->Badge->validate($f3->get('POST'))){
