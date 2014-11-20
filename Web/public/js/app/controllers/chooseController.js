@@ -30,7 +30,8 @@ angular.module('app').controller('chooseController', function ($scope, $state, $
         $state.go('defi', {
             user_1: $scope.user.facebook_id,
             user_2: facebookId,
-            category: $scope.blind.category
+            category: $scope.blind.category,
+            status: 0
         });
     };
 

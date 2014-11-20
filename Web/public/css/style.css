@@ -1703,6 +1703,9 @@ footer p {
 #stats canvas {
 
 }
+.begin_duel{
+    cursor: pointer;
+}
 
 #stats .legendes {
     margin-top: 45px;
