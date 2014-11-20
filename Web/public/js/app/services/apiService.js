@@ -299,7 +299,7 @@ angular.module('app').factory('api', function ($http, $q, config, overlay) {
                 transformRequest: transform
             })
                 .success(function () {
-                    overlay.set(true);
+                    overlay.set(false);
                     return true;
                 })
                 .error(function () {
