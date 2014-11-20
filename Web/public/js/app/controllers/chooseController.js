@@ -27,7 +27,11 @@ angular.module('app').controller('chooseController', function ($scope, $state, $
      * Choose player !
      */
     $scope.choosePlayer = function (facebookId) {
-        console.log(facebookId);
+        $state.go('defi', {
+            user_1: $scope.user.facebook_id,
+            user_2: facebookId,
+            category: $scope.blind.category
+        });
     };
 
     /*

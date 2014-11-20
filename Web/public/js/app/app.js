@@ -32,7 +32,7 @@ angular.module('app', ['ui.router', 'facebook', 'ngStorage', 'ngAnimate'])
                 templateUrl: 'templates/letgo.html'
             })
             .state('defi', {
-                url: "/defi",
+                url: "/defi/:user_1/:user_2/:category",
                 templateUrl: 'templates/defi.html'
             })
             .state('profil', {
