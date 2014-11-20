@@ -89,7 +89,7 @@ class BlindController extends Controller {
 	*	Update blind test status
 	*	@param object $f3
 	**/
-	public function update($f3){
+	public function status($f3){
 		if($blind = $f3->get('POST')){
 			if($this->Blind->updateStatus($blind['id'], $blind['status'])){
 				$this->send_message(array(
