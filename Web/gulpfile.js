@@ -91,4 +91,5 @@ gulp.task('clean', function() {
  */
 gulp.task('watch', function() {
     gulp.watch(paths.common+'/js/app/**/*.js', ['script-app']);
+    gulp.watch(paths.common+'/css/src/**/*.css', ['style']);
 });
