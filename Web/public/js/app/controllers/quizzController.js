@@ -113,7 +113,7 @@ angular.module('app').controller('quizzController', function ($rootScope, $scope
             quizz.addResponse($scope.blindId, question.question.id, question.anwsers[index].id);
         }
         /* Check if last question */
-        if($scope.currentQuestion == 1){
+        if($scope.currentQuestion == 19){
             $interval.cancel(timer);
             blind = 'FINISH';
             api.blindUpdate($scope.blindId, blind);
