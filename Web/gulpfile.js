@@ -16,6 +16,7 @@ var gulp        = require('gulp'),
 gulp.task('default', ['clean'], function() {
     gulp.start('script-app');
     gulp.start('script-lib');
+    gulp.start('style');
 });
 
 /*
@@ -78,6 +79,8 @@ gulp.task('script-lib', function() {
 gulp.task('clean', function() {
     gulp.src([
         paths.common+'/js/app.js',
+        paths.common+'/css/style.min.css',
+        paths.common+'/css/style.css',
         paths.common+'/js/libs.js'
     ])
         .pipe(clean());
