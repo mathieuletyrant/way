@@ -298,6 +298,7 @@ h1 img {
     text-transform: uppercase;
     text-align: center;
     transition: all 0.3s;
+    font-size: 14px;
 }
 
 .btn:hover {
@@ -1024,7 +1025,8 @@ footer p {
 }
 
 #profil .container_btn .btn {
-    margin-right: 30px;
+    margin-right: 3%;
+    width: 28%;
 }
 
 #photo_profil {
@@ -1037,7 +1039,17 @@ footer p {
     z-index: 1;
 
 }
-#photo_profil.photo_geek { background: url(../img/profil.jpg) no-repeat top center; 	background-size: cover;}
+#photo_profil.photo_geek { background: url(../img/geek_profil.jpg) no-repeat top center;     background-size: cover;}
+#photo_profil.photo_badboy { background: url(../img/badboy_profil.jpg) no-repeat top center;    background-size: cover;}
+#photo_profil.photo_hipster { background: url(../img/hipster_profil.jpg) no-repeat top center;  background-size: cover;}
+#photo_profil.photo_dragqueen { background: url(../img/dragqueen_profil.jpg) no-repeat top center;  background-size: cover;}
+#photo_profil.photo_keke { background: url(../img/keke_profil.jpg) no-repeat top center;    background-size: cover;}
+#photo_profil.photo_badgirl { background: url(../img/badgirl_profil.jpg) no-repeat top center;  background-size: cover;}
+#photo_profil.photo_barbie { background: url(../img/barbie_profil.jpg) no-repeat top center;    background-size: cover;}
+#photo_profil.photo_fleurbleue { background: url(../img/fleurbleue_profil.jpg) no-repeat top center;    background-size: cover;}
+#photo_profil.photo_hippie { background: url(../img/hippie_profil.jpg) no-repeat top center;    background-size: cover;}
+#photo_profil.photo_geekette { background: url(../img/geekette_profil.jpg) no-repeat top center;    background-size: cover;}
+
 
 
 .defi_container {
@@ -1172,7 +1184,7 @@ footer p {
 .defi_fini .versus .vs_icon { top: 0; }
 .defi_fini .versus .user .identite { margin-top: 0; }
 .defi_fini .begin_duel { display: none;}
-.defi_fini a.btn { margin: 0 15px;}
+.defi_fini a.btn { margin: 10px 15px;}
 .defi_fini .versus .user .truc_anime,
 .defi_fini .versus .user .user_point {display: block;}
 .defi_fini p.point { display: block; }

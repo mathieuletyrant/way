@@ -1052,6 +1052,7 @@ h1 img {
     text-align: center;
     -webkit-transition: all 0.3s;
             transition: all 0.3s;
+    font-size: 14px;
 }
 
 .btn:hover {
@@ -1790,7 +1791,8 @@ footer p {
 }
 
 #profil .container_btn .btn {
-    margin-right: 30px;
+    margin-right: 3%;
+    width: 28%;
 }
 
 #photo_profil {
@@ -1804,7 +1806,17 @@ footer p {
     z-index: 1;
 
 }
-#photo_profil.photo_geek { background: url(../img/profil.jpg) no-repeat top center; 	background-size: cover;}
+#photo_profil.photo_geek { background: url(../img/geek_profil.jpg) no-repeat top center;     background-size: cover;}
+#photo_profil.photo_badboy { background: url(../img/badboy_profil.jpg) no-repeat top center;    background-size: cover;}
+#photo_profil.photo_hipster { background: url(../img/hipster_profil.jpg) no-repeat top center;  background-size: cover;}
+#photo_profil.photo_dragqueen { background: url(../img/dragqueen_profil.jpg) no-repeat top center;  background-size: cover;}
+#photo_profil.photo_keke { background: url(../img/keke_profil.jpg) no-repeat top center;    background-size: cover;}
+#photo_profil.photo_badgirl { background: url(../img/badgirl_profil.jpg) no-repeat top center;  background-size: cover;}
+#photo_profil.photo_barbie { background: url(../img/barbie_profil.jpg) no-repeat top center;    background-size: cover;}
+#photo_profil.photo_fleurbleue { background: url(../img/fleurbleue_profil.jpg) no-repeat top center;    background-size: cover;}
+#photo_profil.photo_hippie { background: url(../img/hippie_profil.jpg) no-repeat top center;    background-size: cover;}
+#photo_profil.photo_geekette { background: url(../img/geekette_profil.jpg) no-repeat top center;    background-size: cover;}
+
 
 
 .defi_container {
@@ -2233,7 +2245,7 @@ div.or {
     .wrapper, .wrap_site {
         width: 100%;
     }
-
+    
     .presentation .bloc_3 {
         width: 33%;
         padding: 0 20px;
@@ -2340,13 +2352,15 @@ div.or {
         overflow: inherit;
     }
 
-    /*********************************
+    
+/*********************************
 
-    PAGE QUIZZ
+PAGE PROFIL
 
-    *********************************/
+*********************************/
 
-    #wrap_full.quizz_wrap {
+    #wrap_full.wrap_profil {
+        background: #34495e;
         min-height: 1100px;
     }
 
@@ -2376,7 +2390,8 @@ div.or {
     #profil, #stats {
         position: relative;
         width: 100%;
-        height: 40%;
+        height: 400px;
+        margin-bottom: 30px;
     }
 
     #profil.on_right {
@@ -2404,8 +2419,31 @@ div.or {
         margin-bottom: 30px;
     }
 
+    .profil_top .name_user.hided,
+    .profil_top .name_user {
+        opacity: 1;
+        color: #fff!important;
+        position: relative;
+        margin-bottom: 40px;
+    }
 
+    .profil_top .name_user .prenom,
+    .profil_top .name_user .nom {
+        display: inline;
+        position: relative;
+        left: 0;
+        color: #fff;
+        padding: 0;
+    }
 
+    .profil_top .name_user .prenom {
+        margin-right: 10px;
+    }
+
+    .profil_top .name_user .prenom:after,
+    .profil_top .name_user .nom:after {
+        display: none;
+    }
 
 
 

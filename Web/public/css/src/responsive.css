@@ -18,7 +18,7 @@
     .wrapper, .wrap_site {
         width: 100%;
     }
-
+    
     .presentation .bloc_3 {
         width: 33%;
         padding: 0 20px;
@@ -63,17 +63,16 @@
 
     /*********************************
 
-    PAGE QUIZZ
+    PAGE QUIZZ 
 
     *********************************/
 
     #wrap_full.quizz_wrap {
-        overflow: inherit;
         min-height: 1100px;
     }
 
     .logo_quizz {
-        margin-left: 20px;
+        margin-left: 20px; 
     }
 
     .avancement, .container_rep {
@@ -97,14 +96,15 @@
     .reponse {
         width: 40%;
         margin: 5% 5%;
-    }
+    } 
 
     .reponse_titre {
         font-size: 15px;
     }
 
     .quizz_timeline {
-        width: 100%;
+        width: 421px;
+        max-width: 100%;
     }
 
     .quizz_timeline:after {
@@ -115,23 +115,19 @@
         margin:  0 20px;
         margin-bottom: 20px;
     }
-
+    
     .quizz_timeline .last_question {
         position: relative;
         right: 15px;
     }
+/*********************************
 
-    #wrap_full {
-        overflow: inherit;
-    }
+PAGE PROFIL
 
-    /*********************************
+*********************************/
 
-    PAGE QUIZZ
-
-    *********************************/
-
-    #wrap_full.quizz_wrap {
+    #wrap_full.wrap_profil {
+        background: #34495e;
         min-height: 1100px;
     }
 
@@ -160,7 +156,8 @@
     #profil, #stats {
         position: relative;
         width: 100%;
-        height: 40%;
+        height: 400px;
+        margin-bottom: 30px;
     }
 
     #profil.on_right {
@@ -187,8 +184,69 @@
         margin-bottom: 30px;
     }
 
+    .profil_top .name_user.hided,
+    .profil_top .name_user {
+        opacity: 1;
+        color: #fff!important;
+        position: relative;
+        margin-bottom: 40px;
+    }
 
+    .profil_top .name_user .prenom,
+    .profil_top .name_user .nom {
+        display: inline;
+        position: relative;
+        left: 0;
+        color: #fff;
+        padding: 0;
+    }
 
+    .profil_top .name_user .prenom {
+        margin-right: 10px;
+    }
+
+    .profil_top .name_user .prenom:after,
+    .profil_top .name_user .nom:after {
+        display: none;
+    }
+    
+
+     /*********************************
+
+    PAGE DEFI
+
+    *********************************/
+
+    .defi_container {
+        width: 100%;
+        margin: 0;
+        position: relative;
+        height: auto;
+        top: 0;
+        left: 0;
+    }
+
+    .defi_container .versus {
+        width: 100%;
+    }
+
+    .defi_fini .nb_point,
+    .defi_fini p.point {
+        display: none;
+    }
+
+    .defi_container .versus .user_left .image_profil,
+    .defi_container .versus .user_right .image_profil,
+    .defi_container .versus .user .identite {
+        float: none;
+        margin: 0 auto;
+        text-align: center;
+        margin-bottom: 10px;
+    }
+
+    .defi_container .defi_intitule {
+        margin-bottom: 50px;
+    }
 
 
 
@@ -253,6 +311,22 @@
     .how_to {
         display: none;
     }
+    
+    /*********************************
+
+    PAGE QUIZZ
+
+    *********************************/
+
+    .quizz_timeline {
+        width: 421px;247px;
+        max-width: 100%;
+    }
+
+    .reponse img {
+        height: 100ù;
+        width: auto;
+    }
 
 
     /*********************************
@@ -305,5 +379,27 @@
         text-align: center;
         margin-top: 50px;
     }
+
+        /*********************************
+
+    PAGE DEFI
+
+    *********************************/
+
+    .defi_container .versus .user {
+        float: none;
+        margin: 0 auto;
+        margin-bottom: 50px;
+    }
+
+    .defi_container .versus .vs_icon {
+        left: 0;
+        top: 0;
+        position: relative;
+        margin: 0 auto;
+        margin-bottom: 50px;
+    }
+
+
 
 }
