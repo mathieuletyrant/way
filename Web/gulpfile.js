@@ -8,6 +8,7 @@ var gulp        = require('gulp'),
     uglify      = require('gulp-uglify'),
     clean       = require('gulp-clean'),
     minifyCSS = require('gulp-minify-css'),
+    autoprefixer = require('gulp-autoprefixer'),
     paths       = {
         common : 'public'
     };
@@ -21,10 +22,20 @@ gulp.task('default', ['clean'], function() {
     STYLE
 */
 gulp.task('style', function () {
-    gulp.src(paths.common+'/css/*.css')
+    gulp.src([
+        paths.common+'/css/src/reset.css'
+        ,paths.common+'/css/src/fonts.css'
+        ,paths.common+'/css/src/animation.css'
+        ,paths.common+'/css/src/style.css'
+        ,paths.common+'/css/src/responsive.css'
+    ])
         .pipe(plumber())
+        .pipe(concat('style.css'))
+        .pipe(autoprefixer())
+        .pipe(gulp.dest(paths.common+'/css'))
         .pipe(minifyCSS())
-        .pipe(concat('main.css'))
+        .pipe(autoprefixer())
+        .pipe(concat('style.min.css'))
         .pipe(gulp.dest(paths.common+'/css'));
 });
 
