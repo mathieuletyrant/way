@@ -11,6 +11,7 @@ class DealController extends Controller{
 	/**
 	*	Request for add a deal
 	*	@param object $f3
+	*	@return json
 	**/
 	public function add($f3){
 		if($f3->get('POST.submit')){
@@ -45,6 +46,11 @@ class DealController extends Controller{
 		echo View::instance()->render('deal/add.htm');
 	}
 
+	/**
+	*	Request top deal by category
+	*	@param object $f3
+	*	@return json
+	**/
 	public function first($f3){
 		$category = $this->Category->getByName($f3->get('PARAMS.category'));
 
@@ -57,6 +63,11 @@ class DealController extends Controller{
 		}
 	}
 
+	/**
+	*	Request deal by id
+	*	@param object $f3
+	*	@return json
+	**/
 	public function getById($f3){
 		if($deal_id = $f3->get('PARAMS.id')){
 			$deal = $this->Deal->getById($deal_id)	;
@@ -71,6 +82,11 @@ class DealController extends Controller{
 
 	}
 
+	/**
+	*	Request deal by category
+	*	@param object $f3
+	*	@return json
+	**/
 	public function getByCategory($f3){
 		if($category = $f3->get('PARAMS.category')){
 			$category = $this->Category->getByName($f3->get('PARAMS.category'));
@@ -87,6 +103,11 @@ class DealController extends Controller{
 
 	}
 
+	/**
+	*	Request deal by section
+	*	@param object $f3
+	*	@return json
+	**/
 	public function section($f3){
 		$deals = $this->Deal->getBySection($f3->get('PARAMS.section'), $f3->get('PARAMS.page'));
 		if(!empty($deals)){
@@ -96,6 +117,10 @@ class DealController extends Controller{
 		}
 	}
 
+	/**
+	*	View deal
+	*	@param object $f3
+	**/
 	public function view($f3){
 		$deals = $this->Deal->get();
 		$f3->set('deals', $deals);
