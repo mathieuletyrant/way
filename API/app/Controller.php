@@ -12,6 +12,7 @@ class Controller {
 			unset($_SESSION['alert']);
 		}
 
+		// automatic load model
 		if(!empty($this->uses)){
 			foreach($this->uses as $use){
 				$this->loadModel($use);
@@ -43,7 +44,7 @@ class Controller {
 		}
 	}
 
-	public function init($f3, $params = null){
+	private function init($f3, $params = null){
 		if(!empty($params['ok'])){
 			$this->loadModel('Model');
 			//$this->Model->generate_categories();
@@ -53,7 +54,9 @@ class Controller {
 	}
 
 	/**
-	*	Rediriger vers une page
+	*	Redirect to page
+	*	(but useless with framework features)
+	*	@param string url
 	**/
 	public function redirect($url){
 		header('Location:' . $url);
