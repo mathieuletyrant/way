@@ -29,7 +29,7 @@ angular.module('app').controller('chooseController', function ($scope, $state, $
     $scope.choosePlayer = function (facebookId) {
 
         // TODO Create an announce
-        if(!$scope.user.facebook_id === facebookId){
+        if($scope.user.facebook_id != facebookId){
             $state.go('defi', {
                 user_1: $scope.user.facebook_id,
                 user_2: facebookId,
