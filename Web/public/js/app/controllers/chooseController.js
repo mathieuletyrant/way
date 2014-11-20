@@ -59,20 +59,7 @@ angular.module('app').controller('chooseController', function ($scope, $state, $
      */
     api.userSexe($scope.user.sex).then(function (result) {
         $scope.users = result;
-        $timeout(choose.style, 1500);
+        $timeout(choose.style, 1000);
     });
 
-    /*
-     * Listen input for search player
-     */
-    $scope.$watch('search.friend', function (newVal) {
-        if(!angular.isUndefined(newVal)){
-            if (timer) {
-                $timeout.cancel(timer);
-            }
-            timer = $timeout(function () {
-                console.log(newVal);
-            }, 1000);
-        }
-    });
 });

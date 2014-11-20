@@ -106,7 +106,7 @@
                         <p>*L’utilisateur que vous défiez ne peut être que du même sexe que vous ! </p>
                         <form id="form_choose_user">
                             <input type="submit" class="search_ico" value="">
-                            <input type="text" placeholder="Rechercher des amis" ng-model="search.friend">
+                            <input type="text" placeholder="Rechercher des amis" ng-model="search.firstname">
                             <div class="clear"></div>
                         </form>
                         <span id="next_user"></span>
@@ -115,7 +115,7 @@
                         <div class="user_container_mask">
                             <div id="user_container" class="user_container">
                                 <div class="huit_user" ng-repeat="block in users.user">
-                                    <div class="card_user" ng-repeat="single in block" ng-click="choosePlayer(single.facebook_id)">
+                                    <div class="card_user" ng-repeat="single in block | filter:search:strict" ng-click="choosePlayer(single.facebook_id)">
                                         <div class="photo_user"
                                              style="background: url({{single.picture}}) no-repeat center; background-size: cover;">
                                             <div class="mask"></div>
