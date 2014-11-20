@@ -99,6 +99,19 @@ class User extends Model{
 		return (!empty($count)) ? $count[0] : false;
 	}
 
+	public function search($name, $sex){
+		$st = $this->db->prepare('SELECT * FROM ' . $this->table . '
+			WHERE firstname LIKE :firstname OR lastname LIKE :lastname
+			AND sex = :sex');
+		$st->execute(array(
+				'firstname' => '%' . $name . '%',
+				'lastname' => '%' . $name . '%',
+				'sex' => $sex
+			));
+		$users = $st->fetchAll();
+		return (!empty($users)) ? $users : false;
+	}
+
 	/**
 	*	Check data validity
 	*	@param array $user

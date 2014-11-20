@@ -171,6 +171,11 @@ class UsersController extends Controller{
 		}
 	}
 
+	public function search($f3){
+		$users = $this->User->search($f3->get('POST.name'), $f3->get('POST.sex'));
+		return (!empty($users)) ? $users : false;
+	}
+
 }
 
 ?>
