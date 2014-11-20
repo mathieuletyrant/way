@@ -344,6 +344,35 @@ angular.module('app').factory('api', function ($http, $q, config, overlay) {
                 });
 
             return deferred.promise;
+        },
+
+        /*
+         * @name Get players with same sexe
+         * @param string sexe
+         * @param int page
+         */
+        userSexe: function (sexe) {
+
+            sexe = sexe || 'male';
+
+            overlay.set(true);
+
+            var deferred = $q.defer();
+
+            $http({
+                method: 'GET',
+                url: config.apiUrl + '/user/sex/'+sexe
+            })
+                .success(function (result) {
+                    overlay.set(false);
+                    deferred.resolve(result);
+                })
+                .error(function (result) {
+                    overlay.set(false);
+                    deferred.reject('Erreur :' + result);
+                });
+
+            return deferred.promise;
         }
     };
 

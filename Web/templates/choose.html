@@ -111,190 +111,24 @@
                         </form>
                         <span id="next_user"></span>
                         <span id="previous_user"></span>
+
                         <div class="user_container_mask">
                             <div id="user_container" class="user_container">
-                                <div class="huit_user">
-                                    <div class="card_user">
+                                <div class="huit_user" ng-repeat="block in users.user">
+                                    <div class="card_user" ng-repeat="single in block" ng-click="choosePlayer(single.facebook_id)">
                                         <div class="photo_user"
-                                        style="background: url(public/img/julia.png) no-repeat center; background-size: cover;">
+                                             style="background: url({{single.picture}}) no-repeat center; background-size: cover;">
                                             <div class="mask"></div>
                                         </div>
-                                        <span class="name_user">Julia Parrinello</span>
-                                    </div>
-                                    <div class="card_user">
-                                        <div class="photo_user"
-                                        style="background: url(public/img/julia.png) no-repeat center; background-size: cover;">
-                                            <div class="mask"></div>
-                                        </div>
-                                        <span class="name_user">Julia Parrinello</span>
-                                    </div>
-                                    <div class="card_user">
-                                        <div class="photo_user"
-                                        style="background: url(public/img/julia.png) no-repeat center; background-size: cover;">
-                                            <div class="mask"></div>
-                                        </div>
-                                        <span class="name_user">Julia Parrinello</span>
-                                    </div>
-                                    <div class="card_user">
-                                        <div class="photo_user"
-                                        style="background: url(public/img/julia.png) no-repeat center; background-size: cover;">
-                                            <div class="mask"></div>
-                                        </div>
-                                        <span class="name_user">Julia Parrinello</span>
-                                    </div>
-                                    <div class="card_user">
-                                        <div class="photo_user"
-                                        style="background: url(public/img/julia.png) no-repeat center; background-size: cover;">
-                                            <div class="mask"></div>
-                                        </div>
-                                        <span class="name_user">Julia Parrinello</span>
-                                    </div>
-                                    <div class="card_user">
-                                        <div class="photo_user"
-                                        style="background: url(public/img/julia.png) no-repeat center; background-size: cover;">
-                                            <div class="mask"></div>
-                                        </div>
-                                        <span class="name_user">Julia Parrinello</span>
-                                    </div>
-                                    <div class="card_user">
-                                        <div class="photo_user"
-                                        style="background: url(public/img/julia.png) no-repeat center; background-size: cover;">
-                                            <div class="mask"></div>
-                                        </div>
-                                        <span class="name_user">Julia Parrinello</span>
-                                    </div>
-                                    <div class="card_user active">
-                                        <div class="photo_user"
-                                        style="background: url(public/img/julia.png) no-repeat center; background-size: cover;">
-                                            <div class="mask"></div>
-                                        </div>
-                                        <span class="name_user">Julia Parrinello</span>
-                                    </div>
-                                </div>
-                                <div class="huit_user">
-                                    <div class="card_user">
-                                        <div class="photo_user"
-                                        style="background: url(public/img/julia.png) no-repeat center; background-size: cover;">
-                                            <div class="mask"></div>
-                                        </div>
-                                        <span class="name_user">Julia Parrinello</span>
-                                    </div>
-                                    <div class="card_user">
-                                        <div class="photo_user"
-                                        style="background: url(public/img/julia.png) no-repeat center; background-size: cover;">
-                                            <div class="mask"></div>
-                                        </div>
-                                        <span class="name_user">Julia Parrinello</span>
-                                    </div>
-                                    <div class="card_user">
-                                        <div class="photo_user"
-                                        style="background: url(public/img/julia.png) no-repeat center; background-size: cover;">
-                                            <div class="mask"></div>
-                                        </div>
-                                        <span class="name_user">Julia Parrinello</span>
-                                    </div>
-                                    <div class="card_user">
-                                        <div class="photo_user"
-                                        style="background: url(public/img/julia.png) no-repeat center; background-size: cover;">
-                                            <div class="mask"></div>
-                                        </div>
-                                        <span class="name_user">Julia Parrinello</span>
-                                    </div>
-                                    <div class="card_user">
-                                        <div class="photo_user"
-                                        style="background: url(public/img/julia.png) no-repeat center; background-size: cover;">
-                                            <div class="mask"></div>
-                                        </div>
-                                        <span class="name_user">Julia Parrinello</span>
-                                    </div>
-                                    <div class="card_user">
-                                        <div class="photo_user"
-                                        style="background: url(public/img/julia.png) no-repeat center; background-size: cover;">
-                                            <div class="mask"></div>
-                                        </div>
-                                        <span class="name_user">Julia Parrinello</span>
-                                    </div>
-                                    <div class="card_user">
-                                        <div class="photo_user"
-                                        style="background: url(public/img/julia.png) no-repeat center; background-size: cover;">
-                                            <div class="mask"></div>
-                                        </div>
-                                        <span class="name_user">Julia Parrinello</span>
-                                    </div>
-                                    <div class="card_user active">
-                                        <div class="photo_user"
-                                        style="background: url(public/img/julia.png) no-repeat center; background-size: cover;">
-                                            <div class="mask"></div>
-                                        </div>
-                                        <span class="name_user">Julia Parrinello</span>
-                                    </div>
-                                </div>
-                                <div class="huit_user">
-                                    <div class="card_user">
-                                        <div class="photo_user"
-                                        style="background: url(public/img/julia.png) no-repeat center; background-size: cover;">
-                                            <div class="mask"></div>
-                                        </div>
-                                        <span class="name_user">Julia Parrinello</span>
-                                    </div>
-                                    <div class="card_user">
-                                        <div class="photo_user"
-                                        style="background: url(public/img/julia.png) no-repeat center; background-size: cover;">
-                                            <div class="mask"></div>
-                                        </div>
-                                        <span class="name_user">Julia Parrinello</span>
-                                    </div>
-                                    <div class="card_user">
-                                        <div class="photo_user"
-                                        style="background: url(public/img/julia.png) no-repeat center; background-size: cover;">
-                                            <div class="mask"></div>
-                                        </div>
-                                        <span class="name_user">Julia Parrinello</span>
-                                    </div>
-                                    <div class="card_user">
-                                        <div class="photo_user"
-                                        style="background: url(public/img/julia.png) no-repeat center; background-size: cover;">
-                                            <div class="mask"></div>
-                                        </div>
-                                        <span class="name_user">Julia Parrinello</span>
-                                    </div>
-                                    <div class="card_user">
-                                        <div class="photo_user"
-                                        style="background: url(public/img/julia.png) no-repeat center; background-size: cover;">
-                                            <div class="mask"></div>
-                                        </div>
-                                        <span class="name_user">Julia Parrinello</span>
-                                    </div>
-                                    <div class="card_user">
-                                        <div class="photo_user"
-                                        style="background: url(public/img/julia.png) no-repeat center; background-size: cover;">
-                                            <div class="mask"></div>
-                                        </div>
-                                        <span class="name_user">Julia Parrinello</span>
-                                    </div>
-                                    <div class="card_user">
-                                        <div class="photo_user"
-                                        style="background: url(public/img/julia.png) no-repeat center; background-size: cover;">
-                                            <div class="mask"></div>
-                                        </div>
-                                        <span class="name_user">Julia Parrinello</span>
-                                    </div>
-                                    <div class="card_user active">
-                                        <div class="photo_user"
-                                        style="background: url(public/img/julia.png) no-repeat center; background-size: cover;">
-                                            <div class="mask"></div>
-                                        </div>
-                                        <span class="name_user">Julia Parrinello</span>
+                                        <span class="name_user">{{(single.firstname+ ' '+single.lastname) | limitTo: 17}}</span>
                                     </div>
                                 </div>
                             </div>
                         </div>
+
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
-
-<!-- JS -->
-<script type="text/javascript-lazy" src="public/js/style/choose.js"></script>
