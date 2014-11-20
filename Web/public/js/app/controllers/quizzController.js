@@ -8,7 +8,7 @@ angular.module('app').controller('quizzController', function ($scope, $statePara
     /*
      * If we are not logged -> redirect to home
      */
-    if(session.getLogged() === false){
+    if(session.getLogged() === false || ($stateParams.type == 'multi' && ($stateParams.user_1 == $stateParams.user_2))){
         $state.go('home');
     }
 
