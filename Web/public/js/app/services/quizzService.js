@@ -4,6 +4,7 @@ angular.module('app').factory('quizz', function ($q, api, session) {
     return {
 
         blindStart: function(type, friendId){
+
             var deferred = $q.defer();
 
             api.blindStart(type, session.getUser().facebook_id, friendId).then(function(result){
@@ -24,7 +25,9 @@ angular.module('app').factory('quizz', function ($q, api, session) {
 
         },
 
-        loadQuestions: function (type) {
+        loadQuestions: function (type, category) {
+
+            category = category || null;
 
             var deferred = $q.defer();
 
@@ -34,7 +37,9 @@ angular.module('app').factory('quizz', function ($q, api, session) {
                 });
             }
             else if (type == 'multi') {
-                deferred.resolve('Do stuff ...');
+                api.multi(category, 20).then(function(result){
+                    deferred.resolve(result.questions);
+                });
             }
             else {
                 deferred.reject('Type undefined. Must be single or multi');

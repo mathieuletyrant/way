@@ -25,7 +25,8 @@ angular.module('app').controller('defiController', function ($scope, $state, $st
         $state.go('quizz', {
             type: 'multi',
             user_1: $scope.users.user_1.facebook_id,
-            user_2: $scope.users.user_2.facebook_id
+            user_2: $scope.users.user_2.facebook_id,
+            category: $scope.categoryDefi
         });
     };
 

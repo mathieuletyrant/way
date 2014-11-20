@@ -35,6 +35,10 @@ angular.module('app').factory('session', function ($sessionStorage) {
             delete $sessionStorage.time;
         },
 
+        setCategory: function(category){
+          $sessionStorage.user.category_name = category;
+        },
+
         saveUser: function (userInfo) {
             $sessionStorage.user = {
                 name            : userInfo.firstname+' '+userInfo.lastname,

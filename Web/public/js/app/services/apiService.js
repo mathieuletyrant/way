@@ -299,7 +299,7 @@ angular.module('app').factory('api', function ($http, $q, config, overlay) {
                 transformRequest: transform
             })
                 .success(function () {
-                    overlay.set(false);
+                    overlay.set(true);
                     return true;
                 })
                 .error(function () {
@@ -307,6 +307,7 @@ angular.module('app').factory('api', function ($http, $q, config, overlay) {
                     return false;
                 });
 
+            return deferred.promise;
         },
 
         /*
@@ -370,6 +371,30 @@ angular.module('app').factory('api', function ($http, $q, config, overlay) {
                 .error(function (result) {
                     overlay.set(false);
                     deferred.reject('Erreur :' + result);
+                });
+
+            return deferred.promise;
+        },
+
+        userCategory: function(facebook_id, category){
+
+            facebook_id = facebook_id || 0;
+            category = category || 'geek';
+
+            overlay.set(true);
+
+            var deferred = $q.defer();
+
+            $http({
+                method: 'GET',
+                url: config.apiUrl + '/user/category/'+facebook_id+'/'+category
+            })
+                .success(function (result) {
+                    overlay.set(false);
+                    deferred.resolve(true);
+                })
+                .error(function (result) {
+                    overlay.set(false);
                 });
 
             return deferred.promise;

@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('app').controller('quizzController', function ($scope, $stateParams, $state, $interval, quizz, config, session, api) {
+angular.module('app').controller('quizzController', function ($rootScope, $scope, $stateParams, $state, $interval, quizz, config, session, api) {
 
     var type        = $stateParams.type || 'single',
         blind       = 'CREATED';
@@ -15,12 +15,14 @@ angular.module('app').controller('quizzController', function ($scope, $statePara
     /*
      * Change status blind when change route
      */
-    $scope.$on('$routeChangeSuccess', function() {
-        if(blind === 'CREATED'){
-            api.blindUpdate($scope.blindId, 'CANCEL');
-        }
-        else if(blind === 'FINISH'){
-            api.blindUpdate($scope.blindId, blind);
+    $rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams){
+        if(fromState.name == 'quizz'){
+            if(blind === 'CREATED'){
+                api.blindUpdate($scope.blindId, 'CANCEL');
+            }
+            else if(blind === 'FINISH'){
+                api.blindUpdate($scope.blindId, blind);
+            }
         }
     });
 
@@ -34,8 +36,14 @@ angular.module('app').controller('quizzController', function ($scope, $statePara
     /*
      * Load questions Single/Multi
      */
-    quizz.loadQuestions(type).then(function (result) {
-        $scope.questions = result.questions;
+    quizz.loadQuestions(type, $stateParams.category).then(function (result) {
+        if($stateParams.type == 'single'){
+            $scope.questions = result.questions;
+        }
+        else{
+            $scope.questions = result;
+            console.log(result);
+        }
     });
 
     /*
@@ -105,13 +113,19 @@ angular.module('app').controller('quizzController', function ($scope, $statePara
             quizz.addResponse($scope.blindId, question.question.id, question.anwsers[index].id);
         }
         /* Check if last question */
-        if($scope.currentQuestion == 19){
+        if($scope.currentQuestion == 1){
             $interval.cancel(timer);
             blind = 'FINISH';
             api.blindUpdate($scope.blindId, blind);
             console.log('[QUIZZ] : Challenge '+type+' done');
             if(type === 'single'){
-                $state.go('profil');
+                api.profilUser(session.getUser().facebook_id, session.getSexe()).then(function(result){
+                    var newCategory = result.user.profil;
+                    api.userCategory(session.getUser().facebook_id, newCategory).then(function(){
+                        session.setCategory(newCategory);
+                        $state.go('profil');
+                    })
+                });
             }
             else{
                 /*
