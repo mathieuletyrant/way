@@ -85,8 +85,8 @@ class Controller {
 	}
 
 	/**
-	*	Charge un model associés à une table de la base de données
-	*	@param $name Nom du model (respecter la casse)
+	*	Load and instanciate a model
+	*	@param string $name
 	**/
 	protected function loadModel($name){
 		require_once 'models/' . $name. '.php';
@@ -94,32 +94,43 @@ class Controller {
 	}
 
 	/**
-	*	Afficher une erreur de retour JSON
-	*	@param $error tableau associatif
+	*	Send JSON message
+	*	@param array $message
+	*	@return json
 	**/
-	protected function send_message($error = array()){
+	protected function send_message($message = array()){
 		header('Access-Control-Allow-Origin: *');
 		header('Acces-Control-Allow-Headers: Auth-Token');
 		header('Access-Control-Allow-Methods: *');
 		header('Content-Type: application/json');
 
-		echo json_encode($error['error'] = $error);
+		echo json_encode($message['message'] = $message);
 	}
 
 	/**
-	*	Affiche un message d'alert sur une vue HTML
-	*	@param $type Type de l'alert
-	*	@param $message Message de l'alert
+	*	Print alert message
+	*	@param string $type
+	*	@param string $message
 	**/
 	protected function alert($type, $message){
 		$_SESSION['alert']['type'] = 'alert ' . $type;
 		$_SESSION['alert']['message'] = $message;
 	}
 
+	/**
+	*	Set data in session
+	*	@param string $key
+	*	@param string $value
+	**/
 	protected function sessionSet($key, $value){
 		$_SESSION[$key] = $value;
 	}
 
+	/**
+	*	Check data in session with key
+	*	@param string $key
+	*	@return boolean
+	**/
 	protected function sessionCheck($key){
 		return (!empty($_SESSION[$key])) ? true : false;
 	}

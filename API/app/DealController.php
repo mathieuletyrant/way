@@ -8,6 +8,10 @@ class DealController extends Controller{
 		parent::__construct();
 	}
 
+	/**
+	*	Request for add a deal
+	*	@param object $f3
+	**/
 	public function add($f3){
 		if($f3->get('POST.submit')){
 			if($this->Deal->validate($f3->get('POST'))){

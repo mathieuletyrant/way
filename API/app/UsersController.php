@@ -155,7 +155,15 @@ class UsersController extends Controller{
 	}
 
 	public function someUsers($f3){
-		$users = $this->User->getBySex($f3->get('PARAMS.sex'), $f3->get('PARAMS.page'));
+		$count = $this->User->count($f3->get('PARAMS.sex'));
+		$nb_page = ceil($count['total_user'] / 8) +1;
+		$users = array();
+
+		for($page = 1; $page < $nb_page; $page++){
+			$users[] = $this->User->getBySex($f3->get('PARAMS.sex'), $page);
+
+		}
+
 		if($users){
 			echo $this->User->encode('user', $users);
 		}else{

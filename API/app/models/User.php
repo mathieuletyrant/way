@@ -27,14 +27,25 @@ class User extends Model{
 		return $this->encode('users', $user[0]);
 	}
 
+	/**
+	*	Get users by sex
+	*	@param string $sex
+	*	@param int $page
+	*	@return array $users
+	**/
 	public function getBySex($sex, $page = null){
 
 		$start = ($page == 0) ? 1 : ($page - 1) * 8;
 		$end = $start + 8;
 
-		$users = $this->db->exec('SELECT * FROM ' . $this->table . ' WHERE sex = :sex
+		$users = $this->db->exec('SELECT facebook_id, firstname, lastname, picture, users.sex,
+			categories.id, categories.name
+			FROM ' . $this->table . '
+			LEFT JOIN categories ON categories.id = ' . $this->table . '.category_id
+			WHERE ' . $this->table . '.sex = :sex
 			LIMIT ' . $start . ', ' . $end,
 			array('sex' => $sex));
+
 		return (!empty($users)) ? $users : false;
 	}
 
@@ -80,6 +91,12 @@ class User extends Model{
 		$update = $this->db->exec('UPDATE ' . $this->table . ' SET category_id = :category_id WHERE facebook_id = :facebook_id',
 			array('category_id' => $category_id, 'facebook_id' => $facebook_id));
 		return $update;
+	}
+
+	public function count($sex){
+		$count = $this->db->exec('SELECT COUNT(*) as total_user FROM ' . $this->table . ' WHERE sex = :sex',
+			array('sex' => $sex));
+		return (!empty($count)) ? $count[0] : false;
 	}
 
 	/**
