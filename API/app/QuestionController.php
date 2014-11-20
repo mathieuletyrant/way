@@ -70,13 +70,6 @@ class QuestionController extends Controller{
 		}
 	}
 
-	public function view($f3){
-		$questions = $this->Question->get();
-
-		$f3->set('questions', $questions);
-		echo View::instance()->render('list.htm');
-	}
-
 
 }
 

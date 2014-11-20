@@ -14,14 +14,14 @@ class Question extends Model {
 	*	@param int $id
 	*	@return json $question
 	**/
-	public function get($id = null){
-		if(!empty($id)){
-			$question = $this->db->exec('SELECT * FROM questions WHERE id = :id', array('id' => $id));
-		}else{
-			$question = $this->db->exec('SELECT * FROM questions');
-		}
-		return $this->encode('questions', $question);
-	}
+	// public function get($id = null){
+	// 	if(!empty($id)){
+	// 		$question = $this->db->exec('SELECT * FROM questions WHERE id = :id', array('id' => $id));
+	// 	}else{
+	// 		$question = $this->db->exec('SELECT * FROM questions');
+	// 	}
+	// 	return $this->encode('questions', $question);
+	// }
 
 	/**
 	*	Add question into database

@@ -64,6 +64,15 @@ class UserResponse extends Model{
 		return (!empty($user_responses)) ? $user_responses : false;
 	}
 
+	/**
+	*
+	**/
+	public function getResponse($blind_id){
+		$st = $this->db->prepare('SELECT * FROM ' . $this->table . ' WHERE blind_id = :blind_id');
+		$st->execute(array('blind_id' => $blind_id));
+		return ($response = $st->fetchAll()) ? $response : false;
+	}
+
 }
 
 ?>

@@ -125,6 +125,40 @@ class BlindController extends Controller {
 		}
 	}
 
+	/**
+	*	Get question and answers from blind
+	*	@param object $f3
+	*	@return array
+	**/
+	public function blindResponse($f3){
+
+		$blind = array();
+		$responses = $this->UserResponse->getResponse($f3->get('PARAMS.blind_id'));
+
+		if(empty($responses)){
+			$this->send_message(array('code' => '400', 'message' => 'no data found'));
+			return;
+		}
+
+		foreach ($responses as $key => $response) {
+			$question = $this->Question->get(array(
+					'conditions' => array('id' => $response['question_id'])
+ 				));
+			$answer = $this->Answer->get(array(
+					'conditions' => array('question_id' => $question['id'])
+				));
+
+			$blind[$key]['question'] = $question;
+			$blind[$key]['answers'] = $answer;
+		}
+
+		if(!empty($blind)){
+			echo $this->Blind->encode('questions', $blind);
+		}else{
+			$this->send_message(array('code' => '400', 'message' => 'no data found'));
+		}
+	}
+
 }
 
  ?>
