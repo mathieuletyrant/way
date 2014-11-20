@@ -1952,7 +1952,7 @@ footer p {
 .defi_fini .versus .vs_icon { top: 0; }
 .defi_fini .versus .user .identite { margin-top: 0; }
 .defi_fini .begin_duel { display: none;}
-.defi_fini a.btn { margin: 0 15px;}
+.defi_fini a.btn { margin: 10px 15px;}
 .defi_fini .versus .user .truc_anime,
 .defi_fini .versus .user .user_point {display: block;}
 .defi_fini p.point { display: block; }
@@ -2290,17 +2290,16 @@ div.or {
 
     /*********************************
 
-    PAGE QUIZZ
+    PAGE QUIZZ 
 
     *********************************/
 
     #wrap_full.quizz_wrap {
-        overflow: inherit;
         min-height: 1100px;
     }
 
     .logo_quizz {
-        margin-left: 20px;
+        margin-left: 20px; 
     }
 
     .avancement, .container_rep {
@@ -2324,14 +2323,15 @@ div.or {
     .reponse {
         width: 40%;
         margin: 5% 5%;
-    }
+    } 
 
     .reponse_titre {
         font-size: 15px;
     }
 
     .quizz_timeline {
-        width: 100%;
+        width: 421px;
+        max-width: 100%;
     }
 
     .quizz_timeline:after {
@@ -2342,17 +2342,11 @@ div.or {
         margin:  0 20px;
         margin-bottom: 20px;
     }
-
+    
     .quizz_timeline .last_question {
         position: relative;
         right: 15px;
     }
-
-    #wrap_full {
-        overflow: inherit;
-    }
-
-    
 /*********************************
 
 PAGE PROFIL
@@ -2444,6 +2438,44 @@ PAGE PROFIL
     .profil_top .name_user .nom:after {
         display: none;
     }
+    
+
+     /*********************************
+
+    PAGE DEFI
+
+    *********************************/
+
+    .defi_container {
+        width: 100%;
+        margin: 0;
+        position: relative;
+        height: auto;
+        top: 0;
+        left: 0;
+    }
+
+    .defi_container .versus {
+        width: 100%;
+    }
+
+    .defi_fini .nb_point,
+    .defi_fini p.point {
+        display: none;
+    }
+
+    .defi_container .versus .user_left .image_profil,
+    .defi_container .versus .user_right .image_profil,
+    .defi_container .versus .user .identite {
+        float: none;
+        margin: 0 auto;
+        text-align: center;
+        margin-bottom: 10px;
+    }
+
+    .defi_container .defi_intitule {
+        margin-bottom: 50px;
+    }
 
 
 
@@ -2508,6 +2540,22 @@ PAGE PROFIL
     .how_to {
         display: none;
     }
+    
+    /*********************************
+
+    PAGE QUIZZ
+
+    *********************************/
+
+    .quizz_timeline {
+        width: 247px;
+        max-width: 100%;
+    }
+
+    .reponse img {
+        height: 100ù;
+        width: auto;
+    }
 
 
     /*********************************
@@ -2560,5 +2608,27 @@ PAGE PROFIL
         text-align: center;
         margin-top: 50px;
     }
+
+        /*********************************
+
+    PAGE DEFI
+
+    *********************************/
+
+    .defi_container .versus .user {
+        float: none;
+        margin: 0 auto;
+        margin-bottom: 50px;
+    }
+
+    .defi_container .versus .vs_icon {
+        left: 0;
+        top: 0;
+        position: relative;
+        margin: 0 auto;
+        margin-bottom: 50px;
+    }
+
+
 
 }
