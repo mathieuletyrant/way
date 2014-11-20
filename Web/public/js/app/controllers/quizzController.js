@@ -2,13 +2,13 @@
 
 angular.module('app').controller('quizzController', function ($rootScope, $scope, $stateParams, $state, $interval, quizz, config, session, api) {
 
-    var type        = $stateParams.type || 'single',
+    var type        = $stateParams.type || null,
         blind       = 'CREATED';
 
     /*
      * If we are not logged -> redirect to home
      */
-    if(session.getLogged() === false || ($stateParams.type == 'multi' && ($stateParams.user_1 == $stateParams.user_2))){
+    if(session.getLogged() === false || ($stateParams.type == 'multi' && ($stateParams.user_1 == $stateParams.user_2)) || type == null){
         $state.go('home');
     }
 
