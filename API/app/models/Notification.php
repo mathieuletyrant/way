@@ -15,10 +15,11 @@ class Notification extends Model{
 	*	@return int / boolean
 	**/
 	public function add($notification){
-		$insert = $this->db->exec('INSERT INTO ' . $this->table . '(name, user_id, created)
-			VALUES(:user_id, :friend_id, :created)', array(
+		$insert = $this->db->exec('INSERT INTO ' . $this->table . '(user_id, friend_id, blind_id created)
+			VALUES(:user_id, :friend_id, :blind_id, :created)', array(
 				'user_id' => $notification['user_id'],
 				'friend_id' => $notification['friend_id'],
+				'blind_id' => $notification['blind_id'],
 				'created' => $this->datetime()
 				));
 		return ($insert) ? $this->db->lastInsertId() : false;
@@ -64,9 +65,9 @@ class Notification extends Model{
 	public function validate($notification){
 		$validate = true;
 
-		if(empty($notification['name'])){ $validate = false; }
-		if(empty($notification['message'])){ $validate = false; }
 		if(empty($notification['user_id'])){ $validate = false; }
+		if(empty($notification['friend_id'])){ $validate = false; }
+		if(empty($notification['blind_id'])){ $validate = false; }
 
 		return $validate;
 	}
