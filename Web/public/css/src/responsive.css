@@ -18,7 +18,7 @@
     .wrapper, .wrap_site {
         width: 100%;
     }
-    
+
     .presentation .bloc_3 {
         width: 33%;
         padding: 0 20px;
@@ -36,13 +36,12 @@
         padding-top: 100px;
     }
 
-
     .presentation:after {
         display: none;
     }
 
     .bx-viewport {
-        width: auto!important;
+        width: auto !important;
     }
 
     .footer_left {
@@ -60,19 +59,17 @@
         padding-top: 0px;
     }
 
-
     /*********************************
 
     PAGE QUIZZ 
 
     *********************************/
-
     #wrap_full.quizz_wrap {
         min-height: 1100px;
     }
 
     .logo_quizz {
-        margin-left: 20px; 
+        margin-left: 20px;
     }
 
     .avancement, .container_rep {
@@ -96,7 +93,7 @@
     .reponse {
         width: 40%;
         margin: 5% 5%;
-    } 
+    }
 
     .reponse_titre {
         font-size: 15px;
@@ -112,20 +109,20 @@
     }
 
     .quizz_timeline .question {
-        margin:  0 20px;
+        margin: 0 20px;
         margin-bottom: 20px;
     }
-    
+
     .quizz_timeline .last_question {
         position: relative;
         right: 15px;
     }
-/*********************************
 
-PAGE PROFIL
+    /*********************************
 
-*********************************/
+    PAGE PROFIL
 
+    *********************************/
     #wrap_full.wrap_profil {
         background: #34495e;
         min-height: 1100px;
@@ -151,7 +148,10 @@ PAGE PROFIL
         float: left;
     }
 
-    .legendes { float:  right; margin-right: 50px; }
+    .legendes {
+        float: right;
+        margin-right: 50px;
+    }
 
     #profil, #stats {
         position: relative;
@@ -166,7 +166,7 @@ PAGE PROFIL
     }
 
     #photo_profil {
-        display: none!important;
+        display: none !important;
     }
 
     #profil .infos_profil {
@@ -187,7 +187,7 @@ PAGE PROFIL
     .profil_top .name_user.hided,
     .profil_top .name_user {
         opacity: 1;
-        color: #fff!important;
+        color: #fff !important;
         position: relative;
         margin-bottom: 40px;
     }
@@ -209,14 +209,12 @@ PAGE PROFIL
     .profil_top .name_user .nom:after {
         display: none;
     }
-    
 
-     /*********************************
+    /*********************************
 
-    PAGE DEFI
+   PAGE DEFI
 
-    *********************************/
-
+   *********************************/
     .defi_container {
         width: 100%;
         margin: 0;
@@ -247,9 +245,6 @@ PAGE PROFIL
     .defi_container .defi_intitule {
         margin-bottom: 50px;
     }
-
-
-
 
 }
 
@@ -294,10 +289,10 @@ PAGE PROFIL
 
     .texte_show {
         width: 100%;
-        padding:  0 5%;
+        padding: 0 5%;
     }
 
-    .btn_go_app  {
+    .btn_go_app {
         width: 100%;
     }
 
@@ -311,30 +306,27 @@ PAGE PROFIL
     .how_to {
         display: none;
     }
-    
+
     /*********************************
 
     PAGE QUIZZ
 
     *********************************/
-
     .quizz_timeline {
         width: 421px;
         max-width: 100%;
     }
 
     .reponse img {
-        height: 100ù;
+        height: 100 ù;
         width: auto;
     }
-
 
     /*********************************
 
     PAGE PROFIL
 
     *********************************/
-
     #wrap_full.wrap_profil {
         background: #34495e;
         min-height: 1400px;
@@ -360,7 +352,11 @@ PAGE PROFIL
         float: none;
     }
 
-    .legendes { float:  none; margin: 0 auto; }
+    .legendes {
+        float: none;
+        margin: 0 auto;
+    }
+
     #profil .infos_profil {
         padding: 0;
     }
@@ -375,17 +371,16 @@ PAGE PROFIL
         margin-top: 20px;
     }
 
-    .container_btn,  #profil .infos_profil {
+    .container_btn, #profil .infos_profil {
         text-align: center;
         margin-top: 50px;
     }
 
-        /*********************************
+    /*********************************
 
-    PAGE DEFI
+PAGE DEFI
 
-    *********************************/
-
+*********************************/
     .defi_container .versus .user {
         float: none;
         margin: 0 auto;
@@ -399,7 +394,5 @@ PAGE PROFIL
         margin: 0 auto;
         margin-bottom: 50px;
     }
-
-
 
 }

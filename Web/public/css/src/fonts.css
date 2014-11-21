@@ -526,8 +526,8 @@
 */
 @font-face {
     font-family: 'icomoon';
-    src:url('../fonts/iconmoon/icomoon.eot');
-    src:url('../fonts/iconmoon/icomoon.eot') format('embedded-opentype'),
+    src: url('../fonts/iconmoon/icomoon.eot');
+    src: url('../fonts/iconmoon/icomoon.eot') format('embedded-opentype'),
     url('../fonts/iconmoon/icomoon.woff') format('woff'),
     url('../fonts/iconmoon/icomoon.ttf') format('truetype'),
     url('../fonts/iconmoon/icomoon.svg') format('svg');
@@ -552,60 +552,79 @@
 .icon-min:before {
     content: "\e612";
 }
+
 .icon-plus:before {
     content: "\e613";
 }
+
 .icon-bell:before {
     content: "\e611";
 }
+
 .icon-github:before {
     content: "\e60e";
 }
+
 .icon-twitter:before {
     content: "\e60f";
 }
+
 .icon-facebook:before {
     content: "\e610";
 }
+
 .icon-guitar:before {
     content: "\e608";
 }
+
 .icon-arrow_left:before {
     content: "\e600";
 }
+
 .icon-arrow_right:before {
     content: "\e601";
 }
+
 .icon-badgirl:before {
     content: "\e602";
 }
+
 .icon-barbie:before {
     content: "\e603";
 }
+
 .icon-dragqueen:before {
     content: "\e604";
 }
+
 .icon-fleurbleue:before {
     content: "\e605";
 }
+
 .icon-geek:before {
     content: "\e606";
 }
+
 .icon-geekette:before {
     content: "\e607";
 }
+
 .icon-hippie:before {
     content: "\e609";
 }
+
 .icon-hypster:before {
     content: "\e60a";
 }
+
 .icon-keke:before {
     content: "\e60b";
 }
+
 .icon-logo:before {
     content: "\e60c";
 }
+
 .icon-way:before {
     content: "\e60d";
 }
