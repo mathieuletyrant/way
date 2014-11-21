@@ -1055,8 +1055,8 @@ header .admin_bar .profil_bar .go_notif {
     margin-top: 2px;
     opacity: 0;
     -webkit-transform: translateY(100px);
-    -ms-transform: translateY(100px);
-        transform: translateY(100px);
+        -ms-transform: translateY(100px);
+            transform: translateY(100px);
     -webkit-transition: all 0.3s;
             transition: all 0.3s;
 }
@@ -1064,8 +1064,8 @@ header .admin_bar .profil_bar .go_notif {
 .notifications.notif_open {
     opacity: 1;
     -webkit-transform: translateY(0px);
-    -ms-transform: translateY(0px);
-        transform: translateY(0px);
+        -ms-transform: translateY(0px);
+            transform: translateY(0px);
 }
 
 .notifications h3 {
@@ -1520,13 +1520,13 @@ footer p {
     position: absolute;
     top: 50%;
     -webkit-transform: translate3d(0, 0, 0);
-    transform: translate3d(0, 0, 0);
+            transform: translate3d(0, 0, 0);
     left: 50%;
     margin-left: -200px;
     margin-top: -200px;
     padding-top: 50px;
     -webkit-animation: appear 1s ease-out;
-    animation: appear 1s ease-out;
+            animation: appear 1s ease-out;
 }
 
 .go_test.appear {
@@ -1635,8 +1635,8 @@ footer p {
     height: 8px;
     background: #253341;
     -webkit-transform: skew(-45deg);
-    -ms-transform: skew(-45deg);
-        transform: skew(-45deg);
+        -ms-transform: skew(-45deg);
+            transform: skew(-45deg);
     -webkit-transition: all 1s linear;
             transition: all 1s linear;
 }
@@ -1670,8 +1670,8 @@ footer p {
     background: url(../img/checked.png) no-repeat center;
     opacity: 0;
     -webkit-transform: scale(0);
-    -ms-transform: scale(0);
-        transform: scale(0);
+        -ms-transform: scale(0);
+            transform: scale(0);
     -webkit-transition: all 0.5s;
             transition: all 0.5s;
 }
@@ -1679,8 +1679,8 @@ footer p {
 .reponse.clicked .checked {
     opacity: 1;
     -webkit-transform: scale(1);
-    -ms-transform: scale(1);
-        transform: scale(1);
+        -ms-transform: scale(1);
+            transform: scale(1);
 }
 
 .reponse.clicked .mask {
@@ -1855,7 +1855,7 @@ footer p {
 
 #stats.hided {
     -webkit-transform: translate3d(70%, 0, 0);
-    transform: translate3d(70%, 0, 0);
+            transform: translate3d(70%, 0, 0);
 }
 
 #stats .allStats {
@@ -1933,7 +1933,7 @@ footer p {
 
 #profil.on_right {
     -webkit-transform: translate3d(100%, 0, 0);
-    transform: translate3d(100%, 0, 0);
+            transform: translate3d(100%, 0, 0);
 }
 
 #profil .infos_profil {
@@ -2144,8 +2144,7 @@ footer p {
 
 .defi_container .versus .user .image_profil img {
     -webkit-filter: grayscale(100%);
-    -moz-filter: grayscale(100%);
-    filter: grayscale(100%);
+            filter: grayscale(100%);
 }
 
 .defi_container .versus .user_left .image_profil {
@@ -2207,10 +2206,10 @@ footer p {
     background: url(../img/end_defi_anim.png) no-repeat center;
     z-index: 1;
     -webkit-transform: scale(1);
-    -ms-transform: scale(1);
-        transform: scale(1);
+        -ms-transform: scale(1);
+            transform: scale(1);
     -webkit-animation: scale .5s ease-in;
-    animation: scale .5s ease-in;
+            animation: scale .5s ease-in;
 }
 
 .total_point {
@@ -2281,17 +2280,17 @@ footer p {
 
 #container_phase.phase_1 .choose_container.phase_2 {
     -webkit-transform: translate3d(1400px, 0, 0);
-    transform: translate3d(1400px, 0, 0);
+            transform: translate3d(1400px, 0, 0);
 }
 
 #container_phase.phase_2 .choose_container.phase_1 {
     -webkit-transform: translate3d(-1400px, 0, 0);
-    transform: translate3d(-1400px, 0, 0);
+            transform: translate3d(-1400px, 0, 0);
 }
 
 #container_phase.phase_2 .choose_container.phase_12 {
     -webkit-transform: translate3d(0px, 0, 0);
-    transform: translate3d(0px, 0, 0);
+            transform: translate3d(0px, 0, 0);
 }
 
 .choose_container {
@@ -2474,8 +2473,8 @@ span#previous_user {
     top: 240px;
     display: none;
     -webkit-transform: rotate(180deg);
-    -ms-transform: rotate(180deg);
-        transform: rotate(180deg);
+        -ms-transform: rotate(180deg);
+            transform: rotate(180deg);
 }
 
 .user_container {
