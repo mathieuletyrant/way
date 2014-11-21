@@ -8,6 +8,10 @@ class UsersController extends Controller{
 		parent::__construct();
 	}
 
+	/**
+	*	Request for login and authenticate
+	*	@param object $f3
+	**/
 	public function login($f3){
 
 		if($login = $f3->get('POST')){
@@ -26,6 +30,11 @@ class UsersController extends Controller{
 		echo View::instance()->render('user/login.htm');
 	}
 
+	/**
+	*	Request for get user
+	*	@param object $f3
+	*	@return json
+	**/
 	public function get($f3){
 		if(!empty($f3->get('PARAMS.id'))){
 			if($user = $this->User->getUser($f3->get('PARAMS.id'))){
@@ -36,6 +45,12 @@ class UsersController extends Controller{
 		}
 	}
 
+	/**
+	*	Request for check user exist
+	*	@param object $f3
+	*	@param array $params
+	*	@return json
+	**/
 	public function exist($f3, $params) {
 		if($user = $this->User->exist($params['id'])){
 			echo $this->User->encode('user', $user);
@@ -44,6 +59,11 @@ class UsersController extends Controller{
 		}
 	}
 
+	/**
+	*	Request for register user
+	*	@param object $f3
+	*	@return json
+	**/
 	public function register($f3){
 		// file_put_contents('log.txt', $f3->get('POST'));
 
@@ -64,6 +84,11 @@ class UsersController extends Controller{
 		}
 	}
 
+	/**
+	*	Request for update user category
+	*	@param object $f3
+	*	@return json
+	**/
 	public function category($f3){
 		if($category = $this->Category->getByName($f3->get('PARAMS.category'))){
 			if($this->User->updateCategory($f3->get('PARAMS.facebook_id'), $category['id'])){
@@ -79,6 +104,11 @@ class UsersController extends Controller{
 		}
 	}
 
+	/**
+	*	Request for send mail to user
+	*	@param object $f3
+	*	@return json
+	**/
 	public function mail($f3){
 
 		$smtp = new SMTP(HOST_MAIL, PORT_MAIL, 'ssl', 'waycontactme@gmail.com', PWD_MAIL);
@@ -101,6 +131,11 @@ class UsersController extends Controller{
 
 	}
 
+	/**
+	*	Request for get actual profil of a user
+	*	@param object $f3
+	*	@return json
+	**/
 	public function profil($f3){
 		$total = array();
 		$blinds = $this->Blind->get(array(
@@ -154,6 +189,12 @@ class UsersController extends Controller{
 			)));
 	}
 
+	/**
+	*	Request for get user by sex
+	*	paginate 8 per 8
+	*	@param object $f3
+	*	@return json
+	**/
 	public function someUsers($f3){
 		$count = $this->User->count($f3->get('PARAMS.sex'));
 		$nb_page = ceil($count['total_user'] / 8) +1;
@@ -171,6 +212,11 @@ class UsersController extends Controller{
 		}
 	}
 
+	/**
+	*	Request for search user
+	*	@param object $f3
+	*	@return json
+	**/
 	public function search($f3){
 		$users = $this->User->search($f3->get('POST.name'), $f3->get('POST.sex'));
 		return (!empty($users)) ? $users : false;

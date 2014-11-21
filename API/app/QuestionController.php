@@ -9,6 +9,11 @@ class QuestionController extends Controller{
 		parent::__construct();
 	}
 
+	/**
+	*	Request for add question
+	*	@param object $f3
+	*	@return json
+	**/
 	public function add($f3){
 
 		if(!empty($f3->get('POST'))){

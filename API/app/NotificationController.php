@@ -8,6 +8,11 @@ class NotificationController extends Controller{
 		parent::__construct();
 	}
 
+	/**
+	*	Request for add notification
+	*	@param object $f3
+	*	@return json
+	**/
 	public function add($f3){
 		if(!empty($notification = $f3->get('POST'))) {
 
@@ -23,6 +28,11 @@ class NotificationController extends Controller{
 		}else{ $this->send_message(array('code' => '400', 'message' => 'bad request')); }
 	}
 
+	/**
+	*	Request for get notification
+	*	@param object $f3
+	*	@return json
+	**/
 	public function get($f3){
 		if($f3->get('PARAMS.facebook_id')){
 			if($this->Notification->getNotification($f3->get('PARAMS.facebook_id'))){
@@ -33,6 +43,11 @@ class NotificationController extends Controller{
 		}
 	}
 
+	/**
+	*	Request for delete notification
+	*	@param object $f3
+	*	@return json
+	**/
 	public function delete($f3){
 		if(!empty($user_id = $f3->get('PARAMS.user_id')
 			&& !empty($friend_id = $f3->get('PARAMS.friend_id')))){
