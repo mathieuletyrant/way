@@ -105,7 +105,7 @@ angular.module('app').controller('quizzController', function ($rootScope, $scope
         }
         else{
             /* Good Answer with current Question */
-            if (question.anwsers[index].status == 1) {
+            if (question.answers[index].status == 1) {
                 $scope.responses[$scope.currentQuestion].value = 1;
                 console.log('[QUIZZ] : Good answer');
             }
@@ -113,7 +113,7 @@ angular.module('app').controller('quizzController', function ($rootScope, $scope
                 $scope.responses[$scope.currentQuestion].value = 0;
                 console.log('[QUIZZ] : Bad answer');
             }
-            quizz.addResponse($scope.blindId, question.question.id, question.anwsers[index].id);
+            quizz.addResponse($scope.blindId, question.question.id, question.answers[index].id);
         }
         /* Check if last question */
         if($scope.currentQuestion == 19){
