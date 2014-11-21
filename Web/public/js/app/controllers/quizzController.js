@@ -43,7 +43,6 @@ angular.module('app').controller('quizzController', function ($rootScope, $scope
         }
         else if($stateParams.type == 'multi' && $stateParams.blindId == 0){
             $scope.questions = result;
-            console.log(result);
         }
         else{
             $scope.questions = result.questions;

@@ -39,7 +39,7 @@ angular.module('app').factory('quizz', function ($q, api, session) {
             }
             else if (type == 'multi') {
                 if(blindId != 0){
-                    api.multiWithBlindId(blindId).then(function(){
+                    api.multiWithBlindId(blindId).then(function(result){
                        deferred.resolve(result);
                     });
                 }
