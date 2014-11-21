@@ -1,6 +1,6 @@
-var wH = window.innerHeight;
+var wH          = window.innerHeight,
+    is_homme    = true;
 
-var is_homme = true;
 if (document.getElementById('homme')) {
 	var homme = document.getElementById('homme');
 	homme.addEventListener('click', toggleProfils, false);	
@@ -15,9 +15,11 @@ if (document.getElementById('go_notif')) {
 	cloche.addEventListener('click', toggleNotif, false);
 }
 
-
+window.onresize = function(event) {
+    wH = window.innerHeight;
+    if (document.getElementById('showcase')) { document.getElementById('showcase').style.height = wH + 'px'; }
+};
 if (document.getElementById('showcase')) { document.getElementById('showcase').style.height = wH + 'px'; }
-
 if (document.getElementById('photo_profil')) {document.getElementById('photo_profil').addEventListener('click', putOnLeft, false);}
 
 if(document.querySelectorAll('.total_point')) {
