@@ -3,6 +3,7 @@
 angular.module('app').controller('quizzController', function ($rootScope, $scope, $stateParams, $state, $interval, quizz, config, session, api) {
 
     var type        = $stateParams.type || null,
+        blindId     = $stateParams.blindId,
         blind       = 'CREATED';
 
     /*
@@ -36,13 +37,16 @@ angular.module('app').controller('quizzController', function ($rootScope, $scope
     /*
      * Load questions Single/Multi
      */
-    quizz.loadQuestions(type, $stateParams.category).then(function (result) {
+    quizz.loadQuestions(type, $stateParams.category, blindId).then(function (result) {
         if($stateParams.type == 'single'){
             $scope.questions = result.questions;
         }
-        else{
+        else if($stateParams.type == 'multi' && $stateParams.blindId == 0){
             $scope.questions = result;
             console.log(result);
+        }
+        else{
+            $scope.questions = result.questions;
         }
     });
 

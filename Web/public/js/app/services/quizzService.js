@@ -25,9 +25,10 @@ angular.module('app').factory('quizz', function ($q, api, session) {
 
         },
 
-        loadQuestions: function (type, category) {
+        loadQuestions: function (type, category, blindId) {
 
             category = category || null;
+            blindId = blindId || 0;
 
             var deferred = $q.defer();
 
@@ -37,9 +38,16 @@ angular.module('app').factory('quizz', function ($q, api, session) {
                 });
             }
             else if (type == 'multi') {
-                api.multi(category, 20).then(function(result){
-                    deferred.resolve(result.questions);
-                });
+                if(blindId != 0){
+                    api.multiWithBlindId(blindId).then(function(){
+                       deferred.resolve(result);
+                    });
+                }
+                else{
+                    api.multi(category, 20).then(function(result){
+                        deferred.resolve(result.questions);
+                    });
+                }
             }
             else {
                 deferred.reject('Type undefined. Must be single or multi');

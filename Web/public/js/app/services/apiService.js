@@ -68,6 +68,30 @@ angular.module('app').factory('api', function ($http, $q, config, overlay) {
 
         },
 
+        multiWithBlindId: function (blindId) {
+
+            blindId = blindId || 0;
+
+            overlay.set(true);
+
+            var deferred = $q.defer();
+
+            $http({
+                method: 'GET',
+                url: config.apiUrl + '/blind/generate/'+blindId
+            })
+                .success(function (result) {
+                    overlay.set(false);
+                    deferred.resolve(result);
+                })
+                .error(function (result) {
+                    overlay.set(false);
+                    deferred.resolve('Erreur :' + result);
+                });
+
+            return deferred.promise;
+        },
+
         /*
          * @name Create User
          * @param object params
