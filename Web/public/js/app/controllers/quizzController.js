@@ -124,14 +124,13 @@ angular.module('app').controller('quizzController', function ($rootScope, $scope
                     api.userCategory(session.getUser().facebook_id, newCategory).then(function(){
                         session.setCategory(newCategory);
                         $state.go('profil');
-                    })
+                    });
                 });
             }
             else{
-                /*
-                 * Save response in API WAY
-                 * Seed Notification to the second player.
-                 */
+                api.addNotification(session.getUser().facebook_id, $stateParams.user_2, $scope.blindId).then(function(){
+                    $state.go('profil');
+                });
             }
         }
         else{

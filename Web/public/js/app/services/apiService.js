@@ -160,7 +160,7 @@ angular.module('app').factory('api', function ($http, $q, config, overlay) {
             var param = {
                     blind_id: blindId,
                     question_id: questionId,
-                    response_id: responseId || 0,
+                    response_id: responseId || 0
                 },
                 transform = function (data) {
                     return $.param(data);
@@ -235,6 +235,40 @@ angular.module('app').factory('api', function ($http, $q, config, overlay) {
                 })
                 .error(function (result) {
                     deferred.resolve('Erreur :' + result);
+                });
+
+            return deferred.promise;
+        },
+
+        addNotification: function (userId, friendId, blindId) {
+
+            var param = {
+                    user_id: userId,
+                    friend_id: friendId,
+                    blind_id: blindId
+                },
+                transform = function (data) {
+                    return $.param(data);
+                };
+
+            overlay.set(true);
+
+            var deferred = $q.defer();
+
+            $http({
+                method: 'POST',
+                url: config.apiUrl + '/notification/add',
+                data: param,
+                headers: {'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'},
+                transformRequest: transform
+            })
+                .success(function (result) {
+                    overlay.set(false);
+                    deferred.resolve(result);
+                })
+                .error(function (result) {
+                    overlay.set(false);
+                    deferred.reject('Erreur :' + result);
                 });
 
             return deferred.promise;
