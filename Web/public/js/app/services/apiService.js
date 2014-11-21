@@ -191,8 +191,6 @@ angular.module('app').factory('api', function ($http, $q, config, overlay) {
                     return $.param(data);
                 };
 
-            overlay.set(true);
-
             $http({
                 method: 'POST',
                 url: config.apiUrl + '/blind/response',
@@ -202,12 +200,10 @@ angular.module('app').factory('api', function ($http, $q, config, overlay) {
             })
                 .success(function (result) {
                     console.log(result);
-                    overlay.set(false);
                     return true;
                 })
                 .error(function (result) {
                     console.log(result);
-                    overlay.set(false);
                     return false;
                 });
 
