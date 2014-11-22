@@ -106,10 +106,18 @@ function toggleProfils(e){
 $('#slider_how_to').bxSlider({
   mode: 'horizontal',
   captions: false,
-  controls: false,
+  controls: true,
   pager: false,
-  onSlideAfter : function($slideElement, oldIndex, newIndex) {
-    // console.log(oldIndex);
-    // console.log(newIndex);
+  onSlideNext : function($slideElement, oldIndex, newIndex) {
+  	// on cache next
+  	$('a.bx-prev').fadeIn();
+  	$('a.bx-prev').css({'display' : 'block'});
+  	$('a.bx-next').fadeOut();
+  },
+  onSlidePrev : function($slideElement, oldIndex, newIndex) {
+  	// on cache prev
+  	$('a.bx-prev').fadeOut();
+  	$('a.bx-next').css({'display' : 'block'});
+  	$('a.bx-next').fadeIn();
   }
 });
