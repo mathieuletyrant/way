@@ -1012,11 +1012,11 @@ footer p {
 }
 
 .fail {
-    background: #f6464a !important;
+    background: url(../img/fail.png) no-repeat center #f6464a !important;
 }
 
 .win {
-    background: #253341 !important;
+    background: url(../img/win.png) no-repeat center #253341 !important;
 }
 
 .white {
