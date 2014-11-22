@@ -18,9 +18,13 @@ angular.module('app', ['ui.router', 'facebook', 'ngStorage', 'ngAnimate', 'ngAri
     /*
         Route System
      */
-    .config(function($stateProvider, $urlRouterProvider){
+    .config(function($stateProvider, $urlRouterProvider, $locationProvider){
 
         $urlRouterProvider.otherwise("/home"); // Default Page
+
+        // TODO Enable in production
+        //$locationProvider.html5Mode(true);
+        //$locationProvider.hashPrefix('!');
 
         $stateProvider
             .state('home', {
