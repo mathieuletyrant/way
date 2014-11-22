@@ -42,3 +42,7 @@ Web/public/js/app.js
 Web/public/js/libs.js
 Web/public/js/libs/
 API/app/config/config.php
+
+Web/public/css/style.css
+
+Web/public/css/src/animation.css

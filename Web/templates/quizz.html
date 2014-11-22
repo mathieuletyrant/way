@@ -20,7 +20,7 @@
 
             <div class="container_rep">
                 <div class="reponse"
-                     ng-repeat="question in questions[currentQuestion].anwsers"
+                     ng-repeat="question in questions[currentQuestion].answers"
                      ng-click="newQuestion($index)">
                     <span class="checked"></span>
                     <div class="mask"></div>
@@ -48,6 +48,3 @@
         </div>
     </div>"
 </div>
-
-<!-- JS -->
-<script type="text/javascript-lazy" src="public/js/style/quizz.js"></script>

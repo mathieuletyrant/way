@@ -4,6 +4,7 @@
  * @requires $http (Ajax Request)
  * @requires $q (Promise)
  * @requires config (Config Global for app)
+ * TODO Dispatch in few services & use $ressources
  */
 angular.module('app').factory('api', function ($http, $q, config, overlay) {
 
@@ -30,7 +31,7 @@ angular.module('app').factory('api', function ($http, $q, config, overlay) {
                 })
                 .error(function (result) {
                     overlay.set(false);
-                    deferred.resolve('Erreur :' + result);
+                    deferred.reject('Erreur :' + result);
                 });
 
             return deferred.promise;
@@ -61,7 +62,7 @@ angular.module('app').factory('api', function ($http, $q, config, overlay) {
                 })
                 .error(function (result) {
                     overlay.set(false);
-                    deferred.resolve('Erreur :' + result);
+                    deferred.reject('Erreur :' + result);
                 });
 
             return deferred.promise;
@@ -86,7 +87,7 @@ angular.module('app').factory('api', function ($http, $q, config, overlay) {
                 })
                 .error(function (result) {
                     overlay.set(false);
-                    deferred.resolve('Erreur :' + result);
+                    deferred.reject('Erreur :' + result);
                 });
 
             return deferred.promise;
@@ -127,7 +128,7 @@ angular.module('app').factory('api', function ($http, $q, config, overlay) {
                 })
                 .error(function (result) {
                     overlay.set(false);
-                    deferred.resolve('Erreur :' + result);
+                    deferred.reject('Erreur :' + result);
                 });
 
             return deferred.promise;
@@ -234,7 +235,7 @@ angular.module('app').factory('api', function ($http, $q, config, overlay) {
                 })
                 .error(function (result) {
                     overlay.set(false);
-                    deferred.resolve('Erreur :' + result);
+                    deferred.reject('Erreur :' + result);
                 });
 
             return deferred.promise;
@@ -258,7 +259,7 @@ angular.module('app').factory('api', function ($http, $q, config, overlay) {
                     deferred.resolve(result);
                 })
                 .error(function (result) {
-                    deferred.resolve('Erreur :' + result);
+                    deferred.reject('Erreur :' + result);
                 });
 
             return deferred.promise;
@@ -320,7 +321,7 @@ angular.module('app').factory('api', function ($http, $q, config, overlay) {
                 })
                 .error(function (result) {
                     overlay.set(false);
-                    deferred.resolve('Erreur :' + result);
+                    deferred.reject('Erreur :' + result);
                 });
 
             return deferred.promise;
@@ -399,7 +400,7 @@ angular.module('app').factory('api', function ($http, $q, config, overlay) {
                 })
                 .error(function (result) {
                     overlay.set(false);
-                    deferred.resolve('Erreur :' + result);
+                    deferred.reject('Erreur :' + result);
                 });
 
             return deferred.promise;
@@ -453,7 +454,8 @@ angular.module('app').factory('api', function ($http, $q, config, overlay) {
                 })
                 .error(function (result) {
                     overlay.set(false);
-                });
+                    deferred.reject(false);
+                })
 
             return deferred.promise;
         }
