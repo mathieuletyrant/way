@@ -140,7 +140,8 @@ class UsersController extends Controller{
 		$total = array();
 		$blinds = $this->Blind->get(array(
 			'conditions' => array(
-				'user_id' => $f3->get('POST.facebook_id')
+				'user_id' => $f3->get('POST.facebook_id'),
+				'status' => 'FINISH'
 				)
 			));
 		$categories = $this->Category->get(array(
