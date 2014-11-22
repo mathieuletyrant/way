@@ -1265,7 +1265,7 @@ footer p {
     height: 315px;
 }
 
-.choose_container .choose_user .onleft, 
+.choose_container .choose_user .onleft,
 .choose_container .choose_user .onright {
     width: 50%;
     position: relative;
@@ -1375,7 +1375,7 @@ footer p {
     overflow: hidden;
 }
 
-span#next_user, 
+span#next_user,
 span#previous_user {
     display: block;
     position: absolute;
@@ -1427,7 +1427,7 @@ span#previous_user {
     width: 66px;
     background: url(../img/user_choosed.png) no-repeat center rgba(44,47,54,0.7);
     transition: all 0.3s;
-} 
+}
 
 .user_container .card_user.active .photo_user .mask {
     opacity: 1;

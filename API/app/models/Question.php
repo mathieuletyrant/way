@@ -56,7 +56,7 @@ class Question extends Model {
 
 		foreach ($questions as $key => $question) {
 			$question_responses[$key]['question'] = $question;
-			$question_responses[$key]['anwsers'] = $this->db->exec('SELECT * FROM answers WHERE question_id = :question_id', array('question_id' => $question['id']));
+			$question_responses[$key]['answers'] = $this->db->exec('SELECT * FROM answers WHERE question_id = :question_id', array('question_id' => $question['id']));
 		}
 
 		// return $this->encode('questions', $questions);
@@ -76,7 +76,7 @@ class Question extends Model {
 		if(!empty($questions)){
 			foreach ($questions as $key => $question) {
 				$question_responses[$key]['question'] = $question;
-				$question_responses[$key]['anwsers'] = $this->db->exec('SELECT * FROM answers WHERE question_id = :question_id', array('question_id' => $question['id']));
+				$question_responses[$key]['answers'] = $this->db->exec('SELECT * FROM answers WHERE question_id = :question_id', array('question_id' => $question['id']));
 			}
 		}else{ return false; }
 
