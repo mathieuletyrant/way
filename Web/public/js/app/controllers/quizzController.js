@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('app').controller('quizzController', function ($rootScope, $scope, $stateParams, $state, $interval, quizz, config, session, api) {
+angular.module('app').controller('quizzController', function ($rootScope, $scope, $stateParams, $state, $interval, $filter, quizz, config, session, api) {
 
     var type        = $stateParams.type || null,
         blindId     = $stateParams.blindId,
@@ -46,6 +46,10 @@ angular.module('app').controller('quizzController', function ($rootScope, $scope
         }
         else{
             $scope.questions = result.questions;
+        }
+        /* Little Shuffle */
+        for(var i = 0; i < $scope.questions.length; i++){
+            $filter('shuffle')($scope.questions[i].answers);
         }
     });
 

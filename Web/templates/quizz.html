@@ -20,12 +20,12 @@
 
             <div class="container_rep">
                 <div class="reponse"
-                     ng-repeat="question in questions[currentQuestion].answers"
+                     ng-repeat="answer in questions[currentQuestion].answers"
                      ng-click="newQuestion($index)">
                     <span class="checked"></span>
                     <div class="mask"></div>
-                    <img ng-src="{{path+'/'+question.file}}" alt="{{question.answer}}">
-                    <h3 class="reponse_titre">{{question.answer}}</h3>
+                    <img ng-src="{{path+'/'+answer.file}}" alt="{{answer.answer}}">
+                    <h3 class="reponse_titre">{{answer.answer}}</h3>
                 </div>
                 <div class="clear"></div>
             </div>
