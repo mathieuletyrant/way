@@ -87,6 +87,7 @@
                     <div class="onleft">
                         <h4>Défiez un ami en lui envoyant un mail</h4>
                         <p>*Attention votre ami doit être du même sexe que vous</p>
+                        <p ng-show="mailForm.$submitted">Votre demande à bien était envoyée</p> <!-- TODO Animate this -->
                         <form id="mail_to_user" name="mailForm" ng-submit="seedMail(mailForm.$valid)">
                             <label for="mail">Son adresse mail</label>
                             <div class="clear"></div>
