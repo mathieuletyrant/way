@@ -476,7 +476,7 @@ a.bx-prev:after {
     border: 1px solid #fff;
     position: absolute;
     left: 0;
-    top: 0;
+    top: -1px;
     padding-left: 30px;
 }
 
@@ -497,7 +497,7 @@ a.bx-next:after {
     border: 1px solid #fff;
     position: absolute;
     right: 0;
-    top: 0;
+    top: -1px;
     padding-right: 30px;
 }
 
