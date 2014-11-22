@@ -215,6 +215,11 @@
    PAGE DEFI
 
    *********************************/
+
+    #wrap_full.defi_wrap {
+        position: relative;
+    }
+
     .defi_container {
         width: 100%;
         margin: 0;
@@ -222,6 +227,7 @@
         height: auto;
         top: 0;
         left: 0;
+        padding-bottom: 50px;
     }
 
     .defi_container .versus {
@@ -378,9 +384,9 @@
 
     /*********************************
 
-PAGE DEFI
+    PAGE DEFI
 
-*********************************/
+    *********************************/
     .defi_container .versus .user {
         float: none;
         margin: 0 auto;
@@ -394,5 +400,6 @@ PAGE DEFI
         margin: 0 auto;
         margin-bottom: 50px;
     }
+
 
 }

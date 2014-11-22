@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('app').controller('chooseController', function ($scope, $state, $timeout, session, mail, config, api, choose) {
+angular.module('app').controller('chooseController', function ($scope, $state, $timeout, session, apiMail, config, api, choose) {
 
     /*
      * If we are not logged -> redirect to home
@@ -47,14 +47,14 @@ angular.module('app').controller('chooseController', function ($scope, $state, $
         if (isValid) {
 
             if (!session.getTimeStamp()) {
-                mail.seed($scope.mailForm.mail, $scope.user.firstname, $scope.user.lastname, $scope.mailForm.message).then(function () {
+                apiMail.seed($scope.mailForm.mail, $scope.user.firstname, $scope.user.lastname, $scope.mailForm.message).then(function () {
                     $scope.mailForm.seeded = true;
                 });
                 session.setTimeStamp();
             }
             else {
                 if (((new Date() - session.getTimeStamp) / 1000) > config.antiFlood) {
-                    mail.seed($scope.mailForm.mail, $scope.user.firstname, $scope.user.lastname, $scope.mailForm.message).then(function () {
+                    apiMail.seed($scope.mailForm.mail, $scope.user.firstname, $scope.user.lastname, $scope.mailForm.message).then(function () {
                         $scope.mailForm.seeded = true;
                     });
                     session.setTimeStamp();

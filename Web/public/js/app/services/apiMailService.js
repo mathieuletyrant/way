@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('app').factory('mail', function ($http, $q, overlay, config) {
+angular.module('app').factory('apiMail', function ($http, $q, overlay, config) {
     return {
         seed: function (mail, firstname, lastname, message) {
 

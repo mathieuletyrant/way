@@ -443,6 +443,65 @@ h1 img {
     height: 500px !important;
 }
 
+
+.bx-controls-direction {
+    width: 960px;
+    margin: 0 auto;
+    height: 30px;
+    position: relative;
+}
+
+.bx-controls-direction a {
+    position: absolute;
+    font-size: 0;
+    display: block;
+    width: 30px;
+    height: 30px;
+}
+
+a.bx-prev {
+    display: none;
+    background: url(../img/prev_slide.png) no-repeat center;
+}
+
+a.bx-prev:after {
+    content: 'Tuto moniteur';
+    display: block;
+    height: 30px;
+    width: 100px;
+    font-size: 12px;
+    line-height: 30px;
+    color: #fff;
+    border-radius: 30px;
+    border: 1px solid #fff;
+    position: absolute;
+    left: 0;
+    top: -1px;
+    padding-left: 30px;
+}
+
+a.bx-next {
+    background: url(../img/next_slide.png) no-repeat center;
+    right: 0;
+}
+
+a.bx-next:after {
+    content: 'Appli Mobile';
+    display: block;
+    height: 30px;
+    width: 100px;
+    font-size: 12px;
+    line-height: 30px;
+    color: #fff;
+    border-radius: 30px;
+    border: 1px solid #fff;
+    position: absolute;
+    right: 0;
+    top: -1px;
+    padding-right: 30px;
+}
+
+
 #slider_how_to .slide {
     position: relative;
 }
@@ -484,9 +543,7 @@ h1 img {
 }
 
 #fleche_1 {
-    background: url(../img/fleche_right_left_top.png) no-repeat center;
-    right: -20px;
-    top: -10px;
+    background: url(../img/fleche_right_left_top.png) no-repeat center; right: -20px; top: -10px;
 }
 
 #tooltip_2 {
@@ -499,12 +556,12 @@ h1 img {
     right: -22px;
 }
 
-#tooltip_3 {
+#tooltip_3 { 
     top: 100px;
     right: 0;
 }
 
-#fleche_3 {
+#fleche_3 { 
     background: url(../img/fleche_left_right_top.png) no-repeat center;
     top: -45px;
     left: -28px;
@@ -514,11 +571,43 @@ h1 img {
     top: 280px;
     right: 0;
 }
-
 #fleche_4 {
     background: url(../img/fleche_left_right_bottom.png) no-repeat center;
     bottom: -45px;
     left: -28px;
+}
+
+#tooltip_5 {
+    top: 200px;
+    left : 50px;
+}
+
+#tooltip_6 {
+    right: 50px;
+    top: 50px;
+}
+
+#fleche_6 {
+    background: url(../img/fleche_left_right_top.png) no-repeat center;
+    top: 30px;
+    left: -76px; 
+    transform : rotate(56deg);
+    -webkit-transform: rotate(-56deg);
+}
+
+#tooltip_7 {
+    right: 100px;
+    bottom: 90px;
+}
+
+#fleche_7 {
+    background: url(../img/fleche_longue.png) no-repeat center;
+    top: 130px;
+    left: -140px;
+}
+
+#slider_how_to .slide #tooltip_7.tooltip .fleche {
+    width: 142px;
 }
 
 .showcase_profils {
@@ -923,11 +1012,11 @@ footer p {
 }
 
 .fail {
-    background: #f6464a !important;
+    background: url(../img/fail.png) no-repeat center #f6464a !important;
 }
 
 .win {
-    background: #253341 !important;
+    background: url(../img/win.png) no-repeat center #253341 !important;
 }
 
 .white {
