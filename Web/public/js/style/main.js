@@ -69,6 +69,15 @@ function checkKey(e) {
     }
 }
 
+setTimeout(function(){
+	document.getElementById("profil").classList.remove('on_right');
+	document.getElementById("stats").classList.remove('hided');
+
+	 setTimeout(function(){
+	 		document.getElementById("name_user").classList.remove('hided');
+	 }, 1000);
+}, 3000);
+
 function putOnLeft(e) {
 	e.preventDefault();
 
