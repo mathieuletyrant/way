@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('app').controller('profilController', function($scope, $state, apiUser, session, chart){
+angular.module('app').controller('profilController', function($scope, $state, apiUser, session, chart, quotes){
 
     /*
      * If we are not logged -> redirect to home
@@ -22,7 +22,12 @@ angular.module('app').controller('profilController', function($scope, $state, ap
      * Get Percent for know category
      */
     apiUser.profilUser($scope.user.facebook_id, $scope.user.sex).then(function(result){
+
         $scope.userInformations = result.user;
+
+        quotes.get().then(function(quote){
+            $scope.quote = "«"+quote[0][result.user.profil]+"»";
+        });
 
         var j = 0;
 
