@@ -1544,11 +1544,11 @@ footer p {
 }
 
 #container_phase.phase_1 .choose_container.phase_2 {
-    transform: translate3d(1400px, 0, 0);
+    transform: translate3d(2000px, 0, 0);
 }
 
 #container_phase.phase_2 .choose_container.phase_1 {
-    transform: translate3d(-1400px, 0, 0);
+    transform: translate3d(-2000px, 0, 0);
 }
 
 #container_phase.phase_2 .choose_container.phase_12 {
