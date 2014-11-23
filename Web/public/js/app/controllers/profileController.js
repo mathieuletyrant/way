@@ -16,7 +16,7 @@ angular.module('app').controller('profilController', function($scope, $state, ap
     /*
      * Color for GoogleGraph
      */
-    $scope.colors = chart.colors();
+    $scope.colors = chart.colors($scope.user.sex);
 
     /*
      * Get Percent for know category

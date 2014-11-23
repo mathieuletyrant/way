@@ -2,34 +2,34 @@
 
 angular.module('app').service('chart', function () {
 
-    this.colors = function () {
+    this.colors = function (sexe) {
         return [
             {
-                category: 'geek',
+                category: (sexe == "male") ? 'geek' : 'barbie',
                 color: 'red',
                 chartColor: '#F7464A',
                 highlight: '#FF5A5E'
             },
             {
-                category: 'dragqueen',
+                category: (sexe == "male") ? 'dragqueen' : 'badgirl',
                 color: 'blue',
                 chartColor: "#46BFBD",
                 highlight: "#5AD3D1"
             },
             {
-                category: 'hipster',
+                category: (sexe == "male") ? 'hipster' : 'fleurbleue',
                 color: 'gray',
                 chartColor: "#949FB1",
                 highlight: "#A8B3C5"
             },
             {
-                category: 'badboy',
+                category: (sexe == "male") ? 'badboy' : 'geekette',
                 color: 'black',
                 chartColor: "#4D5360",
                 highlight: "#616774"
             },
             {
-                category: 'keke',
+                category: (sexe == "male") ? 'keke' : 'hippie',
                 color: 'yellow',
                 chartColor: '#FDB45C',
                 highlight: '#FFC870'
