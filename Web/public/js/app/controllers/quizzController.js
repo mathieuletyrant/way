@@ -128,7 +128,7 @@ angular.module('app').controller('quizzController', function ($rootScope, $scope
             if(type === 'single'){
                 apiUser.profilUser(session.getUser().facebook_id, session.getSexe()).then(function(result){
                     var newCategory = result.user.profil;
-                    api.userCategory(session.getUser().facebook_id, newCategory).then(function(){
+                    apiUser.userCategory(session.getUser().facebook_id, newCategory).then(function(){
                         session.setCategory(newCategory);
                         $state.go('profil');
                     });
