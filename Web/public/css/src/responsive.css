@@ -384,6 +384,10 @@
         width: 90%;
     }
 
+    .showcase {
+        min-height: 600px;
+    }
+
     .showcase_profils {
         height: 820px;
     }
