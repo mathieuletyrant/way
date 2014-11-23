@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('app').controller('quizzController', function ($rootScope, $scope, $stateParams, $state, $interval, $filter, quizz, config, session, api) {
+angular.module('app').controller('quizzController', function ($rootScope, $scope, $stateParams, $state, $interval, $filter, quizz, config, session, apiBlind, apiUser, apiNotification) {
 
     var type        = $stateParams.type || null,
         blindId     = $stateParams.blindId,
@@ -19,10 +19,10 @@ angular.module('app').controller('quizzController', function ($rootScope, $scope
     $rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams){
         if(fromState.name == 'quizz'){
             if(blind === 'CREATED'){
-                api.blindUpdate($scope.blindId, 'CANCEL');
+                apiBlind.blindUpdate($scope.blindId, 'CANCEL');
             }
             else if(blind === 'FINISH'){
-                api.blindUpdate($scope.blindId, blind);
+                apiBlind.blindUpdate($scope.blindId, blind);
             }
         }
     });
@@ -123,10 +123,10 @@ angular.module('app').controller('quizzController', function ($rootScope, $scope
         if($scope.currentQuestion == 19){
             $interval.cancel(timer);
             blind = 'FINISH';
-            api.blindUpdate($scope.blindId, blind);
+            apiBlind.blindUpdate($scope.blindId, blind);
             console.log('[QUIZZ] : Challenge '+type+' done');
             if(type === 'single'){
-                api.profilUser(session.getUser().facebook_id, session.getSexe()).then(function(result){
+                apiUser.profilUser(session.getUser().facebook_id, session.getSexe()).then(function(result){
                     var newCategory = result.user.profil;
                     api.userCategory(session.getUser().facebook_id, newCategory).then(function(){
                         session.setCategory(newCategory);
@@ -135,7 +135,7 @@ angular.module('app').controller('quizzController', function ($rootScope, $scope
                 });
             }
             else{
-                api.addNotification(session.getUser().facebook_id, $stateParams.user_2, $scope.blindId).then(function(){
+                apiNotification.addNotification(session.getUser().facebook_id, $stateParams.user_2, $scope.blindId).then(function(){
                     $state.go('profil');
                 });
             }

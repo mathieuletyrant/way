@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('app').controller('chooseController', function ($scope, $state, $timeout, session, apiMail, config, api, choose) {
+angular.module('app').controller('chooseController', function ($scope, $state, $timeout, session, apiMail, config, apiUser, choose) {
 
     /*
      * If we are not logged -> redirect to home
@@ -67,7 +67,7 @@ angular.module('app').controller('chooseController', function ($scope, $state, $
     /*
      * Selects users
      */
-    api.userSexe($scope.user.sex).then(function (result) {
+    apiUser.userSexe($scope.user.sex).then(function (result) {
         $scope.users = result;
         $timeout(choose.style, 1000);
     });

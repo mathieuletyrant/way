@@ -3,7 +3,7 @@
  * @requires $scope
  * @require Facebook (Service for Facebook Connect)
  */
-angular.module('app').controller('authenticationController', function ($scope, Facebook, api, session) {
+angular.module('app').controller('authenticationController', function ($scope, Facebook, apiUser, session) {
 
     /*
      * Test already logged
@@ -44,8 +44,8 @@ angular.module('app').controller('authenticationController', function ($scope, F
             var user = response;
 
             $scope.$apply(function () {
-
-                api.userExist(user.id).then(function (response) {
+                
+                apiUser.userExist(user.id).then(function (response) {
 
                     if (response.message === "user not found") {
 
@@ -56,10 +56,10 @@ angular.module('app').controller('authenticationController', function ($scope, F
                             console.log('[SUBSCRIBE] : Searching Picture for subscribe');
                             user.photo = response.data.url;
 
-                            api.userRegister(user).then(function () {
+                            apiUser.userRegister(user).then(function () {
                                 console.log('[SUBSCRIBE] : Registering user in WAY API');
 
-                                api.getUser(user.id).then(function(result){
+                                apiUser.getUser(user.id).then(function(result){
                                     session.saveUser(result.users);
                                     $scope.logged = true;
                                     $scope.user = session.getUser();
@@ -72,7 +72,7 @@ angular.module('app').controller('authenticationController', function ($scope, F
                     }
                     else {
 
-                        api.getUser(user.id).then(function(result){
+                        apiUser.getUser(user.id).then(function(result){
                             session.saveUser(result.users);
                             $scope.logged = true;
                             $scope.user = session.getUser();

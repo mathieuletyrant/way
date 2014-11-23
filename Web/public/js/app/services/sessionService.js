@@ -1,6 +1,7 @@
 'use strict';
 
 angular.module('app').factory('session', function ($sessionStorage) {
+
     return {
 
         loggedUser: function (value) {
@@ -36,7 +37,7 @@ angular.module('app').factory('session', function ($sessionStorage) {
         },
 
         setCategory: function(category){
-          $sessionStorage.user.category_name = category;
+            $sessionStorage.user.category_name = category;
         },
 
         saveUser: function (userInfo) {
@@ -57,4 +58,5 @@ angular.module('app').factory('session', function ($sessionStorage) {
             delete $sessionStorage.logged;
         }
     }
+
 });

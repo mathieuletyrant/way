@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('app').controller('defiController', function ($scope, $state, $stateParams, session, api) {
+angular.module('app').controller('defiController', function ($scope, $state, $stateParams, session, apiUser) {
 
     /*
      * If we are not logged -> redirect to home
@@ -17,7 +17,7 @@ angular.module('app').controller('defiController', function ($scope, $state, $st
     /*
      * GET Informations Users
      */
-    api.getUser($stateParams.user_2).then(function (result) {
+    apiUser.getUser($stateParams.user_2).then(function (result) {
         $scope.users.user_2 = result.users;
     });
 
