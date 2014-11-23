@@ -5,7 +5,7 @@ angular.module('app').controller('profilController', function($scope, $state, ap
     /*
      * If we are not logged -> redirect to home
      */
-    if(session.getLogged() === false || session.getUser().category_name == ""){
+    if(session.getLogged() === false || session.getUser().category_name == false){
         $state.go('home');
     }
     else{
