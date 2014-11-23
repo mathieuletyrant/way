@@ -191,11 +191,11 @@ angular.module('app').factory('apiBlind', function ($http, $q, config, overlay) 
             })
                 .success(function () {
                     overlay.set(false);
-                    return true;
+                    deferred.resolve(true);
                 })
                 .error(function () {
                     overlay.set(false);
-                    return false;
+                    deferred.resolve(false);
                 });
 
             return deferred.promise;

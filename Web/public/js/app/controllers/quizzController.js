@@ -123,22 +123,23 @@ angular.module('app').controller('quizzController', function ($rootScope, $scope
         if($scope.currentQuestion == 19){
             $interval.cancel(timer);
             blind = 'FINISH';
-            apiBlind.blindUpdate($scope.blindId, blind);
-            console.log('[QUIZZ] : Challenge '+type+' done');
-            if(type === 'single'){
-                apiUser.profilUser(session.getUser().facebook_id, session.getSexe()).then(function(result){
-                    var newCategory = result.user.profil;
-                    apiUser.userCategory(session.getUser().facebook_id, newCategory).then(function(){
-                        session.setCategory(newCategory);
+            apiBlind.blindUpdate($scope.blindId, blind).then(function(){
+                console.log('[QUIZZ] : Challenge '+type+' done');
+                if(type === 'single'){
+                    apiUser.profilUser(session.getUser().facebook_id, session.getSexe()).then(function(result){
+                        var newCategory = result.user.profil;
+                        apiUser.userCategory(session.getUser().facebook_id, newCategory).then(function(){
+                            session.setCategory(newCategory);
+                            $state.go('profil');
+                        });
+                    });
+                }
+                else{
+                    apiNotification.addNotification(session.getUser().facebook_id, $stateParams.user_2, $scope.blindId).then(function(){
                         $state.go('profil');
                     });
-                });
-            }
-            else{
-                apiNotification.addNotification(session.getUser().facebook_id, $stateParams.user_2, $scope.blindId).then(function(){
-                    $state.go('profil');
-                });
-            }
+                }
+            });
         }
         else{
             timer = $interval(function(){
