@@ -371,6 +371,10 @@
         font-size: 26px;
     }
 
+    header .logo {
+        position: absolute;
+    }
+
     .presentation .bloc_3 {
         width: 100%;
         padding: 0;
