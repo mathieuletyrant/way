@@ -714,7 +714,20 @@ footer {
 }
 
 .footer_left .app_store {
-    margin-right: 28px;
+    width: 85px;
+    height: 29px;
+    display: inline-block;
+    background: url("../img/app_store.png") no-repeat;
+    background-size: 100% 100%;
+    margin-right: 18px;
+}
+
+.footer_left .play_store {
+    width: 85px;
+    height: 29px;
+    display: inline-block;
+    background: url("../img/play_store.png") no-repeat;
+    background-size: 100% 100%;
 }
 
 .footer_right {
