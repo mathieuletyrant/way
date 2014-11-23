@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('app').factory('quotes', function($q, $http, overlay){
+angular.module('app').factory('quotes', function($q, $http, overlay, config){
 
     return {
         get: function () {
@@ -11,7 +11,7 @@ angular.module('app').factory('quotes', function($q, $http, overlay){
 
             $http({
                 method: 'GET',
-                url: '/Web/public/js/quotes.json' // Delete WEB on FTP
+                url: config.path+'/public/js/quotes.json'
             })
                 .success(function (result) {
                     overlay.set(false);

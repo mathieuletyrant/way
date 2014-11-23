@@ -6,6 +6,7 @@ angular.module('app', ['ui.router', 'facebook', 'ngStorage', 'ngAnimate', 'ngAri
         Config
      */
     .constant('config', {
+        path                    : '/Web',
         apiUrl                  : 'http://wayapi.mathieuletyrant.com',
         token                   : 'KDR8u9vuRH8i6hx8V4e6',
         facebookAppApi          : '828582677192624',
