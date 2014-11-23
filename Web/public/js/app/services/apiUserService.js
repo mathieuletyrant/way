@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('app').factory('apiUser', function($q, $http, $resource, overlay, config){
+angular.module('app').factory('apiUser', function($q, $http, overlay, config){
     return{
 
         /*

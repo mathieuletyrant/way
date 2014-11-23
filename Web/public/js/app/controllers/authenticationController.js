@@ -44,7 +44,7 @@ angular.module('app').controller('authenticationController', function ($scope, F
             var user = response;
 
             $scope.$apply(function () {
-                
+
                 apiUser.userExist(user.id).then(function (response) {
 
                     if (response.message === "user not found") {
