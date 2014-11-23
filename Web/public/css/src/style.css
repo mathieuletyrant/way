@@ -739,6 +739,8 @@ footer {
     width: 28px;
     display: inline-block;
     margin-left: 12px;
+    font-size: 30px;
+    color: #fff;
 }
 
 .footer_center img {
