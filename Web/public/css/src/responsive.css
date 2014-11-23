@@ -180,7 +180,8 @@
         line-height: 30px;
     }
 
-    .container_btn .btn {
+    #profil .container_btn .btn {
+        width: 80%;
         margin-bottom: 30px;
     }
 
@@ -454,7 +455,7 @@
     *********************************/
     #wrap_full.wrap_profil {
         background: #34495e;
-        min-height: 1400px;
+        min-height: 1500px;
     }
 
     .allStats {
