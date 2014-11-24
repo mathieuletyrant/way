@@ -682,6 +682,10 @@ a.bx-next:after {
     margin-left: 147px;
 }
 
+.profil.pas_dispo {
+    opacity: 0.3;
+}
+
 .profil_image {
     margin-bottom: 12px;
 }
@@ -1597,6 +1601,13 @@ footer p {
     background: #34495e;
     border-color: #34495e;
 }
+
+.choose_container .profil.pas_dispo .profil_name.active,
+.choose_container .profil.pas_dispo .profil_name:hover {
+    background: transparent;
+    border-color: #fff;
+}
+
 
 .choose_container .choose_user {
     width: 100%;

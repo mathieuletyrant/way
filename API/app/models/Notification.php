@@ -35,7 +35,12 @@ class Notification extends Model{
 	*	@return json / boolean
 	**/
 	public function getNotification($receiver_id){
-		$notifications = $this->db->exec('SELECT * FROM ' . $this->table . ' JOIN users ON ' . $this->table . '.user_id = users.facebook_id
+		$notifications = $this->db->exec('SELECT notifications.id, notifications.blind_id, notifications.type, notifications.category_id,
+			u1.facebook_id as "facebook_id1", u1.firstname as "firstname1", u1.lastname as "lastname1", u1.picture as "picture1",
+			u2.facebook_id as "facebook_id2", u2.firstname as "firstname2", u2.lastname as "lastname2", u2.picture as "picture2"
+			FROM ' . $this->table . '
+			JOIN users u1 ON ' . $this->table . '.user_id = u1.facebook_id
+			JOIN users u2 ON ' . $this->table . '.friend_id = u2.facebook_id
 			WHERE receiver_id = :receiver_id', array('receiver_id' => $receiver_id));
 
 		if(!empty($notifications)){
@@ -57,9 +62,9 @@ class Notification extends Model{
 	*	@param int $friend_id
 	*	@return boolean
 	**/
-	public function deleteNotification($user_id, $friend_id){
-		$delete = $this->db->exec('DELETE FROM ' . $this->table . ' WHERE user_id = :user_id AND friend_id = :friend_id',
-			array('user_id' => $user_id, 'friend_id' => $friend_id));
+	public function deleteNotification($id){
+		$delete = $this->db->exec('DELETE FROM ' . $this->table . ' WHERE id = :id',
+			array('id' => $id));
 		return ($delete) ? true : false;
 	}
 
