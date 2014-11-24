@@ -8,15 +8,15 @@ angular.module('app').factory('apiNotification', function($q, $http, overlay, co
          * @name Gets Notifications Users
          * @param int facebookId
          */
-        getNotifications: function (facebookId) {
+        getNotifications: function (receiverId) {
 
-            facebookId = facebookId || 1;
+            receiverId = receiverId || null;
 
             var deferred = $q.defer();
 
             $http({
                 method: 'GET',
-                url: config.apiUrl + '/notification/get/' + facebookId
+                url: config.apiUrl + '/notification/get/'+receiverId
             })
                 .success(function (result) {
                     deferred.resolve(result);
@@ -28,12 +28,26 @@ angular.module('app').factory('apiNotification', function($q, $http, overlay, co
             return deferred.promise;
         },
 
-        addNotification: function (userId, friendId, blindId) {
+        /*
+         * @name Add a notification
+         * @param int receiverId
+         * @param string type
+         * @param int userId
+         * @param int friendId
+         * @param int blindId
+         * @param string message
+         * @param string category
+         */
+        addNotification: function (receiverId, type, userId, friendId, blindId, message, category) {
 
             var param = {
-                    user_id: userId,
-                    friend_id: friendId,
-                    blind_id: blindId
+                    receiver_id : receiverId    || null,
+                    type        : type          || null,
+                    user_id     : userId        || null,
+                    friend_id   : friendId      || null,
+                    blind_id    : blindId       || null,
+                    message     : message       || null,
+                    category    : category      || null
                 },
                 transform = function (data) {
                     return $.param(data);

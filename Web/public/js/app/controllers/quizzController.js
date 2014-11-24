@@ -135,7 +135,7 @@ angular.module('app').controller('quizzController', function ($rootScope, $scope
                     });
                 }
                 else{
-                    apiNotification.addNotification(session.getUser().facebook_id, $stateParams.user_2, $scope.blindId).then(function(){
+                    apiNotification.addNotification($stateParams.user_2, 'START_DUEL', session.getUser().facebook_id, $stateParams.user_2, $scope.blindId, null, $stateParams.category).then(function(){
                         $state.go('profil');
                     });
                 }
