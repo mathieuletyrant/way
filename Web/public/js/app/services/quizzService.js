@@ -14,7 +14,7 @@ angular.module('app').factory('quizz', function ($q, apiBlind, session) {
             return deferred.promise;
         },
 
-        addResponse: function(blindId, questionId, responseId, userId){
+        addResponse: function(blindId, userId, questionId, responseId){
 
             if(responseId){
                 apiBlind.blindResponse(blindId, userId, questionId, responseId);
