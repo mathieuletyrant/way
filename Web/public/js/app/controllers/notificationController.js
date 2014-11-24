@@ -13,6 +13,7 @@ angular.module('app').controller('notificationController', function ($scope, $in
     if (session.getLogged()) {
 
         notification.getNotifications().then(function(result){
+            console.log(result);
             $scope.notifications = result;
         });
 
