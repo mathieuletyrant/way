@@ -22,7 +22,7 @@ angular.module('app', ['ui.router', 'facebook', 'ngStorage', 'ngAnimate', 'ngAri
      */
     .config(function($stateProvider, $urlRouterProvider, $locationProvider, config){
 
-        $urlRouterProvider.otherwise("/home"); // Default Page
+        $urlRouterProvider.otherwise("/"); // Default Page
 
         if(!config.dev){
             $locationProvider.html5Mode(true);
@@ -31,7 +31,7 @@ angular.module('app', ['ui.router', 'facebook', 'ngStorage', 'ngAnimate', 'ngAri
 
         $stateProvider
             .state('home', {
-                url: "/home",
+                url: "/",
                 templateUrl: 'templates/home.html'
             })
             .state('letsgo', {
