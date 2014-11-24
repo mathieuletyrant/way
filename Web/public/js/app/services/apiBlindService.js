@@ -134,12 +134,13 @@ angular.module('app').factory('apiBlind', function ($http, $q, config, overlay) 
          * @param int questionId
          * @param int|null responseId
          */
-        blindResponse: function (blindId, questionId, responseId) {
+        blindResponse: function (blindId, userId, questionId, responseId) {
 
             var param = {
-                    blind_id: blindId,
-                    question_id: questionId,
-                    response_id: responseId || 0
+                    blind_id    : blindId,
+                    user_id     : userId,
+                    question_id : questionId,
+                    response_id : responseId || 0
                 },
                 transform = function (data) {
                     return $.param(data);

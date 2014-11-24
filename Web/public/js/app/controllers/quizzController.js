@@ -4,7 +4,8 @@ angular.module('app').controller('quizzController', function ($rootScope, $scope
 
     var type        = $stateParams.type || null,
         blindId     = $stateParams.blindId,
-        blind       = 'CREATED';
+        blind       = 'CREATED',
+        timer;
 
     /*
      * If we are not logged -> redirect to home
@@ -30,7 +31,8 @@ angular.module('app').controller('quizzController', function ($rootScope, $scope
     /*
      * Load Current ID Blind
      */
-    if(blindId === 0){
+    if(blindId == 0){
+        console.log('ici');
         quizz.blindStart(type).then(function(id){
             $scope.blindId = id;
         });
@@ -58,7 +60,7 @@ angular.module('app').controller('quizzController', function ($rootScope, $scope
             $filter('shuffle')($scope.questions[i].answers);
         }
         // Start Timer when questions loaded
-        var timer = $interval(function(){
+        timer = $interval(function(){
             $scope.countDown--;
         }, 1000);
     });
@@ -110,7 +112,7 @@ angular.module('app').controller('quizzController', function ($rootScope, $scope
 
         if(endTimer == 1){
             $scope.responses[$scope.currentQuestion].value = 0;
-            quizz.addResponse($scope.blindId, question.question.id);
+            quizz.addResponse($scope.blindId, session.getUser().facebook_id, question.question.id);
             console.log('[QUIZZ] : Bad answer');
         }
         else{
@@ -123,7 +125,7 @@ angular.module('app').controller('quizzController', function ($rootScope, $scope
                 $scope.responses[$scope.currentQuestion].value = 0;
                 console.log('[QUIZZ] : Bad answer');
             }
-            quizz.addResponse($scope.blindId, question.question.id, question.answers[index].id);
+            quizz.addResponse($scope.blindId, session.getUser().facebook_id, question.question.id, question.answers[index].id);
         }
         /* Check if last question */
         if($scope.currentQuestion == 19){
@@ -141,14 +143,16 @@ angular.module('app').controller('quizzController', function ($rootScope, $scope
                     });
                 }
                 else{
-                    if(blindId === 0){
-                        apiNotification.addNotification($stateParams.user_2, 'START_DUEL', session.getUser().facebook_id, $stateParams.user_2, $scope.blindId, null, $stateParams.category).then(function(){
-                            $state.go('profil');
+                    if(blindId == 0){
+                        apiNotification.addNotification($stateParams.user_2, 'START_DUEL', $stateParams.user_1, $stateParams.user_2, $scope.blindId, null, $stateParams.category).then(function(){
+                            $state.go('home');
                         });
                     }
                     else{ // It's the second user for response
                         apiNotification.addNotification($stateParams.user_1, 'END_DUEL', $stateParams.user_1, $stateParams.user_2, $scope.blindId, null, $stateParams.category).then(function(){
-                            $state.go('home');
+                            apiNotification.addNotification($stateParams.user_2, 'END_DUEL', $stateParams.user_1, $state.user_2, $scope.blindId, null, $stateParams.category).then(function(){
+                               $state.go('home');
+                            });
                         });
                     }
 

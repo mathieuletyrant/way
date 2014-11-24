@@ -14,13 +14,13 @@ angular.module('app').factory('quizz', function ($q, apiBlind, session) {
             return deferred.promise;
         },
 
-        addResponse: function(blindId, questionId, responseId){
+        addResponse: function(blindId, questionId, responseId, userId){
 
             if(responseId){
-                apiBlind.blindResponse(blindId, questionId, responseId);
+                apiBlind.blindResponse(blindId, userId, questionId, responseId);
             }
             else{
-                apiBlind.blindResponse(blindId, questionId);
+                apiBlind.blindResponse(blindId, userId, questionId);
             }
 
         },
