@@ -57,9 +57,8 @@ class NotificationController extends Controller{
 	*	@return json
 	**/
 	public function delete($f3){
-		if(!empty($user_id = $f3->get('PARAMS.user_id')
-			&& !empty($friend_id = $f3->get('PARAMS.friend_id')))){
-			if($this->Notification->deleteNotification($user_id, $friend_id)){
+		if(!empty($id = $f3->get('PARAMS.id')){
+			if($this->Notification->deleteNotification($id)){
 				$this->send_message(array('code' => '200', 'message' => 'notification deleted'));
 			}else{
 				$this->send_message(array('code' => '404', 'message' => 'notification not found'));
