@@ -13,19 +13,21 @@ angular.module('app', ['ui.router', 'facebook', 'ngStorage', 'ngAnimate', 'ngAri
         intervalNotification    : 5,
         timeMusic               : 15,
         antiFlood               : 30,
-        overlay                 : false
+        overlay                 : false,
+        dev                     : true
     })
 
     /*
         Route System
      */
-    .config(function($stateProvider, $urlRouterProvider, $locationProvider){
+    .config(function($stateProvider, $urlRouterProvider, $locationProvider, config){
 
         $urlRouterProvider.otherwise("/home"); // Default Page
 
-        // TODO Enable in production
-        //$locationProvider.html5Mode(true);
-        //$locationProvider.hashPrefix('!');
+        if(!config.dev){
+            $locationProvider.html5Mode(true);
+            $locationProvider.hashPrefix('!');
+        }
 
         $stateProvider
             .state('home', {
