@@ -16,13 +16,14 @@ class UserResponse extends Model{
 	*	@return int / boolean
 	**/
 	public function add($response){
-		$insert = $this->db->prepare('INSERT INTO ' . $this->table . '(question_id, response_id, blind_id, created)
-			VALUES(:question_id, :response_id, :blind_id, :created)');
+		$insert = $this->db->prepare('INSERT INTO ' . $this->table . '(question_id, response_id, blind_id, user_id, created)
+			VALUES(:question_id, :response_id, :blind_id, :user_id, :created)');
 
 		$response = $insert->execute(array(
 			'question_id' => $response['question_id'],
 			'response_id' => (!empty($response['response_id'])) ? $response['response_id'] : null,
 			'blind_id' => $response['blind_id'],
+			'user_id' => $response['user_id'],
 			'created' => $this->datetime()
 			));
 
@@ -39,6 +40,7 @@ class UserResponse extends Model{
 
 		if(empty($response['question_id'])){ $validate = false; }
 		if(empty($response['blind_id'])){ $validate = false; }
+		if(empty($response['user_id'])){ $validate = false; }
 
 		return $validate;
 	}
