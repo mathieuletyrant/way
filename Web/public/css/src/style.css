@@ -677,6 +677,10 @@ a.bx-next:after {
     margin-bottom: 55px;
 }
 
+.profil.pas_dispo {
+    opacity: 0.3;
+}
+
 .profils_homme .profil:nth-child(4),
 .profils_femme .profil:nth-child(4) {
     margin-left: 147px;
