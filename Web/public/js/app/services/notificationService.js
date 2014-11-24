@@ -13,11 +13,11 @@ angular.module('app').service('notification', function ($q, apiNotification, ses
         return deferred.promise;
     };
 
-    this.removeNotification = function (friendId) {
+    this.removeNotification = function (id) {
         var deferred = $q.defer();
 
-        apiNotification.removeNotification(session.getUser().facebook_id, friendId).then(function(){
-            return "Notification remove";
+        apiNotification.removeNotification(id).then(function(){
+            deferred.resolve("Notification Deleted");
         });
 
         return deferred.promise;

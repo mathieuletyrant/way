@@ -1789,3 +1789,6 @@ div.or {
     height: 33px;
     background: url(../img/or.png) no-repeat center;
 }
+.separator{
+    margin-top: 10px;
+}

@@ -33,28 +33,34 @@ angular.module('app').controller('notificationController', function ($scope, $st
      * Accept Quizz
      */
     $scope.accept = function (id, blindId, category, facebookId, friendId) {
-        $state.go('quizz', {
-            type: 'multi',
-            user_1: facebookId,
-            user_2: friendId,
-            category: category,
-            blindId: blindId
+        notification.removeNotification(id).then(function(result){
+            console.log(result);
+            $state.go('quizz', {
+                type: 'multi',
+                user_1: facebookId,
+                user_2: friendId,
+                category: category,
+                blindId: blindId
+            });
         });
-        // TODO DELETE Notification With ID
     };
 
     /*
      * Refuse Quizz
      */
     $scope.refuse = function (bindId, id) {
-        // TODO Delete Notification & Blind ID
+        notification.removeNotification(id).then(function(result){
+            console.log(result);
+        });
     };
 
     /*
      * Redirect to Defi with result
      */
     $scope.showResult = function (id, blindId, category, facebookId, friendId) {
-        // TODO Redirect to Defi with result and delete Notification
+        notification.removeNotification(id).then(function(){
+            // TODO Redirect to Defi with result
+        });
     };
 
     /*

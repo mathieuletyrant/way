@@ -76,8 +76,24 @@ angular.module('app').factory('apiNotification', function($q, $http, overlay, co
             return deferred.promise;
         },
 
-        removeNotification: function (userId, friendId) {
-            // Do stuff ...
+        removeNotification: function (id) {
+
+             id = id || 0;
+
+            var deferred = $q.defer();
+
+            $http({
+                method: 'GET',
+                url: config.apiUrl + '/notification/delete/'+id
+            })
+                .success(function (result) {
+                    deferred.resolve(true);
+                })
+                .error(function (result) {
+                    deferred.reject('Erreur :' + result);
+                });
+
+            return deferred.promise;
         }
 
     }
