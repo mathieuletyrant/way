@@ -32,8 +32,8 @@ angular.module('app', ['ui.router', 'facebook', 'ngStorage', 'ngAnimate', 'ngAri
                 url: "/home",
                 templateUrl: 'templates/home.html'
             })
-            .state('letgo', {
-                url: "/letgo",
+            .state('letsgo', {
+                url: "/letsgo",
                 templateUrl: 'templates/letgo.html'
             })
             .state('defi', {
