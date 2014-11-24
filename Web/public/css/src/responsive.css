@@ -11,6 +11,10 @@
         margin-right: 15px;
     }
 
+    .logo_quizz {
+        padding-left: 20px;
+    }
+
 }
 
 @media screen and (max-width: 961px) {
@@ -256,6 +260,14 @@
 
     .defi_container .defi_intitule {
         margin-bottom: 50px;
+    }
+
+    .defi_container .versus .user .identite .prenom {
+        font-size: 18px;
+    }
+
+    .defi_container .versus .user .identite .nom {
+        font-size: 14px;
     }
 
     /*********************************
