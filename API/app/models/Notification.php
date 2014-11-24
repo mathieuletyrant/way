@@ -14,12 +14,16 @@ class Notification extends Model{
 	*	@param array $notification
 	*	@return int / boolean
 	**/
-	public function add($notification){
-		$insert = $this->db->exec('INSERT INTO ' . $this->table . '(user_id, friend_id, blind_id created)
-			VALUES(:user_id, :friend_id, :blind_id, :created)', array(
-				'user_id' => $notification['user_id'],
-				'friend_id' => $notification['friend_id'],
-				'blind_id' => $notification['blind_id'],
+	public function add($notification) {
+		$insert = $this->db->exec('INSERT INTO ' . $this->table . '(receveir_id, type, user_id, friend_id, blind_id, category_id, message, created)
+			VALUES(:receiver_id, :type, :user_id, :friend_id, :blind_id, :message, :created)', array(
+				'receiver_id' => $notification['receiver_id'],
+				'type' => strtoupper($notification['type']),
+				'user_id' => (!empty($notification['user_id']) ? $notification['user_id'] : '',
+				'friend_id' => (!empty($notification['friend_id']) ? $notification['friend_id'] : '',
+				'blind_id' => (!empty($notification['blind_id']) ? $notification['blind_id'] : '',
+				'category_id' => (!empty($notification['category_id']) ? $notification['category_id'] : '',
+				'message' => (!empty($notification['message']) ? $notification['message'] : '',
 				'created' => $this->datetime()
 				));
 		return ($insert) ? $this->db->lastInsertId() : false;
@@ -30,15 +34,17 @@ class Notification extends Model{
 	*	@param int $facebook_id
 	*	@return json / boolean
 	**/
-	public function getNotification($facebook_id){
-		$notifications = $this->db->exec('SELECT * FROM ' . $this->table . ' JOIN users ON ' . $this->table . '.friend_id = users.facebook_id
-			WHERE user_id = :fb_id', array('fb_id' => $facebook_id));
+	public function getNotification($receiver_id){
+		$notifications = $this->db->exec('SELECT * FROM ' . $this->table . ' JOIN users ON ' . $this->table . '.user_id = users.facebook_id
+			WHERE receiver_id = :receiver_id', array('receiver_id' => $receiver_id));
 
 		if(!empty($notifications)){
 			foreach ($notifications as $key => $notification) {
-				$category = $this->db->exec('SELECT * FROM categories WHERE id = :category_id',
-					array('category_id' => $notification['category_id']));
-				$notifications[$key]['category_name'] = (!empty($category)) ? $category[0]['name'] : false;
+				if(!empty($notification['category_id'])){
+					$category = $this->db->exec('SELECT * FROM categories WHERE id = :category_id',
+						array('category_id' => $notification['category_id']));
+					$notifications[$key]['category'] = (!empty($category)) ? $category[0]['name'] : false;
+				}
 			}
 		}
 
@@ -65,9 +71,8 @@ class Notification extends Model{
 	public function validate($notification){
 		$validate = true;
 
-		if(empty($notification['user_id'])){ $validate = false; }
-		if(empty($notification['friend_id'])){ $validate = false; }
-		if(empty($notification['blind_id'])){ $validate = false; }
+		if(empty($notification['receiver_id'])){ $validate = false; }
+		if(empty($notification['type'])){ $validate = false; }
 
 		return $validate;
 	}
