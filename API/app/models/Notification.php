@@ -15,15 +15,15 @@ class Notification extends Model{
 	*	@return int / boolean
 	**/
 	public function add($notification) {
-		$insert = $this->db->exec('INSERT INTO ' . $this->table . '(receveir_id, type, user_id, friend_id, blind_id, category_id, message, created)
-			VALUES(:receiver_id, :type, :user_id, :friend_id, :blind_id, :message, :created)', array(
+		$insert = $this->db->exec('INSERT INTO ' . $this->table . '(receiver_id, type, user_id, friend_id, blind_id, category_id, message, created)
+			VALUES(:receiver_id, :type, :user_id, :friend_id, :blind_id, :category_id, :message, :created)', array(
 				'receiver_id' => $notification['receiver_id'],
-				'type' => strtoupper($notification['type']),
-				'user_id' => (!empty($notification['user_id']) ? $notification['user_id'] : '',
-				'friend_id' => (!empty($notification['friend_id']) ? $notification['friend_id'] : '',
-				'blind_id' => (!empty($notification['blind_id']) ? $notification['blind_id'] : '',
-				'category_id' => (!empty($notification['category_id']) ? $notification['category_id'] : '',
-				'message' => (!empty($notification['message']) ? $notification['message'] : '',
+				'type' => $notification['type'],
+				'user_id' => (!empty($notification['user_id'])) ? $notification['user_id'] : '',
+				'friend_id' => (!empty($notification['friend_id'])) ? $notification['friend_id'] : '',
+				'blind_id' => (!empty($notification['blind_id'])) ? $notification['blind_id'] : '',
+				'category_id' => (!empty($notification['category_id'])) ? $notification['category_id'] : '',
+				'message' => (!empty($notification['message'])) ? $notification['message'] : '',
 				'created' => $this->datetime()
 				));
 		return ($insert) ? $this->db->lastInsertId() : false;
