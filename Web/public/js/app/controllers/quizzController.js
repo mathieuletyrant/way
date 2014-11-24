@@ -155,7 +155,6 @@ angular.module('app').controller('quizzController', function ($rootScope, $scope
                             });
                         });
                     }
-
                 }
             });
         }
