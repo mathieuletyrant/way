@@ -7,7 +7,7 @@ angular.module('app', ['ui.router', 'facebook', 'ngStorage', 'ngAnimate', 'ngAri
      */
     .constant('config', {
         path                    : '/Web',
-        apiUrl                  : 'http://wayapi.mathieuletyrant.com',
+        apiUrl                  : 'http://api.whoareyou.io',
         token                   : 'KDR8u9vuRH8i6hx8V4e6',
         facebookAppApi          : '828582677192624',
         intervalNotification    : 5,

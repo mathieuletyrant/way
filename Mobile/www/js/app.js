@@ -15,7 +15,7 @@ angular.module('starter', ['ionic', 'controllers', 'services'])
      Config
      */
     .constant('config', {
-        apiUrl          : 'http://wayapi.mathieuletyrant.com',
+        apiUrl          : 'http://api.whoareyou.io',
         token           : 'KDR8u9vuRH8i6hx8V4e6',
         facebookAppApi  : '828582677192624',
         currentCategory : 'badboy',
