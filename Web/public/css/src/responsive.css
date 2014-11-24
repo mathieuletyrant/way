@@ -40,6 +40,10 @@
         display: none;
     }
 
+    .how_to {
+        display: none;
+    }
+
     .bx-viewport {
         width: auto !important;
     }
