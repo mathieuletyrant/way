@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('app', ['ui.router', 'facebook', 'ngStorage', 'ngAnimate', 'ngAria'])
+angular.module('app', ['ui.router', 'facebook', 'ngStorage', 'ngAria'])
 
     /*
         Config
