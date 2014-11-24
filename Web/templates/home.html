@@ -37,20 +37,54 @@
                 <div class="notifications" id="notifications" ng-controller="notificationController as notificationCtrl">
                     <h3>Notifications</h3>
                     <div class="notification" ng-repeat="notif in notifications">
-                        <div class="notif_photo" style="background: url({{notif.picture}}) no-repeat center; background-size: cover;">
+
+                        <div ng-if="notif.type == 'START_DUEL'">
+                            <div class="notif_photo" style="background: url({{notif.picture}}) no-repeat center; background-size: cover;">
+                            </div>
+                            <div class="list_notif_defi">
+                                <div class="notif_name">{{notif.firstname}}</div>
+                                <ul>
+                                    <li>
+                                        <p>Hey {{notif.name}} ! {{notif.firstname}} te défi !</p>
+                                        <div class="notif_response">
+                                            <a class="accept icon-plus" ng-click="accept(notif.id, notif.blind_id, notif.category, notif.facebook_id, notif.friend_id)"></a>
+                                            <a class="refuse icon-min" ng-click="refuse(notif.blind_id, notif.id)"></a>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
-                        <div class="list_notif_defi">
-                            <div class="notif_name">{{notif.firstname}}</div>
-                            <ul>
-                                <li>
-                                    <p>Hey {{notif.name}} ! {{notif.firstname}} te défi !</p>
-                                    <div class="notif_response">
-                                        <a class="accept icon-plus" data-id="{{notif.friend_id}}" ng-click="accept($event)"></a>
-                                        <a class="refuse icon-min" data-id="{{notif.friend_id}}" ng-click="refuse($event)"></a>
-                                    </div>
-                                </li>
-                            </ul>
+                        <div ng-if="notif.type == 'END_DUEL'">
+                            <div class="notif_photo" style="background: url({{notif.picture}}) no-repeat center; background-size: cover;">
+                            </div>
+                            <div class="list_notif_defi">
+                                <div class="notif_name">{{notif.firstname}}</div>
+                                <ul>
+                                    <li>
+                                        <p>Clique sur le plus pour voir le resultat !</p>
+                                        <div class="notif_response">
+                                            <a class="accept icon-plus" ng-click="showResult(notif.id, notif.blind_id, notif.category, notif.facebook_id, notif.friend_id)"></a>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
+                        <div ng-if="notif.type == 'MESSAGE'">
+                            <div class="notif_photo" style="background: url('public/img/Logo.svg') no-repeat center; background-size: cover;">
+                            </div>
+                            <div class="list_notif_defi">
+                                <div class="notif_name">WAY</div>
+                                <ul>
+                                    <li>
+                                        <p>{{notif.message}}</p>
+                                        <div class="notif_response">
+                                            <a class="refuse icon-min" ng-click="refuse(notif.blind_id, notif.id)"></a>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
                         <div class="clear"></div>
                     </div>
                 </div>

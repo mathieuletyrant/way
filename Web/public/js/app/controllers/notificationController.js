@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('app').controller('notificationController', function ($scope, $interval, session, config, notification) {
+angular.module('app').controller('notificationController', function ($scope, $state, $interval, session, config, notification) {
 
     $scope.notifications = {};
     $scope.newNotification = false;
@@ -32,20 +32,29 @@ angular.module('app').controller('notificationController', function ($scope, $in
     /*
      * Accept Quizz
      */
-    $scope.accept = function (e) {
-        var id = $(e.target).data('id');
-        console.log('Notification accept: ' + id);
+    $scope.accept = function (id, blindId, category, facebookId, friendId) {
+        $state.go('quizz', {
+            type: 'multi',
+            user_1: facebookId,
+            user_2: friendId,
+            category: category,
+            blindId: blindId
+        });
+        // TODO DELETE Notification With ID
     };
 
     /*
      * Refuse Quizz
      */
-    $scope.refuse = function (e) {
-        var friendId = $(e.target).data('id');
-        notification.removeNotification(friendId).then(function(){
-            console.log('Une notification a été supprimé. Un challenge a été refusé.');
-        });
-        // TODO Delete current Challenge
+    $scope.refuse = function (bindId, id) {
+        // TODO Delete Notification & Blind ID
+    };
+
+    /*
+     * Redirect to Defi with result
+     */
+    $scope.showResult = function (id, blindId, category, facebookId, friendId) {
+        // TODO Redirect to Defi with result and delete Notification
     };
 
     /*

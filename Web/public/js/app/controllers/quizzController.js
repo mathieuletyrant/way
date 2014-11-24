@@ -150,7 +150,7 @@ angular.module('app').controller('quizzController', function ($rootScope, $scope
                     }
                     else{ // It's the second user for response
                         apiNotification.addNotification($stateParams.user_1, 'END_DUEL', $stateParams.user_1, $stateParams.user_2, $scope.blindId, null, $stateParams.category).then(function(){
-                            apiNotification.addNotification($stateParams.user_2, 'END_DUEL', $stateParams.user_1, $state.user_2, $scope.blindId, null, $stateParams.category).then(function(){
+                            apiNotification.addNotification($stateParams.user_2, 'END_DUEL', $stateParams.user_1, $stateParams.user_2, $scope.blindId, null, $stateParams.category).then(function(){
                                $state.go('home');
                             });
                         });
