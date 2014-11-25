@@ -52,21 +52,23 @@ function toggleProfils(e){
  * SLIDER
  */
 
-$('#slider_how_to').bxSlider({
-  mode: 'horizontal',
-  captions: false,
-  controls: true,
-  pager: false,
-  onSlideNext : function($slideElement, oldIndex, newIndex) {
-  	// on cache next
-  	$('a.bx-prev').fadeIn();
-  	$('a.bx-prev').css({'display' : 'block'});
-  	$('a.bx-next').fadeOut();
-  },
-  onSlidePrev : function($slideElement, oldIndex, newIndex) {
-  	// on cache prev
-  	$('a.bx-prev').fadeOut();
-  	$('a.bx-next').css({'display' : 'block'});
-  	$('a.bx-next').fadeIn();
-  }
+$('document').ready(function(){
+    $('#slider_how_to').bxSlider({
+        mode: 'horizontal',
+        captions: false,
+        controls: true,
+        pager: false,
+        onSlideNext : function($slideElement, oldIndex, newIndex) {
+            // on cache next
+            $('a.bx-prev').fadeIn();
+            $('a.bx-prev').css({'display' : 'block'});
+            $('a.bx-next').fadeOut();
+        },
+        onSlidePrev : function($slideElement, oldIndex, newIndex) {
+            // on cache prev
+            $('a.bx-prev').fadeOut();
+            $('a.bx-next').css({'display' : 'block'});
+            $('a.bx-next').fadeIn();
+        }
+    });
 });
