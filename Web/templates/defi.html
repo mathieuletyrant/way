@@ -3,7 +3,7 @@
         <div class="logo_quizz" ui-sref="home">
             <img src="public/img/Logo.svg" width="50" height="50">
         </div>
-        <div class="defi_container"> <!-- defi_fini -->
+        <div class="defi_container" ng-class="{'defi_fini': end == true}">
             <h2 class="defi_categorie">{{categoryDefi | uppercase}}</h2>
             <h3 class="defi_intitule">Qui est le plus {{categoryDefi}} d'entre nous ?</h3>
             <div class="versus">
@@ -37,7 +37,7 @@
                     </div>
                 </div>
                 <div class="clear"></div>
-                <p class="phrase_fin">Arthur Mialon est un véritable <span>Bad Boy</span> !</p>
+                <p class="phrase_fin">Arthur Mialon est un véritable <span>{{categoryDefi | capitalize}}</span> !</p>
             </div>
             <a class="btn begin_duel" ng-click="startQuizz()">Commencer le duel</a>
             <a ui-sref="profil" class="btn end_duel">Voir mon profil</a>

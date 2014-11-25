@@ -34,7 +34,8 @@ angular.module('app').controller('chooseController', function ($scope, $state, $
                 user_1: $scope.user.facebook_id,
                 user_2: facebookId,
                 category: $scope.blind.category,
-                status: 0
+                status: 0,
+                blindId: 0
             });
         }
 

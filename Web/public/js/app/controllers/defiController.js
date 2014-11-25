@@ -15,6 +15,14 @@ angular.module('app').controller('defiController', function ($scope, $state, $st
     }
 
     /*
+     * END
+     */
+    if ($stateParams.status == 1){
+        $scope.end = true;
+        var blindId = $stateParams.blindId;
+    }
+
+    /*
      * GET Informations Users
      */
     apiUser.getUser($stateParams.user_2).then(function (result) {
