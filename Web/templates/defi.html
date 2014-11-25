@@ -11,14 +11,14 @@
                     <div class="image_profil" style="background: url({{users.user_1.picture}}) no-repeat center; background-size: cover;">
                         <div class="user_point">
                             <div class="truc_anime"></div>
-                            <span class="total_point" data-point="16"></span>
+                            <span class="total_point" data-point="16" animation-end></span>
                         </div>
                     </div>
                     <div class="identite">
                         <span class="prenom">{{users.user_1.firstname}}</span>
                         <span class="nom">{{users.user_1.lastname}}</span>
-                        <span class="nb_point">16</span>
-                        <p class="point">Points</p>
+                        <span class="nb_point" ng-show="display == true">16</span>
+                        <p class="point" ng-show="display == true">Points</p>
                     </div>
                 </div>
                 <span class="vs_icon"></span>
@@ -32,12 +32,12 @@
                     <div class="identite">
                         <span class="prenom">{{users.user_2.firstname}}</span>
                         <span class="nom">{{users.user_2.lastname}}</span>
-                        <span class="nb_point">12</span>
-                        <p class="point">Points</p>
+                        <span class="nb_point" ng-show="display == true">12</span>
+                        <p class="point" ng-show="display == true">Points</p>
                     </div>
                 </div>
                 <div class="clear"></div>
-                <p class="phrase_fin">Arthur Mialon est un véritable <span>{{categoryDefi | capitalize}}</span> !</p>
+                <p class="phrase_fin" ng-show="endMessage == true">Arthur Mialon est {{determinant}} véritable <span>{{categoryDefi | capitalize}}</span> !</p>
             </div>
             <a class="btn begin_duel" ng-click="startQuizz()">Commencer le duel</a>
             <a ui-sref="profil" class="btn end_duel">Voir mon profil</a>
@@ -45,5 +45,3 @@
         </div>
     </div>
 </div>
-
-<script type="text/javascript-lazy" src="public/js/style/defi.js"></script>
