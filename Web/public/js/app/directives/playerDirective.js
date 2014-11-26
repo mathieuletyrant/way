@@ -13,6 +13,7 @@ angular.module('app').directive('player', function(){
             $attrs.$observe('src', function(newVal){
                 $element[0].pause();
                 $element[0].setAttribute('src', newVal);
+                $element[0].muted = false;
                 $element[0].play();
             });
         }
