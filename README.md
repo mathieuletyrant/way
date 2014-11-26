@@ -12,9 +12,13 @@ Way est un test de personnalité. À travers un blind-test, découvrez votre pro
 On y retrouve l'API qui permet de retourner à notre application WEB/MOBILE les questions, les réponses, les utilisateurs et de sauvegarder ça dans une base de donnée de type SQL (MariaDB chez nous).
 
 #### LE WEB
-Ensuite il y a l'application WEB [disponible ici](http://www.whoareyou.io) elle utilise :
+Ensuite il y a l'application WEB [disponible ici](http://www.whoareyou.io), utilise :
 
 * AngularJS
+ * UI Router
+ * ngFacebook
+ * ngAria
+ * ngStorage
 * Gulp
 * Bower
 
