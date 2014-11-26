@@ -9,6 +9,9 @@ Way est un test de personnalité. À travers un blind-test, découvrez votre pro
 --------------------
 * [Site WEB](http://www.whoareyou.io)
 * [REST API](http://api.whoareyou.io)
+* BackOffice
+ * [Ajouter les questions dans l'API](http://api.whoareyou.io/question/add)
+ * [Ajouter des bons plans dans l'API](http://api.whoareyou.io/deal/add)
 
 ### Le GIT
 --------------------
