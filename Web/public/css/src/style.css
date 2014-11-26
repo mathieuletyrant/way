@@ -745,6 +745,10 @@ footer {
     margin-left: 12px;
     font-size: 30px;
     color: #fff;
+    transition: all .3s;
+}
+.footer_right a.social:hover{
+    color: #e84e40;
 }
 
 .footer_center img {
