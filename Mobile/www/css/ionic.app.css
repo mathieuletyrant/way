@@ -7900,13 +7900,13 @@ $ios-transition-box-shadow-end: -200px 0px 200px rgba(0,0,0,0.15), -5px 0px 5px 
 /*
   CATEGORIES GOOD DEAL
 */
-.sortie, conseils {
+.sortie, .conseils {
   background-color: #a62a28; }
 
-.mode, vacances {
+.mode, .vacances {
   background-color: #1aa22a; }
 
-.style, blabla {
+.style, .blabla {
   background-color: #dd9a37; }
 
 .achat {
@@ -7972,7 +7972,7 @@ $ios-transition-box-shadow-end: -200px 0px 200px rgba(0,0,0,0.15), -5px 0px 5px 
   color: white; }
   .gooddeal a {
     text-decoration: none;
-    color: #2f3854; }
+    color: white; }
   .gooddeal .map {
     display: block;
     width: 100%;
