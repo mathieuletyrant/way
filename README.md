@@ -5,6 +5,11 @@ Way
 --------------------
 Way est un test de personnalité. À travers un blind-test, découvrez votre profil et défiez vos amis dans la catégorie de votre choix. « Etre ou ne pas être telle est la question ».
 
+### Liens
+--------------------
+* [Site WEB](http://www.whoareyou.io)
+* [REST API](http://api.whoareyou.io)
+
 ### Le GIT
 --------------------
 
@@ -17,8 +22,9 @@ Ensuite il y a l'application WEB [disponible ici](http://www.whoareyou.io), util
 * AngularJS
  * UI Router
  * ngFacebook
- * ngAria
+ * ngAria (Pour l'accessibilité)
  * ngStorage
+ * Prerender.io (Pour le SEO d'une application ANGULARJS)
 * Gulp
 * Bower
 
