@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('app').controller('notificationController', function ($scope, $state, $interval, session, config, notification) {
+angular.module('app').controller('notificationController', function ($rootScope, $scope, $state, $interval, session, config, notification) {
 
     $scope.notifications = {};
     $scope.newNotification = false;
@@ -59,15 +59,23 @@ angular.module('app').controller('notificationController', function ($scope, $st
      */
     $scope.showResult = function (id, blindId, category, facebookId, friendId) {
         notification.removeNotification(id).then(function(){
-            // TODO Redirect to Defi with result
+            $state.go('defi', {
+                user_1: facebookId,
+                user_2: friendId,
+                category: category,
+                status: 1,
+                blindId: blindId
+            });
         });
     };
 
     /*
      * Check when user change page for delete the Interval :)
      */
-    $scope.$on('$locationChangeStart', function () {
-        $interval.cancel(interval);
+    $rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams){
+        if(fromState.name == 'home'){
+            $interval.cancel(interval);
+        }
     });
 
 });
