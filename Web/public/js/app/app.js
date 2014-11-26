@@ -32,27 +32,33 @@ angular.module('app', ['ui.router', 'facebook', 'ngStorage', 'ngAria'])
         $stateProvider
             .state('home', {
                 url: "/",
-                templateUrl: 'templates/home.html'
+                templateUrl: 'templates/home.html',
+                title: 'Accueil'
             })
             .state('letsgo', {
                 url: "/letsgo",
-                templateUrl: 'templates/letgo.html'
+                templateUrl: 'templates/letgo.html',
+                title: 'Letsgo'
             })
             .state('defi', {
                 url: "/defi/:user_1/:user_2/:category/:status/:blindId",
-                templateUrl: 'templates/defi.html'
+                templateUrl: 'templates/defi.html',
+                title: 'Defi'
             })
             .state('profil', {
                 url: "/profil",
-                templateUrl: 'templates/profil.html'
+                templateUrl: 'templates/profil.html',
+                title: 'Profil de votre compte'
             })
             .state('quizz', {
                 url: "/quizz/:type/:user_1/:user_2/:category/:blindId",
-                templateUrl: 'templates/quizz.html'
+                templateUrl: 'templates/quizz.html',
+                title: 'Quizz'
             })
             .state('choose', {
                 url: "/choose",
-                templateUrl: 'templates/choose.html'
+                templateUrl: 'templates/choose.html',
+                title: 'Choisis un adversaire'
             });
     })
 
@@ -68,4 +74,14 @@ angular.module('app', ['ui.router', 'facebook', 'ngStorage', 'ngAria'])
      */
     .config(function($httpProvider, config){
         $httpProvider.defaults.headers.common['Auth-Token'] = config.token;
+    })
+
+    /*
+     * Custom Title and Description TAG
+     * For SEO
+     */
+    .run(function($rootScope){
+        $rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams){
+            $rootScope.title = toState.title;
+        });
     });
