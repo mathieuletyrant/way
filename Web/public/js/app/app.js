@@ -33,32 +33,50 @@ angular.module('app', ['ui.router', 'facebook', 'ngStorage', 'ngAria'])
             .state('home', {
                 url: "/",
                 templateUrl: 'templates/home.html',
-                title: 'Accueil'
+                seo: {
+                    title: 'Accueil',
+                    desc: ''
+                }
             })
             .state('letsgo', {
                 url: "/letsgo",
                 templateUrl: 'templates/letgo.html',
-                title: 'Letsgo'
+                seo: {
+                    title: '',
+                    desc: ''
+                }
             })
             .state('defi', {
                 url: "/defi/:user_1/:user_2/:category/:status/:blindId",
                 templateUrl: 'templates/defi.html',
-                title: 'Defi'
+                seo: {
+                    title: 'Defi',
+                    desc: ''
+                }
             })
             .state('profil', {
                 url: "/profil",
                 templateUrl: 'templates/profil.html',
-                title: 'Profil de votre compte'
+                seo: {
+                    title: 'Profil de votre compte',
+                    desc: ''
+                }
             })
             .state('quizz', {
                 url: "/quizz/:type/:user_1/:user_2/:category/:blindId",
                 templateUrl: 'templates/quizz.html',
-                title: 'Quizz'
+                seo: {
+                    title: 'Quizz',
+                    desc: ''
+                }
             })
             .state('choose', {
                 url: "/choose",
                 templateUrl: 'templates/choose.html',
-                title: 'Choisis un adversaire'
+                seo: {
+                    title: 'Choisis un adversaire',
+                    desc: ''
+                }
             });
     })
 
@@ -82,6 +100,7 @@ angular.module('app', ['ui.router', 'facebook', 'ngStorage', 'ngAria'])
      */
     .run(function($rootScope){
         $rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams){
-            $rootScope.title = toState.title;
+            $rootScope.title = toState.seo.title;
+            $rootScope.desc = toState.seo.desc;
         });
     });
