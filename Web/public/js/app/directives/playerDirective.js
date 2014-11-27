@@ -9,12 +9,15 @@ angular.module('app').directive('player', function(){
             src: '@'
         },
         link: function ($scope, $element, $attrs) {
-
             $attrs.$observe('src', function(newVal){
-                $element[0].pause();
-                $element[0].setAttribute('src', newVal);
-                $element[0].muted = false;
-                $element[0].play();
+
+                var audio = $element[0];
+
+                audio.pause();
+                audio.setAttribute('src', newVal);
+                audio.muted = false;
+                audio.play();
+
             });
         }
     };
