@@ -11,13 +11,13 @@
                     <div class="image_profil" style="background: url({{users.user_1.picture}}) no-repeat center; background-size: cover;">
                         <div class="user_point">
                             <div class="truc_anime"></div>
-                            <span class="total_point" data-point="16" animation-end></span>
+                            <span class="total_point" data-point="{{result.user_1}}"></span>
                         </div>
                     </div>
                     <div class="identite">
                         <span class="prenom">{{users.user_1.firstname}}</span>
                         <span class="nom">{{users.user_1.lastname}}</span>
-                        <span class="nb_point" ng-show="display == true">16</span>
+                        <span class="nb_point" ng-show="display == true">{{result.user_1}}</span>
                         <p class="point" ng-show="display == true">Points</p>
                     </div>
                 </div>
@@ -26,18 +26,19 @@
                     <div class="image_profil" style="background: url({{users.user_2.picture}}) no-repeat center; background-size: cover;">
                         <div class="user_point">
                             <div class="truc_anime"></div>
-                            <span class="total_point" data-point="12"></span>
+                            <span class="total_point" data-point="{{result.user_2}}"></span>
                         </div>
                     </div>
                     <div class="identite">
                         <span class="prenom">{{users.user_2.firstname}}</span>
                         <span class="nom">{{users.user_2.lastname}}</span>
-                        <span class="nb_point" ng-show="display == true">12</span>
+                        <span class="nb_point" ng-show="display == true">{{result.user_2}}</span>
                         <p class="point" ng-show="display == true">Points</p>
                     </div>
                 </div>
                 <div class="clear"></div>
-                <p class="phrase_fin" ng-show="endMessage == true">Arthur Mialon est {{determinant}} véritable <span>{{categoryDefi | capitalize}}</span> !</p>
+                <p class="phrase_fin" ng-show="endMessage == true && winner != 'NO_WINNER'">{{winner}} est {{determinant}} véritable <span>{{categoryDefi | capitalize}}</span> !</p>
+                <p class="phrase_fin" ng-show="endMessage == true && winner == 'NO_WINNER'">Vous êtes autant <span>{{categoryDefi | capitalize}}</span> l'un que l'autre !</p>
             </div>
             <a class="btn begin_duel" ng-click="startQuizz()">Commencer le duel</a>
             <a ui-sref="profil" class="btn end_duel">Voir mon profil</a>

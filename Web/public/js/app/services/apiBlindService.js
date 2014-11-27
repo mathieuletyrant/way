@@ -200,7 +200,39 @@ angular.module('app').factory('apiBlind', function ($http, $q, config, overlay) 
                 });
 
             return deferred.promise;
+        },
+
+        /*
+         * @name Find Result Blind
+         * @param int blindId
+         * @param int facebookId
+         */
+        resultBlind: function (blindId, facebookId) {
+
+            blindId     = blindId       || 0;
+            facebookId  = facebookId    || 0;
+
+            overlay.set(true);
+
+            var deferred = $q.defer();
+
+            $http({
+                method: 'GET',
+                url: config.apiUrl + '/blind/number/'+blindId+'/'+facebookId
+            })
+                .success(function (result) {
+                    overlay.set(false);
+                    deferred.resolve(result);
+                })
+                .error(function (result) {
+                    overlay.set(false);
+                    deferred.resolve(result);
+                });
+
+            return deferred.promise;
+
         }
+
     };
 
 });
