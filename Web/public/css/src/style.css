@@ -299,6 +299,7 @@ header .admin_bar .profil_bar .go_logout {
     margin-top: 2px;
     font-size: 11px;
     color: #b4bbc2;
+    position: relative;
 }
 
 .list_notif_defi li p {
@@ -311,6 +312,8 @@ header .admin_bar .profil_bar .go_logout {
     height: 8px;
     float: right;
     cursor: pointer;
+    position: absolute;
+    right: 0;
 }
 
 .showcase {
