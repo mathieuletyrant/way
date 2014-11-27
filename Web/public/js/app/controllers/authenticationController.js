@@ -36,6 +36,13 @@ angular.module('app').controller('authenticationController', function ($scope, F
     };
 
     /*
+     * Logout
+     */
+    $scope.logout = function () {
+      session.deleteUser();
+    };
+
+    /*
      * me
      */
     $scope.me = function () {
