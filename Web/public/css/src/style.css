@@ -1409,7 +1409,7 @@ footer p {
 }
 
 .defi_container .versus .user .identite .nom {
-    font-size: 18px;
+    font-size: 15px;
     margin-bottom: 40px;
 }
 
@@ -1644,6 +1644,11 @@ footer p {
     border-right: 1px solid #fff;
 }
 
+#mail_to_user input,
+#form_choose_user input {
+    border-radius: 0px!important;
+}
+
 #mail_to_user input[type="mail"],
 #mail_to_user textarea {
     border: 2px solid #fff;
@@ -1688,6 +1693,7 @@ footer p {
     font-size: 10px;
     padding: 8px 10px;
     margin-top: 15px;
+    border-radius: 0px!important;
 }
 
 #mail_to_user textarea {
