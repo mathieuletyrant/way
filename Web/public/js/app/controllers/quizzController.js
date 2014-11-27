@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('app').controller('quizzController', function ($rootScope, $scope, $stateParams, $state, $interval, $filter, quizz, config, session, apiBlind, apiUser, apiNotification) {
+angular.module('app').controller('quizzController', function ($rootScope, $scope, $timeout, $stateParams, $state, $interval, $filter, quizz, config, session, apiBlind, apiUser, apiNotification, alert) {
 
     var type        = $stateParams.type || null,
         blindId     = $stateParams.blindId,
@@ -11,7 +11,9 @@ angular.module('app').controller('quizzController', function ($rootScope, $scope
      * If we are not logged -> redirect to home
      */
     if(session.getLogged() === false || ($stateParams.type == 'multi' && ($stateParams.user_1 == $stateParams.user_2)) || type == null){
+        alert.call('Veuillez vous connecter via facebook afin de participer à l\'expérience Way.');
         $state.go('home');
+        return;
     }
 
     /*
@@ -145,13 +147,15 @@ angular.module('app').controller('quizzController', function ($rootScope, $scope
                 else{
                     if(blindId == 0){
                         apiNotification.addNotification($stateParams.user_2, 'START_DUEL', $stateParams.user_1, $stateParams.user_2, $scope.blindId, null, $stateParams.category).then(function(){
+                            alert.call('Veuillez attendre que la personne défiée finisse son test.');
                             $state.go('home');
                         });
                     }
                     else{ // It's the second user for response
                         apiNotification.addNotification($stateParams.user_1, 'END_DUEL', $stateParams.user_1, $stateParams.user_2, $scope.blindId, null, $stateParams.category).then(function(){
                             apiNotification.addNotification($stateParams.user_2, 'END_DUEL', $stateParams.user_1, $stateParams.user_2, $scope.blindId, null, $stateParams.category).then(function(){
-                               $state.go('home');
+                                alert.call('Merci de vérifier vos notifications pour voir le résultat.');
+                                $state.go('home');
                             });
                         });
                     }

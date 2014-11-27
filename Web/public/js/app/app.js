@@ -43,7 +43,7 @@ angular.module('app', ['ui.router', 'facebook', 'ngStorage', 'ngAria'])
                 templateUrl: 'templates/letgo.html',
                 seo: {
                     title: 'Informations',
-                    desc: '20 questions vont vous être posées lors du test que vous vous apprêter à faire. Vous aurez 15 secondes pour répondre à chaque questions.'
+                    desc: '20 questions vont vous être posées lors du test que vous vous apprêter à faire. Vous aurez 15 secondes pour répondre à chaque question.'
                 }
             })
             .state('defi', {
@@ -67,7 +67,7 @@ angular.module('app', ['ui.router', 'facebook', 'ngStorage', 'ngAria'])
                 templateUrl: 'templates/quizz.html',
                 seo: {
                     title: 'Quizz',
-                    desc: 'Le blind test Way c\'est 20 questions, 15 secondes pour répondre à chacun d\'elles.'
+                    desc: 'Le blind test Way c\'est 20 questions, 15 secondes pour répondre à chacune d\'elle.'
                 }
             })
             .state('choose', {

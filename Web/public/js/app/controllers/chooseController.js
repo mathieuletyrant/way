@@ -6,7 +6,9 @@ angular.module('app').controller('chooseController', function ($scope, $state, $
      * If we are not logged -> redirect to home
      */
     if (session.getLogged() === false) {
+        alert.call('Veuillez vous connecter via facebook afin de participer à l\'expérience Way.');
         $state.go('home');
+        return;
     }
     else {
         var timer = false;

@@ -6,7 +6,9 @@ angular.module('app').controller('profilController', function($scope, $state, ap
      * If we are not logged -> redirect to home
      */
     if(session.getLogged() === false || session.getUser().category_name == false){
+        alert.call('Veuillez vous connecter via facebook afin de voir votre profil.');
         $state.go('home');
+        return;
     }
     else{
         $scope.user  = session.getUser();

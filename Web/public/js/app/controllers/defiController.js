@@ -7,6 +7,7 @@ angular.module('app').controller('defiController', function ($scope, $state, $st
      */
     if (session.getLogged() === false) {
         $state.go('home');
+        return;
     }
     else {
         var status          = $stateParams.status;
@@ -47,7 +48,7 @@ angular.module('app').controller('defiController', function ($scope, $state, $st
                 else{
                     $scope.winner = 'NO_WINNER';
                 }
-                
+
                 overlay.set(true);
                 $timeout(function(){
                     defi.animation().then(function(){
