@@ -159,6 +159,25 @@ class BlindController extends Controller {
 		}
 	}
 
+	/**
+	*	Request for get blind response number
+	*	@param object $f3
+	*	@return json
+	**/
+	public function blindNumber($f3){
+
+		$response = $this->UserResponse->getNumber($f3->get('PARAMS.blind_id'),
+			$f3->get('PARAMS.user_id'));
+
+		if(!empty($response)){
+			unset($response['0']);
+			echo $this->UserResponse->encode('responses', $response);
+		}else{
+			$this->send_message(array('code' => '400', 'message' => 'no data found'));
+		}
+
+	}
+
 }
 
  ?>

@@ -67,12 +67,36 @@ class UserResponse extends Model{
 	}
 
 	/**
-	*
+	*	Get response from a blind
+	*	@param int $blind_id
+	*	@return array response
 	**/
 	public function getResponse($blind_id){
 		$st = $this->db->prepare('SELECT * FROM ' . $this->table . ' WHERE blind_id = :blind_id');
 		$st->execute(array('blind_id' => $blind_id));
 		return ($response = $st->fetchAll()) ? $response : false;
+	}
+
+	/**
+	*	Get number of response from a blind
+	*	@param int $blind_id
+	*	@param int $user_id
+	*	@return array number of response
+	**/
+	public function getNumber($blind_id, $user_id){
+		$st = $this->db->prepare('SELECT COUNT(*) as total FROM ' . $this->table . '
+			JOIN answers ON ' . $this->table . '.response_id = answers.id
+			WHERE blind_id = :blind_id
+			AND user_id = :user_id
+			AND status = :status');
+		$st->execute(array(
+				'blind_id' => $blind_id,
+				'user_id' => $user_id,
+				'status' => true
+			));
+		$number = $st->fetch();
+
+		return ($number['total'] > 0) ? $number : false;
 	}
 
 }

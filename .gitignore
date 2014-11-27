@@ -42,6 +42,7 @@ Web/public/js/app.js
 Web/public/js/libs.js
 Web/public/js/libs/
 API/app/config/config.php
+API/sftp-config.json
 
 Web/public/css/style.css
 Web/public/css/style.min.css
