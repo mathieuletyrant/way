@@ -233,6 +233,17 @@ header .admin_bar .profil_bar .go_notif {
     float: left;
     color: black;
     font-size: 1.3em;
+    margin-right: 10px;
+}
+
+header .admin_bar .profil_bar .go_logout {
+    display: block;
+    margin-top: 3px;
+    width: 17px;
+    height: 20px;
+    float: left;
+    color: black;
+    font-size: 1.3em;
 }
 
 .new-notification {
