@@ -244,6 +244,7 @@ header .admin_bar .profil_bar .go_logout {
     float: left;
     color: black;
     font-size: 1.3em;
+    cursor: pointer;
 }
 
 .new-notification {
