@@ -5,7 +5,7 @@
         </div>
         <div class="login">
             <div class="btn_facebook" ng-show="logged === false">
-                <a ng-click="login()">Connexion</a>
+                <a ng-click="login()" title="Connexion à Way via facebook">Connexion</a>
             </div>
             <div class="admin_bar" ng-show="logged === true">
                 <div class="profil_bar">
@@ -30,7 +30,8 @@
                         class="go_notif icon-bell"
                         id="go_notif"
                         ng-class="{'new-notification': newNotification === true}"
-                        ng-click="newNotification = false"></a>
+                        ng-click="newNotification = false"
+                        title="Voir les notifications"></a>
                     <div class="clear"></div>
                 </div>
                 <div class="clear"></div>
@@ -53,8 +54,8 @@
         </p>
     </div>
     <div class="btn_go_app">
-        <a ui-sref="letsgo" class="btn">Quel est mon profil ?</a>
-        <a ui-sref="choose" class="btn">Je défie un pote</a>
+        <a ui-sref="letsgo" class="btn" title="Découvrir votre profil">Quel est mon profil ?</a>
+        <a ui-sref="choose" class="btn" title="Défier un ami">Je défie un pote</a>
     </div>
 </div>
 <div class="presentation">
@@ -114,6 +115,7 @@
     </p>
 
     <slide></slide>
+
 </div>
 <div class="showcase_profils">
     <h2>Nos différents profils</h2>
@@ -197,18 +199,18 @@
     <div class="wrap_site">
         <div class="footer_left">
             <p>Télécharger l'extension sur votre mobile</p>
-            <a href="#" class="app_store"></a>
-            <a href="#" class="play_store"></a>
+            <a href="#" class="app_store" title="télécharger l'application sur l'AppStore"></a>
+            <a href="#" class="play_store" title="télécharger l'application sur le PlayStore"></a>
         </div>
         <div class="footer_center">
             <p class="copyright">Copyright 2014</p>
-            <img src="public/img/Logo.svg" alt="logo de way">
+            <img src="public/img/Logo.svg" alt="logo de Way">
         </div>
         <div class="footer_right">
             <p>Retrouvez nous sur</p>
-            <a href="#" class="social icon-twitter"></a>
-            <a href="#" class="social icon-facebook"></a>
-            <a href="https://github.com/Mathew78540/way/" class="social icon-github"></a>
+            <a href="#" class="social icon-twitter" title="Compte Twitter"></a>
+            <a href="#" class="social icon-facebook" title="Page Facebook"></a>
+            <a href="https://github.com/Mathew78540/way/" class="social icon-github" title="Compte Github"></a>
         </div>
         <div class="clear"></div>
     </div>

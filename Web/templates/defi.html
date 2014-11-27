@@ -40,9 +40,9 @@
                 <p class="phrase_fin" ng-show="endMessage == true && winner != 'NO_WINNER'">{{winner}} est {{determinant}} véritable <span>{{categoryDefi | capitalize}}</span> !</p>
                 <p class="phrase_fin" ng-show="endMessage == true && winner == 'NO_WINNER'">Vous êtes autant <span>{{categoryDefi | capitalize}}</span> l'un que l'autre !</p>
             </div>
-            <a class="btn begin_duel" ng-click="startQuizz()">Commencer le duel</a>
-            <a ui-sref="profil" class="btn end_duel">Voir mon profil</a>
-            <a ui-sref="defi" class="btn end_duel">Défier un pote</a>
+            <a class="btn begin_duel" ng-click="startQuizz()" title="Commencer le duel">Commencer le duel</a>
+            <a ui-sref="profil" class="btn end_duel" title="Voir mon profil">Voir mon profil</a>
+            <a ui-sref="defi" class="btn end_duel" title="Défier un pote">Défier un pote</a>
         </div>
     </div>
 </div>
