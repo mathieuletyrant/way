@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('app').controller('quizzController', function ($rootScope, $scope, $timeout, $stateParams, $state, $interval, $filter, quizz, config, session, apiBlind, apiUser, apiNotification, alert) {
+angular.module('app').controller('quizzController', function ($rootScope, $scope, $stateParams, $state, $interval, $filter, quizz, config, session, apiBlind, apiUser, apiNotification, alert) {
 
     var type        = $stateParams.type || null,
         blindId     = $stateParams.blindId,
