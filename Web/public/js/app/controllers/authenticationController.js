@@ -3,7 +3,7 @@
  * @requires $scope
  * @require Facebook (Service for Facebook Connect)
  */
-angular.module('app').controller('authenticationController', function ($scope, $state, Facebook, apiUser, session) {
+angular.module('app').controller('authenticationController', function ($scope, Facebook, apiUser, session) {
 
     /*
      * Test already logged
