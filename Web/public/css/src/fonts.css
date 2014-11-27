@@ -628,3 +628,15 @@
 .icon-way:before {
     content: "\e60d";
 }
+
+.icon-check:before {
+    content: "\e615";
+}
+
+.icon-cancel:before {
+    content: "\e616";
+}
+
+.icon-logout:before {
+    content: "\e614";
+}
