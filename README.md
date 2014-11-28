@@ -33,3 +33,11 @@ Ensuite il y a l'application WEB [disponible ici](http://www.whoareyou.io), util
 
 #### LE MOBILE
 Une application mobile faite via Ionic et Cordova permet de faire la liste des bons plans d'une catégorie. On peut partager sur Facebook, tweeter, et si un bon plan à une coordonnée GPS, une map apparait et au clique l'application natif du téléphone est ouvert avec les coordonnées du lieu.
+
+#### L'EQUIPE
+| ------------- | ------------- |
+| Hugo Poteloin  | Chef de projet  |
+| Julia Parrinello  | UX UI Design  |
+| Mathieu Le Tyrant  | Developpeur Front  |
+| Paul Boiseau  | Developpeur Back  |
+| Arthur Mialon  | Integrateur  |
