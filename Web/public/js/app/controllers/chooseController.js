@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('app').controller('chooseController', function ($scope, $state, $timeout, session, apiMail, config, apiUser, choose) {
+angular.module('app').controller('chooseController', function ($scope, $state, $timeout, session, apiMail, config, apiUser, choose, alert) {
 
     /*
      * If we are not logged -> redirect to home

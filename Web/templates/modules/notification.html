@@ -26,7 +26,7 @@
                 <li>
                     <p>Les resultats sont là contre {{notif.firstname1}}</p>
                     <div class="notif_response">
-                        <a class="accept icon-plus" ng-click="showResult(notif.id, notif.blind_id, notif.category, notif.facebook_id1, notif.facebook_id2)"></a>
+                        <a class="accept icon-check" ng-click="showResult(notif.id, notif.blind_id, notif.category, notif.facebook_id1, notif.facebook_id2)"></a>
                     </div>
                 </li>
             </ul>
@@ -42,7 +42,7 @@
                 <li>
                     <p>{{notif.message}}</p>
                     <div class="notif_response">
-                        <a class="refuse icon-min" ng-click="refuse(notif.blind_id, notif.id)"></a>
+                        <a class="refuse icon-cross" ng-click="refuse(notif.blind_id, notif.id)"></a>
                     </div>
                 </li>
             </ul>
