@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('app').controller('profilController', function($scope, $state, apiUser, session, chart, quotes){
+angular.module('app').controller('profilController', function($scope, $state, apiUser, session, chart, quotes, alert){
 
     /*
      * If we are not logged -> redirect to home
